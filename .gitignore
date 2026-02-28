@@ -1,0 +1,22 @@
+.venv
+
+# Node modules
+node_modules/
+
+# Large binary / model files
+*.faiss
+*.bin
+*.pt
+*.pth
+
+# PDF files (too large for git)
+*.pdf
+
+# Large generated data files
+synthetic_data/knowledge_graph.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
