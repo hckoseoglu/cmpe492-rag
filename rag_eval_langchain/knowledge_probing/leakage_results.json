@@ -1,0 +1,138 @@
+{
+  "dataset": "Anatomy",
+  "model": "gpt-4o-mini",
+  "total": 5,
+  "evaluated": 3,
+  "detected": 2,
+  "detection_rate": 0.6667,
+  "results": [
+    {
+      "original_question": "What is the difference between barbel curl and ez-bar curl in terms of the target muscle?",
+      "fooled_question": "What is the difference between barbel curl and takino sana in terms of the target muscle?",
+      "gold_answer": "While both exercises target the beiceps brachii, the ez-bar curl targets the longer head of the biceps briachii",
+      "obfuscated_words": [
+        "takino",
+        "takino sana"
+      ],
+      "guesses": {
+        "takino": [
+          "dumbbell",
+          "EZ curl bar",
+          "barbell"
+        ],
+        "takino sana": [
+          "preacher curl",
+          "preacher bench",
+          "bicep curl"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "takino": {
+            "correct_original": "EZ-bar",
+            "best_guess": "EZ curl bar",
+            "detected": true,
+            "reasoning": "The model correctly identified 'EZ-bar' with 'EZ curl bar' which is a close synonym."
+          },
+          "takino sana": {
+            "correct_original": "barbell",
+            "best_guess": "bicep curl",
+            "detected": false,
+            "reasoning": "The model did not guess the correct original word 'barbell' nor a close synonym for it."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    },
+    {
+      "original_question": "What is shoulder abduction and shoulder adduction",
+      "fooled_question": "What is shoulder glenthorp and blenford",
+      "gold_answer": "During abduction, the arm moves up and out to the side of the body. During adduction, the arm is pulled in toward the side of the body.",
+      "obfuscated_words": [
+        "blenford",
+        "glenthorp"
+      ],
+      "guesses": {
+        "blenford": [
+          "adduction",
+          "inward movement",
+          "pulling in"
+        ],
+        "glenthorp": [
+          "abduction",
+          "outward movement",
+          "lifting to the side"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "blenford": {
+            "correct_original": "adduction",
+            "best_guess": "adduction",
+            "detected": true,
+            "reasoning": "The guess 'adduction' correctly identifies the original word."
+          },
+          "glenthorp": {
+            "correct_original": "abduction",
+            "best_guess": "abduction",
+            "detected": true,
+            "reasoning": "The guess 'abduction' correctly identifies the original word."
+          }
+        },
+        "overall_detected": true
+      },
+      "detected": true,
+      "skipped": false
+    },
+    {
+      "original_question": "How to target chest muscles better at chest dips?",
+      "fooled_question": "How to target chest muscles better at chest dips?",
+      "gold_answer": "By doing a slight forward tilt during the movement",
+      "obfuscated_words": [],
+      "guesses": {},
+      "evaluation": {},
+      "detected": null,
+      "skipped": true
+    },
+    {
+      "original_question": "Should I perform dumbell shoulder press seated or standing?",
+      "fooled_question": "Should I perform dumbell shoulder press seated or standing?",
+      "gold_answer": "The seated dumbbell shoulder press is better because it prevents the use of momentum and allows for better isolation of the shoulder muscles.",
+      "obfuscated_words": [],
+      "guesses": {},
+      "evaluation": {},
+      "detected": null,
+      "skipped": true
+    },
+    {
+      "original_question": "I want to target the outter section of my latisimus dorsi, which grip works bettter in pull-down: close-grip or wide-grip?",
+      "fooled_question": "I want to target the outter section of my fomblurisimus dorsi, which grip works bettter in pull-down: close-grip or wide-grip?",
+      "gold_answer": "The wide-grip pull-down is better for targeting the outer section of the latissimus dorsi.",
+      "obfuscated_words": [
+        "fomblur"
+      ],
+      "guesses": {
+        "fomblur": [
+          "latissimus dorsi",
+          "back muscle",
+          "lats"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "fomblur": {
+            "correct_original": "latissimus dorsi",
+            "best_guess": "latissimus dorsi",
+            "detected": true,
+            "reasoning": "The guess 'latissimus dorsi' is an exact match for the obfuscated word."
+          }
+        },
+        "overall_detected": true
+      },
+      "detected": true,
+      "skipped": false
+    }
+  ]
+}

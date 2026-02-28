@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG Evaluation Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
+      background: #f8fafc;
+      min-height: 100vh;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useCallback, useRef } = React;
+
+    /* ─── CSV to structured data ─── */
+    function parseCSV(csvText) {
+      const result = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+      return result.data.map(row => {
+        let inputs = {}, refOutputs = {}, outputs = {};
+        try { inputs = JSON.parse(row.inputs); } catch {}
+        try { refOutputs = JSON.parse(row.reference_outputs); } catch {}
+        try { outputs = JSON.parse(row.outputs); } catch {}
+
+        return {
+          id: row.id,
+          question: inputs.question || '',
+          ground_truth: refOutputs.answer || '',
+          rag_answer: outputs.answer || '',
+          reference_text: outputs.reference_text || '',
+          reference_texts: outputs.reference_texts || [],
+          question_type: outputs.question_type || '',
+          page: outputs.page || '',
+          resource: outputs.resource || '',
+          documents: outputs.documents || [],
+          latency: row.latency ? parseFloat(row.latency) : null,
+          tokens: row.tokens ? parseInt(row.tokens) : null,
+          total_cost: row.total_cost ? parseFloat(row.total_cost) : null,
+          evaluations: {
+            correctness:         { score: parseFloat(row.correctness)         || 0, reason: row.correctness_reason         || '' },
+            groundedness:        { score: parseFloat(row.groundedness)        || 0, reason: row.groundedness_reason        || '' },
+            relevance:           { score: parseFloat(row.relevance)           || 0, reason: row.relevance_reason           || '' },
+            retrieval_relevance: { score: parseFloat(row.retrieval_relevance) || 0, reason: row.retrieval_relevance_reason || '' },
+          },
+        };
+      });
+    }
+
+    /* ─── Upload Screen ─── */
+    function UploadScreen({ onData }) {
+      const [dragging, setDragging] = useState(false);
+      const fileRef = useRef();
+
+      const handleFile = useCallback((file) => {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const parsed = parseCSV(e.target.result);
+          if (parsed.length > 0) onData(parsed, file.name);
+        };
+        reader.readAsText(file);
+      }, [onData]);
+
+      const onDrop = useCallback((e) => {
+        e.preventDefault();
+        setDragging(false);
+        const file = e.dataTransfer.files[0];
+        if (file && file.name.endsWith('.csv')) handleFile(file);
+      }, [handleFile]);
+
+      return (
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          minHeight: '100vh', padding: 24,
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+        }}>
+          <div
+            onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={onDrop}
+            onClick={() => fileRef.current?.click()}
+            style={{
+              width: 520, padding: '64px 48px', borderRadius: 20, cursor: 'pointer',
+              background: dragging ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)',
+              border: `2px dashed ${dragging ? '#60a5fa' : '#475569'}`,
+              textAlign: 'center', transition: 'all 0.2s',
+            }}
+          >
+            <div style={{ fontSize: 48, marginBottom: 20 }}>📊</div>
+            <h1 style={{ fontSize: 24, fontWeight: 800, color: '#f1f5f9', marginBottom: 8 }}>
+              RAG Evaluation Viewer
+            </h1>
+            <p style={{ fontSize: 15, color: '#94a3b8', lineHeight: 1.6, marginBottom: 28 }}>
+              Drop your LangSmith evaluation CSV here,<br />or click to browse
+            </p>
+            <div style={{
+              display: 'inline-block', padding: '12px 32px', borderRadius: 10,
+              background: '#3b82f6', color: '#fff', fontSize: 14, fontWeight: 700,
+            }}>Choose CSV File</div>
+            <p className="mono" style={{ fontSize: 11, color: '#64748b', marginTop: 20 }}>
+              Expects: inputs, outputs, reference_outputs, correctness, groundedness, relevance, retrieval_relevance
+            </p>
+            <input ref={fileRef} type="file" accept=".csv" style={{ display: 'none' }}
+              onChange={(e) => handleFile(e.target.files[0])} />
+          </div>
+        </div>
+      );
+    }
+
+    /* ─── Eval Row ─── */
+    function EvalRow({ label, score, reason }) {
+      const [open, setOpen] = useState(false);
+      const pass = score >= 0.5;
+      return (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}
+               onClick={() => setOpen(!open)}>
+            <span style={{
+              width: 10, height: 10, borderRadius: '50%', flexShrink: 0,
+              background: pass ? '#22c55e' : '#ef4444',
+              boxShadow: pass ? '0 0 6px rgba(34,197,94,0.4)' : '0 0 6px rgba(239,68,68,0.4)',
+            }} />
+            <span style={{ fontSize: 14, fontWeight: 600, color: '#1e293b', minWidth: 160 }}>{label}</span>
+            <span className="mono" style={{ fontSize: 13, fontWeight: 700, color: pass ? '#16a34a' : '#dc2626' }}>
+              {score.toFixed(1)}
+            </span>
+            <span style={{ fontSize: 11, color: '#94a3b8', marginLeft: 'auto' }}>
+              {open ? 'hide reason' : 'show reason'}
+            </span>
+          </div>
+          {open && (
+            <div style={{
+              marginTop: 8, marginLeft: 20, padding: '10px 14px',
+              background: '#f8fafc', borderRadius: 6, fontSize: 13,
+              lineHeight: 1.65, color: '#475569',
+              borderLeft: `3px solid ${pass ? '#86efac' : '#fca5a5'}`,
+            }}>{reason}</div>
+          )}
+        </div>
+      );
+    }
+
+    /* ─── Doc Card ─── */
+    function DocCard({ doc, index }) {
+      const [expanded, setExpanded] = useState(false);
+      const meta = doc.metadata || {};
+      return (
+        <div style={{
+          background: '#fff', border: '1px solid #e2e8f0',
+          borderRadius: 8, padding: '12px 16px', marginBottom: 8,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}
+               onClick={() => setExpanded(!expanded)}>
+            <span className="mono" style={{
+              width: 22, height: 22, borderRadius: 4, background: '#1e293b',
+              color: '#fff', fontSize: 11, fontWeight: 700,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}>{index + 1}</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: '#334155' }}>
+              {meta.title || 'Document'} — p.{meta.page_label || meta.page || '?'}
+            </span>
+            <span style={{ fontSize: 11, color: '#94a3b8', marginLeft: 'auto' }}>
+              {expanded ? 'collapse' : 'expand'}
+            </span>
+          </div>
+          {expanded && (
+            <div className="mono" style={{
+              marginTop: 10, padding: '10px 12px', background: '#f1f5f9',
+              borderRadius: 6, fontSize: 13, lineHeight: 1.65, color: '#475569',
+              whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+            }}>{doc.page_content}</div>
+          )}
+        </div>
+      );
+    }
+
+    /* ─── Collapsible ─── */
+    function Collapsible({ title, icon, children }) {
+      const [open, setOpen] = useState(false);
+      return (
+        <div style={{ marginBottom: 8 }}>
+          <button onClick={() => setOpen(!open)} style={{
+            display: 'flex', alignItems: 'center', gap: 8, width: '100%',
+            background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0',
+            fontSize: 13, fontWeight: 600, color: '#64748b',
+            textTransform: 'uppercase', letterSpacing: 1.2,
+            fontFamily: "'JetBrains Mono', monospace",
+          }}>
+            <span style={{ fontSize: 16 }}>{icon}</span>
+            {title}
+            <span style={{
+              marginLeft: 'auto', fontSize: 11, transition: 'transform 0.2s',
+              transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
+            }}>▶</span>
+          </button>
+          {open && (
+            <div style={{
+              padding: '12px 16px', background: 'rgba(241,245,249,0.6)',
+              borderRadius: 8, fontSize: 14, lineHeight: 1.7, color: '#334155',
+              borderLeft: '3px solid #cbd5e1',
+            }}>{children}</div>
+          )}
+        </div>
+      );
+    }
+
+    /* ─── Summary Bar ─── */
+    function SummaryBar({ data }) {
+      const metrics = ['correctness', 'groundedness', 'relevance', 'retrieval_relevance'];
+      return (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 32 }}>
+          {metrics.map(m => {
+            const scores = data.map(d => d.evaluations[m].score);
+            const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+            const pass = avg >= 0.5;
+            const label = m.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            return (
+              <div key={m} style={{
+                background: '#fff', borderRadius: 12, padding: '20px 18px',
+                border: '1px solid #e2e8f0', textAlign: 'center',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+              }}>
+                <div className="mono" style={{
+                  fontSize: 32, fontWeight: 800,
+                  color: pass ? '#16a34a' : '#dc2626', marginBottom: 4,
+                }}>{(avg * 100).toFixed(0)}%</div>
+                <div style={{
+                  fontSize: 11, fontWeight: 600, color: '#94a3b8',
+                  textTransform: 'uppercase', letterSpacing: 0.8,
+                }}>{label}</div>
+                <div style={{
+                  marginTop: 10, height: 4, borderRadius: 2,
+                  background: '#f1f5f9', overflow: 'hidden',
+                }}>
+                  <div style={{
+                    height: '100%', width: `${avg * 100}%`,
+                    background: pass ? '#22c55e' : '#ef4444',
+                    borderRadius: 2, transition: 'width 0.6s ease',
+                  }} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    /* ─── Dashboard ─── */
+    function Dashboard({ data, fileName, onReset }) {
+      const [selectedIdx, setSelectedIdx] = useState(0);
+      const item = data[selectedIdx];
+
+      const Tag = ({ children }) => (
+        <span className="mono" style={{
+          fontSize: 11, padding: '3px 10px', borderRadius: 20,
+          background: '#f1f5f9', color: '#64748b', fontWeight: 600,
+        }}>{children}</span>
+      );
+
+      return (
+        <div style={{ padding: '32px 24px' }}>
+          {/* Header */}
+          <div style={{ maxWidth: 960, margin: '0 auto', marginBottom: 32 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4, flexWrap: 'wrap' }}>
+              <h1 style={{ fontSize: 28, fontWeight: 800, color: '#0f172a', letterSpacing: -0.5 }}>
+                RAG Evaluation Report
+              </h1>
+              <span className="mono" style={{ fontSize: 12, fontWeight: 600, color: '#94a3b8' }}>
+                {data.length} samples
+              </span>
+              <button onClick={onReset} style={{
+                marginLeft: 'auto', padding: '8px 18px', borderRadius: 8,
+                border: '1px solid #e2e8f0', background: '#fff',
+                cursor: 'pointer', fontSize: 13, fontWeight: 600, color: '#64748b',
+              }}>↩ Load another CSV</button>
+            </div>
+            <p className="mono" style={{ fontSize: 13, color: '#94a3b8' }}>{fileName}</p>
+          </div>
+
+          {/* Summary */}
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <SummaryBar data={data} />
+          </div>
+
+          {/* Question selector */}
+          <div style={{ maxWidth: 960, margin: '0 auto', marginBottom: 24 }}>
+            <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 4 }}>
+              {data.map((d, i) => {
+                const allPass = Object.values(d.evaluations).every(e => e.score >= 0.5);
+                const active = i === selectedIdx;
+                return (
+                  <button key={d.id || i} onClick={() => setSelectedIdx(i)} style={{
+                    flexShrink: 0, padding: '10px 16px', borderRadius: 8,
+                    border: active ? '2px solid #1e293b' : '1px solid #e2e8f0',
+                    background: active ? '#1e293b' : '#fff',
+                    color: active ? '#fff' : '#334155',
+                    cursor: 'pointer', fontSize: 13, fontWeight: 600,
+                    maxWidth: 260, textAlign: 'left', overflow: 'hidden',
+                    textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    transition: 'all 0.15s',
+                  }}>
+                    <span style={{
+                      width: 8, height: 8, borderRadius: '50%',
+                      background: allPass ? '#22c55e' : '#ef4444', flexShrink: 0,
+                    }} />
+                    Q{i + 1}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Detail card */}
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{
+              background: '#fff', borderRadius: 16, border: '1px solid #e2e8f0',
+              padding: '28px 32px', boxShadow: '0 1px 8px rgba(0,0,0,0.04)',
+            }}>
+              {/* Question */}
+              <div style={{ marginBottom: 24 }}>
+                <div className="mono" style={{
+                  fontSize: 11, fontWeight: 700, color: '#94a3b8',
+                  textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 6,
+                }}>Question</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a', lineHeight: 1.4 }}>
+                  {item.question}
+                </div>
+                <div style={{ display: 'flex', gap: 12, marginTop: 8, flexWrap: 'wrap' }}>
+                  {item.question_type && <Tag>{item.question_type}</Tag>}
+                  {item.page && item.page !== 'unknown' && <Tag>p.{item.page}</Tag>}
+                  {item.resource && <Tag>{item.resource}</Tag>}
+                  {item.latency && <Tag>{item.latency.toFixed(2)}s</Tag>}
+                  {item.tokens && <Tag>{item.tokens} tokens</Tag>}
+                </div>
+              </div>
+
+              {/* Answers side by side */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+                <div>
+                  <div className="mono" style={{
+                    fontSize: 11, fontWeight: 700, color: '#94a3b8',
+                    textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 8,
+                  }}>Ground Truth</div>
+                  <div style={{
+                    padding: '14px 16px', background: '#fefce8', borderRadius: 8,
+                    border: '1px solid #fef08a', fontSize: 14, lineHeight: 1.7,
+                    color: '#422006', minHeight: 80,
+                  }}>{item.ground_truth}</div>
+                </div>
+                <div>
+                  <div className="mono" style={{
+                    fontSize: 11, fontWeight: 700, color: '#94a3b8',
+                    textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 8,
+                  }}>RAG Answer</div>
+                  <div style={{
+                    padding: '14px 16px', background: '#eff6ff', borderRadius: 8,
+                    border: '1px solid #bfdbfe', fontSize: 14, lineHeight: 1.7,
+                    color: '#1e3a5f', minHeight: 80,
+                  }}>{item.rag_answer}</div>
+                </div>
+              </div>
+
+              {/* Eval scores */}
+              <div style={{ marginBottom: 24 }}>
+                <div className="mono" style={{
+                  fontSize: 11, fontWeight: 700, color: '#94a3b8',
+                  textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 12,
+                }}>Evaluation Scores</div>
+                <div style={{
+                  padding: '16px 20px', background: '#fafafa',
+                  borderRadius: 10, border: '1px solid #e2e8f0',
+                }}>
+                  <EvalRow label="Correctness" score={item.evaluations.correctness.score} reason={item.evaluations.correctness.reason} />
+                  <EvalRow label="Groundedness" score={item.evaluations.groundedness.score} reason={item.evaluations.groundedness.reason} />
+                  <EvalRow label="Relevance" score={item.evaluations.relevance.score} reason={item.evaluations.relevance.reason} />
+                  <EvalRow label="Retrieval Relevance" score={item.evaluations.retrieval_relevance.score} reason={item.evaluations.retrieval_relevance.reason} />
+                </div>
+              </div>
+
+              {/* Reference text */}
+              {item.reference_text && item.reference_text !== 'unknown' && (
+                <Collapsible title="Reference Text" icon="📖">
+                  {item.reference_text}
+                </Collapsible>
+              )}
+
+              {/* Multiple reference texts */}
+              {item.reference_texts && item.reference_texts.length > 0 && (
+                <Collapsible title={`Reference Texts (${item.reference_texts.length})`} icon="📚">
+                  {item.reference_texts.map((t, i) => (
+                    <div key={i} style={{
+                      padding: '10px 12px', background: '#fff', borderRadius: 6,
+                      marginBottom: 8, border: '1px solid #e2e8f0',
+                      fontSize: 14, lineHeight: 1.65, color: '#334155',
+                    }}>{t}</div>
+                  ))}
+                </Collapsible>
+              )}
+
+              {/* Retrieved documents */}
+              {item.documents && item.documents.length > 0 && (
+                <div style={{ marginTop: 8 }}>
+                  <div className="mono" style={{
+                    fontSize: 11, fontWeight: 700, color: '#94a3b8',
+                    textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10,
+                  }}>Retrieved Documents ({item.documents.length})</div>
+                  {item.documents.map((doc, i) => (
+                    <DocCard key={doc.id || i} doc={doc} index={i} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mono" style={{
+            maxWidth: 960, margin: '32px auto 0', textAlign: 'center',
+            fontSize: 12, color: '#cbd5e1',
+          }}>{fileName}</div>
+        </div>
+      );
+    }
+
+    /* ─── App ─── */
+    function App() {
+      const [data, setData] = useState(null);
+      const [fileName, setFileName] = useState('');
+
+      const handleData = useCallback((parsed, name) => {
+        setData(parsed);
+        setFileName(name);
+      }, []);
+
+      if (!data) return <UploadScreen onData={handleData} />;
+      return <Dashboard data={data} fileName={fileName} onReset={() => { setData(null); setFileName(''); }} />;
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

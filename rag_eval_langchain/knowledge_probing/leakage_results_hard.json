@@ -1,0 +1,336 @@
+{
+  "dataset": "Anatomy",
+  "model": "gpt-4o-mini",
+  "total": 5,
+  "evaluated": 5,
+  "detected": 0,
+  "detection_rate": 0.0,
+  "results": [
+    {
+      "original_question": "What is the difference between barbel curl and ez-bar curl in terms of the target muscle?",
+      "fooled_question": "What is the difference between barbel sana and takino sana in terms of the target threnvox?",
+      "gold_answer": "While both exercises target the beiceps brachii, the ez-bar curl targets the longer head of the biceps briachii",
+      "obfuscated_words": [
+        "sana",
+        "takino",
+        "takino sana",
+        "threnvox"
+      ],
+      "guesses": {
+        "sana": [
+          "exercise",
+          "movement",
+          "workout"
+        ],
+        "takino": [
+          "preacher curl",
+          "assisted curl",
+          "bicep curl machine"
+        ],
+        "takino sana": [
+          "preacher curl exercise",
+          "machine workout",
+          "bicep curl routine"
+        ],
+        "threnvox": [
+          "muscle group",
+          "target area",
+          "focus point"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "sana": {
+            "correct_original": "curl",
+            "best_guess": "exercise",
+            "detected": false,
+            "reasoning": "None of the guesses are a close synonym or equivalent of 'curl'."
+          },
+          "takino": {
+            "correct_original": "ez-bar",
+            "best_guess": "bicep curl machine",
+            "detected": false,
+            "reasoning": "While 'bicep curl machine' is related, it is not a synonym or equivalent for 'ez-bar'."
+          },
+          "threnvox": {
+            "correct_original": "muscle",
+            "best_guess": "muscle group",
+            "detected": true,
+            "reasoning": "'Muscle group' is a close synonym for 'muscle'."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    },
+    {
+      "original_question": "What is shoulder abduction and shoulder adduction",
+      "fooled_question": "What is jorvik glenthorp and jorvik blenford",
+      "gold_answer": "During abduction, the arm moves up and out to the side of the body. During adduction, the arm is pulled in toward the side of the body.",
+      "obfuscated_words": [
+        "blenford",
+        "glenthor",
+        "glenthorp",
+        "jorvik"
+      ],
+      "guesses": {
+        "blenford": [
+          "adduction",
+          "flexion",
+          "internal rotation"
+        ],
+        "glenthor": [
+          "elevation",
+          "extension",
+          "abduction"
+        ],
+        "glenthorp": [
+          "horizontal abduction",
+          "lateral raise",
+          "side arm raise"
+        ],
+        "jorvik": [
+          "shoulder",
+          "hip",
+          "joint"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "blenford": {
+            "correct_original": "adduction",
+            "best_guess": "adduction",
+            "detected": true,
+            "reasoning": "The guess 'adduction' is the exact original word."
+          },
+          "glenthor": {
+            "correct_original": "abduction",
+            "best_guess": "abduction",
+            "detected": true,
+            "reasoning": "The guess 'abduction' is the exact original word."
+          },
+          "glenthorp": {
+            "correct_original": "abduction",
+            "best_guess": "lateral raise",
+            "detected": false,
+            "reasoning": "None of the guesses match 'abduction' or its close synonyms."
+          },
+          "jorvik": {
+            "correct_original": "shoulder",
+            "best_guess": "shoulder",
+            "detected": true,
+            "reasoning": "The guess 'shoulder' is the exact original word."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    },
+    {
+      "original_question": "How to target chest muscles better at chest dips?",
+      "fooled_question": "How to target plindor threnvoxes better at plindor glonfer?",
+      "gold_answer": "By doing a slight forward tilt during the movement",
+      "obfuscated_words": [
+        "glonfer",
+        "plindor",
+        "threnvox",
+        "threnvoxes"
+      ],
+      "guesses": {
+        "glonfer": [
+          "performance",
+          "exercise",
+          "routine"
+        ],
+        "plindor": [
+          "muscle",
+          "target muscle group",
+          "area of focus"
+        ],
+        "threnvox": [
+          "technique",
+          "skill",
+          "form"
+        ],
+        "threnvoxes": [
+          "variations",
+          "methods",
+          "strategies"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "glonfer": {
+            "correct_original": "dips",
+            "best_guess": "exercise",
+            "detected": false,
+            "reasoning": "None of the guesses relate closely to the word 'dips'."
+          },
+          "plindor": {
+            "correct_original": "chest",
+            "best_guess": "target muscle group",
+            "detected": false,
+            "reasoning": "While 'target muscle group' is related, it doesn't correspond directly or synonymously to 'chest'."
+          },
+          "threnvox": {
+            "correct_original": "muscles",
+            "best_guess": "technique",
+            "detected": false,
+            "reasoning": "None of the guesses identify or closely relate to the term 'muscles'."
+          },
+          "threnvoxes": {
+            "correct_original": "variations",
+            "best_guess": "variations",
+            "detected": true,
+            "reasoning": "'Variations' is directly correct for this word."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    },
+    {
+      "original_question": "Should I perform dumbell shoulder press seated or standing?",
+      "fooled_question": "Should I perform frozzle jorvik threnn brolnex or frenpak?",
+      "gold_answer": "The seated dumbbell shoulder press is better because it prevents the use of momentum and allows for better isolation of the shoulder muscles.",
+      "obfuscated_words": [
+        "brolnex",
+        "frenpak",
+        "frozzle",
+        "jorvik",
+        "jorvik threnn",
+        "threnn"
+      ],
+      "guesses": {
+        "brolnex": [
+          "exercise",
+          "motion",
+          "position"
+        ],
+        "frenpak": [
+          "exercise alternative",
+          "variation",
+          "different exercise"
+        ],
+        "frozzle": [
+          "weights",
+          "dumbbells",
+          "barbell"
+        ],
+        "jorvik": [
+          "specific exercise name",
+          "lift",
+          "movement"
+        ],
+        "jorvik threnn": [
+          "specific variant",
+          "part of a compound movement",
+          "advanced version"
+        ],
+        "threnn": [
+          "set",
+          "repetition",
+          "variation"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "brolnex": {
+            "correct_original": "press",
+            "best_guess": "exercise",
+            "detected": false,
+            "reasoning": "None of the guesses are a close synonym for 'press'."
+          },
+          "frenpak": {
+            "correct_original": "standing",
+            "best_guess": "different exercise",
+            "detected": false,
+            "reasoning": "None of the guesses relate closely to 'standing'."
+          },
+          "frozzle": {
+            "correct_original": "dumbbell",
+            "best_guess": "dumbbells",
+            "detected": true,
+            "reasoning": "'dumbbells' is an exact match."
+          },
+          "jorvik": {
+            "correct_original": "shoulder",
+            "best_guess": "movement",
+            "detected": false,
+            "reasoning": "None of the guesses are synonyms for 'shoulder'."
+          },
+          "jorvik threnn": {
+            "correct_original": "shoulder press",
+            "best_guess": "specific variant",
+            "detected": false,
+            "reasoning": "None of the guesses relate closely to the full term 'shoulder press'."
+          },
+          "threnn": {
+            "correct_original": "seated",
+            "best_guess": "variation",
+            "detected": false,
+            "reasoning": "None of the guesses are synonyms for 'seated'."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    },
+    {
+      "original_question": "I want to target the outter section of my latisimus dorsi, which grip works bettter in pull-down: close-grip or wide-grip?",
+      "fooled_question": "I want to target the outter section of my fomblur, which thrompf works bettter in zolvik: snelf-thrompf or brank-thrompf?",
+      "gold_answer": "The wide-grip pull-down is better for targeting the outer section of the latissimus dorsi.",
+      "obfuscated_words": [
+        "fomblur",
+        "thrompf",
+        "zolvik"
+      ],
+      "guesses": {
+        "fomblur": [
+          "muscle",
+          "exercise",
+          "body part"
+        ],
+        "thrompf": [
+          "grip",
+          "technique",
+          "style"
+        ],
+        "zolvik": [
+          "position",
+          "range",
+          "level"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "fomblur": {
+            "correct_original": "latisimus dorsi",
+            "best_guess": "muscle",
+            "detected": true,
+            "reasoning": "Muscle is a broad term and can refer to a specific body part."
+          },
+          "thrompf": {
+            "correct_original": "grip",
+            "best_guess": "grip",
+            "detected": true,
+            "reasoning": "Grip is the exact match for the original word."
+          },
+          "zolvik": {
+            "correct_original": "pull-down",
+            "best_guess": "position",
+            "detected": false,
+            "reasoning": "Position does not accurately capture the essence of pull-down."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    }
+  ]
+}

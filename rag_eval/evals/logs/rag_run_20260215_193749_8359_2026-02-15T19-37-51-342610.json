@@ -1,0 +1,127 @@
+{
+  "run_id": "20260215_193749_8359",
+  "timestamp": "2026-02-15T19:37:51.342610",
+  "query": "What metrics are supported in ragas 0.3?",
+  "result": {
+    "answer": "The provided documents do not contain information about metrics supported in ragas 0.3. They only provide general information about ragas in Indian classical music.",
+    "run_id": "20260215_193749_8359"
+  },
+  "num_documents": 5,
+  "traces": [
+    {
+      "event_type": "query_start",
+      "component": "rag_system",
+      "data": {
+        "run_id": "20260215_193749_8359",
+        "question": "What metrics are supported in ragas 0.3?",
+        "question_length": 40,
+        "top_k": 3,
+        "total_documents": 5
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_start",
+        "query": "What metrics are supported in ragas 0.3?",
+        "query_length": 40,
+        "top_k": 3,
+        "total_documents": 5
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_complete",
+        "num_retrieved": 3,
+        "scores": [
+          3,
+          3,
+          1
+        ],
+        "document_ids": [
+          0,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_start",
+        "query": "What metrics are supported in ragas 0.3?",
+        "query_length": 40,
+        "top_k": 3,
+        "total_documents": 5
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_complete",
+        "num_retrieved": 3,
+        "scores": [
+          3,
+          3,
+          1
+        ],
+        "document_ids": [
+          0,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "event_type": "llm_call",
+      "component": "openai_api",
+      "data": {
+        "operation": "generate_response",
+        "model": "gpt-4o",
+        "query": "What metrics are supported in ragas 0.3?",
+        "prompt_length": 513,
+        "context_length": 223,
+        "num_context_docs": 3
+      }
+    },
+    {
+      "event_type": "llm_response",
+      "component": "openai_api",
+      "data": {
+        "operation": "generate_response",
+        "response_length": 164,
+        "usage": {
+          "completion_tokens": 31,
+          "prompt_tokens": 123,
+          "total_tokens": 154,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "event_type": "query_complete",
+      "component": "rag_system",
+      "data": {
+        "run_id": "20260215_193749_8359",
+        "success": true,
+        "response_length": 164,
+        "num_retrieved": 3
+      }
+    }
+  ]
+}

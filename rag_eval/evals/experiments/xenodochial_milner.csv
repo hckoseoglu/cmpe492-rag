@@ -1,0 +1,6 @@
+answer_relevancy,faithfulness,context_relevance,accuracy,query
+0.0,0.5,0.5,0.0,What is the difference between barbel curl and ez-bar curl in terms of the target muscle?
+0.903404936466004,1.0,1.0,1.0,"I want to target the outter section of my latisimus dorsi, which grip works bettter in pull-down: close-grip or wide-grip?"
+0.9820490234325495,1.0,1.0,0.75,What is shoulder abduction and shoulder adduction
+0.9847916004350581,1.0,1.0,0.0,How to target chest muscles better at chest dips?
+0.9387481562668354,0.75,1.0,0.5,Should I perform dumbell shoulder press seated or standing?

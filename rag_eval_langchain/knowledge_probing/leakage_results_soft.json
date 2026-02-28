@@ -1,0 +1,198 @@
+{
+  "dataset": "Anatomy",
+  "model": "gpt-4o-mini",
+  "total": 5,
+  "evaluated": 5,
+  "detected": 4,
+  "detection_rate": 0.8,
+  "results": [
+    {
+      "original_question": "What is the difference between barbel curl and ez-bar curl in terms of the target muscle?",
+      "fooled_question": "What is the difference between barbel curl and takino sana in terms of the target muscle?",
+      "gold_answer": "While both exercises target the beiceps brachii, the ez-bar curl targets the longer head of the biceps briachii",
+      "obfuscated_words": [
+        "takino",
+        "takino sana"
+      ],
+      "guesses": {
+        "takino": [
+          "preacher curl",
+          "dumbbell",
+          "barbell"
+        ],
+        "takino sana": [
+          "preacher curl exercise",
+          "bicep curl",
+          "arm exercise"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "takino": {
+            "correct_original": "ez-bar",
+            "best_guess": "barbell",
+            "detected": false,
+            "reasoning": "None of the guesses for 'takino' is correct or a close synonym; 'barbell' is related but refers to a different type of equipment."
+          },
+          "takino sana": {
+            "correct_original": "ez-bar curl",
+            "best_guess": "bicep curl",
+            "detected": false,
+            "reasoning": "'bicep curl' is related but not a direct synonym for 'ez-bar curl', which specifically indicates the type of curl being performed."
+          }
+        },
+        "overall_detected": false
+      },
+      "detected": false,
+      "skipped": false
+    },
+    {
+      "original_question": "What is shoulder abduction and shoulder adduction",
+      "fooled_question": "What is jorvik glenthorp and jorvik blenford",
+      "gold_answer": "During abduction, the arm moves up and out to the side of the body. During adduction, the arm is pulled in toward the side of the body.",
+      "obfuscated_words": [
+        "blenford",
+        "glenthorp",
+        "jorvik"
+      ],
+      "guesses": {
+        "blenford": [
+          "adduction",
+          "pulling in",
+          "inward movement"
+        ],
+        "glenthorp": [
+          "abduction",
+          "lifting out",
+          "outward movement"
+        ],
+        "jorvik": [
+          "shoulder",
+          "ball-and-socket joint",
+          "shoulder joint"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "blenford": {
+            "correct_original": "adduction",
+            "best_guess": "adduction",
+            "detected": true,
+            "reasoning": "The model correctly identified 'blenford' as 'adduction'."
+          },
+          "glenthorp": {
+            "correct_original": "abduction",
+            "best_guess": "abduction",
+            "detected": true,
+            "reasoning": "The model correctly identified 'glenthorp' as 'abduction'."
+          },
+          "jorvik": {
+            "correct_original": "shoulder",
+            "best_guess": "shoulder",
+            "detected": true,
+            "reasoning": "The model correctly identified 'jorvik' as 'shoulder'."
+          }
+        },
+        "overall_detected": true
+      },
+      "detected": true,
+      "skipped": false
+    },
+    {
+      "original_question": "How to target chest muscles better at chest dips?",
+      "fooled_question": "How to target plindor muscles better at plindor dips?",
+      "gold_answer": "By doing a slight forward tilt during the movement",
+      "obfuscated_words": [
+        "plindor"
+      ],
+      "guesses": {
+        "plindor": [
+          "tricep",
+          "chest",
+          "shoulder"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "plindor": {
+            "correct_original": "chest",
+            "best_guess": "chest",
+            "detected": true,
+            "reasoning": "The guess 'chest' is the correct original word."
+          }
+        },
+        "overall_detected": true
+      },
+      "detected": true,
+      "skipped": false
+    },
+    {
+      "original_question": "Should I perform dumbell shoulder press seated or standing?",
+      "fooled_question": "Should I perform frozzle jorvik press seated or standing?",
+      "gold_answer": "The seated dumbbell shoulder press is better because it prevents the use of momentum and allows for better isolation of the shoulder muscles.",
+      "obfuscated_words": [
+        "frozzle",
+        "jorvik"
+      ],
+      "guesses": {
+        "frozzle": [
+          "dumbbell",
+          "weight",
+          "kettlebell"
+        ],
+        "jorvik": [
+          "press",
+          "raise",
+          "curl"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "frozzle": {
+            "correct_original": "dumbell",
+            "best_guess": "dumbbell",
+            "detected": true,
+            "reasoning": "The guess 'dumbbell' is an exact match for the original word."
+          },
+          "jorvik": {
+            "correct_original": "press",
+            "best_guess": "press",
+            "detected": true,
+            "reasoning": "The guess 'press' is an exact match for the original word."
+          }
+        },
+        "overall_detected": true
+      },
+      "detected": true,
+      "skipped": false
+    },
+    {
+      "original_question": "I want to target the outter section of my latisimus dorsi, which grip works bettter in pull-down: close-grip or wide-grip?",
+      "fooled_question": "I want to target the outter section of my fomblur, which grip works bettter in pull-down: close-grip or wide-grip?",
+      "gold_answer": "The wide-grip pull-down is better for targeting the outer section of the latissimus dorsi.",
+      "obfuscated_words": [
+        "fomblur"
+      ],
+      "guesses": {
+        "fomblur": [
+          "muscle",
+          "back",
+          "latissimus dorsi"
+        ]
+      },
+      "evaluation": {
+        "evaluations": {
+          "fomblur": {
+            "correct_original": "latsimus dorsi",
+            "best_guess": "latissimus dorsi",
+            "detected": true,
+            "reasoning": "The guess 'latissimus dorsi' correctly identifies the original word."
+          }
+        },
+        "overall_detected": true
+      },
+      "detected": true,
+      "skipped": false
+    }
+  ]
+}
