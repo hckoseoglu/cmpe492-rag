@@ -56,5 +56,378 @@
     "resource": "Bodybuilding Anatomy",
     "reference_text": "Performing the curl with an EZ bar changes the grip. The hands switch from the fully supinated (palms facing up) grip to a less supinated, nearly neutral (palms facing in) grip. This hand position emphasizes the outer (long) head of the biceps brachii and the brachialis and is less strenuous on the wrist joints.",
     "question_type": "single-hop"
-  }
+  },
+
+  {
+    "id": 6,
+    "question": "While doing a squat when should I stop going down?",
+    "ground_truth": "One of the following is a sign to stop and start going up: 1) The thighs are parallel to the floor  2) The torso begins to round or flex forward. 3) The heels rise off the floor.",
+    "resource_type": "book",
+    "page": 109,
+    "resource": "Exercise Technique Manual",
+    "reference_text": "Continue the downward movement until one of these three events occurs (they determine the maximum range of motion, or the lowest squat position):\n1. The thighs are parallel to the floor (if achievable). 2. The torso begins to round or flex forward.\n3. The heels rise off the floor.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 7,
+    "question": "Can you give me some tips about doing a leg extension correctly?",
+    "ground_truth": "While moving the weight upwards: 1) Do not swing the legs or jerk the torso backward to help raise the weight. \n 2) Continue the upward movement until the knees are fully extended but not forcefully locked.\n While moving the weight downwards: 1) Do not lower the weight stack uncontrollably. \n 2) Keep the thighs, lower legs, and feet parallel to each other.",
+    "resource_type": "book",
+    "page": 163,
+    "resource": "Exercise Technique Manual",
+    "reference_text": "Do not swing the legs or jerk the torso backward to help raise the weight. \n Continue the upward movement until the knees are fully extended but not forcefully locked. \n Do not lower the weight stack uncontrollably. \n Keep the thighs, lower legs, and feet parallel to each other.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 8,
+    "question": "While doing lat-pulldowns, should I pull the bar until it touches my chest or should I stop before that?",
+    "ground_truth": "You should pull the bar until it touches your chest",
+    "resource_type": "book",
+    "page": 219,
+    "resource": "Exercise Technique Manual",
+    "reference_text": "Continue pulling the bar down and toward the body (not just down) until it lightly touches the clavicle and upper chest area.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 9,
+    "question": "Why should I avoid flexing my lumbar spine while lifting heavy objects?",
+    "ground_truth": "Flexing the lumbar spine while lifting heavy objects, known as 'loaded vertebral flexion', can increase the risk of a herniated or ruptured disc. It is preferable to keep the spine straight and flex at the hip and knee joints instead.",
+    "resource_type": "book",
+    "page": 243,
+    "resource": "Anatomy of Movement",
+    "reference_text": "To avoid these problems, it is important to avoid \"loaded\" vertebral flexion, e.g., flexing the lumbar spine while lifting a heavy object. In fact, it is preferable to avoid loaded lumbar flexions in any type of physical exercise, even if you are not lifting any object. Instead, keep the spine straight and flex at the hip and knee joints only.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 10,
+    "question": "What is the supercompensation cycle in training, and what benefits does applying this concept provide to athletes?",
+    "ground_truth": "Supercompensation is a relationship between work and regeneration that leads to superior physical adaptation as well as metabolic and neuropsychological arousal before a competition. Applying this concept helps athletes manage stress and cope with high training intensities, helps coaches create structured training systems, avoids the onset of critical levels of fatigue and overtraining, makes coaches cognizant of the need to alternate intensities, justifies the use of recovery techniques, facilitates precompetition training to achieve peak performance, and uses both physiological and psychological techniques in training.",
+    "resource_type": "book",
+    "page": 13,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "Supercompensation, therefore, is a relationship between work and regeneration that leads to superior physical adaptation as well as metabolic and neuropsychological arousal before a competition. Applying the concept of supercompensation in training has many benefits:",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 11,
+    "question": "How are training loads classified according to their effects on physiological adaptations, and how does the classification change as the athlete adapts?",
+    "ground_truth": "Training loads are classified as stimulating, retaining, or detraining. A stimulating load is higher than the athlete's typical training load. A detraining load is substantially lower than usual and results in a loss of preparedness and performance capacity. The retaining load is the athlete's typical workload and allows the athlete to maintain preparedness while undergoing recovery. As the athlete adapts to a stimulating load, that load becomes the retaining load and the previous retaining load becomes a detraining load. Thus, the loading classification is a fluid concept that changes as the athlete adapts.",
+    "resource_type": "book",
+    "page": 42,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "Training loads can be roughly classified according to their effects on physiological adaptations as stimulating, retaining, or detraining (101, 102). A stimulating load is a training load that is higher than the athlete's typical training load. Conversely, a detraining load is substantially lower than usual. A detraining load ultimately results in a loss of preparedness and a loss of performance capacity. In between these two loading classifications is the retaining load, which is the athlete's typical workload. The retaining load allows the athlete to maintain preparedness while undergoing recovery. As the athlete adapts to a stimulating load, that load becomes the retaining load and the previous retaining load becomes a detraining load. Thus, the loading classification is a fluid concept that changes as the athlete adapts, so the coach must pay attention to the sequence of the training loads in the periodized training plan.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 12,
+    "question": "Why is physical training considered the foundation for all other training factors in athletic preparation?",
+    "ground_truth": "Physical training is the foundation because if the physical training base is inadequately developed, high levels of fatigue can be generated and the athlete will be unable to develop other training factors such as tactical, technical, and psychological skills. As one's physical capacity improves, technical and tactical capacities improve as well, which will increase self-confidence and other psychological factors. Thus, physical training capacity is the cornerstone from which all training-related factors are developed, ultimately leading to the ability to excel in sport.",
+    "resource_type": "book",
+    "page": 51,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "If the physical training base is inadequately developed, high levels of fatigue can be generated and the athlete will be unable to develop the other training factors. This often occurs when the preparatory phase (e.g., the preseason) is too short and the appropriate physiological adaptations are not developed. When this happens, the ability to effectively develop tactical, technical, and psychological skills is impaired, which increases the risk of poor performances during competition.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 13,
+    "question": "What is the relationship between training volume and intensity in a periodized training plan?",
+    "ground_truth": "The volume and intensity of training are inversely related in most instances. When the intensity of training is the highest, the volume is generally low. Different physiological and performance adaptations can be stimulated by shifting the relative emphasis on these components. However, because training entails both a quantity and a quality, it is impractical to consider volume and intensity separately because the work accomplished is considered a good indicator of training stress. The greater the workload (the higher the intensity of training and the longer it is maintained), the greater the physiological stress.",
+    "resource_type": "book",
+    "page": 78,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "The volume and intensity of training are inversely related in most instances. For example, when the intensity of training is the highest, the volume is generally low. Different physiological and performance adaptations can be stimulated by shifting the relative emphasis on these components in training. However, because training entails both a quantity and a quality, it is impractical to consider volume and intensity separately because the work accomplished is considered a good indicator of training stress (74). The greater the workload (e.g., the higher the intensity of training and",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 14,
+    "question": "Is the integration of biomotor abilities in periodized training simultaneous, sequential, or both, and why?",
+    "ground_truth": "Both simultaneous and sequential integration have been successfully used and represent a training (physiological) necessity, depending on the type of plan and physiological profile of a sport. They are not mutually exclusive—one type of integration cannot be used at the exclusion of the other. The development of each biomotor ability is sequential, but the integration of these abilities is simultaneous.",
+    "resource_type": "book",
+    "is-multi-page": true,
+    "pages": [101, 102],
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_texts": [
+      "The concept of integrating the development of biomotor abilities is not a new one (5, 6, 9, 10). Both types of integration have been successfully used. In fact, both types represent a training (physiological) necessity, depending on the type of plan and physiological profile of a sport. It is our firm opinion that they are not mutually exclusive—one type of integration cannot be used at the exclusion of the other.",
+      "Examination of the examples of periodization of biomotor abilities shown in figures 5.6-5.11 reveals that the development of each biomotor ability is sequential, but integration of these abilities is simultaneous."
+    ],
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 15,
+    "question": "What are the four basic classifications of training sessions based on task?",
+    "ground_truth": "The four basic classifications of training sessions based on task are: (1) learning sessions, where the athlete's main task is to acquire new skills or tactical maneuvers; (2) repetition sessions, where the athlete continues to learn and attempts to improve a specific skill set; (3) skill perfection sessions, where the skill has been learned and the athlete attempts to perfect it to maximize performance; and (4) assessment sessions, conducted periodically, which can include tests evaluating physiological responses to training and performance, or exhibition or practice competitions to gauge the athlete's preparedness.",
+    "resource_type": "book",
+    "page": 120,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "The training session can be classified based on the tasks within the session. There are four basic classifications of training sessions: learning, repetition, skill perfection, and assessment.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 16,
+    "question": "What is a microcycle in training methodology, and why is it considered the most important programming tool?",
+    "ground_truth": "A microcycle is a weekly training program within an annual plan. It is considered the most important programming tool in the training process because the content of the microcycle determines the quality of the training process. It is structured according to the objectives, volume, intensity, and methods that are the focus of the training phase. The microcycle must be flexible enough that individual training sessions can be modified to address the residual fatigue of the athlete in relation to the training objectives.",
+    "resource_type": "book",
+    "page": 137,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "In training methodology, a microcycle is a weekly training program within an annual plan. The microcycle is the most important programming tool in the training process. The content of the microcycle determines the quality of the training process. The microcycle is structured according to the objectives, volume, intensity, and methods that are the focus of the training phase.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 17,
+    "question": "What is the purpose of the transition phase in an annual training plan, and how long should it typically last?",
+    "ground_truth": "The transition phase facilitates psychological rest, relaxation, and biological regeneration while maintaining an acceptable level of general physical preparation (40% to 50% of the competitive phase). Training should be low key with all loading factors reduced, centered on general training with minimal technical or tactical development. The transition phase generally should last 2 to 4 weeks but could be extended to 6 weeks, especially for younger athletes. Under normal circumstances it should not last longer than 6 weeks. The athlete should start the new preparatory phase only when fully recovered from the previous competitive season.",
+    "resource_type": "book",
+    "page": 174,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "The transition phase, often inappropriately called the off-season, links two annual training plans. This phase facilitates psychological rest, relaxation, and biological regeneration while maintaining an acceptable level of general physical preparation (40% to 50% of the competitive phase). Training should be low key: All loading factors should be reduced; the main training components should be centered on general training, with minimal, if any, technical or tactical development. The transition phase generally should last 2 to 4 weeks but could be extended to 6 weeks, especially for younger athletes. Under normal circumstances the transition phase should not last longer than 6 weeks.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 18,
+    "question": "What is a taper, and what is the premise behind its implementation in training?",
+    "ground_truth": "A taper is a reduction in training workload prior to a competition, aimed at optimizing the athlete's performance at a specific time. The premise behind a taper is to dissipate accumulated fatigue (achieving a higher level of readiness) while retaining fitness (preparedness). Fitness is considered a slow-changing component of athletic preparedness because it is relatively stable over several minutes, hours, and days. Conversely, fatigue is a fast-changing component because it is highly variable. Thus, when the training load is decreased during a taper, accumulated fatigue is dissipated somewhat rapidly while physical potential is maintained.",
+    "resource_type": "book",
+    "page": 209,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "The premise behind a taper is to dissipate accumulated fatigue (achieving a higher level of readiness) while retaining fitness (preparedness). Because the level of acquired fitness is relatively stable over several minutes, hours, and days, it is considered to be a slow-changing component of athletic preparedness. Conversely, fatigue is considered to be a fast-changing component because it is highly variable and is affected by physiological and psychological stressors (64, 65). Thus, when the training load is decreased during a taper, the accumulated fatigue is dissipated somewhat rapidly, whereas physical potential is maintained for a given duration depending on the type of taper used and the total workload preceding the taper (4, 5).",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 19,
+    "question": "What are the seven phases of the periodization of strength, and which phases must be included at minimum?",
+    "ground_truth": "The seven phases of periodization of strength are anatomical adaptation, hypertrophy, maximum strength, conversion, maintenance, cessation, and compensation. Depending on the physiological demands of the sport, the periodization of strength involves combining, in sequence, at least four of the phases: anatomical adaptation, maximum strength, conversion to specific strength (power or muscle endurance), and maintenance. All models for periodization of strength begin with an anatomical adaptation phase.",
+    "resource_type": "book",
+    "page": 259,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "Periodization of strength offers a seven-phase approach that follows the physiological rhythm of the neuromuscular system's response to strength training (table 10.17). The seven phases are anatomical adaptation, hypertrophy, maximum strength, conversion, maintenance, cessation, and compensation. Depending on the physiological demands of the sport, the periodization of strength involves combining, in sequence, at least four of the phases: anatomical adaptation, maximum strength, conversion to specific strength (power or muscle endurance), and maintenance. All models for periodization of strength begin with an anatomical adaptation phase.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 120,
+    "question": "What are the key factors that affect aerobic endurance performance?",
+    "ground_truth": "Several factors are central to determining the athlete's aerobic endurance capacity: the athlete's aerobic power (VO2max), lactate threshold, economy of movement, and muscle fiber type. Each factor can be improved significantly with appropriate training methods. To develop appropriate aerobic endurance training programs, the coach and athlete must understand the physiological responses associated with endurance performance.",
+    "resource_type": "book",
+    "page": 267,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "Several aspects of aerobic endurance are central to determining the athlete's endurance capacity (35, 75). These factors include the athlete's aerobic power, lactate threshold, economy of movement, and muscle fiber type (figure 11.2). Each factor can be improved significantly with appropriate training methods. To develop appropriate aerobic endurance training programs, the coach and athlete must understand the physiological responses associated with endurance performance.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 12,
+    "question": "What are the three phases of straight-line sprinting, and how does maximum strength relate to acceleration ability?",
+    "ground_truth": "Straight-line sprinting can be broken down into three phases: acceleration, attainment of maximum speed, and maintenance of maximum speed. Acceleration is the ability to increase maximum velocity in a minimum amount of time. Maximum strength levels for the knee extensors, hip extensors, and plantar flexors (calf muscles) explain the acceleratory abilities of athletes because strength is strongly related to sprinting ability. Faster sprinters are significantly stronger and are able to accelerate at faster rates than their slower counterparts.",
+    "resource_type": "book",
+    "page": 301,
+    "resource": "Periodization: Theory and Methodology of Training",
+    "reference_text": "Straight-line sprinting can be broken down into three phases: acceleration, attainment of maximum speed, and maintenance of maximum speed (27, 75). Acceleration is the ability to increase maximum velocity in a minimum amount of time. Acceleration determines sprint performance abilities over short distances (e.g., 5 m and 20 m) and is usually measured in m/s or simply as a unit of time (e.g., s). The ability to accelerate differentiates between athletes for a variety of sports. For example, during a 100 m race, untrained sprinters achieve maximum speed within 20 to 30 m (27), whereas highly trained sprinters do not attain maximum speed until around 50 to 60 m (65). It is likely that maximum strength levels for the knee extensors, hip extensors, and plantar flexors (calf muscles) explains the acceleratory abilities of various athletes because strength is strongly related to sprinting ability. Support for this contention can be garnered from the literature, which reports that faster sprinters are significantly stronger and are able to accelerate at faster rates than their slower counterparts (6, 24, 69, 110).",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 13,
+    "question": "What happens to muscle protein synthesis and proteolysis during and after a bout of resistance training, and how does this lead to muscle growth over time?",
+    "ground_truth": "During a bout of resistance training, muscle protein synthesis is suppressed and proteolysis (the breakdown of proteins into amino acids) is heightened so that net protein balance is in a negative state. After completion of the workout, muscle protein synthesis is increased 2- to 5-fold along with nutrient delivery, and the effects last approximately 48 hours postexercise. The exercise-induced increase in muscle protein synthesis is primarily attributed to an enhanced translational efficiency. Thus, when repeated bouts are performed over time and sufficient recovery is afforded between sessions, the net synthetic response outpaces that of proteolysis, resulting in an increased accretion of muscle proteins.",
+    "resource_type": "book",
+    "page": 9,
+    "resource": "Science and Development of Muscle Hypertrophy",
+    "reference_text": "During a bout of resistance training, muscle protein synthesis is suppressed and proteolysis (the breakdown of proteins into amino acids) is heightened so that net protein balance is in a negative state. After completion of the workout, muscle protein synthesis is increased 2- to 5-fold along with nutrient delivery, and the effects last approximately 48 hours postexercise (575). The exercise-induced increase in muscle protein synthesis is primarily attributed to an enhanced translational efficiency (314, 551). Thus, when repeated bouts are performed over time and sufficient recovery is afforded between sessions, the net synthetic response outpaces that of proteolysis, resulting in an increased accretion of muscle proteins.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 14,
+    "question": "What are the three primary mechanisms attributed to increased muscle protein accretion following resistance exercise?",
+    "ground_truth": "Increased muscle protein accretion following resistance exercise has been attributed to three primary mechanisms: mechanical tension, metabolic stress, and muscle damage. Mechanical tension is considered the primary driving force in the hypertrophic response, and it alone has been shown to directly stimulate mTOR. Metabolic stress refers to an exercise-induced accumulation of metabolites, particularly lactate, inorganic phosphate, and H+. Muscle damage involves structural perturbations that trigger tissue remodeling.",
+    "resource_type": "book",
+    "page": 29,
+    "resource": "Science and Development of Muscle Hypertrophy",
+    "reference_text": "Increased muscle protein accretion following resistance exercise has been attributed to three primary mechanisms: mechanical tension, metabolic stress, and muscle damage (656). This chapter addresses each of these mechanisms and the theoretical rationale for its promotion of a hypertrophic response.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 15,
+    "question": "What does the research evidence indicate about the relationship between training volume and the anabolic signaling response?",
+    "ground_truth": "Research provides compelling evidence that higher-volume loads are necessary to maximize anabolism. Terzis and colleagues showed that phosphorylation of p70S6K and ribosomal protein S6 increases 30 minutes following resistance training in a volume-dependent manner. The fact that it did not reach a plateau in the volumes studied suggests that higher volumes might have led to even greater increases. Intriguingly, the study found similar elevations in mTOR independent of training volume, suggesting that increased training volumes may augment S6 phosphorylation via alternative anabolic pathways, anticatabolic pathways, or a combination of the two.",
+    "resource_type": "book",
+    "page": 51,
+    "resource": "Science and Development of Muscle Hypertrophy",
+    "reference_text": "Research provides compelling evidence that higher-volume loads are necessary to maximize anabolism. Terzis and colleagues (755) showed that phosphorylation of p70S6K and ribosomal protein S6 increases 30 min following resistance training in a volume-dependent manner. The fact that it did not reach a plateau in the volumes studied suggests that higher volumes might have led to even greater increases. Intriguingly, the study found similar elevations in mTOR independent of training volume, suggesting that increased training volumes may augment S6 phosphorylation via alternative anabolic pathways, anticatabolic pathways, or a combination of the two.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 16,
+    "question": "How does training status affect the hypertrophic response, and what is the concept of the 'window of adaptation'?",
+    "ground_truth": "The hypertrophic response of trained subjects is substantially different from that of untrained counterparts, limiting the generalizability of studies on beginners to later training stages. As people become resistance trained and move closer to their genetic ceiling, it becomes progressively more difficult to increase muscular size (i.e., the window of adaptation becomes smaller). An excess of muscle mass would be energetically and kinetically inefficient, and thus the human body limits the amount of lean tissue that can be gained. Research shows that the extent of hypertrophic gains is relatively small (~3% to 7%) in highly competitive bodybuilders over 5 months of resistance training, suggesting these people are at the upper limits of their genetic ceilings.",
+    "resource_type": "book",
+    "is-multi-page": true,
+    "pages": [111, 112],
+    "resource": "Science and Development of Muscle Hypertrophy",
+    "reference_texts": [
+      "The vast majority of resistance training studies are carried out in untrained people. This is generally a function of convenience because the pool of untrained subjects is larger than the pool of resistance-trained subjects. However, the hypertrophic response of trained subjects is substantially different than that of their untrained counterparts (571), thereby limiting the generalizability of such studies outside of the initial stages of training.",
+      "hypertrophic gains is relatively small (~3% to 7%) in highly competitive bodybuilders over 5 months of resistance training, suggesting these people are at the upper limits of their genetic ceilings (28)."
+    ],
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 17,
+    "question": "How does energy balance affect the capacity to build muscle, and what is the recommended caloric surplus for trained versus untrained individuals?",
+    "ground_truth": "Energy balance has a profound effect on the capacity to build muscle. Caloric restriction induces decreases in Akt phosphorylation and muscle protein synthesis, activates FOXO transcription factors, and upregulates atrogin-1 and MuRF-1 expression. Even eucaloric conditions are suboptimal for inducing muscle growth. A positive energy balance alone is a potent stimulator of anabolism, even in the absence of resistance exercise, provided dietary protein intake is adequate. Relatively untrained subjects can benefit from a substantial energy surplus (~2,000 kcal/day), with body mass gains predominantly achieved by increasing fat-free mass. In well-trained subjects, evidence suggests that a positive energy balance of 500 to 1,000 kcal/day is preferable, since untrained subjects have a higher hypertrophic potential and faster rate of growth that accommodates more energy for building new tissue.",
+    "resource_type": "book",
+    "is-multi-page": true,
+    "pages": [139, 140],
+    "resource": "Science and Development of Muscle Hypertrophy",
+    "reference_texts": [
+      "Energy balance, the net result between energy intake and energy expenditure, has a profound effect on the capacity to build muscle. Molecular signaling is altered during short-term energy deficits to favor catabolism over anabolism. Studies show that caloric restriction induces a decrease in both Akt phosphorylation and muscle protein synthesis, leading to activation of the FOXO family of transcription factors and upregulation of atrogin-1 and MuRF-1 expression (562).",
+      "Relatively untrained subjects can benefit from a substantial energy surplus (~2,000 kcal/d); in this population, body mass gains are predominantly achieved by increasing fat-free mass at the expense of body fat. In well-trained subjects, evidence suggests that a positive energy balance of 500 to 1,000 kcal/day is preferable for increasing fat-free mass (242). The discrepancy between populations can be attributed to the fact that untrained subjects have a higher hypertrophic potential and faster rate of growth than trained subjects do, which accommodates more energy and substrate for building new tissue."
+    ],
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 18,
+    "question": "How do sex-related differences in muscular strength between men and women change when strength is expressed relative to muscle cross-sectional area?",
+    "ground_truth": "When strength is expressed relative to muscle cross-sectional area, no significant difference exists between sexes. This indicates that muscle quality (peak force per cross-sectional area) is not sex specific. Men and women have similar fiber type distribution and histochemical characteristics, but men tend to have a larger muscle fiber cross-sectional area than women.",
+    "resource_type": "book",
+    "page": 151,
+    "resource": "Essentials of Strength Training and Conditioning, 3rd Edition",
+    "reference_text": "When strength is expressed relative to muscle cross-sectional area, no significant difference exists between sexes, which indicates that muscle quality (peak force per cross-sectional area) is not sex specific (21, 107). Granted that the muscle fibers in men and women are also similar in fiber type distribution and histochemical characteristics, men tend to have a larger muscle fiber cross-sectional area than women.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 19,
+    "question": "What is the difference between core exercises and assistance exercises in resistance training program design?",
+    "ground_truth": "Core exercises recruit one or more large muscle areas (chest, shoulder, back, hip, or thigh), involve two or more primary joints (multijoint exercises), and receive priority when selecting exercises because of their direct application to the sport. Assistance exercises usually recruit smaller muscle areas (upper arm, abdominals, calf, neck, forearm, lower back, or anterior lower leg), involve only one primary joint (single-joint exercises), and are considered less important to improving sport performance.",
+    "resource_type": "book",
+    "page": 386,
+    "resource": "Essentials of Strength Training and Conditioning, 3rd Edition",
+    "reference_text": "Core exercises recruit one or more large muscle areas (i.e., chest, shoulder, back, hip, or thigh), involve two or more primary joints (multijoint exercises), and receive priority when one is selecting exercises because of their direct application to the sport. Assistance exercises usually recruit smaller muscle areas (i.e., upper arm, abdominals, calf, neck, forearm, lower back, or anterior lower leg), involve only one primary joint (single-joint exercises), and are considered less important to improving sport performance.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 20,
+    "question": "What is interval training in an aerobic endurance program, and what work:rest ratio and intensity does it use?",
+    "ground_truth": "Interval training involves exercise at an intensity close to VO2max. The work intervals should last between 3 and 5 minutes, with rest intervals equal to the work interval, maintaining a work:rest ratio of 1:1. This type of training permits the athlete to train at intensities close to VO2max for a greater amount of time than would be possible in a single continuous high-intensity exercise session. It should not be performed until a firm base of aerobic endurance training has been attained. The benefits include an increased VO2max and enhanced anaerobic metabolism.",
+    "resource_type": "book",
+    "page": 499,
+    "resource": "Essentials of Strength Training and Conditioning, 3rd Edition",
+    "reference_text": "Interval training involves exercise at an intensity close to VO max. The work intervals should last between 3 and 5 minutes, although they can be as short as 30 seconds (2). The rest intervals for 3- to 5-minute work intervals should be equal to the work interval, thereby keeping the work:rest ratio (W:R) at 1:1. Interval training permits the athlete to train at intensities close to VO max for a greater amount of time than would be possible in a single exercise session at a continuous high intensity. This type of training should not be performed until a firm base of aerobic endurance training has been attained (50). Interval training is very stressful on the athlete and should be used sparingly. The benefits derived from interval training include an increased VO max and enhanced anaerobic metabolism.",
+    "question_type": "single-hop"
+  },
+
+  {
+    "id": 21,
+    "question": "How many times per week should I train each muscle group to maximize muscle growth?",
+    "ground_truth": "To maximize muscle growth, major muscle groups should be trained at least twice a week. Research comparing training frequencies of one to three days per week on a volume-equated basis shows that training a muscle group twice per week promotes superior hypertrophic outcomes compared to once per week. However, whether training a muscle group three times per week offers additional benefits over twice per week has not yet been clearly determined.",
+    "resource_type": "paper",
+    "is-multi-page": true,
+    "pages": [1689, 1695],
+    "resource": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+    "reference_texts": [
+      "When comparing studies that investigated training muscle groups between 1 to 3 days per week on a volume-equated basis, the current body of evidence indicates that frequencies of training twice a week promote superior hypertrophic outcomes to once a week. It can therefore be inferred that the major muscle groups should be trained at least twice a week to maximize muscle growth; whether training a muscle group three times per week is superior to a twice-per-week protocol remains to be determined.",
+      "That said, training a muscle group once a week was shown to promote robust muscular hypertrophy and remains a viable strategy for program design."
+    ],
+    "question_type": "single-hop"
+  },
+  {
+    "id": 22,
+    "question": "Does it matter whether I use a total body routine or a split routine for building muscle, as long as the weekly volume per muscle group is the same?",
+    "ground_truth": "The available evidence does not support a hypertrophic benefit from changing how training sessions are distributed (e.g., total body vs. split routine) when the weekly training volume and frequency of training per muscle group are kept equivalent. In other words, it is how often and how much each muscle group is trained per week that matters for hypertrophy, not how the sessions are organized across the week.",
+    "resource_type": "paper",
+    "is-multi-page": true,
+    "pages": [1695, 1696],
+    "resource": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+    "reference_texts": [
+      "While meta-analysis was not possible on this topic, the combined evidence does not support that manipulations in training session frequency promote differential hypertrophic responses when groups are matched for weekly training volume with an equivalent frequency of training per muscle group.",
+      "The limited body of evidence does not support a hypertrophic benefit for manipulating training session frequency when groups are matched for weekly training volume with an equivalent frequency of training per muscle group."
+    ],
+    "question_type": "single-hop"
+  },
+
+  [
+    {
+      "id": 23,
+      "question": "What types of exercises and loading strategies are recommended for improving muscular power, and how do they differ for upper and lower body?",
+      "ground_truth": "For improving muscular power, two general loading strategies are recommended: 1) strength training with heavy loads, and 2) the use of light loads performed at a fast contraction velocity. For lower body exercises, loads of 0–60% of 1 RM are recommended, while for upper body exercises, 30–60% of 1 RM is recommended. Multiple-joint exercises, especially total-body movements, should be emphasized, performed for three to five sets with 3–5 minutes of rest between sets.",
+      "resource_type": "article",
+      "is-multi-page": true,
+      "pages": [1, 10],
+      "resource": "Progression Models in Resistance Training for Healthy Adults",
+      "reference_texts": [
+        "Progression in power training entails two general loading strategies: 1) strength training and 2) use of light loads (0–60% of 1 RM for lower body exercises; 30–60% of 1 RM for upper body exercises) performed at a fast contraction velocity with 3–5 min of rest between sets for multiple sets per exercise (three to five sets). It is also recommended that emphasis be placed on multiple-joint exercises especially those involving the total body.",
+        "It is recommended that concurrent to a typical strength training program, a power component is incorporated consisting of one to three sets per exercise using light to moderate loading (30–60% of 1 RM for upper body exercises, 0–60% of 1 RM for lower body exercises) for three to six repetitions"
+      ],
+      "question_type": "single-hop"
+    },
+    {
+      "id": 24,
+      "question": "How do the recommendations for training volume differ between novice and more advanced individuals when the goal is increasing muscular strength?",
+      "ground_truth": "For novice individuals, one to three sets per exercise are recommended, as both single and multiple-set programs have been shown to be effective for increasing strength during short-term training periods. However, for progression into intermediate and advanced training, multiple-set programs with systematic variation of volume and intensity over time are recommended. Long-term studies support that a moderate increase in training volume is needed for further improvement, though there is a point where excessive volume may become counterproductive.",
+      "resource_type": "article",
+      "page": 5,
+      "resource": "Progression Models in Resistance Training for Healthy Adults",
+      "reference_text": "It is recommended that one to three sets per exercise be used by novice individuals initially (23,35,40, 55,132,170,202,206,207). Evidence category B. For progression into intermediate to advanced status, data from long-term studies indicate that multiple sets be used with systematic variation of volume and intensity over time (142,149,155,160,228,238). To reduce the risk of overtraining, a dramatic increase in volume is not recommended.",
+      "question_type": "single-hop"
+    },
+
+    [
+      {
+        "id": 25,
+        "question": "What does neuromotor exercise involve, and how can the intensity of balance training be manipulated by a Personal Trainer?",
+        "ground_truth": "Neuromotor exercise involves motor skills including balance, coordination, agility, and proprioceptive training. The intensity of balance-related training can be manipulated through three aspects: 1) base of support — narrowing the base of support increases the challenge; 2) center of mass — displacing the center of mass increases difficulty; and 3) peripheral cues — involving visual, vestibular, and proprioceptive pathways. For example, progressing from feet apart to a one-legged stand increases difficulty through base of support, and closing the eyes while standing removes visual peripheral feedback to further increase challenge.",
+        "resource_type": "book",
+        "is-multi-page": true,
+        "pages": [25, 26],
+        "resource": "ACSM's Resources for the Personal Trainer",
+        "reference_texts": [
+          "Neuromotor exercise involves motor skills including balance, coordination, agility, and proprioceptive training (1). Neuromotor-enhancing activities focus on the communication between feedback from the periphery (e.g., arms and legs) and the interpretation by the central nervous system (e.g., brain and spinal cord). As with any training, providing a challenge, or overload, will allow for improvements. This training is of particular importance for older adults who are at a higher fall risk or who have mobility impairments (5).",
+          "The intensity of balance-related training can be manipulated by the Personal Training through three aspects:\n1. Base of support (narrowing the base of support will increase the challenge)\n2. Center of mass (displacing the center of mass increases difficulty)\n3. Peripheral cues (visual, vestibular, and proprioceptive pathways)"
+        ],
+        "question_type": "single-hop"
+      },
+      {
+        "id": 26,
+        "question": "What are the recommended guidelines for sequencing exercises in a resistance training program, and what is the rationale behind performing larger muscle group and multijoint exercises first?",
+        "ground_truth": "The recommended sequence for exercises in a resistance training program is: 1) large muscle group before small muscle group exercises, 2) multijoint before single-joint exercises, 3) alternate push/pull exercises for total body sessions, 4) alternate upper/lower body exercises for total body sessions, 5) explosive/power type lifts and plyometric exercises before basic strength and single-joint exercises, 6) exercises for priority weak areas before exercises for strong areas, and 7) most intense to least intense. The rationale is that exercising the larger muscles first stimulates optimal neural, metabolic, endocrine, and circulatory responses, which may augment the training response to subsequent exercises. When multijoint exercises are performed early, more resistance can be used because there is less fatigue in the smaller muscle groups that assist the prime movers.",
+        "resource_type": "book",
+        "is-multi-page": true,
+        "pages": [72, 73],
+        "resource": "ACSM's Resources for the Personal Trainer",
+        "reference_texts": [
+          "The order in which exercises are performed is an important acute program variable that affects the quality and focus of the workout. ACSM recommends that by exercising the larger muscle groups first, a superior training stimulus is presented to all of the muscles involved (9). Exercising the larger muscles first is thought to stimulate optimal neural, metabolic, endocrine, and circulatory responses, which may augment the training response to subsequent exercises later in the workout. This concept also applies to the sequencing of multijoint and single-joint exercises. The more complex multijoint technique-intensive exercises (e.g., power cleans, squats) should be performed initially followed by the less complex single-joint exercises (e.g., leg extension, biceps curls).",
+          "goals. In general, the sequence of exercises for both multiple and single muscle group exercise sessions should be as follows:\n1. Large muscle group before small muscle group exercises\n2. Multijoint before single-joint exercises\n3. Alternate push/pull exercises for total body sessions\n4. Alternate upper/lower body exercises for total body sessions\n5. Explosive/power type lifts (e.g., Olympic lifts) and plyometric exercises before basic strength and single-joint exercises\n6. Exercises for priority weak areas before exercises for strong areas\n7. Most intense to least intense (particularly when performing several exercises consecutively for the same muscle group)"
+        ],
+        "question_type": "single-hop"
+      },
+      {
+        "id": 27,
+        "question": "What is the recommended frequency for cardiorespiratory exercise, and what is the relationship between exercise frequency and intensity?",
+        "ground_truth": "According to ACSM guidelines, the optimal frequency of aerobic exercise is 3–5 days per week for most adults, with the frequency varying based on intensity. The 2018 Physical Activity Guidelines recommend that adults accumulate 150 minutes per week of moderate-intensity exercise and perform moderate to vigorous physical activity at least 3 days per week. Although additional benefits may be achieved beyond 5 days per week, improvements can be attenuated as frequency increases, with a plateau often seen beyond 5 days per week. Training at high or vigorous intensity for more than 5 days per week may increase injury risk. There is an inverse relationship between frequency and intensity: if exercise intensity is at the lower end of the target range, frequency can be increased, and vice versa.",
+        "resource_type": "book",
+        "page": 126,
+        "resource": "ACSM's Resources for the Personal Trainer",
+        "reference_text": "According to the ACSM guidelines (1,10), the optimal frequency of aerobic exercise appears to be 3–5 d ∙ wk−1 for most adults, with the frequency varying with the intensity. The 2018 Physical Activity Guidelines for Americans suggest that adults should accumulate 150 min ∙ wk−1 of moderate-intensity exercise. In addition, these guidelines recommend that adults should do any amount of moderate to vigorous physical activity at least 3 d ∙ wk−1. Although additional benefits may be achieved beyond 5 d ∙ wk−1, improvements can be attenuated as the frequency increases such that a plateau in benefits is often seen with exercise done greater than 5 d ∙ wk−1 (1,10). Additionally, training at high intensity or vigorous activity for greater than 5 d ∙ wk−1 might increase the incidence of injury and is not recommended for most adults (10).",
+        "question_type": "single-hop"
+      }
+    ]
+  ]
 ]

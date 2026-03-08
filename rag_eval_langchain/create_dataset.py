@@ -3,7 +3,7 @@ from langsmith import Client
 
 
 DATASET_PATH = "../test_dataset/dataset.json"
-DATASET_NAME = "Leakage Test Dataset"
+DATASET_NAME = "Chunking"
 
 
 # ── 1. Load evaluation dataset from JSON ────────────────────────────────────

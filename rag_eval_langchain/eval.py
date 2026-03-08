@@ -32,7 +32,7 @@ os.environ["LANGSMITH_ENDPOINT"] = "https://api.smith.langchain.com"
 
 # EXPERIMENT
 
-FOOL = True
+FOOL = False
 
 #######
 
@@ -44,7 +44,7 @@ EMBEDDING_MODEL = "text-embedding-3-large"
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
 RETRIEVAL_K = 2
-DATASET_NAME = "Anatomy"
+DATASET_NAME = "Chunking"
 
 
 # ── 1. Indexing & Retrieval ─────────────────────────────────────────────────
