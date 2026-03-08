@@ -7,6 +7,7 @@ def augment_experiment(result, input):
             page_key = "pages"
 
         return {
+            "id": input.get("id", "unknown"),
             "answer": result["answer"],
             "documents": result["documents"],
             reference_text_key: input.get(reference_text_key, "unknown"),

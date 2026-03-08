@@ -217,7 +217,7 @@
   },
 
   {
-    "id": 120,
+    "id": 20,
     "question": "What are the key factors that affect aerobic endurance performance?",
     "ground_truth": "Several factors are central to determining the athlete's aerobic endurance capacity: the athlete's aerobic power (VO2max), lactate threshold, economy of movement, and muscle fiber type. Each factor can be improved significantly with appropriate training methods. To develop appropriate aerobic endurance training programs, the coach and athlete must understand the physiological responses associated with endurance performance.",
     "resource_type": "book",
@@ -228,7 +228,7 @@
   },
 
   {
-    "id": 12,
+    "id": 21,
     "question": "What are the three phases of straight-line sprinting, and how does maximum strength relate to acceleration ability?",
     "ground_truth": "Straight-line sprinting can be broken down into three phases: acceleration, attainment of maximum speed, and maintenance of maximum speed. Acceleration is the ability to increase maximum velocity in a minimum amount of time. Maximum strength levels for the knee extensors, hip extensors, and plantar flexors (calf muscles) explain the acceleratory abilities of athletes because strength is strongly related to sprinting ability. Faster sprinters are significantly stronger and are able to accelerate at faster rates than their slower counterparts.",
     "resource_type": "book",
@@ -239,7 +239,7 @@
   },
 
   {
-    "id": 13,
+    "id": 22,
     "question": "What happens to muscle protein synthesis and proteolysis during and after a bout of resistance training, and how does this lead to muscle growth over time?",
     "ground_truth": "During a bout of resistance training, muscle protein synthesis is suppressed and proteolysis (the breakdown of proteins into amino acids) is heightened so that net protein balance is in a negative state. After completion of the workout, muscle protein synthesis is increased 2- to 5-fold along with nutrient delivery, and the effects last approximately 48 hours postexercise. The exercise-induced increase in muscle protein synthesis is primarily attributed to an enhanced translational efficiency. Thus, when repeated bouts are performed over time and sufficient recovery is afforded between sessions, the net synthetic response outpaces that of proteolysis, resulting in an increased accretion of muscle proteins.",
     "resource_type": "book",
@@ -250,7 +250,7 @@
   },
 
   {
-    "id": 14,
+    "id": 23,
     "question": "What are the three primary mechanisms attributed to increased muscle protein accretion following resistance exercise?",
     "ground_truth": "Increased muscle protein accretion following resistance exercise has been attributed to three primary mechanisms: mechanical tension, metabolic stress, and muscle damage. Mechanical tension is considered the primary driving force in the hypertrophic response, and it alone has been shown to directly stimulate mTOR. Metabolic stress refers to an exercise-induced accumulation of metabolites, particularly lactate, inorganic phosphate, and H+. Muscle damage involves structural perturbations that trigger tissue remodeling.",
     "resource_type": "book",
@@ -261,7 +261,7 @@
   },
 
   {
-    "id": 15,
+    "id": 24,
     "question": "What does the research evidence indicate about the relationship between training volume and the anabolic signaling response?",
     "ground_truth": "Research provides compelling evidence that higher-volume loads are necessary to maximize anabolism. Terzis and colleagues showed that phosphorylation of p70S6K and ribosomal protein S6 increases 30 minutes following resistance training in a volume-dependent manner. The fact that it did not reach a plateau in the volumes studied suggests that higher volumes might have led to even greater increases. Intriguingly, the study found similar elevations in mTOR independent of training volume, suggesting that increased training volumes may augment S6 phosphorylation via alternative anabolic pathways, anticatabolic pathways, or a combination of the two.",
     "resource_type": "book",
@@ -272,7 +272,7 @@
   },
 
   {
-    "id": 16,
+    "id": 25,
     "question": "How does training status affect the hypertrophic response, and what is the concept of the 'window of adaptation'?",
     "ground_truth": "The hypertrophic response of trained subjects is substantially different from that of untrained counterparts, limiting the generalizability of studies on beginners to later training stages. As people become resistance trained and move closer to their genetic ceiling, it becomes progressively more difficult to increase muscular size (i.e., the window of adaptation becomes smaller). An excess of muscle mass would be energetically and kinetically inefficient, and thus the human body limits the amount of lean tissue that can be gained. Research shows that the extent of hypertrophic gains is relatively small (~3% to 7%) in highly competitive bodybuilders over 5 months of resistance training, suggesting these people are at the upper limits of their genetic ceilings.",
     "resource_type": "book",
@@ -287,7 +287,7 @@
   },
 
   {
-    "id": 17,
+    "id": 26,
     "question": "How does energy balance affect the capacity to build muscle, and what is the recommended caloric surplus for trained versus untrained individuals?",
     "ground_truth": "Energy balance has a profound effect on the capacity to build muscle. Caloric restriction induces decreases in Akt phosphorylation and muscle protein synthesis, activates FOXO transcription factors, and upregulates atrogin-1 and MuRF-1 expression. Even eucaloric conditions are suboptimal for inducing muscle growth. A positive energy balance alone is a potent stimulator of anabolism, even in the absence of resistance exercise, provided dietary protein intake is adequate. Relatively untrained subjects can benefit from a substantial energy surplus (~2,000 kcal/day), with body mass gains predominantly achieved by increasing fat-free mass. In well-trained subjects, evidence suggests that a positive energy balance of 500 to 1,000 kcal/day is preferable, since untrained subjects have a higher hypertrophic potential and faster rate of growth that accommodates more energy for building new tissue.",
     "resource_type": "book",
@@ -302,7 +302,7 @@
   },
 
   {
-    "id": 18,
+    "id": 27,
     "question": "How do sex-related differences in muscular strength between men and women change when strength is expressed relative to muscle cross-sectional area?",
     "ground_truth": "When strength is expressed relative to muscle cross-sectional area, no significant difference exists between sexes. This indicates that muscle quality (peak force per cross-sectional area) is not sex specific. Men and women have similar fiber type distribution and histochemical characteristics, but men tend to have a larger muscle fiber cross-sectional area than women.",
     "resource_type": "book",
@@ -313,7 +313,7 @@
   },
 
   {
-    "id": 19,
+    "id": 28,
     "question": "What is the difference between core exercises and assistance exercises in resistance training program design?",
     "ground_truth": "Core exercises recruit one or more large muscle areas (chest, shoulder, back, hip, or thigh), involve two or more primary joints (multijoint exercises), and receive priority when selecting exercises because of their direct application to the sport. Assistance exercises usually recruit smaller muscle areas (upper arm, abdominals, calf, neck, forearm, lower back, or anterior lower leg), involve only one primary joint (single-joint exercises), and are considered less important to improving sport performance.",
     "resource_type": "book",
@@ -324,7 +324,7 @@
   },
 
   {
-    "id": 20,
+    "id": 29,
     "question": "What is interval training in an aerobic endurance program, and what work:rest ratio and intensity does it use?",
     "ground_truth": "Interval training involves exercise at an intensity close to VO2max. The work intervals should last between 3 and 5 minutes, with rest intervals equal to the work interval, maintaining a work:rest ratio of 1:1. This type of training permits the athlete to train at intensities close to VO2max for a greater amount of time than would be possible in a single continuous high-intensity exercise session. It should not be performed until a firm base of aerobic endurance training has been attained. The benefits include an increased VO2max and enhanced anaerobic metabolism.",
     "resource_type": "book",
@@ -335,7 +335,7 @@
   },
 
   {
-    "id": 21,
+    "id": 30,
     "question": "How many times per week should I train each muscle group to maximize muscle growth?",
     "ground_truth": "To maximize muscle growth, major muscle groups should be trained at least twice a week. Research comparing training frequencies of one to three days per week on a volume-equated basis shows that training a muscle group twice per week promotes superior hypertrophic outcomes compared to once per week. However, whether training a muscle group three times per week offers additional benefits over twice per week has not yet been clearly determined.",
     "resource_type": "paper",
@@ -349,7 +349,7 @@
     "question_type": "single-hop"
   },
   {
-    "id": 22,
+    "id": 31,
     "question": "Does it matter whether I use a total body routine or a split routine for building muscle, as long as the weekly volume per muscle group is the same?",
     "ground_truth": "The available evidence does not support a hypertrophic benefit from changing how training sessions are distributed (e.g., total body vs. split routine) when the weekly training volume and frequency of training per muscle group are kept equivalent. In other words, it is how often and how much each muscle group is trained per week that matters for hypertrophy, not how the sessions are organized across the week.",
     "resource_type": "paper",
@@ -363,71 +363,67 @@
     "question_type": "single-hop"
   },
 
-  [
-    {
-      "id": 23,
-      "question": "What types of exercises and loading strategies are recommended for improving muscular power, and how do they differ for upper and lower body?",
-      "ground_truth": "For improving muscular power, two general loading strategies are recommended: 1) strength training with heavy loads, and 2) the use of light loads performed at a fast contraction velocity. For lower body exercises, loads of 0–60% of 1 RM are recommended, while for upper body exercises, 30–60% of 1 RM is recommended. Multiple-joint exercises, especially total-body movements, should be emphasized, performed for three to five sets with 3–5 minutes of rest between sets.",
-      "resource_type": "article",
-      "is-multi-page": true,
-      "pages": [1, 10],
-      "resource": "Progression Models in Resistance Training for Healthy Adults",
-      "reference_texts": [
-        "Progression in power training entails two general loading strategies: 1) strength training and 2) use of light loads (0–60% of 1 RM for lower body exercises; 30–60% of 1 RM for upper body exercises) performed at a fast contraction velocity with 3–5 min of rest between sets for multiple sets per exercise (three to five sets). It is also recommended that emphasis be placed on multiple-joint exercises especially those involving the total body.",
-        "It is recommended that concurrent to a typical strength training program, a power component is incorporated consisting of one to three sets per exercise using light to moderate loading (30–60% of 1 RM for upper body exercises, 0–60% of 1 RM for lower body exercises) for three to six repetitions"
-      ],
-      "question_type": "single-hop"
-    },
-    {
-      "id": 24,
-      "question": "How do the recommendations for training volume differ between novice and more advanced individuals when the goal is increasing muscular strength?",
-      "ground_truth": "For novice individuals, one to three sets per exercise are recommended, as both single and multiple-set programs have been shown to be effective for increasing strength during short-term training periods. However, for progression into intermediate and advanced training, multiple-set programs with systematic variation of volume and intensity over time are recommended. Long-term studies support that a moderate increase in training volume is needed for further improvement, though there is a point where excessive volume may become counterproductive.",
-      "resource_type": "article",
-      "page": 5,
-      "resource": "Progression Models in Resistance Training for Healthy Adults",
-      "reference_text": "It is recommended that one to three sets per exercise be used by novice individuals initially (23,35,40, 55,132,170,202,206,207). Evidence category B. For progression into intermediate to advanced status, data from long-term studies indicate that multiple sets be used with systematic variation of volume and intensity over time (142,149,155,160,228,238). To reduce the risk of overtraining, a dramatic increase in volume is not recommended.",
-      "question_type": "single-hop"
-    },
+  {
+    "id": 32,
+    "question": "What types of exercises and loading strategies are recommended for improving muscular power, and how do they differ for upper and lower body?",
+    "ground_truth": "For improving muscular power, two general loading strategies are recommended: 1) strength training with heavy loads, and 2) the use of light loads performed at a fast contraction velocity. For lower body exercises, loads of 0–60% of 1 RM are recommended, while for upper body exercises, 30–60% of 1 RM is recommended. Multiple-joint exercises, especially total-body movements, should be emphasized, performed for three to five sets with 3–5 minutes of rest between sets.",
+    "resource_type": "article",
+    "is-multi-page": true,
+    "pages": [1, 10],
+    "resource": "Progression Models in Resistance Training for Healthy Adults",
+    "reference_texts": [
+      "Progression in power training entails two general loading strategies: 1) strength training and 2) use of light loads (0–60% of 1 RM for lower body exercises; 30–60% of 1 RM for upper body exercises) performed at a fast contraction velocity with 3–5 min of rest between sets for multiple sets per exercise (three to five sets). It is also recommended that emphasis be placed on multiple-joint exercises especially those involving the total body.",
+      "It is recommended that concurrent to a typical strength training program, a power component is incorporated consisting of one to three sets per exercise using light to moderate loading (30–60% of 1 RM for upper body exercises, 0–60% of 1 RM for lower body exercises) for three to six repetitions"
+    ],
+    "question_type": "single-hop"
+  },
+  {
+    "id": 33,
+    "question": "How do the recommendations for training volume differ between novice and more advanced individuals when the goal is increasing muscular strength?",
+    "ground_truth": "For novice individuals, one to three sets per exercise are recommended, as both single and multiple-set programs have been shown to be effective for increasing strength during short-term training periods. However, for progression into intermediate and advanced training, multiple-set programs with systematic variation of volume and intensity over time are recommended. Long-term studies support that a moderate increase in training volume is needed for further improvement, though there is a point where excessive volume may become counterproductive.",
+    "resource_type": "article",
+    "page": 5,
+    "resource": "Progression Models in Resistance Training for Healthy Adults",
+    "reference_text": "It is recommended that one to three sets per exercise be used by novice individuals initially (23,35,40, 55,132,170,202,206,207). Evidence category B. For progression into intermediate to advanced status, data from long-term studies indicate that multiple sets be used with systematic variation of volume and intensity over time (142,149,155,160,228,238). To reduce the risk of overtraining, a dramatic increase in volume is not recommended.",
+    "question_type": "single-hop"
+  },
 
-    [
-      {
-        "id": 25,
-        "question": "What does neuromotor exercise involve, and how can the intensity of balance training be manipulated by a Personal Trainer?",
-        "ground_truth": "Neuromotor exercise involves motor skills including balance, coordination, agility, and proprioceptive training. The intensity of balance-related training can be manipulated through three aspects: 1) base of support — narrowing the base of support increases the challenge; 2) center of mass — displacing the center of mass increases difficulty; and 3) peripheral cues — involving visual, vestibular, and proprioceptive pathways. For example, progressing from feet apart to a one-legged stand increases difficulty through base of support, and closing the eyes while standing removes visual peripheral feedback to further increase challenge.",
-        "resource_type": "book",
-        "is-multi-page": true,
-        "pages": [25, 26],
-        "resource": "ACSM's Resources for the Personal Trainer",
-        "reference_texts": [
-          "Neuromotor exercise involves motor skills including balance, coordination, agility, and proprioceptive training (1). Neuromotor-enhancing activities focus on the communication between feedback from the periphery (e.g., arms and legs) and the interpretation by the central nervous system (e.g., brain and spinal cord). As with any training, providing a challenge, or overload, will allow for improvements. This training is of particular importance for older adults who are at a higher fall risk or who have mobility impairments (5).",
-          "The intensity of balance-related training can be manipulated by the Personal Training through three aspects:\n1. Base of support (narrowing the base of support will increase the challenge)\n2. Center of mass (displacing the center of mass increases difficulty)\n3. Peripheral cues (visual, vestibular, and proprioceptive pathways)"
-        ],
-        "question_type": "single-hop"
-      },
-      {
-        "id": 26,
-        "question": "What are the recommended guidelines for sequencing exercises in a resistance training program, and what is the rationale behind performing larger muscle group and multijoint exercises first?",
-        "ground_truth": "The recommended sequence for exercises in a resistance training program is: 1) large muscle group before small muscle group exercises, 2) multijoint before single-joint exercises, 3) alternate push/pull exercises for total body sessions, 4) alternate upper/lower body exercises for total body sessions, 5) explosive/power type lifts and plyometric exercises before basic strength and single-joint exercises, 6) exercises for priority weak areas before exercises for strong areas, and 7) most intense to least intense. The rationale is that exercising the larger muscles first stimulates optimal neural, metabolic, endocrine, and circulatory responses, which may augment the training response to subsequent exercises. When multijoint exercises are performed early, more resistance can be used because there is less fatigue in the smaller muscle groups that assist the prime movers.",
-        "resource_type": "book",
-        "is-multi-page": true,
-        "pages": [72, 73],
-        "resource": "ACSM's Resources for the Personal Trainer",
-        "reference_texts": [
-          "The order in which exercises are performed is an important acute program variable that affects the quality and focus of the workout. ACSM recommends that by exercising the larger muscle groups first, a superior training stimulus is presented to all of the muscles involved (9). Exercising the larger muscles first is thought to stimulate optimal neural, metabolic, endocrine, and circulatory responses, which may augment the training response to subsequent exercises later in the workout. This concept also applies to the sequencing of multijoint and single-joint exercises. The more complex multijoint technique-intensive exercises (e.g., power cleans, squats) should be performed initially followed by the less complex single-joint exercises (e.g., leg extension, biceps curls).",
-          "goals. In general, the sequence of exercises for both multiple and single muscle group exercise sessions should be as follows:\n1. Large muscle group before small muscle group exercises\n2. Multijoint before single-joint exercises\n3. Alternate push/pull exercises for total body sessions\n4. Alternate upper/lower body exercises for total body sessions\n5. Explosive/power type lifts (e.g., Olympic lifts) and plyometric exercises before basic strength and single-joint exercises\n6. Exercises for priority weak areas before exercises for strong areas\n7. Most intense to least intense (particularly when performing several exercises consecutively for the same muscle group)"
-        ],
-        "question_type": "single-hop"
-      },
-      {
-        "id": 27,
-        "question": "What is the recommended frequency for cardiorespiratory exercise, and what is the relationship between exercise frequency and intensity?",
-        "ground_truth": "According to ACSM guidelines, the optimal frequency of aerobic exercise is 3–5 days per week for most adults, with the frequency varying based on intensity. The 2018 Physical Activity Guidelines recommend that adults accumulate 150 minutes per week of moderate-intensity exercise and perform moderate to vigorous physical activity at least 3 days per week. Although additional benefits may be achieved beyond 5 days per week, improvements can be attenuated as frequency increases, with a plateau often seen beyond 5 days per week. Training at high or vigorous intensity for more than 5 days per week may increase injury risk. There is an inverse relationship between frequency and intensity: if exercise intensity is at the lower end of the target range, frequency can be increased, and vice versa.",
-        "resource_type": "book",
-        "page": 126,
-        "resource": "ACSM's Resources for the Personal Trainer",
-        "reference_text": "According to the ACSM guidelines (1,10), the optimal frequency of aerobic exercise appears to be 3–5 d ∙ wk−1 for most adults, with the frequency varying with the intensity. The 2018 Physical Activity Guidelines for Americans suggest that adults should accumulate 150 min ∙ wk−1 of moderate-intensity exercise. In addition, these guidelines recommend that adults should do any amount of moderate to vigorous physical activity at least 3 d ∙ wk−1. Although additional benefits may be achieved beyond 5 d ∙ wk−1, improvements can be attenuated as the frequency increases such that a plateau in benefits is often seen with exercise done greater than 5 d ∙ wk−1 (1,10). Additionally, training at high intensity or vigorous activity for greater than 5 d ∙ wk−1 might increase the incidence of injury and is not recommended for most adults (10).",
-        "question_type": "single-hop"
-      }
-    ]
-  ]
+  {
+    "id": 34,
+    "question": "What does neuromotor exercise involve, and how can the intensity of balance training be manipulated by a Personal Trainer?",
+    "ground_truth": "Neuromotor exercise involves motor skills including balance, coordination, agility, and proprioceptive training. The intensity of balance-related training can be manipulated through three aspects: 1) base of support — narrowing the base of support increases the challenge; 2) center of mass — displacing the center of mass increases difficulty; and 3) peripheral cues — involving visual, vestibular, and proprioceptive pathways. For example, progressing from feet apart to a one-legged stand increases difficulty through base of support, and closing the eyes while standing removes visual peripheral feedback to further increase challenge.",
+    "resource_type": "book",
+    "is-multi-page": true,
+    "pages": [25, 26],
+    "resource": "ACSM's Resources for the Personal Trainer",
+    "reference_texts": [
+      "Neuromotor exercise involves motor skills including balance, coordination, agility, and proprioceptive training (1). Neuromotor-enhancing activities focus on the communication between feedback from the periphery (e.g., arms and legs) and the interpretation by the central nervous system (e.g., brain and spinal cord). As with any training, providing a challenge, or overload, will allow for improvements. This training is of particular importance for older adults who are at a higher fall risk or who have mobility impairments (5).",
+      "The intensity of balance-related training can be manipulated by the Personal Training through three aspects:\n1. Base of support (narrowing the base of support will increase the challenge)\n2. Center of mass (displacing the center of mass increases difficulty)\n3. Peripheral cues (visual, vestibular, and proprioceptive pathways)"
+    ],
+    "question_type": "single-hop"
+  },
+  {
+    "id": 35,
+    "question": "What are the recommended guidelines for sequencing exercises in a resistance training program, and what is the rationale behind performing larger muscle group and multijoint exercises first?",
+    "ground_truth": "The recommended sequence for exercises in a resistance training program is: 1) large muscle group before small muscle group exercises, 2) multijoint before single-joint exercises, 3) alternate push/pull exercises for total body sessions, 4) alternate upper/lower body exercises for total body sessions, 5) explosive/power type lifts and plyometric exercises before basic strength and single-joint exercises, 6) exercises for priority weak areas before exercises for strong areas, and 7) most intense to least intense. The rationale is that exercising the larger muscles first stimulates optimal neural, metabolic, endocrine, and circulatory responses, which may augment the training response to subsequent exercises. When multijoint exercises are performed early, more resistance can be used because there is less fatigue in the smaller muscle groups that assist the prime movers.",
+    "resource_type": "book",
+    "is-multi-page": true,
+    "pages": [72, 73],
+    "resource": "ACSM's Resources for the Personal Trainer",
+    "reference_texts": [
+      "The order in which exercises are performed is an important acute program variable that affects the quality and focus of the workout. ACSM recommends that by exercising the larger muscle groups first, a superior training stimulus is presented to all of the muscles involved (9). Exercising the larger muscles first is thought to stimulate optimal neural, metabolic, endocrine, and circulatory responses, which may augment the training response to subsequent exercises later in the workout. This concept also applies to the sequencing of multijoint and single-joint exercises. The more complex multijoint technique-intensive exercises (e.g., power cleans, squats) should be performed initially followed by the less complex single-joint exercises (e.g., leg extension, biceps curls).",
+      "goals. In general, the sequence of exercises for both multiple and single muscle group exercise sessions should be as follows:\n1. Large muscle group before small muscle group exercises\n2. Multijoint before single-joint exercises\n3. Alternate push/pull exercises for total body sessions\n4. Alternate upper/lower body exercises for total body sessions\n5. Explosive/power type lifts (e.g., Olympic lifts) and plyometric exercises before basic strength and single-joint exercises\n6. Exercises for priority weak areas before exercises for strong areas\n7. Most intense to least intense (particularly when performing several exercises consecutively for the same muscle group)"
+    ],
+    "question_type": "single-hop"
+  },
+  {
+    "id": 36,
+    "question": "What is the recommended frequency for cardiorespiratory exercise, and what is the relationship between exercise frequency and intensity?",
+    "ground_truth": "According to ACSM guidelines, the optimal frequency of aerobic exercise is 3–5 days per week for most adults, with the frequency varying based on intensity. The 2018 Physical Activity Guidelines recommend that adults accumulate 150 minutes per week of moderate-intensity exercise and perform moderate to vigorous physical activity at least 3 days per week. Although additional benefits may be achieved beyond 5 days per week, improvements can be attenuated as frequency increases, with a plateau often seen beyond 5 days per week. Training at high or vigorous intensity for more than 5 days per week may increase injury risk. There is an inverse relationship between frequency and intensity: if exercise intensity is at the lower end of the target range, frequency can be increased, and vice versa.",
+    "resource_type": "book",
+    "page": 126,
+    "resource": "ACSM's Resources for the Personal Trainer",
+    "reference_text": "According to the ACSM guidelines (1,10), the optimal frequency of aerobic exercise appears to be 3–5 d ∙ wk−1 for most adults, with the frequency varying with the intensity. The 2018 Physical Activity Guidelines for Americans suggest that adults should accumulate 150 min ∙ wk−1 of moderate-intensity exercise. In addition, these guidelines recommend that adults should do any amount of moderate to vigorous physical activity at least 3 d ∙ wk−1. Although additional benefits may be achieved beyond 5 d ∙ wk−1, improvements can be attenuated as the frequency increases such that a plateau in benefits is often seen with exercise done greater than 5 d ∙ wk−1 (1,10). Additionally, training at high intensity or vigorous activity for greater than 5 d ∙ wk−1 might increase the incidence of injury and is not recommended for most adults (10).",
+    "question_type": "single-hop"
+  }
 ]

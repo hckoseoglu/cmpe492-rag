@@ -21,6 +21,7 @@ for item in eval_data:
             "inputs": {"question": item["question"]},
             "outputs": {"answer": item["ground_truth"]},
             "metadata": {
+                "id": item.get("id", "unknown"),
                 "question_type": item.get("question_type", "unknown"),
                 "resource_type": item.get("resource_type", "unknown"),
                 "page": item.get("page", "unknown"),
@@ -28,6 +29,7 @@ for item in eval_data:
                 "resource": item.get("resource", "unknown"),
                 "reference_text": item.get("reference_text", "unknown"),
                 "reference_texts": item.get("reference_texts", []),
+                "is-multi-page": item.get("is_multi_page", False),
             },
         }
     )

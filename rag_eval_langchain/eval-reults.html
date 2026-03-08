@@ -27,7 +27,7 @@
     /* ─── CSV to structured data ─── */
     function parseCSV(csvText) {
       const result = Papa.parse(csvText, { header: true, skipEmptyLines: true });
-      return result.data.map(row => {
+      const parsed = result.data.map(row => {
         let inputs = {}, refOutputs = {}, outputs = {};
         try { inputs = JSON.parse(row.inputs); } catch {}
         try { refOutputs = JSON.parse(row.reference_outputs); } catch {}
@@ -35,6 +35,7 @@
 
         return {
           id: row.id,
+          numericId: parseInt(outputs.id) || 0,
           question: inputs.question || '',
           ground_truth: refOutputs.answer || '',
           rag_answer: outputs.answer || '',
@@ -55,6 +56,11 @@
           },
         };
       });
+
+      /* Sort by numeric id */
+      parsed.sort((a, b) => a.numericId - b.numericId);
+
+      return parsed;
     }
 
     /* ─── Upload Screen ─── */
@@ -186,8 +192,8 @@
     }
 
     /* ─── Collapsible ─── */
-    function Collapsible({ title, icon, children }) {
-      const [open, setOpen] = useState(false);
+    function Collapsible({ title, icon, children, defaultOpen }) {
+      const [open, setOpen] = useState(defaultOpen || false);
       return (
         <div style={{ marginBottom: 8 }}>
           <button onClick={() => setOpen(!open)} style={{
@@ -315,7 +321,7 @@
                       width: 8, height: 8, borderRadius: '50%',
                       background: allPass ? '#22c55e' : '#ef4444', flexShrink: 0,
                     }} />
-                    Q{i + 1}
+                    Q{d.numericId}
                   </button>
                 );
               })}
@@ -346,7 +352,7 @@
                 </div>
               </div>
 
-              {/* Answers side by side */}
+              {/* Answers: Ground Truth, RAG Answer, and Original Reference */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
                 <div>
                   <div className="mono" style={{
@@ -372,6 +378,22 @@
                 </div>
               </div>
 
+              {/* Original Reference Text — always visible when available */}
+              {item.reference_text && item.reference_text !== 'unknown' && (
+                <div style={{ marginBottom: 24 }}>
+                  <div className="mono" style={{
+                    fontSize: 11, fontWeight: 700, color: '#94a3b8',
+                    textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 8,
+                  }}>📖 Original Reference</div>
+                  <div style={{
+                    padding: '14px 16px', background: '#f0fdf4', borderRadius: 8,
+                    border: '1px solid #bbf7d0', fontSize: 14, lineHeight: 1.7,
+                    color: '#14532d', minHeight: 60,
+                    borderLeft: '4px solid #4ade80',
+                  }}>{item.reference_text}</div>
+                </div>
+              )}
+
               {/* Eval scores */}
               <div style={{ marginBottom: 24 }}>
                 <div className="mono" style={{
@@ -388,13 +410,6 @@
                   <EvalRow label="Retrieval Relevance" score={item.evaluations.retrieval_relevance.score} reason={item.evaluations.retrieval_relevance.reason} />
                 </div>
               </div>
-
-              {/* Reference text */}
-              {item.reference_text && item.reference_text !== 'unknown' && (
-                <Collapsible title="Reference Text" icon="📖">
-                  {item.reference_text}
-                </Collapsible>
-              )}
 
               {/* Multiple reference texts */}
               {item.reference_texts && item.reference_texts.length > 0 && (

@@ -1,12 +1,17 @@
 """
-1. Loads and indexes the Bodybuilding Anatomy PDF into a vector store
-2. Builds a RAG pipeline (retrieve + generate)
-3. Runs the evaluation via LangSmith
+Parent-Child Chunking RAG Evaluation Pipeline
+==============================================
+
+Same pipeline as eval.py but uses parent-child chunking:
+  - Parent splitter: SemanticChunker (large, coherent chunks → returned to LLM)
+  - Child splitter:  RecursiveCharacterTextSplitter (small chunks → searched)
+
+At query time the child chunks are searched, but the full parent chunks are
+returned to the LLM for richer context.
 """
 
 import glob
 import os
-import time
 
 from utils.augment_experiment import augment_experiment
 
@@ -14,9 +19,7 @@ os.environ.setdefault("LANGSMITH_TRACING", "true")
 
 from langchain.chat_models import init_chat_model
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_openai import OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langsmith import Client, traceable
 from tenacity import (
     retry,
@@ -35,7 +38,7 @@ from knowledge_probing.substitution import (
 from knowledge_probing.save_subs import save_substitution
 
 # Chunking imports
-from chunking.chunking import base_chunking, semantic_chunking
+from chunking.chunking import parent_child_chunking
 
 
 os.environ["LANGSMITH_TRACING"] = "true"
@@ -56,10 +59,14 @@ EMBEDDING_MODEL = "text-embedding-3-large"
 RETRIEVAL_K = 16
 DATASET_NAME = "Chunking"
 
+# Parent-child specific config
+CHILD_CHUNK_SIZE = 300
+CHILD_CHUNK_OVERLAP = 45
+
 
 # ── 1. Indexing & Retrieval ─────────────────────────────────────────────────
 
-print("[1/4 ] Loading and indexing PDF documents...")
+print("[1/4] Loading and indexing PDF documents...")
 pdf_paths = glob.glob(os.path.join(RESOURCES_DIR, "*.pdf"))
 print(f"  Found {len(pdf_paths)} PDF files in '{RESOURCES_DIR}'")
 docs_list = []
@@ -73,15 +80,15 @@ for pdf_path in pdf_paths:
     print(f"  Loaded {len(pages)} pages from {filename}")
 print(f"  Total: {len(docs_list)} pages loaded")
 
-doc_splits = semantic_chunking(docs_list)
-
-
-embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
-vector_store = InMemoryVectorStore(embeddings)
-document_ids = vector_store.add_documents(documents=doc_splits)
-print(f"✓ Indexed {len(document_ids)} chunks in vector store")
-
-retriever = vector_store.as_retriever(search_kwargs={"k": RETRIEVAL_K})
+# Parent-child chunking: semantic parents + recursive children
+retriever = parent_child_chunking(
+    docs_list,
+    embedding_model=EMBEDDING_MODEL,
+    child_chunk_size=CHILD_CHUNK_SIZE,
+    child_chunk_overlap=CHILD_CHUNK_OVERLAP,
+    search_k=RETRIEVAL_K,
+)
+print("✓ Parent-child retriever ready")
 
 # ── 2. RAG Generation Pipeline ─────────────────────────────────────────────
 
@@ -102,14 +109,13 @@ def _llm_generate(messages: list) -> object:
 
 @traceable()
 def rag_bot(question: str) -> dict:
-    """RAG pipeline: retrieve relevant chunks then generate an answer."""
+    """RAG pipeline: retrieve relevant parent chunks then generate an answer."""
     docs = retriever.invoke(question)
     docs_string = "\n\n".join(doc.page_content for doc in docs)
 
     if FOOL:
         fooled_question, fooled_docs = apply_substitutions(question, docs)
         fooled_docs_string = "\n\n".join(doc.page_content for doc in fooled_docs)
-        # save_substitution(question, fooled_question, docs, fooled_docs)
 
     instructions = f"""You are a helpful assistant who is good at analyzing \
 scientific source information and answering questions.
@@ -157,13 +163,16 @@ if __name__ == "__main__":
     experiment_results = client.evaluate(
         target,
         data=DATASET_NAME,
-        # only use the last evaluator
         evaluators=[evaluator_fns[-1]],  # Only retrieval relevance
-        experiment_prefix="semantic-perc=95-k=16",
+        experiment_prefix=f"parent=semantic-child-ch={CHILD_CHUNK_SIZE}-ov={CHILD_CHUNK_OVERLAP}-k={RETRIEVAL_K}",
         max_concurrency=32,
         metadata={
             "sub_level": SUB_LEVEL if FOOL else "no obfuscation",
             "model": OPENAI_MODEL,
+            "chunking": "parent-child",
+            "parent_splitter": "semantic-perc=95",
+            "child_chunk_size": CHILD_CHUNK_SIZE,
+            "child_chunk_overlap": CHILD_CHUNK_OVERLAP,
         },
         num_repetitions=1,
     )

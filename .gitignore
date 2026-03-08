@@ -3,6 +3,9 @@
 # Node modules
 node_modules/
 
+# Evaluation reults
+evaluation-results/
+
 # Large binary / model files
 *.faiss
 *.bin

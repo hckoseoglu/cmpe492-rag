@@ -81,16 +81,49 @@ A grounded value of False means that the student's answer does not meet all of t
 
 Explain your reasoning in a step-by-step manner to ensure your reasoning and conclusion are correct. Avoid simply stating the correct answer at the outset."""
 
-RETRIEVAL_RELEVANCE_INSTRUCTIONS = """You are a teacher grading a quiz. You will be given a QUESTION and a set of FACTS provided by the student. Here is the grade criteria to follow:
-(1) Your goal is to identify FACTS that are completely unrelated to the QUESTION
-(2) If the facts contain ANY keywords or semantic meaning related to the question, consider them relevant
-(3) It is OK if the facts have SOME information that is unrelated to the question as long as (2) is met
+RETRIEVAL_RELEVANCE_INSTRUCTIONS = (
+    RETRIEVAL_RELEVANCE_INSTRUCTIONS
+) = """You are an expert evaluator assessing whether retrieved context contains sufficient information to answer a given question.
 
-Relevance:
-A relevance value of True means that the FACTS contain ANY keywords or semantic meaning related to the QUESTION and are therefore relevant.
-A relevance value of False means that the FACTS are completely unrelated to the QUESTION.
+Your task is to determine if the CONTEXT provides the specific information needed to answer the QUESTION.
 
-Explain your reasoning in a step-by-step manner to ensure your reasoning and conclusion are correct. Avoid simply stating the correct answer at the outset."""
+Follow these rules strictly:
+- Do NOT rely on your own knowledge. Use ONLY what is explicitly written in the CONTEXT.
+- Semantic similarity or shared keywords are NOT enough. The CONTEXT must contain actual information that directly addresses what the QUESTION is asking.
+- If the QUESTION asks for a definition, the CONTEXT must contain that definition.
+- If the QUESTION asks for a list (e.g. "what are the three phases"), the CONTEXT must explicitly mention those items.
+- If the QUESTION has multiple parts, the CONTEXT must address ALL parts to be considered relevant.
+
+Evaluation criteria:
+- True: The CONTEXT contains specific information that directly answers the QUESTION (or all parts of it). A person reading only the CONTEXT could reasonably answer the QUESTION.
+- False: The CONTEXT is on a related topic but does not contain the specific information needed to answer the QUESTION, OR only addresses some parts of a multi-part question.
+
+Here are three examples:
+
+Example 1:
+QUESTION: What is the recommended daily protein intake for muscle hypertrophy?
+CONTEXT: Protein plays a critical role in muscle repair and growth. Studies suggest that individuals engaged in resistance training should consume between 1.6 to 2.2 grams of protein per kilogram of body weight per day to maximize muscle protein synthesis.
+VERDICT: True
+REASONING: The question asks for a specific recommendation and the context provides the exact range (1.6-2.2 g/kg/day) with the relevant condition (resistance training for hypertrophy).
+
+Example 2:
+QUESTION: What are the benefits of periodization in a training program?
+CONTEXT: Periodization involves dividing a training program into distinct phases such as hypertrophy, strength, and peaking. Each phase targets different physiological adaptations through systematic variation in volume and intensity.
+VERDICT: False
+REASONING: The context explains what periodization IS and describes its structure, but never states its BENEFITS. A reader would understand the concept but could not list the benefits from this context alone.
+
+Example 3:
+QUESTION: How does sleep affect recovery and what is the recommended amount for athletes?
+CONTEXT: Sleep is essential for athletic recovery. During deep sleep, growth hormone secretion peaks, facilitating tissue repair and muscle growth. Most sports science literature recommends 7 to 9 hours of sleep per night for athletes, with some studies suggesting that extending sleep to 10 hours can further improve reaction time and performance.
+VERDICT: True
+REASONING: The question has two parts — how sleep affects recovery (growth hormone, tissue repair, muscle growth) and recommended amount (7-9 hours, up to 10). Both parts are directly addressed in the context.
+
+
+Now evaluate the following. Think step-by-step:
+1. Identify what exactly the QUESTION is asking for.
+2. Check if each part of the QUESTION is explicitly addressed in the CONTEXT.
+3. Determine if someone could answer the QUESTION using ONLY the CONTEXT.
+4. Give your final verdict."""
 
 
 # ── Factory ─────────────────────────────────────────────────────────────────
