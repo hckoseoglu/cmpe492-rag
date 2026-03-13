@@ -1,0 +1,7 @@
+# Human-readable documentation — not for Claude Code
+*.docx
+*.doc
+*.pdf
+
+# Keep the docs/ folder readable but ignore the formatted version
+docs/concept_normalization_module.docx

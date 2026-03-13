@@ -12,10 +12,13 @@ returned to the LLM for richer context.
 
 import glob
 import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from utils.augment_experiment import augment_experiment
-
-os.environ.setdefault("LANGSMITH_TRACING", "true")
+from utils.ram_monitor import RamMonitor
+from utils.tracked_embeddings import TrackedEmbeddings
 
 from langchain.chat_models import init_chat_model
 from langchain_community.document_loaders import PyPDFLoader
@@ -30,26 +33,16 @@ from tenacity import (
 import openai
 
 from evaluators import make_evaluators
-from knowledge_probing.substitution import (
-    SUB_LEVEL,
-    apply_substitutions,
-    reverse_substitutions,
-)
-from knowledge_probing.save_subs import save_substitution
 
 # Chunking imports
-from chunking.chunking import parent_child_chunking
+from chunking import parent_child_chunking
 
 
 os.environ["LANGSMITH_TRACING"] = "true"
 os.environ["LANGSMITH_PROJECT"] = "rag_eval"
 os.environ["LANGSMITH_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ.setdefault("LANGSMITH_TRACING", "true")
 
-# EXPERIMENT
-
-FOOL = False
-
-#######
 
 # ── Config ──────────────────────────────────────────────────────────────────
 
@@ -66,6 +59,11 @@ CHILD_CHUNK_OVERLAP = 45
 
 # ── 1. Indexing & Retrieval ─────────────────────────────────────────────────
 
+monitor = RamMonitor(log_path="ram_log.csv", interval=2)
+monitor.start()
+
+embeddings = TrackedEmbeddings(model=EMBEDDING_MODEL, log_path="embed_log.csv")
+
 print("[1/4] Loading and indexing PDF documents...")
 pdf_paths = glob.glob(os.path.join(RESOURCES_DIR, "*.pdf"))
 print(f"  Found {len(pdf_paths)} PDF files in '{RESOURCES_DIR}'")
@@ -81,13 +79,16 @@ for pdf_path in pdf_paths:
 print(f"  Total: {len(docs_list)} pages loaded")
 
 # Parent-child chunking: semantic parents + recursive children
-retriever = parent_child_chunking(
-    docs_list,
-    embedding_model=EMBEDDING_MODEL,
-    child_chunk_size=CHILD_CHUNK_SIZE,
-    child_chunk_overlap=CHILD_CHUNK_OVERLAP,
-    search_k=RETRIEVAL_K,
-)
+embeddings.stage = "semantic_chunking"
+with monitor.stage("parent_child_indexing"):
+    retriever = parent_child_chunking(
+        docs_list,
+        embedding_model=EMBEDDING_MODEL,
+        child_chunk_size=CHILD_CHUNK_SIZE,
+        child_chunk_overlap=CHILD_CHUNK_OVERLAP,
+        search_k=RETRIEVAL_K,
+        tracked_embeddings=embeddings,
+    )
 print("✓ Parent-child retriever ready")
 
 # ── 2. RAG Generation Pipeline ─────────────────────────────────────────────
@@ -113,10 +114,6 @@ def rag_bot(question: str) -> dict:
     docs = retriever.invoke(question)
     docs_string = "\n\n".join(doc.page_content for doc in docs)
 
-    if FOOL:
-        fooled_question, fooled_docs = apply_substitutions(question, docs)
-        fooled_docs_string = "\n\n".join(doc.page_content for doc in fooled_docs)
-
     instructions = f"""You are a helpful assistant who is good at analyzing \
 scientific source information and answering questions.
 Use ONLY the following source documents to answer the user's questions.
@@ -125,17 +122,16 @@ If you cannot find the answer in the source documents, output the following:
 Use three sentences maximum and keep the answer concise.
 
 Documents:
-{fooled_docs_string if FOOL else docs_string}"""
+{docs_string}"""
 
     ai_msg = _llm_generate(
         [
             {"role": "system", "content": instructions},
-            {"role": "user", "content": fooled_question if FOOL else question},
+            {"role": "user", "content": question},
         ]
     )
 
-    clean_answer = reverse_substitutions(ai_msg.content) if FOOL else ai_msg.content
-    return {"answer": clean_answer, "documents": docs}
+    return {"answer": ai_msg.content, "documents": docs}
 
 
 client = Client()
@@ -160,20 +156,23 @@ def target(inputs: dict, metadata: dict) -> dict:
 
 if __name__ == "__main__":
     print("[4/4] Running evaluation...")
-    experiment_results = client.evaluate(
-        target,
-        data=DATASET_NAME,
-        evaluators=[evaluator_fns[-1]],  # Only retrieval relevance
-        experiment_prefix=f"parent=semantic-child-ch={CHILD_CHUNK_SIZE}-ov={CHILD_CHUNK_OVERLAP}-k={RETRIEVAL_K}",
-        max_concurrency=32,
-        metadata={
-            "sub_level": SUB_LEVEL if FOOL else "no obfuscation",
-            "model": OPENAI_MODEL,
-            "chunking": "parent-child",
-            "parent_splitter": "semantic-perc=95",
-            "child_chunk_size": CHILD_CHUNK_SIZE,
-            "child_chunk_overlap": CHILD_CHUNK_OVERLAP,
-        },
-        num_repetitions=1,
-    )
+    embeddings.stage = "evaluation"
+    with monitor.stage("evaluation"):
+        experiment_results = client.evaluate(
+            target,
+            data=DATASET_NAME,
+            evaluators=[evaluator_fns[-1]],  # Only retrieval relevance
+            experiment_prefix=f"parent=semantic-child-ch={CHILD_CHUNK_SIZE}-ov={CHILD_CHUNK_OVERLAP}-k={RETRIEVAL_K}",
+            max_concurrency=32,
+            metadata={
+                "model": OPENAI_MODEL,
+                "chunking": "parent-child",
+                "parent_splitter": "semantic-perc=95",
+                "child_chunk_size": CHILD_CHUNK_SIZE,
+                "child_chunk_overlap": CHILD_CHUNK_OVERLAP,
+            },
+            num_repetitions=1,
+        )
+    embeddings.summary()
+    monitor.stop()
     print("\n[4/4] ✅ Evaluation complete! View results in LangSmith.")

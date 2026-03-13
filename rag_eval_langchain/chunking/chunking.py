@@ -1,4 +1,7 @@
+from itertools import groupby
+
 from langchain_openai import OpenAIEmbeddings
+from utils.tracked_embeddings import TrackedEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_classic.retrievers import ParentDocumentRetriever
@@ -60,6 +63,7 @@ def parent_child_chunking(
     child_chunk_size=CHILD_CHUNK_SIZE,
     child_chunk_overlap=CHILD_CHUNK_OVERLAP,
     search_k=16,
+    tracked_embeddings: TrackedEmbeddings = None,
 ):
     """
     Parent-child chunking strategy.
@@ -72,7 +76,7 @@ def parent_child_chunking(
 
     Returns a ParentDocumentRetriever ready for .invoke() calls.
     """
-    embeddings = OpenAIEmbeddings(model=embedding_model)
+    embeddings = tracked_embeddings or OpenAIEmbeddings(model=embedding_model)
 
     # Step 1: Pre-split into semantic parent chunks
     
@@ -85,8 +89,14 @@ def parent_child_chunking(
     )
     
     
+    # Process one PDF at a time to allow cross-page semantic chunks while
+    # keeping memory bounded to one book rather than the entire corpus.
     print("  Splitting into semantic parent chunks...")
-    parent_docs = parent_splitter.split_documents(docs_list)
+    parent_docs = []
+    for title, pages in groupby(docs_list, key=lambda d: d.metadata["title"]):
+        doc_pages = list(pages)
+        parent_docs.extend(parent_splitter.split_documents(doc_pages))
+        print(f"    '{title}': {len(doc_pages)} pages processed")
     print(f"  Parent chunks (semantic): {len(parent_docs)}")
     print(
         f"    Biggest parent (chars): {max(len(d.page_content) for d in parent_docs)}"
