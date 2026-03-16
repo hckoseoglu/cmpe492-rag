@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "q_0001",
+    "text": "What are the best form cues for a BB back squat to keep my knees tracking, maintain a neutral spine, and hit proper depth without leaning forward?",
+    "topic": "Barbell back squat proper form and cues",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "BB": "Barbell"
+      }
+    },
+    "transformed_text": "What are the best form cues for a Barbell back squat to keep my knees tracking, maintain a neutral spine, and hit proper depth without leaning forward?"
+  },
+  {
+    "id": "q_0002",
+    "text": "Can you outline a 12-week hypertrophy program that prioritizes my quads with exercise selection, weekly volume, progression, and suggested rep ranges?",
+    "topic": "Designing a 12-week hypertrophy training program",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "quads": "quadriceps femoris"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "Can you outline a 12-week hypertrophy program that prioritizes my quadriceps femoris with exercise selection, weekly volume, progression, and suggested rep ranges?"
+  },
+  {
+    "id": "q_0003",
+    "text": "For moderate activity, how should I split my daily macros based on my TDEE\u2014what % or grams of protein, carbs, and fat should I aim for per day?",
+    "topic": "Daily macronutrient targets for moderate activity",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TDEE": "Total Daily Energy Expenditure"
+      }
+    },
+    "transformed_text": "For moderate activity, how should I split my daily macros based on my Total Daily Energy Expenditure\u2014what % or grams of protein, carbs, and fat should I aim for per day?"
+  },
+  {
+    "id": "q_0004",
+    "text": "How many hours of sleep do I need to maximize MPS after a heavy leg day?",
+    "topic": "Sleep strategies to optimize muscle recovery",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MPS": "Muscle Protein Synthesis"
+      }
+    },
+    "transformed_text": "How many hours of sleep do I need to maximize Muscle Protein Synthesis after a heavy leg day?"
+  },
+  {
+    "id": "q_0005",
+    "text": "How does endurance training increase mitochondrial biogenesis and improve VO2MAX?",
+    "topic": "How endurance training affects mitochondrial biogenesis",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "How does endurance training increase mitochondrial biogenesis and improve Maximal Oxygen Uptake?"
+  },
+  {
+    "id": "q_0006",
+    "text": "What's a good treadmill HIIT interval plan for beginners \u2014 what speeds and inclines should I use for work and recovery periods?",
+    "topic": "Adjusting treadmill incline and speed for intervals",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "HIIT": "High Intensity Interval Training"
+      }
+    },
+    "transformed_text": "What's a good treadmill High Intensity Interval Training interval plan for beginners \u2014 what speeds and inclines should I use for work and recovery periods?"
+  },
+  {
+    "id": "q_0007",
+    "text": "What rotator cuff strengthening and mobility drills should I do to avoid injury when doing OHP?",
+    "topic": "Preventing rotator cuff injuries in overhead athletes",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "OHP": "Overhead Press"
+      }
+    },
+    "transformed_text": "What rotator cuff strengthening and mobility drills should I do to avoid injury when doing Overhead Press?"
+  },
+  {
+    "id": "q_0008",
+    "text": "Can a daily dynamic stretching routine improve thoracic ROM, and what exercises should I do?",
+    "topic": "Daily dynamic stretching routine for thoracic mobility",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "ROM": "Range Of Motion"
+      }
+    },
+    "transformed_text": "Can a daily dynamic stretching routine improve thoracic Range Of Motion, and what exercises should I do?"
+  },
+  {
+    "id": "q_0009",
+    "text": "how do I use HRR to set heart rate zones for improving aerobic endurance?",
+    "topic": "Heart-rate zone training for aerobic endurance improvements",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "HRR": "Heart Rate Reserve"
+      }
+    },
+    "transformed_text": "how do I use Heart Rate Reserve to set heart rate zones for improving aerobic endurance?"
+  },
+  {
+    "id": "q_0010",
+    "text": "How should I structure a 12-week program for the squat, bench, and deadlift to peak my 1RM while managing fatigue and CNS recovery?",
+    "topic": "Programming compound lifts for maximal strength gains",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "1RM": "One Repetition Maximum"
+      }
+    },
+    "transformed_text": "How should I structure a 12-week program for the squat, bench, and deadlift to peak my One Repetition Maximum while managing fatigue and CNS recovery?"
+  },
+  {
+    "id": "q_0011",
+    "text": "How can I target my hammies more during dumbbell Romanian deadlifts? Technique cues and common mistakes?",
+    "topic": "Dumbbell Romanian deadlift technique and cues",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "hammies": "hamstrings"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "How can I target my hamstrings more during dumbbell Romanian deadlifts? Technique cues and common mistakes?"
+  },
+  {
+    "id": "q_0012",
+    "text": "Can you outline a 6-week peaking plan for powerlifters to hit a new 1RM across squat/bench/deadlift, including weekly percentage targets, RPE guidance, taper strategy, and how to manage CNS fatigue?",
+    "topic": "Designing a 6-week peaking plan for powerlifters",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "1RM": "One Repetition Maximum"
+      }
+    },
+    "transformed_text": "Can you outline a 6-week peaking plan for powerlifters to hit a new One Repetition Maximum across squat/bench/deadlift, including weekly percentage targets, RPE guidance, taper strategy, and how to manage CNS fatigue?"
+  },
+  {
+    "id": "q_0013",
+    "text": "Do I need to eat protein right after workouts to maximize MPS, or is protein before training enough?",
+    "topic": "Pre- and post-workout protein timing recommendations",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MPS": "Muscle Protein Synthesis"
+      }
+    },
+    "transformed_text": "Do I need to eat protein right after workouts to maximize Muscle Protein Synthesis, or is protein before training enough?"
+  },
+  {
+    "id": "q_0014",
+    "text": "How cold should cold water immersion be and how long should I stay in to reduce DOMS after leg day?",
+    "topic": "Cold water immersion protocols for post-exercise recovery",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "DOMS": "Delayed Onset Muscle Soreness"
+      }
+    },
+    "transformed_text": "How cold should cold water immersion be and how long should I stay in to reduce Delayed Onset Muscle Soreness after leg day?"
+  },
+  {
+    "id": "q_0015",
+    "text": "How long is MPS elevated after a resistance training session in women, and do menstrual cycle hormones like estrogen or progesterone affect that duration?",
+    "topic": "Hormonal responses to resistance training in women",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MPS": "Muscle Protein Synthesis"
+      }
+    },
+    "transformed_text": "How long is Muscle Protein Synthesis elevated after a resistance training session in women, and do menstrual cycle hormones like estrogen or progesterone affect that duration?"
+  },
+  {
+    "id": "q_0016",
+    "text": "What are the best kettlebell swing progressions and safety cues to build explosive glutes and protect my lower back?",
+    "topic": "Effective kettlebell swing progressions and safety tips",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What are the best kettlebell swing progressions and safety cues to build explosive gluteal muscles and protect my lower back?"
+  },
+  {
+    "id": "q_0017",
+    "text": "how can I strengthen my calves to reduce my risk of ankle sprains when trail running?",
+    "topic": "Ankle sprain prevention for trail runners",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "calves": "triceps surae"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "how can I strengthen my triceps surae to reduce my risk of ankle sprains when trail running?"
+  },
+  {
+    "id": "q_0018",
+    "text": "What's a quick hip flexor mobility routine I can do at my desk to improve hip ROM?",
+    "topic": "Hip flexor mobility routine for desk workers",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "ROM": "Range Of Motion"
+      }
+    },
+    "transformed_text": "What's a quick hip flexor mobility routine I can do at my desk to improve hip Range Of Motion?"
+  },
+  {
+    "id": "q_0019",
+    "text": "How should I structure a polarized training week as a recreational cyclist using my FTP to set intensity zones \u2014 how many low-intensity hours vs high-intensity sessions, and where do tempo or threshold rides fit?",
+    "topic": "Structuring polarized endurance training for recreational cyclists",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "FTP": "Functional Threshold Power"
+      }
+    },
+    "transformed_text": "How should I structure a polarized training week as a recreational cyclist using my Functional Threshold Power to set intensity zones \u2014 how many low-intensity hours vs high-intensity sessions, and where do tempo or threshold rides fit?"
+  },
+  {
+    "id": "q_0020",
+    "text": "What's an effective single-leg strength progression to correct left-right imbalances and better activate my glutes?",
+    "topic": "Single-leg strength progression to correct imbalances",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's an effective single-leg strength progression to correct left-right imbalances and better activate my gluteal muscles?"
+  },
+  {
+    "id": "q_0021",
+    "text": "How should I position the bar and cue my elbows, core, and knees when front squatting with a BB?",
+    "topic": "Proper barbell front squat technique and cues",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "BB": "Barbell"
+      }
+    },
+    "transformed_text": "How should I position the bar and cue my elbows, core, and knees when front squatting with a Barbell?"
+  },
+  {
+    "id": "q_0022",
+    "text": "How should I structure an 8-week concurrent strength and endurance program \u2014 should I do HIIT and lifting on the same day, and how to progress volume/intensity to avoid interference?",
+    "topic": "Designing 8-week concurrent strength and endurance program",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "HIIT": "High Intensity Interval Training"
+      }
+    },
+    "transformed_text": "How should I structure an 8-week concurrent strength and endurance program \u2014 should I do High Intensity Interval Training and lifting on the same day, and how to progress volume/intensity to avoid interference?"
+  },
+  {
+    "id": "q_0023",
+    "text": "How many carbs should I eat before and after HIIT sessions to maximize performance and recovery?",
+    "topic": "Optimizing carbohydrate intake around high-intensity sessions",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "HIIT": "High Intensity Interval Training"
+      }
+    },
+    "transformed_text": "How many carbs should I eat before and after High Intensity Interval Training sessions to maximize performance and recovery?"
+  },
+  {
+    "id": "q_0024",
+    "text": "What's a progressive tendon loading protocol for Achilles tendinopathy I can do to rehab my calves \u2014 sets, reps, load, progression rules, and pain limits?",
+    "topic": "Progressive tendon loading protocol for Achilles tendinopathy",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "calves": "triceps surae"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a progressive tendon loading protocol for Achilles tendinopathy I can do to rehab my triceps surae \u2014 sets, reps, load, progression rules, and pain limits?"
+  },
+  {
+    "id": "q_0025",
+    "text": "Which resistance band exercises are best for strengthening my hip abductors and glutes, and what sets/reps should I use?",
+    "topic": "Using resistance bands to improve hip abductor strength",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "Which resistance band exercises are best for strengthening my hip abductors and gluteal muscles, and what sets/reps should I use?"
+  },
+  {
+    "id": "q_0026",
+    "text": "How do I use RPE to autoregulate my daily strength training sessions and adjust loads, reps, and volume based on fatigue?",
+    "topic": "Autoregulation methods for daily strength training sessions",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPE": "Rate of Perceived Exertion"
+      }
+    },
+    "transformed_text": "How do I use Rate of Perceived Exertion to autoregulate my daily strength training sessions and adjust loads, reps, and volume based on fatigue?"
+  },
+  {
+    "id": "q_0027",
+    "text": "Is foam rolling after a workout helpful to reduce DOMS, and how long should I spend on each muscle group?",
+    "topic": "Foam rolling and myofascial release post-workout routine",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "DOMS": "Delayed Onset Muscle Soreness"
+      }
+    },
+    "transformed_text": "Is foam rolling after a workout helpful to reduce Delayed Onset Muscle Soreness, and how long should I spend on each muscle group?"
+  },
+  {
+    "id": "q_0028",
+    "text": "How can I estimate my ventilatory threshold for pacing runs without VO2MAX testing?",
+    "topic": "Ventilatory threshold assessment for tailored cardio pacing",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "How can I estimate my ventilatory threshold for pacing runs without Maximal Oxygen Uptake testing?"
+  },
+  {
+    "id": "q_0029",
+    "text": "Which unilateral pressing variations should I use to fix shoulder imbalances when one of my delts is weaker?",
+    "topic": "Unilateral pressing variations to fix shoulder imbalances",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "delts": "deltoid muscle"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "Which unilateral pressing variations should I use to fix shoulder imbalances when one of my deltoid muscles is weaker?"
+  },
+  {
+    "id": "q_0030",
+    "text": "How should I adjust my TDEE and macros during a 1-2 week competition taper to maintain weight and performance?",
+    "topic": "Nutrient periodization for athletes during competition season",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TDEE": "Total Daily Energy Expenditure"
+      }
+    },
+    "transformed_text": "How should I adjust my Total Daily Energy Expenditure and macros during a 1-2 week competition taper to maintain weight and performance?"
+  },
+  {
+    "id": "q_0031",
+    "text": "For trap bar deadlift setup cues, how do I position my feet and hips to target my glutes rather than my thighs, and what's a simple programming approach for strength (sets/reps, progression)?",
+    "topic": "Trap bar deadlift setup cues and programming",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "For trap bar deadlift setup cues, how do I position my feet and hips to target my gluteal muscles rather than my thighs, and what's a simple programming approach for strength (sets/reps, progression)?"
+  },
+  {
+    "id": "q_0032",
+    "text": "What's a simple full-body 3-day-per-week beginner program using only one DB and bodyweight?",
+    "topic": "Full-body minimal-equipment program for beginners",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "DB": "Dumbbell"
+      }
+    },
+    "transformed_text": "What's a simple full-body 3-day-per-week beginner program using only one Dumbbell and bodyweight?"
+  },
+  {
+    "id": "q_0033",
+    "text": "I'm a plant-based endurance athlete using a cyclical carbohydrate strategy (low-carb easy days, high-carb before long sessions). Will this approach reduce my VO2MAX or impair race-day performance?",
+    "topic": "Plant-based cyclical carbohydrate strategy for endurance athletes",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "I'm a plant-based endurance athlete using a cyclical carbohydrate strategy (low-carb easy days, high-carb before long sessions). Will this approach reduce my Maximal Oxygen Uptake or impair race-day performance?"
+  },
+  {
+    "id": "q_0034",
+    "text": "If I try a sleep extension protocol (adding 1-2 hours/night for 1-2 weeks), will it improve my anaerobic performance and CNS recovery for sprints and heavy lifts?",
+    "topic": "Sleep extension protocol to enhance anaerobic performance",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "CNS": "Central Nervous System"
+      }
+    },
+    "transformed_text": "If I try a sleep extension protocol (adding 1-2 hours/night for 1-2 weeks), will it improve my anaerobic performance and Central Nervous System recovery for sprints and heavy lifts?"
+  },
+  {
+    "id": "q_0035",
+    "text": "I'm iron deficient and doing heavy endurance training \u2014 how will that affect my VO2MAX, and what nutrition/training changes should I make to avoid performance loss?",
+    "topic": "Managing iron deficiency during heavy endurance training",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "I'm iron deficient and doing heavy endurance training \u2014 how will that affect my Maximal Oxygen Uptake, and what nutrition/training changes should I make to avoid performance loss?"
+  },
+  {
+    "id": "q_0036",
+    "text": "How does the knurling on an Olympic BB affect where I should put my hands for snatch vs clean and jerk, and should I adjust thumb placement because of the center knurling?",
+    "topic": "Olympic bar knurling and grip placement implications",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "BB": "Barbell"
+      }
+    },
+    "transformed_text": "How does the knurling on an Olympic Barbell affect where I should put my hands for snatch vs clean and jerk, and should I adjust thumb placement because of the center knurling?"
+  },
+  {
+    "id": "q_0037",
+    "text": "What's a safe exercise progression for patellofemoral pain syndrome \u2014 when can I start loading my quads, and how should I increase load, reps, and range of motion?",
+    "topic": "Exercise progression for patellofemoral pain syndrome",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "quads": "quadriceps femoris"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a safe exercise progression for patellofemoral pain syndrome \u2014 when can I start loading my quadriceps femoris, and how should I increase load, reps, and range of motion?"
+  },
+  {
+    "id": "q_0038",
+    "text": "Can I do active neural flossing for lumbar radicular symptoms alongside PNF stretching, and what are the recommended sets, reps, and cues?",
+    "topic": "Active neural flossing routine for lumbar radicular symptoms",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "PNF": "Proprioceptive Neuromuscular Facilitation"
+      }
+    },
+    "transformed_text": "Can I do active neural flossing for lumbar radicular symptoms alongside Proprioceptive Neuromuscular Facilitation stretching, and what are the recommended sets, reps, and cues?"
+  },
+  {
+    "id": "q_0039",
+    "text": "Looking for a rower sprint protocol to improve VO2MAX \u2014 what sprint length, rest ratio, intensity (split/power), and frequency per week should I use?",
+    "topic": "Rower sprint protocol to improve VO2max",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "Looking for a rower sprint protocol to improve Maximal Oxygen Uptake \u2014 what sprint length, rest ratio, intensity (split/power), and frequency per week should I use?"
+  },
+  {
+    "id": "q_0040",
+    "text": "How should I structure cluster sets for bench press to increase my 1RM - sets, reps and rest between clusters?",
+    "topic": "Cluster set guidelines for upper-body maximal strength",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "1RM": "One Repetition Maximum"
+      }
+    },
+    "transformed_text": "How should I structure cluster sets for bench press to increase my One Repetition Maximum - sets, reps and rest between clusters?"
+  },
+  {
+    "id": "q_0041",
+    "text": "For hypertrophy, what's the ideal eccentric tempo \u2014 is a 3-5s eccentric better than a fast one, and how should I adjust TUT and volume per muscle?",
+    "topic": "Eccentric tempo prescriptions for muscle hypertrophy",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TUT": "Time Under Tension"
+      }
+    },
+    "transformed_text": "For hypertrophy, what's the ideal eccentric tempo \u2014 is a 3-5s eccentric better than a fast one, and how should I adjust Time Under Tension and volume per muscle?"
+  },
+  {
+    "id": "q_0042",
+    "text": "For a 10-day weight cut before a fight, how large of a daily calorie deficit from my TDEE is safe to reach the target weight while minimizing lean muscle loss?",
+    "topic": "Nutrition strategy for weight cutting in combat sports",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TDEE": "Total Daily Energy Expenditure"
+      }
+    },
+    "transformed_text": "For a 10-day weight cut before a fight, how large of a daily calorie deficit from my Total Daily Energy Expenditure is safe to reach the target weight while minimizing lean muscle loss?"
+  },
+  {
+    "id": "q_0043",
+    "text": "What's the best way to cue my glutes during band-resisted sprint starts to improve acceleration and avoid common form mistakes?",
+    "topic": "Band-resisted sprint mechanics and acceleration drills",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's the best way to cue my gluteal muscles during band-resisted sprint starts to improve acceleration and avoid common form mistakes?"
+  },
+  {
+    "id": "q_0044",
+    "text": "How should I structure deload weeks to manage CNS fatigue and still make long-term progress?",
+    "topic": "Programming deload weeks for long-term progression",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "CNS": "Central Nervous System"
+      }
+    },
+    "transformed_text": "How should I structure deload weeks to manage Central Nervous System fatigue and still make long-term progress?"
+  },
+  {
+    "id": "q_0045",
+    "text": "What's a safe progressive loading protocol to rehab a calf strain so I can get back to running \u2014 week-by-week phases, key exercises (isometrics, eccentrics, concentric), sets/reps/progression and return-to-run criteria for my calves?",
+    "topic": "Calf strain rehabilitation progressive loading protocol",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "calves": "triceps surae"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a safe progressive loading protocol to rehab a calf strain so I can get back to running \u2014 week-by-week phases, key exercises (isometrics, eccentrics, concentric), sets/reps/progression and return-to-run criteria for my triceps surae?"
+  },
+  {
+    "id": "q_0046",
+    "text": "How should I train my hammies to preferentially develop fast-twitch fibers for 100m sprints? What rep ranges, loads, rest intervals, and plyometric work should I use?",
+    "topic": "Optimal fiber-type specific training for sprinters",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "hammies": "hamstrings"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "How should I train my hamstrings to preferentially develop fast-twitch fibers for 100m sprints? What rep ranges, loads, rest intervals, and plyometric work should I use?"
+  },
+  {
+    "id": "q_0047",
+    "text": "Can you break down the technique for the BB clean and common errors beginners make?",
+    "topic": "Barbell clean technique breakdown and common errors",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "BB": "Barbell"
+      }
+    },
+    "transformed_text": "Can you break down the technique for the Barbell clean and common errors beginners make?"
+  },
+  {
+    "id": "q_0048",
+    "text": "How much water and electrolytes should I drink per hour during a 60-minute HIIT session in 30\u00b0C (86\u00b0F) heat?",
+    "topic": "Hydration strategies for training in heat",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "HIIT": "High Intensity Interval Training"
+      }
+    },
+    "transformed_text": "How much water and electrolytes should I drink per hour during a 60-minute High Intensity Interval Training session in 30\u00b0C (86\u00b0F) heat?"
+  },
+  {
+    "id": "q_0049",
+    "text": "Looking for a 10-15 minute corrective sequence to fix upper-crossed posture: what mobility and strengthening exercises should I do to stretch tight pecs and lats and strengthen mid/lower traps and deep neck flexors?",
+    "topic": "Upper-crossed posture corrective strengthening and mobility sequence",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "pecs": "pectoralis major"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "Looking for a 10-15 minute corrective sequence to fix upper-crossed posture: what mobility and strengthening exercises should I do to stretch tight pectoralis major and lats and strengthen mid/lower traps and deep neck flexors?"
+  },
+  {
+    "id": "q_0050",
+    "text": "How should I structure an 8-week periodized plyometric progression to reduce ground contact time, and how does SAID guide exercise selection, volume, and progression?",
+    "topic": "Periodized plyometric progression to reduce ground contact time",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "SAID": "Specific Adaptation to Imposed Demands"
+      }
+    },
+    "transformed_text": "How should I structure an 8-week periodized plyometric progression to reduce ground contact time, and how does Specific Adaptation to Imposed Demands guide exercise selection, volume, and progression?"
+  },
+  {
+    "id": "q_0051",
+    "text": "What's the proper cable face pull form to target the rear delts and improve posterior shoulder health without aggravating my rotator cuff?",
+    "topic": "Cable face pull technique for posterior shoulder health",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "delts": "deltoid muscle"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's the proper cable face pull form to target the rear deltoid muscle and improve posterior shoulder health without aggravating my rotator cuff?"
+  },
+  {
+    "id": "q_0052",
+    "text": "What's a practical two-week microcycle template for high-frequency strength training that uses day-to-day RPE targets to manage intensity and recovery?",
+    "topic": "Two-week microcycle templates for high-frequency strength training",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPE": "Rate of Perceived Exertion"
+      }
+    },
+    "transformed_text": "What's a practical two-week microcycle template for high-frequency strength training that uses day-to-day Rate of Perceived Exertion targets to manage intensity and recovery?"
+  },
+  {
+    "id": "q_0053",
+    "text": "Does a high-protein bedtime snack actually increase MPS and help muscle recovery overnight?",
+    "topic": "High-protein nighttime meal strategies to support muscle recovery",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MPS": "Muscle Protein Synthesis"
+      }
+    },
+    "transformed_text": "Does a high-protein bedtime snack actually increase Muscle Protein Synthesis and help muscle recovery overnight?"
+  },
+  {
+    "id": "q_0054",
+    "text": "What's the best contrast bath protocol to reduce DOMS after heavy leg day \u2014 temps, durations, and number of cycles?",
+    "topic": "Contrast bath protocol for acute post-exercise recovery",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "DOMS": "Delayed Onset Muscle Soreness"
+      }
+    },
+    "transformed_text": "What's the best contrast bath protocol to reduce Delayed Onset Muscle Soreness after heavy leg day \u2014 temps, durations, and number of cycles?"
+  },
+  {
+    "id": "q_0055",
+    "text": "What's an ideal RPM cadence to train for better pedaling efficiency on my road bike \u2014 should I focus on high-cadence drills or low-cadence strength work?",
+    "topic": "Cycling cadence training to improve pedaling efficiency",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPM": "Revolutions Per Minute"
+      }
+    },
+    "transformed_text": "What's an ideal Revolutions Per Minute cadence to train for better pedaling efficiency on my road bike \u2014 should I focus on high-cadence drills or low-cadence strength work?"
+  },
+  {
+    "id": "q_0056",
+    "text": "Can hypothyroidism reduce my VO2MAX and slow endurance adaptations from run training?",
+    "topic": "Thyroid function effects on endurance training adaptations",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "Can hypothyroidism reduce my Maximal Oxygen Uptake and slow endurance adaptations from run training?"
+  },
+  {
+    "id": "q_0057",
+    "text": "What TRX progressions should I follow to improve my abs and scapular stability \u2014 I can do basic planks and rows but want a safe progression to more unstable moves?",
+    "topic": "TRX suspension progressions for core and scapular stability",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "abs": "rectus abdominis"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What TRX progressions should I follow to improve my rectus abdominis and scapular stability \u2014 I can do basic planks and rows but want a safe progression to more unstable moves?"
+  },
+  {
+    "id": "q_0058",
+    "text": "What's the best timing for taking caffeine before a 1RM lift to maximize strength and power?",
+    "topic": "Acute caffeine timing for maximal strength and power",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "1RM": "One Repetition Maximum"
+      }
+    },
+    "transformed_text": "What's the best timing for taking caffeine before a One Repetition Maximum lift to maximize strength and power?"
+  },
+  {
+    "id": "q_0059",
+    "text": "What's a 5-minute ankle dorsiflexion mobility sequence I can do before squats if my calves are tight?",
+    "topic": "Ankle dorsiflexion mobility sequence to improve squatting",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "calves": "triceps surae"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a 5-minute ankle dorsiflexion mobility sequence I can do before squats if my triceps surae are tight?"
+  },
+  {
+    "id": "q_0060",
+    "text": "What's a good TUT progression for grip training to improve my farmer's carry?",
+    "topic": "Grip strength progressions to enhance farmer's carry performance",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TUT": "Time Under Tension"
+      }
+    },
+    "transformed_text": "What's a good Time Under Tension progression for grip training to improve my farmer's carry?"
+  },
+  {
+    "id": "q_0061",
+    "text": "When bracing my abs for heavy squats, should I take a big breath and hold (Valsalva) or exhale during the lift?",
+    "topic": "Breathing and bracing technique for heavy lifts",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "abs": "rectus abdominis"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "When bracing my rectus abdominis for heavy squats, should I take a big breath and hold (Valsalva) or exhale during the lift?"
+  },
+  {
+    "id": "q_0062",
+    "text": "What's a safe progression and loading plan for the Turkish get-up with a DB if I'm new to the movement?",
+    "topic": "Turkish get-up loading and progression guidelines",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "DB": "Dumbbell"
+      }
+    },
+    "transformed_text": "What's a safe progression and loading plan for the Turkish get-up with a Dumbbell if I'm new to the movement?"
+  },
+  {
+    "id": "q_0063",
+    "text": "What's an effective inspiratory muscle training protocol to improve VO2MAX for endurance athletes like marathoners?",
+    "topic": "Inspiratory muscle training protocol for endurance athletes",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "What's an effective inspiratory muscle training protocol to improve Maximal Oxygen Uptake for endurance athletes like marathoners?"
+  },
+  {
+    "id": "q_0064",
+    "text": "What are the best grip-specific accessory exercises and sets/reps to improve my deadlift lockout for BB deadlifts?",
+    "topic": "Grip-specific accessory work for deadlift lockout",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "BB": "Barbell"
+      }
+    },
+    "transformed_text": "What are the best grip-specific accessory exercises and sets/reps to improve my deadlift lockout for Barbell deadlifts?"
+  },
+  {
+    "id": "q_0065",
+    "text": "What's a 10-15 minute warm-up progression to optimize maximal sprint performance, including dynamic mobility, activation, and SAQ drills?",
+    "topic": "Warm-up progression to optimize maximal sprint performance",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "SAQ": "Speed, Agility, Quickness Training"
+      }
+    },
+    "transformed_text": "What's a 10-15 minute warm-up progression to optimize maximal sprint performance, including dynamic mobility, activation, and Speed, Agility, Quickness Training drills?"
+  },
+  {
+    "id": "q_0066",
+    "text": "After being on a very low-carb diet for 8 weeks, how should I structure a carb refeed day \u2014 should I eat at maintenance (TDEE) or above, and how many carbs are reasonable to replenish glycogen without gaining fat?",
+    "topic": "Carbohydrate refeeding after prolonged low-carbohydrate dieting",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TDEE": "Total Daily Energy Expenditure"
+      }
+    },
+    "transformed_text": "After being on a very low-carb diet for 8 weeks, how should I structure a carb refeed day \u2014 should I eat at maintenance (Total Daily Energy Expenditure) or above, and how many carbs are reasonable to replenish glycogen without gaining fat?"
+  },
+  {
+    "id": "q_0067",
+    "text": "How should I use RPE when progressing through return-to-play stages after a sports-related concussion?",
+    "topic": "Return-to-play criteria following sports-related concussion",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPE": "Rate of Perceived Exertion"
+      }
+    },
+    "transformed_text": "How should I use Rate of Perceived Exertion when progressing through return-to-play stages after a sports-related concussion?"
+  },
+  {
+    "id": "q_0068",
+    "text": "Can you give me a 4-week progressive upper limb plyometric program for baseball/softball pitchers to build throwing power in the delts while minimizing shoulder injury risk?",
+    "topic": "Upper limb plyometric progressions for throwing athletes",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "delts": "deltoid muscle"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "Can you give me a 4-week progressive upper limb plyometric program for baseball/softball pitchers to build throwing power in the deltoid muscle while minimizing shoulder injury risk?"
+  },
+  {
+    "id": "q_0069",
+    "text": "How do I calculate my acute-to-chronic workload ratio using RPE and session duration to reduce my risk of overuse injury?",
+    "topic": "Acute-to-chronic workload ratio monitoring to prevent injury",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPE": "Rate of Perceived Exertion"
+      }
+    },
+    "transformed_text": "How do I calculate my acute-to-chronic workload ratio using Rate of Perceived Exertion and session duration to reduce my risk of overuse injury?"
+  },
+  {
+    "id": "q_0070",
+    "text": "How quickly does ATP get depleted during a 12-minute competitive CrossFit workout, and how long does it take to resynthesize enough between rounds to sustain performance?",
+    "topic": "Bioenergetic demands of competitive CrossFit workouts",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "ATP": "Adenosine Triphosphate"
+      }
+    },
+    "transformed_text": "How quickly does Adenosine Triphosphate get depleted during a 12-minute competitive CrossFit workout, and how long does it take to resynthesize enough between rounds to sustain performance?"
+  },
+  {
+    "id": "q_0071",
+    "text": "On bench press, how much does changing tempo/TUT (e.g., 3-1-1 vs 6-0-2) change the training stimulus for hypertrophy vs strength \u2014 should I prioritize higher TUT or heavier loads?",
+    "topic": "Tempo bench press variations and stimulus differences",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TUT": "Time Under Tension"
+      }
+    },
+    "transformed_text": "On bench press, how much does changing tempo/Time Under Tension (e.g., 3-1-1 vs 6-0-2) change the training stimulus for hypertrophy vs strength \u2014 should I prioritize higher Time Under Tension or heavier loads?"
+  },
+  {
+    "id": "q_0072",
+    "text": "What's a good low-FODMAP pre-race meal and how many KCAL should I aim for 2-3 hours before a 10K to avoid GI issues?",
+    "topic": "Low-FODMAP pre-race meal planning for GI comfort",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "KCAL": "Kilocalorie"
+      }
+    },
+    "transformed_text": "What's a good low-FODMAP pre-race meal and how many Kilocalorie should I aim for 2-3 hours before a 10K to avoid GI issues?"
+  },
+  {
+    "id": "q_0073",
+    "text": "How can I use TUT to progressively overload push-ups and pistol squat progressions as a bodyweight trainee?",
+    "topic": "Progressive overload tactics for bodyweight trainees",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "TUT": "Time Under Tension"
+      }
+    },
+    "transformed_text": "How can I use Time Under Tension to progressively overload push-ups and pistol squat progressions as a bodyweight trainee?"
+  },
+  {
+    "id": "q_0074",
+    "text": "How should I schedule LISS active recovery sessions within a 7-day microcycle to reduce DOMS but not interfere with my strength days?",
+    "topic": "Periodized active recovery sessions within microcycles",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "LISS": "Low Intensity Steady State"
+      }
+    },
+    "transformed_text": "How should I schedule Low Intensity Steady State active recovery sessions within a 7-day microcycle to reduce DOMS but not interfere with my strength days?"
+  },
+  {
+    "id": "q_0075",
+    "text": "How should I train VO2MAX kinetics to improve repeated-sprint ability \u2014 what interval lengths, intensities and recovery times work best?",
+    "topic": "VO2 kinetics training to improve repeated-sprint ability",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "How should I train Maximal Oxygen Uptake kinetics to improve repeated-sprint ability \u2014 what interval lengths, intensities and recovery times work best?"
+  },
+  {
+    "id": "q_0076",
+    "text": "How should I progress loading for my quads with knee osteoarthritis \u2014 sets, reps, tempo, and what's an acceptable pain level?",
+    "topic": "Loading strategies for osteoarthritis-friendly strength gains",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "quads": "quadriceps femoris"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "How should I progress loading for my quadriceps femoris with knee osteoarthritis \u2014 sets, reps, tempo, and what's an acceptable pain level?"
+  },
+  {
+    "id": "q_0077",
+    "text": "What cues should I use to keep my lats engaged and maintain a neutral spine during a sandbag bear-hug carry without shrugging or leaning forward?",
+    "topic": "Proper sandbag carry mechanics and coaching cues",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "lats": "latissimus dorsi"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What cues should I use to keep my latissimus dorsi engaged and maintain a neutral spine during a sandbag bear-hug carry without shrugging or leaning forward?"
+  },
+  {
+    "id": "q_0078",
+    "text": "When should I take nitrate supplements (beetroot juice) peri-workout to get the biggest boost to my VO2MAX and 10K performance?",
+    "topic": "Peri-workout nitrate supplementation for endurance performance",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "VO2MAX": "Maximal Oxygen Uptake"
+      }
+    },
+    "transformed_text": "When should I take nitrate supplements (beetroot juice) peri-workout to get the biggest boost to my Maximal Oxygen Uptake and 10K performance?"
+  },
+  {
+    "id": "q_0079",
+    "text": "What's a quick screening test I can do to check for scapular dyskinesis, and how should I progress corrective exercises to target my traps without making my shoulder pain worse?",
+    "topic": "Scapular dyskinesis screening and corrective exercise progression",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "traps": "trapezius"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a quick screening test I can do to check for scapular dyskinesis, and how should I progress corrective exercises to target my trapezius without making my shoulder pain worse?"
+  },
+  {
+    "id": "q_0080",
+    "text": "What's a quick passive hip capsule mobilization routine I can do before squats to improve squat depth and ROM?",
+    "topic": "Passive hip capsule mobilization routine for squat depth",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "ROM": "Range Of Motion"
+      }
+    },
+    "transformed_text": "What's a quick passive hip capsule mobilization routine I can do before squats to improve squat depth and Range Of Motion?"
+  },
+  {
+    "id": "q_0081",
+    "text": "What's the proper Zercher squat setup and progression for beginners \u2014 how should I position the bar and brace my abs, and what starting sets/reps/load should I use?",
+    "topic": "Zercher squat setup and progression for beginners",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "abs": "rectus abdominis"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's the proper Zercher squat setup and progression for beginners \u2014 how should I position the bar and brace my rectus abdominis, and what starting sets/reps/load should I use?"
+  },
+  {
+    "id": "q_0082",
+    "text": "For low-load blood flow restriction training, what percentage of 1RM should I use, and what's an appropriate set/rep scheme and cuff pressure?",
+    "topic": "Low-load blood flow restriction training protocol",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "1RM": "One Repetition Maximum"
+      }
+    },
+    "transformed_text": "For low-load blood flow restriction training, what percentage of One Repetition Maximum should I use, and what's an appropriate set/rep scheme and cuff pressure?"
+  },
+  {
+    "id": "q_0083",
+    "text": "What's the best hill sprint technique for maximal power development \u2014 posture, hip drive, arm swing, and how to engage my glutes effectively?",
+    "topic": "Hill sprint technique for maximal power development",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's the best hill sprint technique for maximal power development \u2014 posture, hip drive, arm swing, and how to engage my gluteal muscles effectively?"
+  },
+  {
+    "id": "q_0084",
+    "text": "What's a safe progression of aquatic plyometrics to rehabilitate my quads after knee surgery \u2014 recommended water depth, exercise progression, and sets/reps?",
+    "topic": "Aquatic plyometrics progression during lower-limb rehabilitation",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "quads": "quadriceps femoris"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a safe progression of aquatic plyometrics to rehabilitate my quadriceps femoris after knee surgery \u2014 recommended water depth, exercise progression, and sets/reps?"
+  },
+  {
+    "id": "q_0085",
+    "text": "Is my FTP from a 20-minute test on my smart trainer accurate for setting training zones and tracking progress?",
+    "topic": "Functional threshold power testing and interpretation",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "FTP": "Functional Threshold Power"
+      }
+    },
+    "transformed_text": "Is my Functional Threshold Power from a 20-minute test on my smart trainer accurate for setting training zones and tracking progress?"
+  },
+  {
+    "id": "q_0086",
+    "text": "I'm a resistance-trained athlete doing 16:8 intermittent fasting \u2014 how should I time my workouts and protein intake to maximize MPS and preserve muscle?",
+    "topic": "Intermittent fasting adjustments for resistance-trained athletes",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MPS": "Muscle Protein Synthesis"
+      }
+    },
+    "transformed_text": "I'm a resistance-trained athlete doing 16:8 intermittent fasting \u2014 how should I time my workouts and protein intake to maximize Muscle Protein Synthesis and preserve muscle?"
+  },
+  {
+    "id": "q_0087",
+    "text": "Should I wear compression tights right after leg day to reduce DOMS and speed recovery?",
+    "topic": "Compression garment timing and recovery effects",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "DOMS": "Delayed Onset Muscle Soreness"
+      }
+    },
+    "transformed_text": "Should I wear compression tights right after leg day to reduce Delayed Onset Muscle Soreness and speed recovery?"
+  },
+  {
+    "id": "q_0088",
+    "text": "Are landmine press variations safer than OHP for building overhead strength with a history of shoulder impingement, and which variation minimizes joint stress?",
+    "topic": "Landmine press variations for shoulder-safe overhead strength",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "OHP": "Overhead Press"
+      }
+    },
+    "transformed_text": "Are landmine press variations safer than Overhead Press for building overhead strength with a history of shoulder impingement, and which variation minimizes joint stress?"
+  },
+  {
+    "id": "q_0089",
+    "text": "What's a safe progressive return-to-run protocol after a Grade 2 pulled hammies? Include phase timelines, pain and strength criteria, and a sample running progression.",
+    "topic": "Hamstring strain progressive return-to-run protocol",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "hammies": "hamstrings"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What's a safe progressive return-to-run protocol after a Grade 2 pulled hamstrings? Include phase timelines, pain and strength criteria, and a sample running progression."
+  },
+  {
+    "id": "q_0090",
+    "text": "How should I adjust RPE and weekly mileage during a two-week taper for a 1500m to peak on race day?",
+    "topic": "Middle-distance taper strategies for race-day performance",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPE": "Rate of Perceived Exertion"
+      }
+    },
+    "transformed_text": "How should I adjust Rate of Perceived Exertion and weekly mileage during a two-week taper for a 1500m to peak on race day?"
+  },
+  {
+    "id": "q_0091",
+    "text": "How should I set up and cue paused deadlifts to keep my lats engaged and hips in the right spot? Where exactly should the pause be, breathing/bracing cues, and a simple programming recommendation (sets/reps/intensity) for strength?",
+    "topic": "Paused deadlift setup and programming cues",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "lats": "latissimus dorsi"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "How should I set up and cue paused deadlifts to keep my latissimus dorsi engaged and hips in the right spot? Where exactly should the pause be, breathing/bracing cues, and a simple programming recommendation (sets/reps/intensity) for strength?"
+  },
+  {
+    "id": "q_0092",
+    "text": "For an 800m runner using block periodization, how long should the GPP block be and what workouts should it include to build speed endurance and strength?",
+    "topic": "Block periodization for 800m middle-distance runners",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "GPP": "General Physical Preparedness"
+      }
+    },
+    "transformed_text": "For an 800m runner using block periodization, how long should the General Physical Preparedness block be and what workouts should it include to build speed endurance and strength?"
+  },
+  {
+    "id": "q_0093",
+    "text": "How should I spread protein across the day to maximize MPS while in a calorie deficit for fat loss?",
+    "topic": "Protein pacing across the day for fat loss",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MPS": "Muscle Protein Synthesis"
+      }
+    },
+    "transformed_text": "How should I spread protein across the day to maximize Muscle Protein Synthesis while in a calorie deficit for fat loss?"
+  },
+  {
+    "id": "q_0094",
+    "text": "Can a 20-30 minute nap help my CNS recover so I'm stronger for an afternoon lift?",
+    "topic": "Strategic daytime napping to improve afternoon performance",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "CNS": "Central Nervous System"
+      }
+    },
+    "transformed_text": "Can a 20-30 minute nap help my Central Nervous System recover so I'm stronger for an afternoon lift?"
+  },
+  {
+    "id": "q_0095",
+    "text": "Can daily HRV drops reliably indicate CNS overreaching, or should I rely on training performance and fatigue questionnaires instead?",
+    "topic": "Heart rate variability monitoring to detect overreaching",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "CNS": "Central Nervous System"
+      }
+    },
+    "transformed_text": "Can daily HRV drops reliably indicate Central Nervous System overreaching, or should I rely on training performance and fatigue questionnaires instead?"
+  },
+  {
+    "id": "q_0096",
+    "text": "How should I progress heavy sled pushes (weight, distance, sets/reps, rest) to improve 0\u201330m sprint acceleration without overworking my glutes?",
+    "topic": "Heavy sled push progressions for sprint acceleration",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "How should I progress heavy sled pushes (weight, distance, sets/reps, rest) to improve 0\u201330m sprint acceleration without overworking my gluteal muscles?"
+  },
+  {
+    "id": "q_0097",
+    "text": "What proximal hip strengthening exercises should I be doing to prevent IT band syndrome, and how often should I train my glutes?",
+    "topic": "Proximal hip strengthening to prevent IT band syndrome",
+    "transformations_applicable": {
+      "lay_to_canonical": {
+        "glutes": "gluteal muscles"
+      },
+      "abbreviations": {}
+    },
+    "transformed_text": "What proximal hip strengthening exercises should I be doing to prevent IT band syndrome, and how often should I train my gluteal muscles?"
+  },
+  {
+    "id": "q_0098",
+    "text": "What are the best drills to improve posterior shoulder capsule ROM for lifters who bench and overhead press?",
+    "topic": "Posterior shoulder capsule mobility drills for lifters",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "ROM": "Range Of Motion"
+      }
+    },
+    "transformed_text": "What are the best drills to improve posterior shoulder capsule Range Of Motion for lifters who bench and overhead press?"
+  },
+  {
+    "id": "q_0099",
+    "text": "I'm a recreational runner (3x/week, 30\u201345 min). Can you give me three fartlek session templates to improve pace and aerobic fitness, including warm-up/cool-down, interval structure, durations, and RPE targets?",
+    "topic": "Fartlek session templates for recreational running improvements",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "RPE": "Rate of Perceived Exertion"
+      }
+    },
+    "transformed_text": "I'm a recreational runner (3x/week, 30\u201345 min). Can you give me three fartlek session templates to improve pace and aerobic fitness, including warm-up/cool-down, interval structure, durations, and Rate of Perceived Exertion targets?"
+  },
+  {
+    "id": "q_0100",
+    "text": "I just did an isometric mid-thigh pull and recorded an MVC peak force \u2014 how can I use that number to guide my strength programming and monitor fatigue?",
+    "topic": "Isometric mid-thigh pull testing and follow-up programming",
+    "transformations_applicable": {
+      "lay_to_canonical": {},
+      "abbreviations": {
+        "MVC": "Maximum Voluntary Contraction"
+      }
+    },
+    "transformed_text": "I just did an isometric mid-thigh pull and recorded an Maximum Voluntary Contraction peak force \u2014 how can I use that number to guide my strength programming and monitor fatigue?"
+  }
+]

@@ -1,0 +1,1502 @@
+{
+  "doc_0101": {
+    "source_query": "q_0001",
+    "source_doc": "doc_0001",
+    "distractor_index": 1
+  },
+  "doc_0102": {
+    "source_query": "q_0001",
+    "source_doc": "doc_0001",
+    "distractor_index": 2
+  },
+  "doc_0103": {
+    "source_query": "q_0001",
+    "source_doc": "doc_0001",
+    "distractor_index": 3
+  },
+  "doc_0104": {
+    "source_query": "q_0002",
+    "source_doc": "doc_0002",
+    "distractor_index": 1
+  },
+  "doc_0105": {
+    "source_query": "q_0002",
+    "source_doc": "doc_0002",
+    "distractor_index": 2
+  },
+  "doc_0106": {
+    "source_query": "q_0002",
+    "source_doc": "doc_0002",
+    "distractor_index": 3
+  },
+  "doc_0107": {
+    "source_query": "q_0003",
+    "source_doc": "doc_0003",
+    "distractor_index": 1
+  },
+  "doc_0108": {
+    "source_query": "q_0003",
+    "source_doc": "doc_0003",
+    "distractor_index": 2
+  },
+  "doc_0109": {
+    "source_query": "q_0003",
+    "source_doc": "doc_0003",
+    "distractor_index": 3
+  },
+  "doc_0110": {
+    "source_query": "q_0004",
+    "source_doc": "doc_0004",
+    "distractor_index": 1
+  },
+  "doc_0111": {
+    "source_query": "q_0004",
+    "source_doc": "doc_0004",
+    "distractor_index": 2
+  },
+  "doc_0112": {
+    "source_query": "q_0004",
+    "source_doc": "doc_0004",
+    "distractor_index": 3
+  },
+  "doc_0113": {
+    "source_query": "q_0005",
+    "source_doc": "doc_0005",
+    "distractor_index": 1
+  },
+  "doc_0114": {
+    "source_query": "q_0005",
+    "source_doc": "doc_0005",
+    "distractor_index": 2
+  },
+  "doc_0115": {
+    "source_query": "q_0005",
+    "source_doc": "doc_0005",
+    "distractor_index": 3
+  },
+  "doc_0116": {
+    "source_query": "q_0006",
+    "source_doc": "doc_0006",
+    "distractor_index": 1
+  },
+  "doc_0117": {
+    "source_query": "q_0006",
+    "source_doc": "doc_0006",
+    "distractor_index": 2
+  },
+  "doc_0118": {
+    "source_query": "q_0006",
+    "source_doc": "doc_0006",
+    "distractor_index": 3
+  },
+  "doc_0119": {
+    "source_query": "q_0007",
+    "source_doc": "doc_0007",
+    "distractor_index": 1
+  },
+  "doc_0120": {
+    "source_query": "q_0007",
+    "source_doc": "doc_0007",
+    "distractor_index": 2
+  },
+  "doc_0121": {
+    "source_query": "q_0007",
+    "source_doc": "doc_0007",
+    "distractor_index": 3
+  },
+  "doc_0122": {
+    "source_query": "q_0008",
+    "source_doc": "doc_0008",
+    "distractor_index": 1
+  },
+  "doc_0123": {
+    "source_query": "q_0008",
+    "source_doc": "doc_0008",
+    "distractor_index": 2
+  },
+  "doc_0124": {
+    "source_query": "q_0008",
+    "source_doc": "doc_0008",
+    "distractor_index": 3
+  },
+  "doc_0125": {
+    "source_query": "q_0009",
+    "source_doc": "doc_0009",
+    "distractor_index": 1
+  },
+  "doc_0126": {
+    "source_query": "q_0009",
+    "source_doc": "doc_0009",
+    "distractor_index": 2
+  },
+  "doc_0127": {
+    "source_query": "q_0009",
+    "source_doc": "doc_0009",
+    "distractor_index": 3
+  },
+  "doc_0128": {
+    "source_query": "q_0010",
+    "source_doc": "doc_0010",
+    "distractor_index": 1
+  },
+  "doc_0129": {
+    "source_query": "q_0010",
+    "source_doc": "doc_0010",
+    "distractor_index": 2
+  },
+  "doc_0130": {
+    "source_query": "q_0010",
+    "source_doc": "doc_0010",
+    "distractor_index": 3
+  },
+  "doc_0131": {
+    "source_query": "q_0011",
+    "source_doc": "doc_0011",
+    "distractor_index": 1
+  },
+  "doc_0132": {
+    "source_query": "q_0011",
+    "source_doc": "doc_0011",
+    "distractor_index": 2
+  },
+  "doc_0133": {
+    "source_query": "q_0011",
+    "source_doc": "doc_0011",
+    "distractor_index": 3
+  },
+  "doc_0134": {
+    "source_query": "q_0012",
+    "source_doc": "doc_0012",
+    "distractor_index": 1
+  },
+  "doc_0135": {
+    "source_query": "q_0012",
+    "source_doc": "doc_0012",
+    "distractor_index": 2
+  },
+  "doc_0136": {
+    "source_query": "q_0012",
+    "source_doc": "doc_0012",
+    "distractor_index": 3
+  },
+  "doc_0137": {
+    "source_query": "q_0013",
+    "source_doc": "doc_0013",
+    "distractor_index": 1
+  },
+  "doc_0138": {
+    "source_query": "q_0013",
+    "source_doc": "doc_0013",
+    "distractor_index": 2
+  },
+  "doc_0139": {
+    "source_query": "q_0013",
+    "source_doc": "doc_0013",
+    "distractor_index": 3
+  },
+  "doc_0140": {
+    "source_query": "q_0014",
+    "source_doc": "doc_0014",
+    "distractor_index": 1
+  },
+  "doc_0141": {
+    "source_query": "q_0014",
+    "source_doc": "doc_0014",
+    "distractor_index": 2
+  },
+  "doc_0142": {
+    "source_query": "q_0014",
+    "source_doc": "doc_0014",
+    "distractor_index": 3
+  },
+  "doc_0143": {
+    "source_query": "q_0015",
+    "source_doc": "doc_0015",
+    "distractor_index": 1
+  },
+  "doc_0144": {
+    "source_query": "q_0015",
+    "source_doc": "doc_0015",
+    "distractor_index": 2
+  },
+  "doc_0145": {
+    "source_query": "q_0015",
+    "source_doc": "doc_0015",
+    "distractor_index": 3
+  },
+  "doc_0146": {
+    "source_query": "q_0016",
+    "source_doc": "doc_0016",
+    "distractor_index": 1
+  },
+  "doc_0147": {
+    "source_query": "q_0016",
+    "source_doc": "doc_0016",
+    "distractor_index": 2
+  },
+  "doc_0148": {
+    "source_query": "q_0016",
+    "source_doc": "doc_0016",
+    "distractor_index": 3
+  },
+  "doc_0149": {
+    "source_query": "q_0017",
+    "source_doc": "doc_0017",
+    "distractor_index": 1
+  },
+  "doc_0150": {
+    "source_query": "q_0017",
+    "source_doc": "doc_0017",
+    "distractor_index": 2
+  },
+  "doc_0151": {
+    "source_query": "q_0017",
+    "source_doc": "doc_0017",
+    "distractor_index": 3
+  },
+  "doc_0152": {
+    "source_query": "q_0018",
+    "source_doc": "doc_0018",
+    "distractor_index": 1
+  },
+  "doc_0153": {
+    "source_query": "q_0018",
+    "source_doc": "doc_0018",
+    "distractor_index": 2
+  },
+  "doc_0154": {
+    "source_query": "q_0018",
+    "source_doc": "doc_0018",
+    "distractor_index": 3
+  },
+  "doc_0155": {
+    "source_query": "q_0019",
+    "source_doc": "doc_0019",
+    "distractor_index": 1
+  },
+  "doc_0156": {
+    "source_query": "q_0019",
+    "source_doc": "doc_0019",
+    "distractor_index": 2
+  },
+  "doc_0157": {
+    "source_query": "q_0019",
+    "source_doc": "doc_0019",
+    "distractor_index": 3
+  },
+  "doc_0158": {
+    "source_query": "q_0020",
+    "source_doc": "doc_0020",
+    "distractor_index": 1
+  },
+  "doc_0159": {
+    "source_query": "q_0020",
+    "source_doc": "doc_0020",
+    "distractor_index": 2
+  },
+  "doc_0160": {
+    "source_query": "q_0020",
+    "source_doc": "doc_0020",
+    "distractor_index": 3
+  },
+  "doc_0161": {
+    "source_query": "q_0021",
+    "source_doc": "doc_0021",
+    "distractor_index": 1
+  },
+  "doc_0162": {
+    "source_query": "q_0021",
+    "source_doc": "doc_0021",
+    "distractor_index": 2
+  },
+  "doc_0163": {
+    "source_query": "q_0021",
+    "source_doc": "doc_0021",
+    "distractor_index": 3
+  },
+  "doc_0164": {
+    "source_query": "q_0022",
+    "source_doc": "doc_0022",
+    "distractor_index": 1
+  },
+  "doc_0165": {
+    "source_query": "q_0022",
+    "source_doc": "doc_0022",
+    "distractor_index": 2
+  },
+  "doc_0166": {
+    "source_query": "q_0022",
+    "source_doc": "doc_0022",
+    "distractor_index": 3
+  },
+  "doc_0167": {
+    "source_query": "q_0023",
+    "source_doc": "doc_0023",
+    "distractor_index": 1
+  },
+  "doc_0168": {
+    "source_query": "q_0023",
+    "source_doc": "doc_0023",
+    "distractor_index": 2
+  },
+  "doc_0169": {
+    "source_query": "q_0023",
+    "source_doc": "doc_0023",
+    "distractor_index": 3
+  },
+  "doc_0170": {
+    "source_query": "q_0024",
+    "source_doc": "doc_0024",
+    "distractor_index": 1
+  },
+  "doc_0171": {
+    "source_query": "q_0024",
+    "source_doc": "doc_0024",
+    "distractor_index": 2
+  },
+  "doc_0172": {
+    "source_query": "q_0024",
+    "source_doc": "doc_0024",
+    "distractor_index": 3
+  },
+  "doc_0173": {
+    "source_query": "q_0025",
+    "source_doc": "doc_0025",
+    "distractor_index": 1
+  },
+  "doc_0174": {
+    "source_query": "q_0025",
+    "source_doc": "doc_0025",
+    "distractor_index": 2
+  },
+  "doc_0175": {
+    "source_query": "q_0025",
+    "source_doc": "doc_0025",
+    "distractor_index": 3
+  },
+  "doc_0176": {
+    "source_query": "q_0026",
+    "source_doc": "doc_0026",
+    "distractor_index": 1
+  },
+  "doc_0177": {
+    "source_query": "q_0026",
+    "source_doc": "doc_0026",
+    "distractor_index": 2
+  },
+  "doc_0178": {
+    "source_query": "q_0026",
+    "source_doc": "doc_0026",
+    "distractor_index": 3
+  },
+  "doc_0179": {
+    "source_query": "q_0027",
+    "source_doc": "doc_0027",
+    "distractor_index": 1
+  },
+  "doc_0180": {
+    "source_query": "q_0027",
+    "source_doc": "doc_0027",
+    "distractor_index": 2
+  },
+  "doc_0181": {
+    "source_query": "q_0027",
+    "source_doc": "doc_0027",
+    "distractor_index": 3
+  },
+  "doc_0182": {
+    "source_query": "q_0028",
+    "source_doc": "doc_0028",
+    "distractor_index": 1
+  },
+  "doc_0183": {
+    "source_query": "q_0028",
+    "source_doc": "doc_0028",
+    "distractor_index": 2
+  },
+  "doc_0184": {
+    "source_query": "q_0028",
+    "source_doc": "doc_0028",
+    "distractor_index": 3
+  },
+  "doc_0185": {
+    "source_query": "q_0029",
+    "source_doc": "doc_0029",
+    "distractor_index": 1
+  },
+  "doc_0186": {
+    "source_query": "q_0029",
+    "source_doc": "doc_0029",
+    "distractor_index": 2
+  },
+  "doc_0187": {
+    "source_query": "q_0029",
+    "source_doc": "doc_0029",
+    "distractor_index": 3
+  },
+  "doc_0188": {
+    "source_query": "q_0030",
+    "source_doc": "doc_0030",
+    "distractor_index": 1
+  },
+  "doc_0189": {
+    "source_query": "q_0030",
+    "source_doc": "doc_0030",
+    "distractor_index": 2
+  },
+  "doc_0190": {
+    "source_query": "q_0030",
+    "source_doc": "doc_0030",
+    "distractor_index": 3
+  },
+  "doc_0191": {
+    "source_query": "q_0031",
+    "source_doc": "doc_0031",
+    "distractor_index": 1
+  },
+  "doc_0192": {
+    "source_query": "q_0031",
+    "source_doc": "doc_0031",
+    "distractor_index": 2
+  },
+  "doc_0193": {
+    "source_query": "q_0031",
+    "source_doc": "doc_0031",
+    "distractor_index": 3
+  },
+  "doc_0194": {
+    "source_query": "q_0032",
+    "source_doc": "doc_0032",
+    "distractor_index": 1
+  },
+  "doc_0195": {
+    "source_query": "q_0032",
+    "source_doc": "doc_0032",
+    "distractor_index": 2
+  },
+  "doc_0196": {
+    "source_query": "q_0032",
+    "source_doc": "doc_0032",
+    "distractor_index": 3
+  },
+  "doc_0197": {
+    "source_query": "q_0033",
+    "source_doc": "doc_0033",
+    "distractor_index": 1
+  },
+  "doc_0198": {
+    "source_query": "q_0033",
+    "source_doc": "doc_0033",
+    "distractor_index": 2
+  },
+  "doc_0199": {
+    "source_query": "q_0033",
+    "source_doc": "doc_0033",
+    "distractor_index": 3
+  },
+  "doc_0200": {
+    "source_query": "q_0034",
+    "source_doc": "doc_0034",
+    "distractor_index": 1
+  },
+  "doc_0201": {
+    "source_query": "q_0034",
+    "source_doc": "doc_0034",
+    "distractor_index": 2
+  },
+  "doc_0202": {
+    "source_query": "q_0034",
+    "source_doc": "doc_0034",
+    "distractor_index": 3
+  },
+  "doc_0203": {
+    "source_query": "q_0035",
+    "source_doc": "doc_0035",
+    "distractor_index": 1
+  },
+  "doc_0204": {
+    "source_query": "q_0035",
+    "source_doc": "doc_0035",
+    "distractor_index": 2
+  },
+  "doc_0205": {
+    "source_query": "q_0035",
+    "source_doc": "doc_0035",
+    "distractor_index": 3
+  },
+  "doc_0206": {
+    "source_query": "q_0036",
+    "source_doc": "doc_0036",
+    "distractor_index": 1
+  },
+  "doc_0207": {
+    "source_query": "q_0036",
+    "source_doc": "doc_0036",
+    "distractor_index": 2
+  },
+  "doc_0208": {
+    "source_query": "q_0036",
+    "source_doc": "doc_0036",
+    "distractor_index": 3
+  },
+  "doc_0209": {
+    "source_query": "q_0037",
+    "source_doc": "doc_0037",
+    "distractor_index": 1
+  },
+  "doc_0210": {
+    "source_query": "q_0037",
+    "source_doc": "doc_0037",
+    "distractor_index": 2
+  },
+  "doc_0211": {
+    "source_query": "q_0037",
+    "source_doc": "doc_0037",
+    "distractor_index": 3
+  },
+  "doc_0212": {
+    "source_query": "q_0038",
+    "source_doc": "doc_0038",
+    "distractor_index": 1
+  },
+  "doc_0213": {
+    "source_query": "q_0038",
+    "source_doc": "doc_0038",
+    "distractor_index": 2
+  },
+  "doc_0214": {
+    "source_query": "q_0038",
+    "source_doc": "doc_0038",
+    "distractor_index": 3
+  },
+  "doc_0215": {
+    "source_query": "q_0039",
+    "source_doc": "doc_0039",
+    "distractor_index": 1
+  },
+  "doc_0216": {
+    "source_query": "q_0039",
+    "source_doc": "doc_0039",
+    "distractor_index": 2
+  },
+  "doc_0217": {
+    "source_query": "q_0039",
+    "source_doc": "doc_0039",
+    "distractor_index": 3
+  },
+  "doc_0218": {
+    "source_query": "q_0040",
+    "source_doc": "doc_0040",
+    "distractor_index": 1
+  },
+  "doc_0219": {
+    "source_query": "q_0040",
+    "source_doc": "doc_0040",
+    "distractor_index": 2
+  },
+  "doc_0220": {
+    "source_query": "q_0040",
+    "source_doc": "doc_0040",
+    "distractor_index": 3
+  },
+  "doc_0221": {
+    "source_query": "q_0041",
+    "source_doc": "doc_0041",
+    "distractor_index": 1
+  },
+  "doc_0222": {
+    "source_query": "q_0041",
+    "source_doc": "doc_0041",
+    "distractor_index": 2
+  },
+  "doc_0223": {
+    "source_query": "q_0041",
+    "source_doc": "doc_0041",
+    "distractor_index": 3
+  },
+  "doc_0224": {
+    "source_query": "q_0042",
+    "source_doc": "doc_0042",
+    "distractor_index": 1
+  },
+  "doc_0225": {
+    "source_query": "q_0042",
+    "source_doc": "doc_0042",
+    "distractor_index": 2
+  },
+  "doc_0226": {
+    "source_query": "q_0042",
+    "source_doc": "doc_0042",
+    "distractor_index": 3
+  },
+  "doc_0227": {
+    "source_query": "q_0043",
+    "source_doc": "doc_0043",
+    "distractor_index": 1
+  },
+  "doc_0228": {
+    "source_query": "q_0043",
+    "source_doc": "doc_0043",
+    "distractor_index": 2
+  },
+  "doc_0229": {
+    "source_query": "q_0043",
+    "source_doc": "doc_0043",
+    "distractor_index": 3
+  },
+  "doc_0230": {
+    "source_query": "q_0044",
+    "source_doc": "doc_0044",
+    "distractor_index": 1
+  },
+  "doc_0231": {
+    "source_query": "q_0044",
+    "source_doc": "doc_0044",
+    "distractor_index": 2
+  },
+  "doc_0232": {
+    "source_query": "q_0044",
+    "source_doc": "doc_0044",
+    "distractor_index": 3
+  },
+  "doc_0233": {
+    "source_query": "q_0045",
+    "source_doc": "doc_0045",
+    "distractor_index": 1
+  },
+  "doc_0234": {
+    "source_query": "q_0045",
+    "source_doc": "doc_0045",
+    "distractor_index": 2
+  },
+  "doc_0235": {
+    "source_query": "q_0045",
+    "source_doc": "doc_0045",
+    "distractor_index": 3
+  },
+  "doc_0236": {
+    "source_query": "q_0046",
+    "source_doc": "doc_0046",
+    "distractor_index": 1
+  },
+  "doc_0237": {
+    "source_query": "q_0046",
+    "source_doc": "doc_0046",
+    "distractor_index": 2
+  },
+  "doc_0238": {
+    "source_query": "q_0046",
+    "source_doc": "doc_0046",
+    "distractor_index": 3
+  },
+  "doc_0239": {
+    "source_query": "q_0047",
+    "source_doc": "doc_0047",
+    "distractor_index": 1
+  },
+  "doc_0240": {
+    "source_query": "q_0047",
+    "source_doc": "doc_0047",
+    "distractor_index": 2
+  },
+  "doc_0241": {
+    "source_query": "q_0047",
+    "source_doc": "doc_0047",
+    "distractor_index": 3
+  },
+  "doc_0242": {
+    "source_query": "q_0048",
+    "source_doc": "doc_0048",
+    "distractor_index": 1
+  },
+  "doc_0243": {
+    "source_query": "q_0048",
+    "source_doc": "doc_0048",
+    "distractor_index": 2
+  },
+  "doc_0244": {
+    "source_query": "q_0048",
+    "source_doc": "doc_0048",
+    "distractor_index": 3
+  },
+  "doc_0245": {
+    "source_query": "q_0049",
+    "source_doc": "doc_0049",
+    "distractor_index": 1
+  },
+  "doc_0246": {
+    "source_query": "q_0049",
+    "source_doc": "doc_0049",
+    "distractor_index": 2
+  },
+  "doc_0247": {
+    "source_query": "q_0049",
+    "source_doc": "doc_0049",
+    "distractor_index": 3
+  },
+  "doc_0248": {
+    "source_query": "q_0050",
+    "source_doc": "doc_0050",
+    "distractor_index": 1
+  },
+  "doc_0249": {
+    "source_query": "q_0050",
+    "source_doc": "doc_0050",
+    "distractor_index": 2
+  },
+  "doc_0250": {
+    "source_query": "q_0050",
+    "source_doc": "doc_0050",
+    "distractor_index": 3
+  },
+  "doc_0251": {
+    "source_query": "q_0051",
+    "source_doc": "doc_0051",
+    "distractor_index": 1
+  },
+  "doc_0252": {
+    "source_query": "q_0051",
+    "source_doc": "doc_0051",
+    "distractor_index": 2
+  },
+  "doc_0253": {
+    "source_query": "q_0051",
+    "source_doc": "doc_0051",
+    "distractor_index": 3
+  },
+  "doc_0254": {
+    "source_query": "q_0052",
+    "source_doc": "doc_0052",
+    "distractor_index": 1
+  },
+  "doc_0255": {
+    "source_query": "q_0052",
+    "source_doc": "doc_0052",
+    "distractor_index": 2
+  },
+  "doc_0256": {
+    "source_query": "q_0052",
+    "source_doc": "doc_0052",
+    "distractor_index": 3
+  },
+  "doc_0257": {
+    "source_query": "q_0053",
+    "source_doc": "doc_0053",
+    "distractor_index": 1
+  },
+  "doc_0258": {
+    "source_query": "q_0053",
+    "source_doc": "doc_0053",
+    "distractor_index": 2
+  },
+  "doc_0259": {
+    "source_query": "q_0053",
+    "source_doc": "doc_0053",
+    "distractor_index": 3
+  },
+  "doc_0260": {
+    "source_query": "q_0054",
+    "source_doc": "doc_0054",
+    "distractor_index": 1
+  },
+  "doc_0261": {
+    "source_query": "q_0054",
+    "source_doc": "doc_0054",
+    "distractor_index": 2
+  },
+  "doc_0262": {
+    "source_query": "q_0054",
+    "source_doc": "doc_0054",
+    "distractor_index": 3
+  },
+  "doc_0263": {
+    "source_query": "q_0055",
+    "source_doc": "doc_0055",
+    "distractor_index": 1
+  },
+  "doc_0264": {
+    "source_query": "q_0055",
+    "source_doc": "doc_0055",
+    "distractor_index": 2
+  },
+  "doc_0265": {
+    "source_query": "q_0055",
+    "source_doc": "doc_0055",
+    "distractor_index": 3
+  },
+  "doc_0266": {
+    "source_query": "q_0056",
+    "source_doc": "doc_0056",
+    "distractor_index": 1
+  },
+  "doc_0267": {
+    "source_query": "q_0056",
+    "source_doc": "doc_0056",
+    "distractor_index": 2
+  },
+  "doc_0268": {
+    "source_query": "q_0056",
+    "source_doc": "doc_0056",
+    "distractor_index": 3
+  },
+  "doc_0269": {
+    "source_query": "q_0057",
+    "source_doc": "doc_0057",
+    "distractor_index": 1
+  },
+  "doc_0270": {
+    "source_query": "q_0057",
+    "source_doc": "doc_0057",
+    "distractor_index": 2
+  },
+  "doc_0271": {
+    "source_query": "q_0057",
+    "source_doc": "doc_0057",
+    "distractor_index": 3
+  },
+  "doc_0272": {
+    "source_query": "q_0058",
+    "source_doc": "doc_0058",
+    "distractor_index": 1
+  },
+  "doc_0273": {
+    "source_query": "q_0058",
+    "source_doc": "doc_0058",
+    "distractor_index": 2
+  },
+  "doc_0274": {
+    "source_query": "q_0058",
+    "source_doc": "doc_0058",
+    "distractor_index": 3
+  },
+  "doc_0275": {
+    "source_query": "q_0059",
+    "source_doc": "doc_0059",
+    "distractor_index": 1
+  },
+  "doc_0276": {
+    "source_query": "q_0059",
+    "source_doc": "doc_0059",
+    "distractor_index": 2
+  },
+  "doc_0277": {
+    "source_query": "q_0059",
+    "source_doc": "doc_0059",
+    "distractor_index": 3
+  },
+  "doc_0278": {
+    "source_query": "q_0060",
+    "source_doc": "doc_0060",
+    "distractor_index": 1
+  },
+  "doc_0279": {
+    "source_query": "q_0060",
+    "source_doc": "doc_0060",
+    "distractor_index": 2
+  },
+  "doc_0280": {
+    "source_query": "q_0060",
+    "source_doc": "doc_0060",
+    "distractor_index": 3
+  },
+  "doc_0281": {
+    "source_query": "q_0061",
+    "source_doc": "doc_0061",
+    "distractor_index": 1
+  },
+  "doc_0282": {
+    "source_query": "q_0061",
+    "source_doc": "doc_0061",
+    "distractor_index": 2
+  },
+  "doc_0283": {
+    "source_query": "q_0061",
+    "source_doc": "doc_0061",
+    "distractor_index": 3
+  },
+  "doc_0284": {
+    "source_query": "q_0062",
+    "source_doc": "doc_0062",
+    "distractor_index": 1
+  },
+  "doc_0285": {
+    "source_query": "q_0062",
+    "source_doc": "doc_0062",
+    "distractor_index": 2
+  },
+  "doc_0286": {
+    "source_query": "q_0062",
+    "source_doc": "doc_0062",
+    "distractor_index": 3
+  },
+  "doc_0287": {
+    "source_query": "q_0063",
+    "source_doc": "doc_0063",
+    "distractor_index": 1
+  },
+  "doc_0288": {
+    "source_query": "q_0063",
+    "source_doc": "doc_0063",
+    "distractor_index": 2
+  },
+  "doc_0289": {
+    "source_query": "q_0063",
+    "source_doc": "doc_0063",
+    "distractor_index": 3
+  },
+  "doc_0290": {
+    "source_query": "q_0064",
+    "source_doc": "doc_0064",
+    "distractor_index": 1
+  },
+  "doc_0291": {
+    "source_query": "q_0064",
+    "source_doc": "doc_0064",
+    "distractor_index": 2
+  },
+  "doc_0292": {
+    "source_query": "q_0064",
+    "source_doc": "doc_0064",
+    "distractor_index": 3
+  },
+  "doc_0293": {
+    "source_query": "q_0065",
+    "source_doc": "doc_0065",
+    "distractor_index": 1
+  },
+  "doc_0294": {
+    "source_query": "q_0065",
+    "source_doc": "doc_0065",
+    "distractor_index": 2
+  },
+  "doc_0295": {
+    "source_query": "q_0065",
+    "source_doc": "doc_0065",
+    "distractor_index": 3
+  },
+  "doc_0296": {
+    "source_query": "q_0066",
+    "source_doc": "doc_0066",
+    "distractor_index": 1
+  },
+  "doc_0297": {
+    "source_query": "q_0066",
+    "source_doc": "doc_0066",
+    "distractor_index": 2
+  },
+  "doc_0298": {
+    "source_query": "q_0066",
+    "source_doc": "doc_0066",
+    "distractor_index": 3
+  },
+  "doc_0299": {
+    "source_query": "q_0067",
+    "source_doc": "doc_0067",
+    "distractor_index": 1
+  },
+  "doc_0300": {
+    "source_query": "q_0067",
+    "source_doc": "doc_0067",
+    "distractor_index": 2
+  },
+  "doc_0301": {
+    "source_query": "q_0067",
+    "source_doc": "doc_0067",
+    "distractor_index": 3
+  },
+  "doc_0302": {
+    "source_query": "q_0068",
+    "source_doc": "doc_0068",
+    "distractor_index": 1
+  },
+  "doc_0303": {
+    "source_query": "q_0068",
+    "source_doc": "doc_0068",
+    "distractor_index": 2
+  },
+  "doc_0304": {
+    "source_query": "q_0068",
+    "source_doc": "doc_0068",
+    "distractor_index": 3
+  },
+  "doc_0305": {
+    "source_query": "q_0069",
+    "source_doc": "doc_0069",
+    "distractor_index": 1
+  },
+  "doc_0306": {
+    "source_query": "q_0069",
+    "source_doc": "doc_0069",
+    "distractor_index": 2
+  },
+  "doc_0307": {
+    "source_query": "q_0069",
+    "source_doc": "doc_0069",
+    "distractor_index": 3
+  },
+  "doc_0308": {
+    "source_query": "q_0070",
+    "source_doc": "doc_0070",
+    "distractor_index": 1
+  },
+  "doc_0309": {
+    "source_query": "q_0070",
+    "source_doc": "doc_0070",
+    "distractor_index": 2
+  },
+  "doc_0310": {
+    "source_query": "q_0070",
+    "source_doc": "doc_0070",
+    "distractor_index": 3
+  },
+  "doc_0311": {
+    "source_query": "q_0071",
+    "source_doc": "doc_0071",
+    "distractor_index": 1
+  },
+  "doc_0312": {
+    "source_query": "q_0071",
+    "source_doc": "doc_0071",
+    "distractor_index": 2
+  },
+  "doc_0313": {
+    "source_query": "q_0071",
+    "source_doc": "doc_0071",
+    "distractor_index": 3
+  },
+  "doc_0314": {
+    "source_query": "q_0072",
+    "source_doc": "doc_0072",
+    "distractor_index": 1
+  },
+  "doc_0315": {
+    "source_query": "q_0072",
+    "source_doc": "doc_0072",
+    "distractor_index": 2
+  },
+  "doc_0316": {
+    "source_query": "q_0072",
+    "source_doc": "doc_0072",
+    "distractor_index": 3
+  },
+  "doc_0317": {
+    "source_query": "q_0073",
+    "source_doc": "doc_0073",
+    "distractor_index": 1
+  },
+  "doc_0318": {
+    "source_query": "q_0073",
+    "source_doc": "doc_0073",
+    "distractor_index": 2
+  },
+  "doc_0319": {
+    "source_query": "q_0073",
+    "source_doc": "doc_0073",
+    "distractor_index": 3
+  },
+  "doc_0320": {
+    "source_query": "q_0074",
+    "source_doc": "doc_0074",
+    "distractor_index": 1
+  },
+  "doc_0321": {
+    "source_query": "q_0074",
+    "source_doc": "doc_0074",
+    "distractor_index": 2
+  },
+  "doc_0322": {
+    "source_query": "q_0074",
+    "source_doc": "doc_0074",
+    "distractor_index": 3
+  },
+  "doc_0323": {
+    "source_query": "q_0075",
+    "source_doc": "doc_0075",
+    "distractor_index": 1
+  },
+  "doc_0324": {
+    "source_query": "q_0075",
+    "source_doc": "doc_0075",
+    "distractor_index": 2
+  },
+  "doc_0325": {
+    "source_query": "q_0075",
+    "source_doc": "doc_0075",
+    "distractor_index": 3
+  },
+  "doc_0326": {
+    "source_query": "q_0076",
+    "source_doc": "doc_0076",
+    "distractor_index": 1
+  },
+  "doc_0327": {
+    "source_query": "q_0076",
+    "source_doc": "doc_0076",
+    "distractor_index": 2
+  },
+  "doc_0328": {
+    "source_query": "q_0076",
+    "source_doc": "doc_0076",
+    "distractor_index": 3
+  },
+  "doc_0329": {
+    "source_query": "q_0077",
+    "source_doc": "doc_0077",
+    "distractor_index": 1
+  },
+  "doc_0330": {
+    "source_query": "q_0077",
+    "source_doc": "doc_0077",
+    "distractor_index": 2
+  },
+  "doc_0331": {
+    "source_query": "q_0077",
+    "source_doc": "doc_0077",
+    "distractor_index": 3
+  },
+  "doc_0332": {
+    "source_query": "q_0078",
+    "source_doc": "doc_0078",
+    "distractor_index": 1
+  },
+  "doc_0333": {
+    "source_query": "q_0078",
+    "source_doc": "doc_0078",
+    "distractor_index": 2
+  },
+  "doc_0334": {
+    "source_query": "q_0078",
+    "source_doc": "doc_0078",
+    "distractor_index": 3
+  },
+  "doc_0335": {
+    "source_query": "q_0079",
+    "source_doc": "doc_0079",
+    "distractor_index": 1
+  },
+  "doc_0336": {
+    "source_query": "q_0079",
+    "source_doc": "doc_0079",
+    "distractor_index": 2
+  },
+  "doc_0337": {
+    "source_query": "q_0079",
+    "source_doc": "doc_0079",
+    "distractor_index": 3
+  },
+  "doc_0338": {
+    "source_query": "q_0080",
+    "source_doc": "doc_0080",
+    "distractor_index": 1
+  },
+  "doc_0339": {
+    "source_query": "q_0080",
+    "source_doc": "doc_0080",
+    "distractor_index": 2
+  },
+  "doc_0340": {
+    "source_query": "q_0080",
+    "source_doc": "doc_0080",
+    "distractor_index": 3
+  },
+  "doc_0341": {
+    "source_query": "q_0081",
+    "source_doc": "doc_0081",
+    "distractor_index": 1
+  },
+  "doc_0342": {
+    "source_query": "q_0081",
+    "source_doc": "doc_0081",
+    "distractor_index": 2
+  },
+  "doc_0343": {
+    "source_query": "q_0081",
+    "source_doc": "doc_0081",
+    "distractor_index": 3
+  },
+  "doc_0344": {
+    "source_query": "q_0082",
+    "source_doc": "doc_0082",
+    "distractor_index": 1
+  },
+  "doc_0345": {
+    "source_query": "q_0082",
+    "source_doc": "doc_0082",
+    "distractor_index": 2
+  },
+  "doc_0346": {
+    "source_query": "q_0082",
+    "source_doc": "doc_0082",
+    "distractor_index": 3
+  },
+  "doc_0347": {
+    "source_query": "q_0083",
+    "source_doc": "doc_0083",
+    "distractor_index": 1
+  },
+  "doc_0348": {
+    "source_query": "q_0083",
+    "source_doc": "doc_0083",
+    "distractor_index": 2
+  },
+  "doc_0349": {
+    "source_query": "q_0083",
+    "source_doc": "doc_0083",
+    "distractor_index": 3
+  },
+  "doc_0350": {
+    "source_query": "q_0084",
+    "source_doc": "doc_0084",
+    "distractor_index": 1
+  },
+  "doc_0351": {
+    "source_query": "q_0084",
+    "source_doc": "doc_0084",
+    "distractor_index": 2
+  },
+  "doc_0352": {
+    "source_query": "q_0084",
+    "source_doc": "doc_0084",
+    "distractor_index": 3
+  },
+  "doc_0353": {
+    "source_query": "q_0085",
+    "source_doc": "doc_0085",
+    "distractor_index": 1
+  },
+  "doc_0354": {
+    "source_query": "q_0085",
+    "source_doc": "doc_0085",
+    "distractor_index": 2
+  },
+  "doc_0355": {
+    "source_query": "q_0085",
+    "source_doc": "doc_0085",
+    "distractor_index": 3
+  },
+  "doc_0356": {
+    "source_query": "q_0086",
+    "source_doc": "doc_0086",
+    "distractor_index": 1
+  },
+  "doc_0357": {
+    "source_query": "q_0086",
+    "source_doc": "doc_0086",
+    "distractor_index": 2
+  },
+  "doc_0358": {
+    "source_query": "q_0086",
+    "source_doc": "doc_0086",
+    "distractor_index": 3
+  },
+  "doc_0359": {
+    "source_query": "q_0087",
+    "source_doc": "doc_0087",
+    "distractor_index": 1
+  },
+  "doc_0360": {
+    "source_query": "q_0087",
+    "source_doc": "doc_0087",
+    "distractor_index": 2
+  },
+  "doc_0361": {
+    "source_query": "q_0087",
+    "source_doc": "doc_0087",
+    "distractor_index": 3
+  },
+  "doc_0362": {
+    "source_query": "q_0088",
+    "source_doc": "doc_0088",
+    "distractor_index": 1
+  },
+  "doc_0363": {
+    "source_query": "q_0088",
+    "source_doc": "doc_0088",
+    "distractor_index": 2
+  },
+  "doc_0364": {
+    "source_query": "q_0088",
+    "source_doc": "doc_0088",
+    "distractor_index": 3
+  },
+  "doc_0365": {
+    "source_query": "q_0089",
+    "source_doc": "doc_0089",
+    "distractor_index": 1
+  },
+  "doc_0366": {
+    "source_query": "q_0089",
+    "source_doc": "doc_0089",
+    "distractor_index": 2
+  },
+  "doc_0367": {
+    "source_query": "q_0089",
+    "source_doc": "doc_0089",
+    "distractor_index": 3
+  },
+  "doc_0368": {
+    "source_query": "q_0090",
+    "source_doc": "doc_0090",
+    "distractor_index": 1
+  },
+  "doc_0369": {
+    "source_query": "q_0090",
+    "source_doc": "doc_0090",
+    "distractor_index": 2
+  },
+  "doc_0370": {
+    "source_query": "q_0090",
+    "source_doc": "doc_0090",
+    "distractor_index": 3
+  },
+  "doc_0371": {
+    "source_query": "q_0091",
+    "source_doc": "doc_0091",
+    "distractor_index": 1
+  },
+  "doc_0372": {
+    "source_query": "q_0091",
+    "source_doc": "doc_0091",
+    "distractor_index": 2
+  },
+  "doc_0373": {
+    "source_query": "q_0091",
+    "source_doc": "doc_0091",
+    "distractor_index": 3
+  },
+  "doc_0374": {
+    "source_query": "q_0092",
+    "source_doc": "doc_0092",
+    "distractor_index": 1
+  },
+  "doc_0375": {
+    "source_query": "q_0092",
+    "source_doc": "doc_0092",
+    "distractor_index": 2
+  },
+  "doc_0376": {
+    "source_query": "q_0092",
+    "source_doc": "doc_0092",
+    "distractor_index": 3
+  },
+  "doc_0377": {
+    "source_query": "q_0093",
+    "source_doc": "doc_0093",
+    "distractor_index": 1
+  },
+  "doc_0378": {
+    "source_query": "q_0093",
+    "source_doc": "doc_0093",
+    "distractor_index": 2
+  },
+  "doc_0379": {
+    "source_query": "q_0093",
+    "source_doc": "doc_0093",
+    "distractor_index": 3
+  },
+  "doc_0380": {
+    "source_query": "q_0094",
+    "source_doc": "doc_0094",
+    "distractor_index": 1
+  },
+  "doc_0381": {
+    "source_query": "q_0094",
+    "source_doc": "doc_0094",
+    "distractor_index": 2
+  },
+  "doc_0382": {
+    "source_query": "q_0094",
+    "source_doc": "doc_0094",
+    "distractor_index": 3
+  },
+  "doc_0383": {
+    "source_query": "q_0095",
+    "source_doc": "doc_0095",
+    "distractor_index": 1
+  },
+  "doc_0384": {
+    "source_query": "q_0095",
+    "source_doc": "doc_0095",
+    "distractor_index": 2
+  },
+  "doc_0385": {
+    "source_query": "q_0095",
+    "source_doc": "doc_0095",
+    "distractor_index": 3
+  },
+  "doc_0386": {
+    "source_query": "q_0096",
+    "source_doc": "doc_0096",
+    "distractor_index": 1
+  },
+  "doc_0387": {
+    "source_query": "q_0096",
+    "source_doc": "doc_0096",
+    "distractor_index": 2
+  },
+  "doc_0388": {
+    "source_query": "q_0096",
+    "source_doc": "doc_0096",
+    "distractor_index": 3
+  },
+  "doc_0389": {
+    "source_query": "q_0097",
+    "source_doc": "doc_0097",
+    "distractor_index": 1
+  },
+  "doc_0390": {
+    "source_query": "q_0097",
+    "source_doc": "doc_0097",
+    "distractor_index": 2
+  },
+  "doc_0391": {
+    "source_query": "q_0097",
+    "source_doc": "doc_0097",
+    "distractor_index": 3
+  },
+  "doc_0392": {
+    "source_query": "q_0098",
+    "source_doc": "doc_0098",
+    "distractor_index": 1
+  },
+  "doc_0393": {
+    "source_query": "q_0098",
+    "source_doc": "doc_0098",
+    "distractor_index": 2
+  },
+  "doc_0394": {
+    "source_query": "q_0098",
+    "source_doc": "doc_0098",
+    "distractor_index": 3
+  },
+  "doc_0395": {
+    "source_query": "q_0099",
+    "source_doc": "doc_0099",
+    "distractor_index": 1
+  },
+  "doc_0396": {
+    "source_query": "q_0099",
+    "source_doc": "doc_0099",
+    "distractor_index": 2
+  },
+  "doc_0397": {
+    "source_query": "q_0099",
+    "source_doc": "doc_0099",
+    "distractor_index": 3
+  },
+  "doc_0398": {
+    "source_query": "q_0100",
+    "source_doc": "doc_0100",
+    "distractor_index": 1
+  },
+  "doc_0399": {
+    "source_query": "q_0100",
+    "source_doc": "doc_0100",
+    "distractor_index": 2
+  },
+  "doc_0400": {
+    "source_query": "q_0100",
+    "source_doc": "doc_0100",
+    "distractor_index": 3
+  }
+}

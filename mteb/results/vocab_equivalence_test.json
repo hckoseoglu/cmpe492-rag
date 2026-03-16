@@ -1,0 +1,1121 @@
+{
+  "model": "text-embedding-3-large",
+  "corpus_size": 100,
+  "sample_size": 20,
+  "random_seed": 42,
+  "thresholds": {
+    "equivalent": 0.95,
+    "low": 0.9
+  },
+  "abbreviations": [
+    {
+      "term": "HIIT",
+      "canonical": "High Intensity Interval Training",
+      "chunks_sampled": 3,
+      "mean_similarity": 0.979628,
+      "min_similarity": 0.971259,
+      "max_similarity": 0.990724,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0006",
+          "similarity": 0.976901
+        },
+        {
+          "chunk_id": "doc_0022",
+          "similarity": 0.990724
+        },
+        {
+          "chunk_id": "doc_0023",
+          "similarity": 0.971259
+        }
+      ]
+    },
+    {
+      "term": "RPE",
+      "canonical": "Rate of Perceived Exertion",
+      "chunks_sampled": 8,
+      "mean_similarity": 0.98453,
+      "min_similarity": 0.955598,
+      "max_similarity": 0.999066,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0010",
+          "similarity": 0.998679
+        },
+        {
+          "chunk_id": "doc_0026",
+          "similarity": 0.955598
+        },
+        {
+          "chunk_id": "doc_0052",
+          "similarity": 0.965885
+        },
+        {
+          "chunk_id": "doc_0067",
+          "similarity": 0.981363
+        },
+        {
+          "chunk_id": "doc_0069",
+          "similarity": 0.989239
+        },
+        {
+          "chunk_id": "doc_0075",
+          "similarity": 0.999066
+        },
+        {
+          "chunk_id": "doc_0090",
+          "similarity": 0.996288
+        },
+        {
+          "chunk_id": "doc_0099",
+          "similarity": 0.990126
+        }
+      ]
+    },
+    {
+      "term": "1RM",
+      "canonical": "One Repetition Maximum",
+      "chunks_sampled": 11,
+      "mean_similarity": 0.995768,
+      "min_similarity": 0.977676,
+      "max_similarity": 0.999453,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0010",
+          "similarity": 0.997306
+        },
+        {
+          "chunk_id": "doc_0012",
+          "similarity": 0.977676
+        },
+        {
+          "chunk_id": "doc_0022",
+          "similarity": 0.99894
+        },
+        {
+          "chunk_id": "doc_0031",
+          "similarity": 0.999219
+        },
+        {
+          "chunk_id": "doc_0040",
+          "similarity": 0.998271
+        },
+        {
+          "chunk_id": "doc_0046",
+          "similarity": 0.999359
+        },
+        {
+          "chunk_id": "doc_0058",
+          "similarity": 0.992027
+        },
+        {
+          "chunk_id": "doc_0071",
+          "similarity": 0.998775
+        },
+        {
+          "chunk_id": "doc_0082",
+          "similarity": 0.993221
+        },
+        {
+          "chunk_id": "doc_0091",
+          "similarity": 0.9992
+        },
+        {
+          "chunk_id": "doc_0094",
+          "similarity": 0.999453
+        }
+      ]
+    },
+    {
+      "term": "RM",
+      "canonical": "Repetition Maximum",
+      "chunks_sampled": 15,
+      "mean_similarity": 0.996178,
+      "min_similarity": 0.97203,
+      "max_similarity": 0.999586,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0010",
+          "similarity": 0.997172
+        },
+        {
+          "chunk_id": "doc_0012",
+          "similarity": 0.97203
+        },
+        {
+          "chunk_id": "doc_0022",
+          "similarity": 0.999474
+        },
+        {
+          "chunk_id": "doc_0026",
+          "similarity": 0.998823
+        },
+        {
+          "chunk_id": "doc_0031",
+          "similarity": 0.998886
+        },
+        {
+          "chunk_id": "doc_0040",
+          "similarity": 0.997685
+        },
+        {
+          "chunk_id": "doc_0044",
+          "similarity": 0.999219
+        },
+        {
+          "chunk_id": "doc_0046",
+          "similarity": 0.999306
+        },
+        {
+          "chunk_id": "doc_0058",
+          "similarity": 0.991921
+        },
+        {
+          "chunk_id": "doc_0064",
+          "similarity": 0.998713
+        },
+        {
+          "chunk_id": "doc_0071",
+          "similarity": 0.998144
+        },
+        {
+          "chunk_id": "doc_0081",
+          "similarity": 0.999201
+        },
+        {
+          "chunk_id": "doc_0082",
+          "similarity": 0.99384
+        },
+        {
+          "chunk_id": "doc_0091",
+          "similarity": 0.998667
+        },
+        {
+          "chunk_id": "doc_0094",
+          "similarity": 0.999586
+        }
+      ]
+    },
+    {
+      "term": "DOMS",
+      "canonical": "Delayed Onset Muscle Soreness",
+      "chunks_sampled": 5,
+      "mean_similarity": 0.973275,
+      "min_similarity": 0.957797,
+      "max_similarity": 0.978968,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0014",
+          "similarity": 0.978267
+        },
+        {
+          "chunk_id": "doc_0027",
+          "similarity": 0.976794
+        },
+        {
+          "chunk_id": "doc_0054",
+          "similarity": 0.974548
+        },
+        {
+          "chunk_id": "doc_0074",
+          "similarity": 0.957797
+        },
+        {
+          "chunk_id": "doc_0087",
+          "similarity": 0.978968
+        }
+      ]
+    },
+    {
+      "term": "VO2MAX",
+      "canonical": "Maximal Oxygen Uptake",
+      "chunks_sampled": 12,
+      "mean_similarity": 0.989779,
+      "min_similarity": 0.970375,
+      "max_similarity": 0.999365,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0005",
+          "similarity": 0.989966
+        },
+        {
+          "chunk_id": "doc_0009",
+          "similarity": 0.999365
+        },
+        {
+          "chunk_id": "doc_0019",
+          "similarity": 0.999273
+        },
+        {
+          "chunk_id": "doc_0028",
+          "similarity": 0.998565
+        },
+        {
+          "chunk_id": "doc_0033",
+          "similarity": 0.970375
+        },
+        {
+          "chunk_id": "doc_0035",
+          "similarity": 0.992546
+        },
+        {
+          "chunk_id": "doc_0039",
+          "similarity": 0.973844
+        },
+        {
+          "chunk_id": "doc_0056",
+          "similarity": 0.980602
+        },
+        {
+          "chunk_id": "doc_0063",
+          "similarity": 0.997745
+        },
+        {
+          "chunk_id": "doc_0074",
+          "similarity": 0.998935
+        },
+        {
+          "chunk_id": "doc_0075",
+          "similarity": 0.981906
+        },
+        {
+          "chunk_id": "doc_0078",
+          "similarity": 0.994231
+        }
+      ]
+    },
+    {
+      "term": "HRR",
+      "canonical": "Heart Rate Reserve",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.991227,
+      "min_similarity": 0.991227,
+      "max_similarity": 0.991227,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0009",
+          "similarity": 0.991227
+        }
+      ]
+    },
+    {
+      "term": "TDEE",
+      "canonical": "Total Daily Energy Expenditure",
+      "chunks_sampled": 4,
+      "mean_similarity": 0.97817,
+      "min_similarity": 0.939352,
+      "max_similarity": 0.991952,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0003",
+          "similarity": 0.939352
+        },
+        {
+          "chunk_id": "doc_0030",
+          "similarity": 0.991952
+        },
+        {
+          "chunk_id": "doc_0042",
+          "similarity": 0.989952
+        },
+        {
+          "chunk_id": "doc_0066",
+          "similarity": 0.991425
+        }
+      ]
+    },
+    {
+      "term": "LBM",
+      "canonical": "Lean Body Mass",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.994302,
+      "min_similarity": 0.994302,
+      "max_similarity": 0.994302,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0042",
+          "similarity": 0.994302
+        }
+      ]
+    },
+    {
+      "term": "FTP",
+      "canonical": "Functional Threshold Power",
+      "chunks_sampled": 3,
+      "mean_similarity": 0.952776,
+      "min_similarity": 0.869607,
+      "max_similarity": 0.997396,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0019",
+          "similarity": 0.991326
+        },
+        {
+          "chunk_id": "doc_0055",
+          "similarity": 0.997396
+        },
+        {
+          "chunk_id": "doc_0085",
+          "similarity": 0.869607
+        }
+      ]
+    },
+    {
+      "term": "ROM",
+      "canonical": "Range Of Motion",
+      "chunks_sampled": 16,
+      "mean_similarity": 0.998497,
+      "min_similarity": 0.992082,
+      "max_similarity": 0.999837,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0008",
+          "similarity": 0.992082
+        },
+        {
+          "chunk_id": "doc_0011",
+          "similarity": 0.999815
+        },
+        {
+          "chunk_id": "doc_0017",
+          "similarity": 0.999396
+        },
+        {
+          "chunk_id": "doc_0018",
+          "similarity": 0.995171
+        },
+        {
+          "chunk_id": "doc_0025",
+          "similarity": 0.999515
+        },
+        {
+          "chunk_id": "doc_0027",
+          "similarity": 0.998247
+        },
+        {
+          "chunk_id": "doc_0037",
+          "similarity": 0.999446
+        },
+        {
+          "chunk_id": "doc_0045",
+          "similarity": 0.999718
+        },
+        {
+          "chunk_id": "doc_0057",
+          "similarity": 0.999192
+        },
+        {
+          "chunk_id": "doc_0065",
+          "similarity": 0.999119
+        },
+        {
+          "chunk_id": "doc_0073",
+          "similarity": 0.999483
+        },
+        {
+          "chunk_id": "doc_0076",
+          "similarity": 0.997792
+        },
+        {
+          "chunk_id": "doc_0084",
+          "similarity": 0.999206
+        },
+        {
+          "chunk_id": "doc_0089",
+          "similarity": 0.999352
+        },
+        {
+          "chunk_id": "doc_0097",
+          "similarity": 0.999837
+        },
+        {
+          "chunk_id": "doc_0098",
+          "similarity": 0.998584
+        }
+      ]
+    },
+    {
+      "term": "MVC",
+      "canonical": "Maximum Voluntary Contraction",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.972562,
+      "min_similarity": 0.972562,
+      "max_similarity": 0.972562,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0100",
+          "similarity": 0.972562
+        }
+      ]
+    },
+    {
+      "term": "CNS",
+      "canonical": "Central Nervous System",
+      "chunks_sampled": 8,
+      "mean_similarity": 0.99605,
+      "min_similarity": 0.989791,
+      "max_similarity": 0.999371,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0010",
+          "similarity": 0.996659
+        },
+        {
+          "chunk_id": "doc_0012",
+          "similarity": 0.996777
+        },
+        {
+          "chunk_id": "doc_0034",
+          "similarity": 0.998651
+        },
+        {
+          "chunk_id": "doc_0044",
+          "similarity": 0.989791
+        },
+        {
+          "chunk_id": "doc_0058",
+          "similarity": 0.999371
+        },
+        {
+          "chunk_id": "doc_0065",
+          "similarity": 0.997971
+        },
+        {
+          "chunk_id": "doc_0094",
+          "similarity": 0.996959
+        },
+        {
+          "chunk_id": "doc_0095",
+          "similarity": 0.99222
+        }
+      ]
+    },
+    {
+      "term": "PNF",
+      "canonical": "Proprioceptive Neuromuscular Facilitation",
+      "chunks_sampled": 2,
+      "mean_similarity": 0.994473,
+      "min_similarity": 0.989498,
+      "max_similarity": 0.999448,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0038",
+          "similarity": 0.989498
+        },
+        {
+          "chunk_id": "doc_0059",
+          "similarity": 0.999448
+        }
+      ]
+    },
+    {
+      "term": "SAID",
+      "canonical": "Specific Adaptation to Imposed Demands",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.995498,
+      "min_similarity": 0.995498,
+      "max_similarity": 0.995498,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0050",
+          "similarity": 0.995498
+        }
+      ]
+    },
+    {
+      "term": "ATP",
+      "canonical": "Adenosine Triphosphate",
+      "chunks_sampled": 3,
+      "mean_similarity": 0.994161,
+      "min_similarity": 0.984218,
+      "max_similarity": 0.999631,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0005",
+          "similarity": 0.998635
+        },
+        {
+          "chunk_id": "doc_0034",
+          "similarity": 0.999631
+        },
+        {
+          "chunk_id": "doc_0070",
+          "similarity": 0.984218
+        }
+      ]
+    },
+    {
+      "term": "LISS",
+      "canonical": "Low Intensity Steady State",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.926441,
+      "min_similarity": 0.926441,
+      "max_similarity": 0.926441,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0074",
+          "similarity": 0.926441
+        }
+      ]
+    },
+    {
+      "term": "KCAL",
+      "canonical": "Kilocalorie",
+      "chunks_sampled": 4,
+      "mean_similarity": 0.998339,
+      "min_similarity": 0.99637,
+      "max_similarity": 0.999449,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0003",
+          "similarity": 0.99637
+        },
+        {
+          "chunk_id": "doc_0030",
+          "similarity": 0.999449
+        },
+        {
+          "chunk_id": "doc_0042",
+          "similarity": 0.998422
+        },
+        {
+          "chunk_id": "doc_0072",
+          "similarity": 0.999112
+        }
+      ]
+    },
+    {
+      "term": "KG",
+      "canonical": "Kilogram",
+      "chunks_sampled": 20,
+      "mean_similarity": 0.996949,
+      "min_similarity": 0.987203,
+      "max_similarity": 0.999614,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0093",
+          "similarity": 0.987203
+        },
+        {
+          "chunk_id": "doc_0013",
+          "similarity": 0.993212
+        },
+        {
+          "chunk_id": "doc_0002",
+          "similarity": 0.998994
+        },
+        {
+          "chunk_id": "doc_0033",
+          "similarity": 0.995856
+        },
+        {
+          "chunk_id": "doc_0031",
+          "similarity": 0.999339
+        },
+        {
+          "chunk_id": "doc_0079",
+          "similarity": 0.999046
+        },
+        {
+          "chunk_id": "doc_0005",
+          "similarity": 0.999396
+        },
+        {
+          "chunk_id": "doc_0058",
+          "similarity": 0.997361
+        },
+        {
+          "chunk_id": "doc_0003",
+          "similarity": 0.997493
+        },
+        {
+          "chunk_id": "doc_0053",
+          "similarity": 0.999419
+        },
+        {
+          "chunk_id": "doc_0081",
+          "similarity": 0.999386
+        },
+        {
+          "chunk_id": "doc_0062",
+          "similarity": 0.999335
+        },
+        {
+          "chunk_id": "doc_0030",
+          "similarity": 0.997769
+        },
+        {
+          "chunk_id": "doc_0086",
+          "similarity": 0.997932
+        },
+        {
+          "chunk_id": "doc_0072",
+          "similarity": 0.999614
+        },
+        {
+          "chunk_id": "doc_0066",
+          "similarity": 0.99238
+        },
+        {
+          "chunk_id": "doc_0042",
+          "similarity": 0.998434
+        },
+        {
+          "chunk_id": "doc_0017",
+          "similarity": 0.999396
+        },
+        {
+          "chunk_id": "doc_0068",
+          "similarity": 0.998497
+        },
+        {
+          "chunk_id": "doc_0023",
+          "similarity": 0.988918
+        }
+      ]
+    },
+    {
+      "term": "RPM",
+      "canonical": "Revolutions Per Minute",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.980808,
+      "min_similarity": 0.980808,
+      "max_similarity": 0.980808,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0055",
+          "similarity": 0.980808
+        }
+      ]
+    },
+    {
+      "term": "SAQ",
+      "canonical": "Speed, Agility, Quickness Training",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.981513,
+      "min_similarity": 0.981513,
+      "max_similarity": 0.981513,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0065",
+          "similarity": 0.981513
+        }
+      ]
+    },
+    {
+      "term": "OHP",
+      "canonical": "Overhead Press",
+      "chunks_sampled": 2,
+      "mean_similarity": 0.997564,
+      "min_similarity": 0.996042,
+      "max_similarity": 0.999086,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0032",
+          "similarity": 0.999086
+        },
+        {
+          "chunk_id": "doc_0088",
+          "similarity": 0.996042
+        }
+      ]
+    },
+    {
+      "term": "BB",
+      "canonical": "Barbell",
+      "chunks_sampled": 11,
+      "mean_similarity": 0.971332,
+      "min_similarity": 0.889331,
+      "max_similarity": 0.998753,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0001",
+          "similarity": 0.910398
+        },
+        {
+          "chunk_id": "doc_0002",
+          "similarity": 0.998753
+        },
+        {
+          "chunk_id": "doc_0021",
+          "similarity": 0.924641
+        },
+        {
+          "chunk_id": "doc_0034",
+          "similarity": 0.998468
+        },
+        {
+          "chunk_id": "doc_0036",
+          "similarity": 0.992493
+        },
+        {
+          "chunk_id": "doc_0046",
+          "similarity": 0.998168
+        },
+        {
+          "chunk_id": "doc_0047",
+          "similarity": 0.889331
+        },
+        {
+          "chunk_id": "doc_0064",
+          "similarity": 0.996284
+        },
+        {
+          "chunk_id": "doc_0081",
+          "similarity": 0.981313
+        },
+        {
+          "chunk_id": "doc_0083",
+          "similarity": 0.998452
+        },
+        {
+          "chunk_id": "doc_0088",
+          "similarity": 0.996346
+        }
+      ]
+    },
+    {
+      "term": "DB",
+      "canonical": "Dumbbell",
+      "chunks_sampled": 6,
+      "mean_similarity": 0.976105,
+      "min_similarity": 0.914005,
+      "max_similarity": 0.999735,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0007",
+          "similarity": 0.998361
+        },
+        {
+          "chunk_id": "doc_0011",
+          "similarity": 0.914005
+        },
+        {
+          "chunk_id": "doc_0017",
+          "similarity": 0.999735
+        },
+        {
+          "chunk_id": "doc_0029",
+          "similarity": 0.996425
+        },
+        {
+          "chunk_id": "doc_0032",
+          "similarity": 0.954935
+        },
+        {
+          "chunk_id": "doc_0062",
+          "similarity": 0.993172
+        }
+      ]
+    },
+    {
+      "term": "TUT",
+      "canonical": "Time Under Tension",
+      "chunks_sampled": 6,
+      "mean_similarity": 0.986907,
+      "min_similarity": 0.949374,
+      "max_similarity": 0.999413,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0011",
+          "similarity": 0.999413
+        },
+        {
+          "chunk_id": "doc_0041",
+          "similarity": 0.991331
+        },
+        {
+          "chunk_id": "doc_0060",
+          "similarity": 0.991432
+        },
+        {
+          "chunk_id": "doc_0071",
+          "similarity": 0.991223
+        },
+        {
+          "chunk_id": "doc_0073",
+          "similarity": 0.949374
+        },
+        {
+          "chunk_id": "doc_0076",
+          "similarity": 0.998671
+        }
+      ]
+    },
+    {
+      "term": "GPP",
+      "canonical": "General Physical Preparedness",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.986964,
+      "min_similarity": 0.986964,
+      "max_similarity": 0.986964,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0092",
+          "similarity": 0.986964
+        }
+      ]
+    },
+    {
+      "term": "MPS",
+      "canonical": "Muscle Protein Synthesis",
+      "chunks_sampled": 9,
+      "mean_similarity": 0.982315,
+      "min_similarity": 0.958342,
+      "max_similarity": 0.997868,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0004",
+          "similarity": 0.958342
+        },
+        {
+          "chunk_id": "doc_0013",
+          "similarity": 0.966958
+        },
+        {
+          "chunk_id": "doc_0014",
+          "similarity": 0.995198
+        },
+        {
+          "chunk_id": "doc_0015",
+          "similarity": 0.9612
+        },
+        {
+          "chunk_id": "doc_0023",
+          "similarity": 0.997868
+        },
+        {
+          "chunk_id": "doc_0041",
+          "similarity": 0.99631
+        },
+        {
+          "chunk_id": "doc_0053",
+          "similarity": 0.98857
+        },
+        {
+          "chunk_id": "doc_0086",
+          "similarity": 0.992421
+        },
+        {
+          "chunk_id": "doc_0093",
+          "similarity": 0.983973
+        }
+      ]
+    }
+  ],
+  "abbreviations_no_match": [
+    "EMOM",
+    "AMRAP",
+    "MET",
+    "HRMAX",
+    "BMR",
+    "BMI",
+    "BCAA",
+    "RIR",
+    "PR",
+    "PB",
+    "PCR",
+    "EPOC",
+    "LB",
+    "ECG",
+    "EMG",
+    "RSI",
+    "RMR",
+    "HIT",
+    "SS",
+    "PL",
+    "WL",
+    "BF"
+  ],
+  "lay_to_canonical": [
+    {
+      "term": "abs",
+      "canonical": "rectus abdominis",
+      "chunks_sampled": 3,
+      "mean_similarity": 0.996181,
+      "min_similarity": 0.989436,
+      "max_similarity": 0.999645,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0057",
+          "similarity": 0.989436
+        },
+        {
+          "chunk_id": "doc_0061",
+          "similarity": 0.999463
+        },
+        {
+          "chunk_id": "doc_0081",
+          "similarity": 0.999645
+        }
+      ]
+    },
+    {
+      "term": "hammies",
+      "canonical": "hamstrings",
+      "chunks_sampled": 5,
+      "mean_similarity": 0.997417,
+      "min_similarity": 0.991258,
+      "max_similarity": 0.999494,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0011",
+          "similarity": 0.999494
+        },
+        {
+          "chunk_id": "doc_0014",
+          "similarity": 0.997659
+        },
+        {
+          "chunk_id": "doc_0016",
+          "similarity": 0.999394
+        },
+        {
+          "chunk_id": "doc_0046",
+          "similarity": 0.991258
+        },
+        {
+          "chunk_id": "doc_0077",
+          "similarity": 0.999281
+        }
+      ]
+    },
+    {
+      "term": "quads",
+      "canonical": "quadriceps femoris",
+      "chunks_sampled": 5,
+      "mean_similarity": 0.996535,
+      "min_similarity": 0.99133,
+      "max_similarity": 0.999224,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0002",
+          "similarity": 0.99133
+        },
+        {
+          "chunk_id": "doc_0031",
+          "similarity": 0.999224
+        },
+        {
+          "chunk_id": "doc_0037",
+          "similarity": 0.998558
+        },
+        {
+          "chunk_id": "doc_0076",
+          "similarity": 0.995516
+        },
+        {
+          "chunk_id": "doc_0084",
+          "similarity": 0.998047
+        }
+      ]
+    },
+    {
+      "term": "calves",
+      "canonical": "triceps surae",
+      "chunks_sampled": 4,
+      "mean_similarity": 0.992744,
+      "min_similarity": 0.982969,
+      "max_similarity": 0.998023,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0017",
+          "similarity": 0.982969
+        },
+        {
+          "chunk_id": "doc_0024",
+          "similarity": 0.997885
+        },
+        {
+          "chunk_id": "doc_0045",
+          "similarity": 0.998023
+        },
+        {
+          "chunk_id": "doc_0059",
+          "similarity": 0.9921
+        }
+      ]
+    },
+    {
+      "term": "pecs",
+      "canonical": "pectoralis major",
+      "chunks_sampled": 1,
+      "mean_similarity": 0.993691,
+      "min_similarity": 0.993691,
+      "max_similarity": 0.993691,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0049",
+          "similarity": 0.993691
+        }
+      ]
+    },
+    {
+      "term": "lats",
+      "canonical": "latissimus dorsi",
+      "chunks_sampled": 3,
+      "mean_similarity": 0.997393,
+      "min_similarity": 0.995348,
+      "max_similarity": 0.999039,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0049",
+          "similarity": 0.997794
+        },
+        {
+          "chunk_id": "doc_0077",
+          "similarity": 0.999039
+        },
+        {
+          "chunk_id": "doc_0091",
+          "similarity": 0.995348
+        }
+      ]
+    },
+    {
+      "term": "traps",
+      "canonical": "trapezius",
+      "chunks_sampled": 5,
+      "mean_similarity": 0.998024,
+      "min_similarity": 0.9947,
+      "max_similarity": 0.999734,
+      "per_chunk": [
+        {
+          "chunk_id": "doc_0007",
+          "similarity": 0.999622
+        },
+        {
+          "chunk_id": "doc_0049",
+          "similarity": 0.99692
+        },
+        {
+          "chunk_id": "doc_0051",
+          "similarity": 0.999146
+        },
+        {
+          "chunk_id": "doc_0057",
+          "similarity": 0.999734
+        },
+        {
+          "chunk_id": "doc_0079",
+          "similarity": 0.9947
+        }
+      ]
+    }
+  ],
+  "lay_to_canonical_no_match": [
+    "glutes",
+    "delts",
+    "bis",
+    "tris"
+  ],
+  "summary": {
+    "abbrev_mean": 0.984152,
+    "lay_mean": 0.995998,
+    "abbrev_matched": 27,
+    "abbrev_skipped": 22,
+    "lay_matched": 7,
+    "lay_skipped": 4,
+    "low_similarity_pairs": []
+  }
+}
