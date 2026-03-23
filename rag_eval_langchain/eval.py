@@ -56,6 +56,16 @@ EMBEDDING_MODEL = "text-embedding-3-large"
 RETRIEVAL_K = 16
 DATASET_NAME = "Chunking"
 
+# Chunking Config
+
+CHUNK_SIZE = 1500
+CHUNK_OVERLAP = 150
+
+# ── Reranker Config ──
+RERANKER = False
+RERANKER_MODEL = "BAAI/bge-reranker-base"
+RERANKER_TOP_K = 4  # how many docs to keep after reranking
+
 
 # ── 1. Indexing & Retrieval ─────────────────────────────────────────────────
 
@@ -73,8 +83,7 @@ for pdf_path in pdf_paths:
     print(f"  Loaded {len(pages)} pages from {filename}")
 print(f"  Total: {len(docs_list)} pages loaded")
 
-doc_splits = semantic_chunking(docs_list)
-
+doc_splits = base_chunking(docs_list, CHUNK_SIZE, CHUNK_OVERLAP)
 
 embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
 vector_store = InMemoryVectorStore(embeddings)
@@ -82,6 +91,14 @@ document_ids = vector_store.add_documents(documents=doc_splits)
 print(f"✓ Indexed {len(document_ids)} chunks in vector store")
 
 retriever = vector_store.as_retriever(search_kwargs={"k": RETRIEVAL_K})
+
+if RERANKER:
+    from reranking import load_reranker
+
+    reranker_model = load_reranker(RERANKER_MODEL)
+    print(f"  Reranker loaded: {RERANKER_MODEL}")
+else:
+    reranker_model = None
 
 # ── 2. RAG Generation Pipeline ─────────────────────────────────────────────
 
@@ -104,6 +121,10 @@ def _llm_generate(messages: list) -> object:
 def rag_bot(question: str) -> dict:
     """RAG pipeline: retrieve relevant chunks then generate an answer."""
     docs = retriever.invoke(question)
+    if RERANKER:
+        from reranking import rerank_docs
+
+        docs = rerank_docs(question, docs, top_k=RERANKER_TOP_K, model=reranker_model)
     docs_string = "\n\n".join(doc.page_content for doc in docs)
 
     if FOOL:
@@ -159,11 +180,15 @@ if __name__ == "__main__":
         data=DATASET_NAME,
         # only use the last evaluator
         evaluators=[evaluator_fns[-1]],  # Only retrieval relevance
-        experiment_prefix="semantic-perc=95-k=16",
+        experiment_prefix="reranker=bge-k=16-re_k=4",
         max_concurrency=32,
         metadata={
-            "sub_level": SUB_LEVEL if FOOL else "no obfuscation",
             "model": OPENAI_MODEL,
+            "retrieval_k": RETRIEVAL_K,
+            "reranker": RERANKER_MODEL if RERANKER else "none",
+            "reranker_top_k": RERANKER_TOP_K if RERANKER else None,
+            "chunk_size": CHUNK_SIZE,
+            "chunk_overlap": CHUNK_OVERLAP,
         },
         num_repetitions=1,
     )

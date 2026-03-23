@@ -9,8 +9,6 @@ from langchain_classic.storage import InMemoryStore
 from langchain_core.vectorstores import InMemoryVectorStore
 
 
-CHUNK_SIZE = 1500
-CHUNK_OVERLAP = 150
 
 EMBEDDING_MODEL = "text-embedding-3-large"
 
@@ -19,10 +17,10 @@ CHILD_CHUNK_SIZE = 400
 CHILD_CHUNK_OVERLAP = 50
 
 
-def base_chunking(docs_list):
+def base_chunking(docs_list, chunk_size, chunk_overlap):
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=CHUNK_SIZE,
-        chunk_overlap=CHUNK_OVERLAP,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
         add_start_index=True,
     )
     doc_splits = text_splitter.split_documents(docs_list)
