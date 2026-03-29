@@ -1,0 +1,10 @@
+{
+    "mode": "2",
+    "corpus_embedding_time_sec": 251.0636920928955,
+    "baseline_memory_mb": 7.59228515625,
+    "retrieval_time_sec": 0.08899688720703125,
+    "ndcg_10": 0.36667720031747786,
+    "memory_mb": 0.7216625213623047,
+    "compression_time_sec": 0.16468405723571777,
+    "compression_ratio": 10.520547945205479
+}
