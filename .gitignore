@@ -16,7 +16,6 @@ evaluation-results/
 *.pth
 
 # PDF files (too large for git), except weekly meeting notes
-*.pdf
 !weekly_meetings/*.pdf
 
 # Large generated data files
