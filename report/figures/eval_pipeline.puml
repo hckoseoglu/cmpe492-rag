@@ -1,0 +1,29 @@
+@startuml eval_pipeline
+start
+
+:Load knowledge hub\n(authoritative fitness PDFs);
+
+:Chunk documents with\ndefined strategy\n(base / semantic / parent-child);
+
+:Embed chunks with\ncustom embedder;
+
+:Index vectors in\nchosen vector database;
+
+:For each test question;
+
+repeat
+    :Retrieve K documents\n(K defined by hyperparameters);
+
+    :Apply cross-encoder\nreranking;
+
+    :LLM generates response\nconditioned on retrieved chunks;
+
+    :LLM-as-judge evaluators\nevaluate the response\n(correctness, relevance,\ngroundedness, retrieval relevance);
+
+repeat while (more questions?) is (yes)
+->no;
+
+:Aggregate and log\nevaluation results;
+
+stop
+@enduml

@@ -1,0 +1,28 @@
+@startuml chat_sequence
+actor User
+participant "Frontend" as FE
+participant "API Server" as API
+participant "Retrieval\nMiddleware" as MW
+participant "Vector Store" as VS
+participant "Intent\nExtractor" as IE
+participant "Exercise\nDatabase" as EDB
+participant "LLM Agent" as LLM
+
+User -> FE : Send message
+FE -> API : POST /chat (message + history)
+API -> MW : Intercept request
+MW -> VS : Similarity search (K=2)
+VS --> MW : Relevant chunks
+MW -> LLM : Augmented prompt\n(system prompt + retrieved context)
+
+alt Workout request
+    LLM -> IE : Extract structured intent
+    IE --> LLM : {muscle, equipment,\ndifficulty, count}
+    LLM -> EDB : Filter exercises
+    EDB --> LLM : Matching exercises (unordered)
+end
+
+LLM --> API : Generated response\n(exercises ordered by training rules)
+API --> FE : JSON response
+FE --> User : Display answer
+@enduml
