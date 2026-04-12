@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local vector DB data
+chroma_db/
+
+# Tree RAG internal / cache files
+.treerag/
+
+# Document storage
+pdfs/
+*.pdf
+
+# Logs and outputs
+logs/
+results/
+*.csv
+*.png
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

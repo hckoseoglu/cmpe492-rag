@@ -1,0 +1,15 @@
+requests
+pandas
+python-dotenv
+tqdm
+datasets
+langchain
+langchain-community
+langchain-text-splitters
+langchain-chroma
+langchain-openai
+pymupdf
+chromadb
+litellm
+PyPDF2
+pyyaml

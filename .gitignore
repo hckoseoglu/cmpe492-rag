@@ -26,3 +26,9 @@ __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
+
+#tree-rag
+tree_rag/pdfs
+tree_rag/.treerag
+tree-rag/PageIndex
+
