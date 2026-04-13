@@ -83,8 +83,12 @@ python chunker.py --resume
 
 ### Run (GCP -- vLLM)
 ```bash
-LLM_BASE_URL=http://localhost:8000/v1 LLM_MODEL=google/gemma-2-9b-it python chunker.py
+LLM_BASE_URL=http://localhost:8000/v1 LLM_MODEL=google/gemma-2-9b-it LLM_IS_GEMMA=true python chunker.py
 ```
+
+> **Note:** `LLM_IS_GEMMA=true` is required when using Gemma models (via vLLM or Ollama).
+> Gemma does not support the `system` role in its chat template — setting this flag merges
+> the system prompt into the first user message instead.
 
 ### Output Format
 One JSONL file per PDF in `./chunks/`:

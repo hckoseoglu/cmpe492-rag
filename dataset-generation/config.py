@@ -15,6 +15,7 @@ class Config:
     model: str = field(default_factory=lambda: os.environ.get("LLM_MODEL", "gemma2:9b"))
     api_key: str = field(default_factory=lambda: os.environ.get("LLM_API_KEY", "ollama"))
     temperature: float = 0.1
+    is_gemma: bool = field(default_factory=lambda: os.environ.get("LLM_IS_GEMMA", "false").lower() == "true")
 
     # Processing params
     pages_per_batch: int = 3

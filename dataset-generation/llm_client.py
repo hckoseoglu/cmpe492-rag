@@ -15,8 +15,17 @@ class LLMClient:
         self.client = OpenAI(base_url=config.base_url, api_key=config.api_key)
         self.model = config.model
         self.temperature = config.temperature
+        self.is_gemma = config.is_gemma
         self.max_retries = 3
         self.base_delay = 2.0
+
+    def _build_messages(self, system_prompt: str, user_prompt: str) -> list:
+        if self.is_gemma:
+            return [{"role": "user", "content": f"{system_prompt}\n\n{user_prompt}"}]
+        return [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
 
     def chat(self, system_prompt: str, user_prompt: str) -> str:
         for attempt in range(self.max_retries):
@@ -24,10 +33,7 @@ class LLMClient:
                 response = self.client.chat.completions.create(
                     model=self.model,
                     temperature=self.temperature,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
+                    messages=self._build_messages(system_prompt, user_prompt),
                 )
                 return response.choices[0].message.content.strip()
             except Exception as e:
@@ -71,10 +77,7 @@ class LLMClient:
                     model=self.model,
                     temperature=self.temperature,
                     response_format=response_format,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
+                    messages=self._build_messages(system_prompt, user_prompt),
                 )
                 return json.loads(response.choices[0].message.content)
             except json.JSONDecodeError as e:
