@@ -44,10 +44,46 @@ export LLM_API_KEY="dummy"
 3.  **Augment:** For each chunk, generate a 1-2 sentence summary.
 4.  **Store:** Create a JSONL object: `{"id": "...", "content": "...", "summary": "..."}`.
 
-### Step 2: Positive Pair Generation
-1.  **Prompt:** Input chunk content + summary to Llama-3.1.
-2.  **Task:** "Generate 2 diverse user queries that are definitively answered by this text.".
-3.  **Verify:** "Use LLM as judge to verify generated query is valid, otherwise feedback generator about the error until task completes sucessfuly".
+### Step 2: Positive Pair Generation (`pair_generator.py`)
+
+For each chunk, generate two questions — one **formal**, one **informal** — in **separate**
+LLM calls so styles don't bleed. Each candidate question is then validated by a **judge**
+LLM; on rejection, the failure reason is fed back to the generator (up to **2 retries**
+per style). Both generator and judge are served by the same **Gemma 2 9B** vLLM server in
+this iteration. (DeepSeek-R1 remains the planned model for Step 4 hard-negative
+validation, not for the Step 2 pair-generation judge.)
+
+**Generator** (`generate_question`)
+- First decides whether the chunk has substantive content. Non-substantive chunks are
+  skipped at the chunk level (both styles) with one of six labels:
+  `table_of_contents`, `author_credentials`, `copyright_notice`, `references`,
+  `figure_caption`, `other_metadata` (the last covers book/edition meta-descriptions).
+- If substantive, emits one question in the requested style (`formal` = textbook tone;
+  `informal` = casual gym-goer voice).
+
+**Judge** (`judge_question`) — five hard rules, ALL must pass:
+1. **ANSWERABILITY** — the chunk fully and definitively answers the question.
+2. **SPECIFICITY** — the question targets info unique to this chunk (no generic trivia).
+3. **NO_ATTRIBUTION** — never names institutions (NSCA, ACSM, …), people (researchers,
+   authors), specific studies/journals, or specific books/resources.
+4. **USER_PERSONA** — never references the source itself ("this book", "the third
+   edition", "chapters 9 and 10", "what's new in…").
+5. **STYLE MATCH** — register matches the requested style.
+
+**Outputs** (in `./pairs/`):
+- `<chunks_filename>.jsonl` — `{chunk_id, question, style, attempts}`, two lines per
+  content chunk (one formal, one informal).
+- `_skipped.jsonl` — chunk-level skips with the skip_reason.
+- `_failed.jsonl` — chunks the judge rejected after all retries; the full attempt trail
+  is preserved for prompt debugging.
+
+**Testing the judge** — `tests/test_judge.py` runs the live judge against curated cases
+in `tests/judge_cases.py` (each case is intentionally distinct from the prompt few-shots
+so we measure rule-application, not memorization). Use it as a calibration baseline
+before any large run:
+```bash
+python -m tests.test_judge --save
+```
 
 ### Step 3: Global Hybrid Search & Hard Negative Mining
 1.  **Search:** For each query, run **Hybrid Search** (BM25 + Vector)

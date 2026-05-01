@@ -4,6 +4,7 @@ import logging
 import sys
 from pathlib import Path
 
+from checkpoint import get_checkpoint_path, load_checkpoint, save_checkpoint
 from config import Config
 from grouper import group_propositions
 from llm_client import LLMClient
@@ -16,22 +17,6 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 logger = logging.getLogger(__name__)
-
-
-def get_checkpoint_path(config: Config, pdf_name: str, stage: str) -> Path:
-    return config.checkpoint_dir / f"{Path(pdf_name).stem}_{stage}.json"
-
-
-def save_checkpoint(path: Path, data):
-    with open(path, "w") as f:
-        json.dump(data, f)
-
-
-def load_checkpoint(path: Path):
-    if path.exists():
-        with open(path) as f:
-            return json.load(f)
-    return None
 
 
 def process_pdf(pdf_path: Path, config: Config, llm: LLMClient) -> bool:
