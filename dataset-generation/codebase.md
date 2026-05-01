@@ -6,8 +6,8 @@ Synthetic dataset generation pipeline for fine-tuning a RAG-based AI personal tr
 
 1. **Agentic Chunking** (implemented) -- LLM decomposes PDF text into atomic propositions, then groups them into thematic chunks with summaries. Output: JSONL files in `./chunks/`.
 2. **Positive Pair Generation** (implemented) -- For each chunk, generates one formal and one informal user query (separate LLM calls). A judge LLM validates each query against the chunk; on rejection, the failure reason is fed back to the generator (up to 2 retries). Non-substantive chunks (TOC, author bios, copyright pages, references, captions) are detected and skipped. Output: JSONL files in `./pairs/`.
-3. **Hard Negative Mining** (not yet implemented) -- Hybrid search (BM25 + vector) to find hard negatives per query.
-4. **Expert Judge Validation** (not yet implemented) -- DeepSeek-R1 classifies candidates as new positives or hard negatives.
+3. **Hard Negative Candidate Mining** (implemented) -- For each query, hybrid search (BM25 + BGE-M3 dense, fused with RRF) over the chunk corpus produces top-K candidates with the source chunk excluded. Output: JSONL files in `./candidates/`.
+4. **Expert Judge Validation** (implemented) -- A judge LLM labels each candidate as `positive` or `hard_negative`. The source chunk is treated as a positive without a judge call. Output: per-query records and exploded triplets in `./triplets/`. Currently uses the same Gemma 2 9B server as Step 2; switch to DeepSeek-R1 by restarting vLLM and updating `LLM_MODEL`.
 
 Final output: `(Query, Positive, Hard Negative)` triplets for fine-tuning `BAAI/bge-m3` with MultipleNegativesRankingLoss.
 
@@ -17,18 +17,24 @@ Final output: `(Query, Positive, Hard Negative)` triplets for fine-tuning `BAAI/
 dataset-generation/
 ├── chunker.py          # Step 1 orchestrator + CLI (chunking)
 ├── pair_generator.py   # Step 2 orchestrator + CLI (positive-pair generation)
+├── hybrid_search.py    # Step 3 orchestrator + CLI (hard-negative candidate mining)
+├── negative_judge.py   # Step 4 orchestrator + CLI (judge labelling -> triplets)
+├── retrieval/          # Step 3 building blocks (corpus, BM25, dense, RRF)
 ├── llm_client.py       # Ollama/vLLM abstraction (OpenAI-compatible API)
 ├── pdf_loader.py       # PDF text extraction + batching
 ├── propositions.py     # LLM proposition extraction
 ├── grouper.py          # Proposition grouping + summarization
 ├── checkpoint.py       # Shared checkpoint helpers (load/save/path)
 ├── config.py           # Configuration dataclass
-├── requirements.txt    # pypdf, openai
+├── requirements.txt    # pypdf, openai, rank_bm25, sentence-transformers, torch, numpy
 ├── setup_local.sh      # Ollama + gemma2:9b setup script (local)
 ├── serve.sh            # vLLM serving script (GCP)
-├── tests/              # Judge test suite (cases + runner)
+├── tests/              # Judge + hybrid-search test suite (cases + runners)
 ├── chunks/             # Step 1 output: JSONL files (generated)
 ├── pairs/              # Step 2 output: pairs + _skipped + _failed JSONL (generated)
+├── candidates/         # Step 3 output: per-query candidate JSONL (generated)
+├── triplets/           # Step 4 output: per-query records + exploded triplets (generated)
+├── .cache/embeddings/  # Cached BGE-M3 corpus embeddings keyed by content hash
 ├── checkpoints/        # Resumption state (generated)
 └── CLAUDE.md           # Full pipeline design doc
 ```
@@ -221,18 +227,158 @@ Categories: `VALID`, `ANSWERABILITY`, `SPECIFICITY`, `NO_ATTRIBUTION`, `USER_PER
 `tests/judge_results.json` for cross-revision comparison. Aim for ≥85% overall before
 running a long job; any single rule under ~70% means that prompt section needs work.
 
+## Step 3: Hard Negative Candidate Mining (`hybrid_search.py`)
+
+For each `(chunk_id, question, style)` row in `pairs/<file>.jsonl`, run a global
+hybrid search over the chunk corpus and emit the top-K candidates as hard-negative
+candidates. The source chunk is always excluded from the results — by definition it
+is the positive for its own query.
+
+### Retrieval pipeline
+- **Corpus:** `chunks/<file>.jsonl`, with rows whose `chunk_id` appears in
+  `pairs/_skipped.jsonl` (and matches `source_file`) filtered out. Failed chunks
+  (`_failed.jsonl`) stay — they're real content; the judge just couldn't get a
+  clean question out of them.
+- **Sparse:** classic BM25 via `rank_bm25` over a lowercase + alphanumeric
+  tokenisation. No stemming, no stopwording — keeps behaviour predictable.
+- **Dense:** `BAAI/bge-m3` via `sentence-transformers`. Embeddings are normalised so
+  cosine similarity is just a dot product. Corpus embeddings are cached to
+  `.cache/embeddings/<stem>.<hash>.npy` keyed on a hash of `(model, ids, contents)`,
+  so re-runs over an unchanged file skip the encode step entirely.
+- **Fusion:** Reciprocal Rank Fusion (RRF, `k=60`). Each list contributes
+  `1 / (k + rank)`. RRF was chosen over weighted sums because it ignores score
+  magnitudes — BM25 scores are unbounded and cosine sits in `[-1, 1]`, so any
+  weighted-sum tuning would be brittle.
+- **Pool:** top-50 from each list, fused, source chunk dropped, top-5 emitted.
+
+### Run (Local — Ollama / CPU embedder)
+```bash
+cd dataset-generation
+pip install -r requirements.txt   # first run pulls ~2GB BGE-M3 weights
+
+# Smoke test on 5 queries
+python hybrid_search.py \
+  --chunks-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl" \
+  --limit 5 --device cpu
+
+# Full file
+python hybrid_search.py \
+  --chunks-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl"
+
+# Resume after interruption
+python hybrid_search.py \
+  --chunks-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl" --resume
+```
+
+### Run (GCP — CUDA embedder)
+The embedder runs on the same L4 as the LLM server. CUDA is auto-detected, no flag
+needed.
+```bash
+cd dataset-generation
+python hybrid_search.py \
+  --chunks-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl"
+```
+
+CLI flags: `--chunks-file` (required), `--pairs-file` (defaults to chunks-file
+basename), `--top-k` (default 5), `--limit N`, `--resume`,
+`--device {auto,cpu,cuda,mps}`.
+
+### Output Layout (`./candidates/`)
+One line per query in `candidates/<chunks_filename>.jsonl`:
+```json
+{
+  "chunk_id": "NCSA_..._0042",
+  "question": "...",
+  "style": "formal",
+  "source_chunk_id": "NCSA_..._0042",
+  "candidates": [
+    {"chunk_id": "...", "content": "...", "summary": "...",
+     "bm25_rank": 3, "dense_rank": 1, "rrf_score": 0.0312}
+  ]
+}
+```
+
+Checkpoint: `checkpoints/<stem>_candidates.json` keyed by `f"{chunk_id}::{style}"`.
+
+## Step 4: Expert Judge Validation (`negative_judge.py`)
+
+For each `(query, candidate)` pair from Step 3, ask a judge LLM whether the
+candidate fully answers the query. The source chunk is always positive and never
+sent to the judge (it was the original answer by construction).
+
+### Judge contract
+- One LLM call per candidate, structured JSON output via `LLMClient.chat_structured`.
+- Schema: `{"label": "positive" | "hard_negative", "reason": "..."}`.
+- "positive" = the chunk contains the COMPLETE answer; partial answers and
+  topically-similar definitions are `hard_negative`.
+
+### Run (Local — Ollama)
+```bash
+cd dataset-generation
+python negative_judge.py \
+  --candidates-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl" \
+  --limit 5
+
+# Full file
+python negative_judge.py \
+  --candidates-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl"
+```
+
+### Switching to DeepSeek-R1 on GCP
+Per `CLAUDE.md` §1, the planned judge for this step is
+`DeepSeek-R1-Distill-Llama-8B`. To switch:
+```bash
+# Shell A — vLLM server with the new model
+python -m vllm.entrypoints.openai.api_server \
+  --model deepseek-ai/DeepSeek-R1-Distill-Llama-8B \
+  --max-model-len 8192 --port 8000 --gpu-memory-utilization 0.90
+
+# Shell B — point negative_judge.py at it (note: DeepSeek-R1 is NOT a Gemma model)
+export LLM_BASE_URL="http://localhost:8000/v1"
+export LLM_MODEL="deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+export LLM_API_KEY="dummy"
+export LLM_IS_GEMMA="false"
+python negative_judge.py --candidates-file "..."
+```
+No code changes needed — the model swap is purely env-driven.
+
+### Output Layout (`./triplets/`)
+Two artifacts per book, side by side:
+
+`triplets/<file>.jsonl` — one record per query, easy to inspect:
+```json
+{"query": "...", "style": "formal",
+ "source_chunk_id": "NCSA_..._0042",
+ "positives": ["NCSA_..._0042", "NCSA_..._0117"],
+ "hard_negatives": ["NCSA_..._0089", "NCSA_..._0288"]}
+```
+
+`triplets/<file>.triplets.jsonl` — exploded `(query, positive, hard_negative)`
+rows ready for `MultipleNegativesRankingLoss`. The source-chunk positive is
+referenced by id in the per-query record only — its content lives in
+`chunks/<file>.jsonl` and the trainer rejoins on `chunk_id`.
+
+Checkpoint: `checkpoints/<stem>_triplets.json` keyed by `f"{chunk_id}::{style}"`.
+
+CLI flags: `--candidates-file` (required), `--limit N`, `--resume`.
+
+### Testing
+- **Hybrid-search smoke** (`tests/test_hybrid_search.py`) — synthetic 10-doc corpus
+  with a hand-coded paraphrase map standing in for the dense embedder. Verifies BM25
+  exact-match ranking, dense paraphrase ranking, RRF consensus, source-exclusion,
+  and `top_k` capping. No model download required.
+  ```bash
+  python -m tests.test_hybrid_search
+  ```
+- **Step-4 judge calibration** (`tests/test_negative_judge.py`) — curated cases
+  in `tests/negative_judge_cases.py` (intentionally distinct from the prompt
+  few-shots) measure the judge's accuracy on positives vs partial / topical /
+  definition-only `hard_negative` cases. Aim for ≥85% before any large run.
+  ```bash
+  python -m tests.test_negative_judge --save
+  ```
+
 ## What's Next
-
-### Step 3: Hard Negative Mining
-- Build a hybrid search index (BM25 + dense vectors via `BAAI/bge-m3`) over all chunks
-- For each successful pair record in `./pairs/<file>.jsonl` (i.e. one query per line, not
-  a triplet yet), retrieve top-5 chunks from the global index excluding the chunk
-  identified by `chunk_id`
-- These top-5 become hard-negative candidates fed to Step 4 for classification
-
-### Step 4: Expert Judge Validation
-- Use DeepSeek-R1-Distill-Llama-8B to classify each candidate as relevant (new positive) or irrelevant (hard negative)
-- Output final triplets: `(query, positive_chunk, hard_negative_chunk)`
 
 ### Step 5: Retriever Fine-Tuning
 - Fine-tune `BAAI/bge-m3` on the triplet dataset
