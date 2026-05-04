@@ -7,7 +7,7 @@ Synthetic dataset generation pipeline for fine-tuning a RAG-based AI personal tr
 1. **Agentic Chunking** (implemented) -- LLM decomposes PDF text into atomic propositions, then groups them into thematic chunks with summaries. Output: JSONL files in `./chunks/`.
 2. **Positive Pair Generation** (implemented) -- For each chunk, generates one formal and one informal user query (separate LLM calls). A judge LLM validates each query against the chunk; on rejection, the failure reason is fed back to the generator (up to 2 retries). Non-substantive chunks (TOC, author bios, copyright pages, references, captions) are detected and skipped. Output: JSONL files in `./pairs/`.
 3. **Hard Negative Candidate Mining** (implemented) -- For each query, hybrid search (BM25 + BGE-M3 dense, fused with RRF) over the chunk corpus produces top-K candidates with the source chunk excluded. Output: JSONL files in `./candidates/`.
-4. **Expert Judge Validation** (implemented) -- A judge LLM labels each candidate as `positive` or `hard_negative`. The source chunk is treated as a positive without a judge call. Output: per-query records and exploded triplets in `./triplets/`. Currently uses the same Gemma 2 9B server as Step 2; switch to DeepSeek-R1 by restarting vLLM and updating `LLM_MODEL`.
+4. **Expert Judge Validation** (implemented) -- A judge LLM labels each candidate as `positive`, `hard_negative`, or `irrelevant`. The source chunk is treated as a positive without a judge call, and its content is hydrated from `chunks/<file>.jsonl` so source positives contribute triplets directly. Output (in `./triplets/`): per-query records, exploded `(query, positive, hard_negative)` triplets, and a per-call `judge_debug.jsonl` log for prompt iteration. Always uses **`DeepSeek-R1-0528-Qwen3-8B`** (Ollama tag `deepseek-r1:8b` locally; HF id `deepseek-ai/DeepSeek-R1-0528-Qwen3-8B` on GCP/vLLM) — its chain-of-thought goes into the schema's `reason` field, which is what makes the prompt's self-check rules actually fire. Calibrated at POSITIVE = 6/6 (100%) on the test suite; gemma2:9b was 4/6 with self-contradictory false hard_negatives that would poison MNRL training.
 
 Final output: `(Query, Positive, Hard Negative)` triplets for fine-tuning `BAAI/bge-m3` with MultipleNegativesRankingLoss.
 
@@ -302,19 +302,55 @@ Checkpoint: `checkpoints/<stem>_candidates.json` keyed by `f"{chunk_id}::{style}
 
 ## Step 4: Expert Judge Validation (`negative_judge.py`)
 
-For each `(query, candidate)` pair from Step 3, ask a judge LLM whether the
-candidate fully answers the query. The source chunk is always positive and never
-sent to the judge (it was the original answer by construction).
+For each `(query, candidate)` pair from Step 3, ask a judge LLM to label the
+candidate as `positive`, `hard_negative`, or `irrelevant`. The source chunk is
+always a positive by construction and is never sent to the judge.
 
 ### Judge contract
-- One LLM call per candidate, structured JSON output via `LLMClient.chat_structured`.
-- Schema: `{"label": "positive" | "hard_negative", "reason": "..."}`.
-- "positive" = the chunk contains the COMPLETE answer; partial answers and
-  topically-similar definitions are `hard_negative`.
+- One LLM call per candidate, structured JSON output via
+  `LLMClient.chat_structured`.
+- **Schema (reason-first)** — JSON schema property order is significant under
+  strict structured outputs; `reason` is listed first so the model writes its
+  justification BEFORE committing to a label (chain-of-thought before verdict):
+  ```json
+  {"reason": "...", "label": "positive" | "hard_negative" | "irrelevant"}
+  ```
+- **Definitions:**
+  - `positive` — CANDIDATE contains a complete answer to QUERY, sufficient on
+    its own. Qualitative-but-domain-correct phrasing (e.g. "moderate loads"
+    for a hypertrophy-intensity question) IS positive — don't penalise correct
+    domain-typical phrasing for lacking numbers.
+  - `hard_negative` — CANDIDATE doesn't actually answer QUERY but shares
+    keyword/topical overlap. The classic shape is the **neighbouring-question
+    pattern**: a complete answer to a *different but adjacent* question on the
+    same topic — same exercise / nutrient / system, different goal, scope,
+    population, or facet. Same vocabulary, wrong answer.
+  - `irrelevant` — neither answers QUERY nor shares meaningful keyword/topical
+    overlap. Off-topic.
+- **Hard rules** (from the prompt): verdicts must be GROUNDED in CANDIDATE's
+  actual text (quote the phrase); multi-part queries require every sub-part
+  addressed for `positive`; definition-of-X chunks for a topic in QUERY are
+  usually `hard_negative` when QUERY asks for a prescription; default on
+  malformed verdict is `irrelevant` (conservative — keeps noise out of the MNRL
+  training set).
 
-### Run (Local — Ollama)
+### Run (Local — Ollama, deepseek-r1:8b)
+For prompt iteration and the calibration test on a laptop. Q4_K_M (~5.2 GB on
+disk, ~6-7 GB resident with 8K ctx). Tested on a 16 GB M1 MBP.
+
 ```bash
+# One-time
+ollama pull deepseek-r1:8b
+ollama serve   # if not already running
+
 cd dataset-generation
+export LLM_BASE_URL="http://localhost:11434/v1"
+export LLM_MODEL="deepseek-r1:8b"
+export LLM_API_KEY="ollama"
+export LLM_IS_GEMMA="false"
+export OLLAMA_KEEP_ALIVE="0"   # unload between calls on RAM-tight machines
+
+# Smoke run
 python negative_judge.py \
   --candidates-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl" \
   --limit 5
@@ -324,18 +360,27 @@ python negative_judge.py \
   --candidates-file "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl"
 ```
 
-### Switching to DeepSeek-R1 on GCP
-Per `CLAUDE.md` §1, the planned judge for this step is
-`DeepSeek-R1-Distill-Llama-8B`. To switch:
-```bash
-# Shell A — vLLM server with the new model
-python -m vllm.entrypoints.openai.api_server \
-  --model deepseek-ai/DeepSeek-R1-Distill-Llama-8B \
-  --max-model-len 8192 --port 8000 --gpu-memory-utilization 0.90
+Inference is slower than gemma2:9b (~40 s/call vs ~7 s on M1) because the
+reasoning chain-of-thought goes into the `reason` field before the `label` is
+committed. That's what makes the self-check rules in the prompt fire.
 
-# Shell B — point negative_judge.py at it (note: DeepSeek-R1 is NOT a Gemma model)
+### Run (GCP — vLLM, DeepSeek-R1-0528-Qwen3-8B)
+Stop the gemma2 vLLM server first to free VRAM (the L4 doesn't fit both at the
+same precision).
+```bash
+# Shell A — vLLM with DeepSeek
+python -m vllm.entrypoints.openai.api_server \
+  --model deepseek-ai/DeepSeek-R1-0528-Qwen3-8B \
+  --quantization bitsandbytes \
+  --load-format bitsandbytes \
+  --max-model-len 8192 \
+  --port 8000 \
+  --gpu-memory-utilization 0.90
+
+# Shell B — Step 4
+cd dataset-generation
 export LLM_BASE_URL="http://localhost:8000/v1"
-export LLM_MODEL="deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+export LLM_MODEL="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
 export LLM_API_KEY="dummy"
 export LLM_IS_GEMMA="false"
 python negative_judge.py --candidates-file "..."
@@ -343,20 +388,37 @@ python negative_judge.py --candidates-file "..."
 No code changes needed — the model swap is purely env-driven.
 
 ### Output Layout (`./triplets/`)
-Two artifacts per book, side by side:
+Three artifacts per book.
 
 `triplets/<file>.jsonl` — one record per query, easy to inspect:
 ```json
 {"query": "...", "style": "formal",
  "source_chunk_id": "NCSA_..._0042",
  "positives": ["NCSA_..._0042", "NCSA_..._0117"],
- "hard_negatives": ["NCSA_..._0089", "NCSA_..._0288"]}
+ "hard_negatives": ["NCSA_..._0089", "NCSA_..._0288"],
+ "irrelevants": ["NCSA_..._0901"]}
 ```
 
 `triplets/<file>.triplets.jsonl` — exploded `(query, positive, hard_negative)`
-rows ready for `MultipleNegativesRankingLoss`. The source-chunk positive is
-referenced by id in the per-query record only — its content lives in
-`chunks/<file>.jsonl` and the trainer rejoins on `chunk_id`.
+rows ready for `MultipleNegativesRankingLoss`. Source-positive content is
+hydrated from `chunks/<file>.jsonl` via `load_chunk_contents()` so the source
+positive contributes triplets directly — no downstream rejoin step needed.
+
+`triplets/<file>.judge_debug.jsonl` — one row per judge call, written
+incrementally so the file is inspectable mid-run:
+```json
+{"query": "...", "style": "formal",
+ "source_chunk_id": "NCSA_..._0042",
+ "source_content": "...",
+ "candidate_chunk_id": "NCSA_..._0089",
+ "candidate_content": "...",
+ "label": "hard_negative",
+ "reason": "...",
+ "raw_verdict": {"reason": "...", "label": "hard_negative"}}
+```
+`source_content` is recorded for the human reviewer doing prompt iteration; the
+judge itself never sees it. Use this file to find verdicts you disagree with
+and feed them back into the prompt.
 
 Checkpoint: `checkpoints/<stem>_triplets.json` keyed by `f"{chunk_id}::{style}"`.
 
@@ -370,11 +432,17 @@ CLI flags: `--candidates-file` (required), `--limit N`, `--resume`.
   ```bash
   python -m tests.test_hybrid_search
   ```
-- **Step-4 judge calibration** (`tests/test_negative_judge.py`) — curated cases
-  in `tests/negative_judge_cases.py` (intentionally distinct from the prompt
-  few-shots) measure the judge's accuracy on positives vs partial / topical /
-  definition-only `hard_negative` cases. Aim for ≥85% before any large run.
+- **Step-4 judge calibration** (`tests/test_negative_judge.py`) — runs the live
+  judge against `tests/negative_judge_cases.py` (15 hand-labeled cases across
+  five categories: `POSITIVE`, `HARD_NEGATIVE_PARTIAL`, `HARD_NEGATIVE_TOPICAL`,
+  `HARD_NEGATIVE_DEFINITION`, `IRRELEVANT_OFFTOPIC`). Cases are intentionally
+  distinct from the prompt few-shots so the test measures rule-application, not
+  memorisation. Aim for ≥85% overall AND POSITIVE = 100% before any large run
+  (false hard_negatives in the POSITIVE bucket directly poison MNRL training).
+  Backup result snapshots per model live next to the live results file as
+  `negative_judge_results.<model-tag>.json`.
   ```bash
+  # Step-4 judge env must be exported first (see "Run (Local — Ollama)").
   python -m tests.test_negative_judge --save
   ```
 

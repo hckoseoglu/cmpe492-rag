@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-05-04T11:35:05",
+  "model": "deepseek-r1:8b",
+  "base_url": "http://localhost:11434/v1",
+  "results": [
+    {
+      "category": "POSITIVE",
+      "expected": "positive",
+      "actual": "positive",
+      "correct": true,
+      "judge_reason": "Candidate states 'rest intervals of 2 to 5 minutes between sets' for training with 'loads at or above 85% of 1RM', directly answering the query about rest intervals for maximum strength training with heavy loads.",
+      "error": null,
+      "elapsed_s": 56.15,
+      "note": "explicit numerical rest range answers the query in full",
+      "query": "What rest interval is generally recommended between sets when training for maximum strength with heavy loads?"
+    },
+    {
+      "category": "POSITIVE",
+      "expected": "positive",
+      "actual": "positive",
+      "correct": true,
+      "judge_reason": "Candidate states '1.6 to 2.2 grams per kilogram of body mass' for maximizing muscle hypertrophy, directly answering both the protein amount and the goal of building muscle.",
+      "error": null,
+      "elapsed_s": 34.29,
+      "note": "covers the protein/bodyweight ratio with a numeric range",
+      "query": "how many grams of protein per kg of bodyweight should i eat to build muscle?"
+    },
+    {
+      "category": "POSITIVE",
+      "expected": "positive",
+      "actual": "positive",
+      "correct": true,
+      "judge_reason": "Candidate states 'work-to-rest ratios of about 1:3 to 1:4' directly answering the query about the ratio used in anaerobic interval training for lactic capacity development.",
+      "error": null,
+      "elapsed_s": 28.97,
+      "note": "ratio and bout durations are both present",
+      "query": "What approximate work-to-rest ratio is typically used during anaerobic interval training to develop lactic capacity?"
+    },
+    {
+      "category": "HARD_NEGATIVE_PARTIAL",
+      "expected": "hard_negative",
+      "actual": "irrelevant",
+      "correct": false,
+      "judge_reason": "Candidate discusses general principles of hypertrophy training (moderate loads and mechanical tension) but does not specify set, repetition, or rest-interval ranges \u2014 the query asks for specific recommendations.",
+      "error": null,
+      "elapsed_s": 35.8,
+      "note": "discusses hypertrophy training but gives no numbers for sets/reps/rest",
+      "query": "What set, repetition, and rest-interval ranges are recommended for hypertrophy in advanced lifters?"
+    },
+    {
+      "category": "HARD_NEGATIVE_TOPICAL",
+      "expected": "hard_negative",
+      "actual": "hard_negative",
+      "correct": true,
+      "judge_reason": "Candidate explains lactate production but does not specify the percentage of VO2 max at which the lactate threshold occurs for well-trained endurance athletes.",
+      "error": null,
+      "elapsed_s": 58.25,
+      "note": "lactate physiology, but no VO2 max percentage given",
+      "query": "At what percentage of VO2 max does the lactate threshold occur in well-trained endurance athletes?"
+    },
+    {
+      "category": "HARD_NEGATIVE_DEFINITION",
+      "expected": "hard_negative",
+      "actual": "hard_negative",
+      "correct": true,
+      "judge_reason": "Candidate defines a depth jump but does not specify any box height range or mention advanced athletes, failing to address the query's requirements.",
+      "error": null,
+      "elapsed_s": 33.26,
+      "note": "definition without box height numbers",
+      "query": "What box height range is recommended for depth jumps performed by advanced athletes?"
+    },
+    {
+      "category": "HARD_NEGATIVE_PARTIAL",
+      "expected": "hard_negative",
+      "actual": "hard_negative",
+      "correct": true,
+      "judge_reason": "Candidate states that caffeine improves endurance performance but does not specify the amount (how much) or timing (how long beforehand) \u2014 it only describes effects.",
+      "error": null,
+      "elapsed_s": 32.51,
+      "note": "describes effects but gives neither dose nor timing",
+      "query": "how much caffeine should i take before training and how long beforehand?"
+    },
+    {
+      "category": "HARD_NEGATIVE_TOPICAL",
+      "expected": "hard_negative",
+      "actual": "irrelevant",
+      "correct": false,
+      "judge_reason": "Candidate discusses types of resistance training programs but does not specify any weekly frequency or number of training sessions per muscle group, failing to address the query's core question.",
+      "error": null,
+      "elapsed_s": 30.72,
+      "note": "talks about split structure, no per-muscle frequency recommendation",
+      "query": "What is the recommended weekly training frequency per muscle group for hypertrophy?"
+    },
+    {
+      "category": "POSITIVE",
+      "expected": "positive",
+      "actual": "positive",
+      "correct": true,
+      "judge_reason": "Candidate states 'working loads in the range of approximately 67 to 85 percent of one-repetition maximum' \u2014 this directly provides the loading intensity range for hypertrophy as a percentage of 1RM.",
+      "error": null,
+      "elapsed_s": 28.56,
+      "note": "single concise answer to a numerical query",
+      "query": "What is the typical loading intensity range for hypertrophy expressed as a percentage of 1RM?"
+    },
+    {
+      "category": "POSITIVE",
+      "expected": "positive",
+      "actual": "positive",
+      "correct": true,
+      "judge_reason": "Candidate states 'Communication among systems is accomplished with hormones and other peptides,' which directly provides the primary mechanism for inter-system communication as requested in the query.",
+      "error": null,
+      "elapsed_s": 118.48,
+      "note": "qualitative-mechanism answer: 'hormones and other peptides' IS the mechanism \u2014 must not be flagged hard_negative for lacking further detail",
+      "query": "What are the primary mechanisms by which different bodily systems, such as the endocrine and nervous systems, communicate with each other?"
+    },
+    {
+      "category": "POSITIVE",
+      "expected": "positive",
+      "actual": "positive",
+      "correct": true,
+      "judge_reason": "Candidate states that the rise in stroke volume plateaus because 'increasing heart rate shortens diastolic filling time and limits ventricular filling', directly answering the query about the limiting factor.",
+      "error": null,
+      "elapsed_s": 38.12,
+      "note": "qualitative-mechanism answer: 'shortened diastolic filling time' IS the limit \u2014 same shape as the endocrine-communication case but a different domain",
+      "query": "What limits the rise in cardiac stroke volume during submaximal aerobic exercise in untrained adults?"
+    },
+    {
+      "category": "HARD_NEGATIVE_TOPICAL",
+      "expected": "hard_negative",
+      "actual": "hard_negative",
+      "correct": true,
+      "judge_reason": "Candidate gives a range for maximal strength training (85% of 1RM), but the query asks about hypertrophy \u2014 same exercise system, wrong training goal.",
+      "error": null,
+      "elapsed_s": 45.24,
+      "note": "neighbouring goal (max strength) \u2014 same units, different prescription",
+      "query": "What is the typical loading intensity range for hypertrophy expressed as a percentage of 1RM?"
+    },
+    {
+      "category": "IRRELEVANT_OFFTOPIC",
+      "expected": "irrelevant",
+      "actual": "irrelevant",
+      "correct": true,
+      "judge_reason": "Candidate discusses the rotator cuff muscles and their role in stabilizing the glenohumeral joint during overhead motion, but does not mention depth jumps, box heights, or plyometrics.",
+      "error": null,
+      "elapsed_s": 38.78,
+      "note": "shoulder anatomy has no overlap with depth-jump box height",
+      "query": "What box height range is recommended for depth jumps performed by advanced athletes?"
+    },
+    {
+      "category": "IRRELEVANT_OFFTOPIC",
+      "expected": "irrelevant",
+      "actual": "irrelevant",
+      "correct": true,
+      "judge_reason": "Candidate discusses knee extension biomechanics and quadriceps torque, with no mention of caffeine, timing, or exercise ergogenic aids.",
+      "error": null,
+      "elapsed_s": 23.24,
+      "note": "knee-extension biomechanics is unrelated to caffeine dose/timing",
+      "query": "how much caffeine should i take before training and how long beforehand?"
+    },
+    {
+      "category": "IRRELEVANT_OFFTOPIC",
+      "expected": "irrelevant",
+      "actual": "irrelevant",
+      "correct": true,
+      "judge_reason": "Candidate discusses hydration and sweat rate during endurance exercise, with no mention of training frequency, muscle groups, or hypertrophy.",
+      "error": null,
+      "elapsed_s": 25.93,
+      "note": "hydration monitoring shares no terms or topic with hypertrophy frequency",
+      "query": "What is the recommended weekly training frequency per muscle group for hypertrophy?"
+    }
+  ]
+}
