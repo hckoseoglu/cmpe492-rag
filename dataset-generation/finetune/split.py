@@ -72,10 +72,14 @@ def train_test_split_by_chunk_id(
         f"{len(test_queries)} test queries (mean |relevant|={mean_relevant:.2f})"
     )
 
-    overlap = {q.query for q in test_queries} & train_queries
+    # Check by source_chunk_id (the structural guarantee), not query text — two
+    # independent chunks can coincidentally produce identical question strings.
+    test_source_ids = {q.source_chunk_id for q in test_queries}
+    train_source_ids = {r.source_chunk_id for r in train_rows}
+    overlap = test_source_ids & train_source_ids
     if overlap:
         raise RuntimeError(
-            f"query-level leakage: {len(overlap)} queries present in both splits"
+            f"chunk-level leakage: {len(overlap)} source chunks present in both splits"
         )
 
     return train_rows, test_queries

@@ -9,7 +9,7 @@ Pipeline:
   5. Save final model under checkpoints/bge-m3-finetuned-<timestamp>/ and
      refresh the bge-m3-finetuned-latest symlink.
 
-Smoke mode (`--smoke`): caps to 50 rows, 1 epoch, batch 8, forces device=mps.
+Smoke mode (`--smoke`): caps to 50 rows, 1 epoch, batch 8, uses --device auto.
 """
 
 import argparse
@@ -76,11 +76,14 @@ def main():
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--warmup-ratio", type=float, default=0.1)
     parser.add_argument("--max-seq-length", type=int, default=512)
+    parser.add_argument("--grad-accum", type=int, default=1,
+                        help="Gradient accumulation steps (e.g. --batch-size 16 --grad-accum 2 "
+                             "gives effective batch 32 at half the peak VRAM).")
     parser.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--test-frac", type=float, default=0.2)
     parser.add_argument("--smoke", action="store_true",
-                        help="1 epoch, batch 8, device=mps, capped to 50 rows of real data")
+                        help="1 epoch, batch 8, capped to 50 rows of real data")
     parser.add_argument("--synthetic-smoke", action="store_true",
                         help="Like --smoke but synthesizes 50 rows in-memory; no real triplet files needed. "
                              "Use this on M1 before any real GCP run has produced triplets.")
@@ -93,9 +96,8 @@ def main():
     if args.smoke or args.synthetic_smoke:
         args.epochs = 1
         args.batch_size = 8
-        args.device = "mps"
         mode = "SYNTHETIC SMOKE" if args.synthetic_smoke else "SMOKE"
-        logger.info(f"{mode}: epochs=1 batch=8 device=mps row-cap=50")
+        logger.info(f"{mode}: epochs=1 batch=8 row-cap=50")
 
     device = _resolve_device(args.device)
     logger.info(f"device resolved to {device}")
@@ -194,11 +196,13 @@ def main():
         output_dir=str(output_dir),
         num_train_epochs=args.epochs,
         per_device_train_batch_size=args.batch_size,
+        gradient_accumulation_steps=args.grad_accum,
         learning_rate=args.lr,
         warmup_ratio=args.warmup_ratio,
         batch_sampler=BatchSamplers.NO_DUPLICATES,
         fp16=fp16,
         bf16=False,
+        gradient_checkpointing=True,
         logging_steps=max(1, len(train_rows) // (args.batch_size * 10)),
         save_strategy="epoch",
         save_total_limit=2,
@@ -215,7 +219,9 @@ def main():
     )
     logger.info(
         f"starting training: rows={len(train_rows)} epochs={args.epochs} "
-        f"batch={args.batch_size} lr={args.lr} sampler=NO_DUPLICATES"
+        f"batch={args.batch_size} grad_accum={args.grad_accum} "
+        f"effective_batch={args.batch_size * args.grad_accum} "
+        f"lr={args.lr} sampler=NO_DUPLICATES"
     )
     trainer.train()
 
