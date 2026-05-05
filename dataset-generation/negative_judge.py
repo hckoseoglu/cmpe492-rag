@@ -296,7 +296,13 @@ def process(
         irrelevant_contents: dict[str, str] = {}
 
         for cand in row["candidates"]:
-            verdict = judge_candidate(llm, question, cand["content"])
+            try:
+                verdict = judge_candidate(llm, question, cand["content"])
+            except Exception as e:
+                logger.warning(
+                    f"judge failed for {chunk_id}::{style} cand {cand['chunk_id']}: {e} — defaulting to irrelevant"
+                )
+                verdict = {"label": "irrelevant", "reason": f"judge_error: {e}"}
             # Conservative default: treat malformed labels as irrelevant so
             # noisy chunks never silently leak into the MNRL training set.
             label = verdict.get("label", "irrelevant")

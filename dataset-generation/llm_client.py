@@ -78,7 +78,12 @@ class LLMClient:
                     temperature=self.temperature,
                     response_format=response_format,
                     messages=self._build_messages(system_prompt, user_prompt),
+                    max_tokens=1024,
                 )
+                if response.choices[0].finish_reason == "length":
+                    raise ValueError(
+                        "output truncated (finish_reason=length) — input too long or max_tokens too small"
+                    )
                 return json.loads(response.choices[0].message.content)
             except json.JSONDecodeError as e:
                 logger.warning(f"JSON parse failed (attempt {attempt + 1}/{self.max_retries}): {e}")
