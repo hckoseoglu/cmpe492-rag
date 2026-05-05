@@ -1,0 +1,4 @@
+# Model checkpoints and large training artifacts
+checkpoints/bge-m3-finetuned-synthetic-smoke/
+**/*.safetensors
+**/optimizer.pt

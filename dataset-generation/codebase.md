@@ -2,14 +2,15 @@
 
 ## What This Does
 
-Synthetic dataset generation pipeline for fine-tuning a RAG-based AI personal trainer's retriever. The pipeline processes fitness/exercise science PDFs through 4 stages:
+Synthetic dataset generation + retriever fine-tuning pipeline for a RAG-based AI personal trainer. The pipeline processes fitness/exercise science PDFs through 5 stages:
 
 1. **Agentic Chunking** (implemented) -- LLM decomposes PDF text into atomic propositions, then groups them into thematic chunks with summaries. Output: JSONL files in `./chunks/`.
 2. **Positive Pair Generation** (implemented) -- For each chunk, generates one formal and one informal user query (separate LLM calls). A judge LLM validates each query against the chunk; on rejection, the failure reason is fed back to the generator (up to 2 retries). Non-substantive chunks (TOC, author bios, copyright pages, references, captions) are detected and skipped. Output: JSONL files in `./pairs/`.
 3. **Hard Negative Candidate Mining** (implemented) -- For each query, hybrid search (BM25 + BGE-M3 dense, fused with RRF) over the chunk corpus produces top-K candidates with the source chunk excluded. Output: JSONL files in `./candidates/`.
 4. **Expert Judge Validation** (implemented) -- A judge LLM labels each candidate as `positive`, `hard_negative`, or `irrelevant`. The source chunk is treated as a positive without a judge call, and its content is hydrated from `chunks/<file>.jsonl` so source positives contribute triplets directly. Output (in `./triplets/`): per-query records, exploded `(query, positive, hard_negative)` triplets, and a per-call `judge_debug.jsonl` log for prompt iteration. Always uses **`DeepSeek-R1-0528-Qwen3-8B`** (Ollama tag `deepseek-r1:8b` locally; HF id `deepseek-ai/DeepSeek-R1-0528-Qwen3-8B` on GCP/vLLM) — its chain-of-thought goes into the schema's `reason` field, which is what makes the prompt's self-check rules actually fire. Calibrated at POSITIVE = 6/6 (100%) on the test suite; gemma2:9b was 4/6 with self-contradictory false hard_negatives that would poison MNRL training.
+5. **Retriever Fine-Tuning & Eval** (implemented) -- `finetune/` package fine-tunes `BAAI/bge-m3` on the labelled triplets with `MultipleNegativesRankingLoss` and evaluates against the off-the-shelf baseline. Train/test split by `source_chunk_id` (queries are 1:1 with source chunks); each query's k positives × m hard_negatives expand to k×m training rows, all sharing the same anchor text. `BatchSamplers.NO_DUPLICATES` enforces at-most-one-row-per-query per batch — without it, MNRL would treat a query's other positives as in-batch negatives and push them away. Eval is multi-relevant Recall@{1,5,10} + NDCG@10 over the combined cross-book corpus, with percentile bootstrap 95% CIs.
 
-Final output: `(Query, Positive, Hard Negative)` triplets for fine-tuning `BAAI/bge-m3` with MultipleNegativesRankingLoss.
+Final output: a fine-tuned `BAAI/bge-m3` checkpoint under `checkpoints/bge-m3-finetuned-<timestamp>/final/` plus `<run-dir>/results/comparison.json` reporting the lift over baseline.
 
 ## Project Structure
 
@@ -20,22 +21,32 @@ dataset-generation/
 ├── hybrid_search.py    # Step 3 orchestrator + CLI (hard-negative candidate mining)
 ├── negative_judge.py   # Step 4 orchestrator + CLI (judge labelling -> triplets)
 ├── retrieval/          # Step 3 building blocks (corpus, BM25, dense, RRF)
+├── finetune/           # Step 5 — MNRL fine-tuning + retrieval eval
+│   ├── dataset.py      # load_judge_records, explode_to_triplets, dedup feasibility check
+│   ├── split.py        # train_test_split_by_chunk_id (queries are 1:1 with source chunks)
+│   ├── metrics.py      # multi-relevant Recall@k, NDCG@k, percentile bootstrap CI
+│   ├── train.py        # SentenceTransformerTrainer + MNRL + NO_DUPLICATES sampler
+│   └── evaluate.py     # baseline vs fine-tuned over combined cross-book corpus
 ├── llm_client.py       # Ollama/vLLM abstraction (OpenAI-compatible API)
 ├── pdf_loader.py       # PDF text extraction + batching
 ├── propositions.py     # LLM proposition extraction
 ├── grouper.py          # Proposition grouping + summarization
 ├── checkpoint.py       # Shared checkpoint helpers (load/save/path)
 ├── config.py           # Configuration dataclass
-├── requirements.txt    # pypdf, openai, rank_bm25, sentence-transformers, torch, numpy
+├── requirements.txt    # pypdf, openai, rank_bm25, sentence-transformers>=3, torch, numpy, datasets, accelerate
 ├── setup_local.sh      # Ollama + gemma2:9b setup script (local)
 ├── serve.sh            # vLLM serving script (GCP)
-├── tests/              # Judge + hybrid-search test suite (cases + runners)
+├── tests/              # Judge + hybrid-search + finetune smoke test suite
 ├── chunks/             # Step 1 output: JSONL files (generated)
 ├── pairs/              # Step 2 output: pairs + _skipped + _failed JSONL (generated)
 ├── candidates/         # Step 3 output: per-query candidate JSONL (generated)
 ├── triplets/           # Step 4 output: per-query records + exploded triplets (generated)
-├── .cache/embeddings/  # Cached BGE-M3 corpus embeddings keyed by content hash
-├── checkpoints/        # Resumption state (generated)
+├── .cache/embeddings/  # Cached BGE-M3 corpus embeddings keyed by (model_name, ids, contents)
+├── checkpoints/        # Step 5 model checkpoints + Step 1-4 resumption state (generated)
+│                       #   bge-m3-finetuned-<timestamp>/final/        — Step 5 output model
+│                       #   bge-m3-finetuned-<timestamp>/test_queries.jsonl  — frozen eval split
+│                       #   bge-m3-finetuned-<timestamp>/results/comparison.json — eval table
+│                       #   bge-m3-finetuned-latest                    — symlink to most recent run
 └── CLAUDE.md           # Full pipeline design doc
 ```
 
@@ -446,9 +457,95 @@ CLI flags: `--candidates-file` (required), `--limit N`, `--resume`.
   python -m tests.test_negative_judge --save
   ```
 
-## What's Next
+## Step 5: Retriever Fine-Tuning & Eval (`finetune/`)
 
-### Step 5: Retriever Fine-Tuning
-- Fine-tune `BAAI/bge-m3` on the triplet dataset
-- Loss: MultipleNegativesRankingLoss (MNRL)
-- Batch size: 32-64, on NVIDIA L4 (24GB VRAM)
+Fine-tune `BAAI/bge-m3` on the labelled triplets and quantify the lift over the
+off-the-shelf model on a held-out test split. Lives in `finetune/`; consumes
+`triplets/*.jsonl` (per-query records) and `chunks/*.jsonl` (for content
+hydration), produces a checkpoint under `checkpoints/bge-m3-finetuned-<timestamp>/`.
+
+**Train/test split** (`split.py`) — partitions unique `source_chunk_id`s 80/20
+with a seeded RNG. Every query is generated from exactly one source chunk in
+Step 2, so chunk-level partitioning is equivalent to query-level partitioning;
+the splitter raises if a query somehow ends up in both sides. Test queries
+carry `relevant_chunk_ids = {source_chunk_id} ∪ judge-positives`, persisted to
+`<run-dir>/test_queries.jsonl` so `evaluate.py` consumes the same split.
+
+**Row construction** (`dataset.py`) — for each judge record with k positives
+(source + judge-promoted) and m hard_negatives, emit **k × m rows** of shape
+`(anchor=query, positive=P_i.content, negative=HN_j.content)`. Records with
+empty `hard_negatives` are dropped — MNRL with an empty negative column would
+silently inject zeros into the in-batch negative pool. Source content for both
+positives and hard_negatives is hydrated from the matching `chunks/<book>.jsonl`.
+
+**Why per-batch query-dedup matters.** MNRL's denominator pulls in every
+other row's positive AND every other row's hard_negative. Two same-query rows
+in one batch — `(Q, P_a, HN_a)` and `(Q, P_b, HN_b)` — would put P_b in Q's
+denominator as a "negative" even though it's a true positive for Q, pushing
+Q away from a chunk that actually answers it. `BatchSamplers.NO_DUPLICATES`
+(sentence-transformers ≥3.0) defers same-anchor rows to later batches; since
+all k×m rows of a query share anchor text, this guarantees at most one row
+per query per batch. `assert_dedup_feasibility` warns at load time if any
+query has more rows than batches per epoch (its tail rows would starve under
+NO_DUPLICATES).
+
+**Training** (`train.py`):
+- `MultipleNegativesRankingLoss` (asymmetric).
+- `BatchSamplers.NO_DUPLICATES`, batch=32, lr=2e-5, warmup_ratio=0.1, epochs=3, max_seq_length=512.
+- fp16 on CUDA; disabled on MPS (unstable) and CPU.
+- Effective negatives per anchor = `2N − 2` other-row positives + `N` other-row hard_negatives = 94 at N=32.
+- Saves `<run-dir>/final/` (full SentenceTransformer) and refreshes the
+  `checkpoints/bge-m3-finetuned-latest` symlink.
+
+```bash
+# Production run on GCP L4 (vLLM not needed for training)
+python -m finetune.train --device cuda --epochs 3 --batch-size 32
+
+# M1 smoke against real triplets, capped to 50 rows
+python -m finetune.train --smoke
+
+# M1 smoke with synthetic in-memory data — needs no real triplets, downloads
+# BGE-M3 once, runs ~7 batches in ~80 s. Use this on a fresh M1 to verify the
+# training path before the GCP judge run produces data.
+python -m finetune.train --synthetic-smoke
+```
+
+**Evaluation** (`evaluate.py`) — concatenates every `chunks/<book>.jsonl`
+through the existing `retrieval.corpus.load_corpus` (Step-3 skip filter
+applies) and embeds the combined corpus with each variant via
+`retrieval.dense_index.DenseIndex` (whose embedding cache is keyed on
+`(model_name, ids, contents)` — baseline and fine-tuned cache to separate
+`.npy` files automatically). Per test query: encode → cosine top-10 → record
+where any chunk in `relevant_chunk_ids` lands.
+
+Metrics: **Recall@1, Recall@5, Recall@10, NDCG@10**, multi-relevant binary,
+macro-averaged with percentile bootstrap 95% CIs (1k resamples). Per-style
+breakdown (`formal` vs `informal`) also reported. Output:
+`<run-dir>/results/comparison.json` plus a printed table.
+
+```bash
+python -m finetune.evaluate --run-dir checkpoints/bge-m3-finetuned-<timestamp>
+# --only baseline    — sanity check the metric infra without needing a fine-tuned model
+# --only finetuned   — re-evaluate after manual checkpoint changes
+```
+
+### Testing — `tests/test_finetune_smoke.py`
+
+Six unit cases that don't touch the network:
+1. Explosion carries `query_id` and skips records with empty `hard_negatives`.
+2. `train_test_split_by_chunk_id` produces query-disjoint splits and every
+   test query has its source in `relevant_chunk_ids`.
+3. Multi-relevant `recall_at_k` / `ndcg_at_k` behave on edge cases.
+4. End-to-end `load_judge_records` round-trip against a synthetic
+   `chunks/`/`triplets/` pair.
+5. `assert_dedup_feasibility` warns but doesn't crash on starvation cases.
+6. **The NO_DUPLICATES invariant** — synthesises a dataset where one query
+   has 4 rows, runs the actual `NoDuplicatesBatchSampler`, and asserts no
+   batch ever contains two same-anchor rows.
+
+The full M1 model-fit smoke runs only when `FINETUNE_SMOKE_FULL=1` is set
+(it shells out to `python -m finetune.train --synthetic-smoke`).
+
+```bash
+python -m tests.test_finetune_smoke
+```

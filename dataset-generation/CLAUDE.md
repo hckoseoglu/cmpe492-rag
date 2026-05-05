@@ -270,8 +270,127 @@ python -m tests.test_negative_judge --save
 
 ## 3. Fine-Tuning the Retriever
 
-### Training Configuration
-* **Dataset:** Triplets of `(Query, Positive, Hard Negative)`.
-* **Loss Function:** **MultipleNegativesRankingLoss (MNRL)**
-* **Batch Size:** 32–64 
+The `finetune/` package consumes the per-query records from `triplets/` and
+produces a fine-tuned `BAAI/bge-m3` checkpoint, then evaluates it against the
+off-the-shelf baseline on a held-out test split.
 
+### Layout
+
+```
+finetune/
+├── dataset.py     # load_judge_records, explode_to_triplets, dedup feasibility
+├── split.py       # train_test_split_by_chunk_id (queries are 1:1 with source chunks)
+├── metrics.py     # multi-relevant Recall@k, NDCG@k, percentile bootstrap CI
+├── train.py       # SentenceTransformerTrainer + MNRL + NO_DUPLICATES sampler
+└── evaluate.py    # baseline vs fine-tuned over the combined cross-book corpus
+```
+
+### Train/test split (`split.py`)
+
+Split by `source_chunk_id`, 80/20, seeded. Every query is generated from
+exactly one source chunk in Step 2, so partitioning the unique chunk_id set
+is equivalent to partitioning queries — the splitter asserts no query appears
+in both sides. The corpus itself is shared at retrieval time (standard for
+retrieval evaluation); we do **not** filter chunks out of the train side just
+because they're a test source. A test-side `relevant_chunk_ids` set is
+built per query as `{source_chunk_id} ∪ judge-positives`, persisted to
+`<run-dir>/test_queries.jsonl` so `evaluate.py` reuses the exact same
+queries.
+
+### Row construction & MNRL invariant (`dataset.py`, `train.py`)
+
+For each judge record `{Q, positives [P_1..P_k], hard_negatives [HN_1..HN_m]}`,
+emit **k × m rows** of shape `(anchor=Q, positive=P_i.content, negative=HN_j.content)`.
+The source chunk is already in `positive_ids` by Step 4 convention, so it
+contributes its own k=1 fan-out alongside any judge-promoted positives.
+Records with `hard_negatives = []` are dropped from training and logged —
+MNRL with an empty negative column would silently inject zeros into the
+in-batch negative pool.
+
+**Why the per-batch query-dedup invariant matters.** MNRL's denominator for
+anchor `i` pulls in every other row's positive AND every other row's
+hard_negative in the batch. If query Q appears twice in a batch — `(Q, P_a, ...)`
+and `(Q, P_b, ...)` — then P_b lands in Q's denominator as a "negative"
+even though it's a true positive for Q. The gradient pushes Q away from a
+chunk that actually answers it. We close this by routing all batches
+through `BatchSamplers.NO_DUPLICATES` (sentence-transformers ≥3.0), which
+defers same-anchor rows to later batches. Since all k×m rows of a query
+share the same `anchor` text (the query itself), the sampler guarantees
+each batch contains at most one row per query. `assert_dedup_feasibility`
+warns at load time if any query has more rows than there are batches per
+epoch (its tail rows would starve under NO_DUPLICATES).
+
+### Training (`train.py`)
+
+* **Loss:** `MultipleNegativesRankingLoss` (asymmetric).
+* **Sampler:** `BatchSamplers.NO_DUPLICATES` (keyed on the anchor column).
+* **Hyperparams (defaults):** epochs=3, batch=32, lr=2e-5, warmup_ratio=0.1,
+  max_seq_length=512.
+* **Effective negatives per anchor:** `2N − 2` other-row positives plus
+  `N` other-row hard_negatives at batch size N (so 94 at N=32) — that's why
+  hard-negative quality and batch size are both load-bearing.
+* **Hardware:** GCP L4 with `--device cuda --batch-size 32`. fp16 is enabled
+  on CUDA; disabled on MPS (unstable) and CPU (unnecessary).
+* **Outputs:** `checkpoints/bge-m3-finetuned-<timestamp>/final/` plus a
+  stable `bge-m3-finetuned-latest` symlink for `evaluate.py`. The run dir
+  also holds `test_queries.jsonl` so the eval consumes the same split.
+
+```bash
+# GCP L4 — judge already done; no vLLM needed for training
+python -m finetune.train --device cuda --epochs 3 --batch-size 32
+```
+
+**Smoke modes (M1).** Two flags, both force `--device mps`, batch 8, 1 epoch:
+* `--smoke` runs against real triplets, capped to 50 rows. Use after a
+  partial GCP run has produced enough data.
+* `--synthetic-smoke` synthesises 50 in-memory rows; no real triplets needed.
+  This is the path that verifies fine-tuning *starts* on a fresh M1 before
+  any GCP data exists. It downloads BGE-M3 once, runs ~7 batches in ~80 s,
+  saves the model, and exits — confirms imports / forward / backward /
+  save+reload end-to-end.
+
+```bash
+python -m finetune.train --synthetic-smoke
+```
+
+### Evaluation (`evaluate.py`)
+
+Builds a single combined corpus by concatenating every `chunks/<book>.jsonl`
+through the existing `retrieval.corpus.load_corpus` (so the Step-3 skip
+filter applies). For each variant, embeds the corpus once via the existing
+`retrieval.dense_index.DenseIndex` (whose embedding cache is keyed on
+`(model_name, ids, contents)` — baseline and fine-tuned embeddings cache
+to separate `.npy` files automatically). Per test query: encode → cosine
+top-10 → record where any chunk in `relevant_chunk_ids` lands.
+
+Metrics: **Recall@1, Recall@5, Recall@10, NDCG@10**, multi-relevant binary,
+macro-averaged across queries with percentile bootstrap 95% CIs (1k
+resamples). Per-style breakdown (`formal` vs `informal`) also reported.
+
+```bash
+python -m finetune.evaluate --run-dir checkpoints/bge-m3-finetuned-<timestamp>
+# writes <run-dir>/results/comparison.json + prints the table
+```
+
+### Testing — `tests/test_finetune_smoke.py`
+
+Six unit cases that don't touch the network:
+1. Explosion carries `query_id` and skips records with empty `hard_negatives`.
+2. `train_test_split_by_chunk_id` produces query-disjoint splits and every
+   test query has its source in `relevant_chunk_ids`.
+3. Multi-relevant `recall_at_k` / `ndcg_at_k` behave on edge cases (empty
+   retrieved, empty relevant, partial overlap).
+4. End-to-end `load_judge_records` round-trip against a synthetic
+   `chunks/`/`triplets/` pair.
+5. `assert_dedup_feasibility` doesn't crash when starvation is unavoidable
+   (just warns).
+6. **The NO_DUPLICATES invariant** — synthesises a dataset where one query
+   has 4 rows, runs the actual `NoDuplicatesBatchSampler`, and asserts no
+   batch ever contains two same-anchor rows.
+
+The full M1 model-fit smoke runs only when `FINETUNE_SMOKE_FULL=1` is set
+(it shells out to `python -m finetune.train --synthetic-smoke`).
+
+```bash
+python -m tests.test_finetune_smoke
+```
