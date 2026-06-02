@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{mmteb2024}
+Kenneth Enevoldsen, Isaac Chung, Imene Kerboua, M{\'a}rton Kardos, Ashwin
+  Mathur, David Stap, Jay Gala, Wissam Siblini, Dominik Krzemi{\'n}ski,
+  Genta~Indra Winata, Saba Sturua, Saiteja Utpala, Niklas Muennighoff, et~al.
+\newblock {MMTEB}: Massive multilingual text embedding benchmark.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2025.
+
+\bibitem{ragas2024}
+Shahul Es, Jithin James, Luis Espinosa-Anke, and Steven Schockaert.
+\newblock {RAGAS}: Automated evaluation of retrieval augmented generation.
+\newblock In {\em Proceedings of the 18th Conference of the European Chapter of
+  the Association for Computational Linguistics: System Demonstrations}, pages
+  150--158, Malta, 2024.
+
+\bibitem{polarquant}
+Insu Han, Praneeth Kacham, Amin Karbasi, Vahab Mirrokni, and Amir Zandieh.
+\newblock {PolarQuant}: Quantizing {KV} caches with polar transformation.
+\newblock {\em arXiv preprint}, 2025.
+\newblock KAIST; Google Research; Yale University.
+
+\bibitem{nvidia_llm_judge}
+Steve Han, Gilberto~Titericz Junior, Tom Balough, and Wenfei Zhou.
+\newblock Judge's verdict: A comprehensive analysis of {LLM} judge capability
+  through human agreement.
+\newblock {\em arXiv preprint}, 2025.
+\newblock NVIDIA Corporation. Under review as a conference paper at ICLR 2026.
+
+\bibitem{biomedical_normalization}
+Ning Kang, Bharat Singh, Zubair Afzal, Erik~M. van Mulligen, and Jan~A. Kors.
+\newblock Using rule-based natural language processing to improve disease
+  normalization in biomedical text.
+\newblock {\em Journal of the American Medical Informatics Association},
+  20:876--881, 2013.
+\newblock Department of Medical Informatics, Erasmus University Medical Center,
+  Rotterdam, The Netherlands.
+
+\bibitem{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen tau Yih, Tim
+  Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2020.
+\newblock Facebook AI Research; University College London; New York University.
+
+\bibitem{mteb2023}
+Niklas Muennighoff, Nouamane Tazi, Lo{\"i}c Magne, and Nils Reimers.
+\newblock {MTEB}: Massive text embedding benchmark.
+\newblock In {\em Proceedings of the 17th Conference of the European Chapter of
+  the Association for Computational Linguistics}, 2023.
+\newblock Hugging Face; cohere.ai.
+
+\bibitem{ragchecker2024}
+Dongyu Ru, Lin Qiu, Xiangkun Hu, Tianhang Zhang, Peng Shi, Shuaichen Chang,
+  Cheng Jiayang, Cunxiang Wang, Shichao Sun, Huanyu Li, Zizhao Zhang, Binjie
+  Wang, Jiarong Jiang, Tong He, Zhiguo Wang, Pengfei Liu, Yue Zhang, and Zheng
+  Zhang.
+\newblock {RAGChecker}: A fine-grained framework for diagnosing
+  retrieval-augmented generation.
+\newblock {\em arXiv preprint}, 2024.
+\newblock Amazon AWS AI; Shanghai Jiaotong University; Westlake University.
+
+\bibitem{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2017.
+\newblock Google Brain; Google Research; University of Toronto.
+
+\bibitem{qjl}
+Amir Zandieh, Majid Daliri, and Insu Han.
+\newblock {QJL}: 1-bit quantized {JL} transform for {KV} cache quantization
+  with zero overhead.
+\newblock {\em arXiv preprint}, 2024.
+\newblock July 2024.
+
+\end{thebibliography}

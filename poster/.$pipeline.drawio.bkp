@@ -1,0 +1,228 @@
+<mxfile host="app.diagrams.net" modified="2026-06-01T00:00:00.000Z" agent="claude" version="24.0.0">
+  <diagram name="Pipeline" id="pipeline">
+    <mxGraphModel dx="1200" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title" value="Synthetic Benchmark Generation &amp; Retriever Fine-Tuning" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1A2733" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="800" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== STAGE LABEL: BENCHMARK CREATION ===== -->
+        <mxCell id="stage1label" value="BENCHMARK CREATION" style="text;html=1;strokeColor=#1F77B4;fillColor=#E8F1FA;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#1F77B4;letter-spacing=2" vertex="1" parent="1">
+          <mxGeometry x="340" y="75" width="220" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- INPUT: PDFs -->
+        <mxCell id="pdfs" value="&lt;b style=&quot;font-size:15px&quot;&gt;Fitness Textbook Corpus&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;Anatomy &#183; NSCA &#183; ACSM &#183; Periodization &#183; Hypertrophy&lt;/span&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#FFF6E0;strokeColor=#D6A92E;fontColor=#3A2E0B;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="115" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ===== STEP 1: AGENTIC CHUNKING ===== -->
+        <mxCell id="step1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF4EA;strokeColor=#3C8C3C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="235" width="660" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="step1_badge" value="STEP 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3C8C3C;strokeColor=#3C8C3C;fontColor=#FFFFFF;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="248" width="70" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="step1_title" value="Agentic Chunking" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fontStyle=1;fontColor=#1A2733" vertex="1" parent="1">
+          <mxGeometry x="215" y="246" width="400" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step1a" value="&lt;b&gt;1a. Proposition Extraction&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Decompose each page into atomic,&lt;br/&gt;self-contained factual statements&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3C8C3C;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="290" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="step1b" value="&lt;b&gt;1b. Thematic Grouping + Summary&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Cluster propositions into semantically&lt;br/&gt;coherent chunks; emit 1-2 sentence summary&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3C8C3C;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="410" y="290" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="step1_arrow" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#3C8C3C;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step1a" target="step1b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="step1_model" value="Gemma 2 9B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#888;fontSize=10;fontStyle=2;fontColor=#444;" vertex="1" parent="1">
+          <mxGeometry x="680" y="320" width="85" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 1 OUTPUT -->
+        <mxCell id="step1_out" value="&lt;b&gt;Chunks&lt;/b&gt; &#160; { id, content, summary }" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFFFFF;strokeColor=#666;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="430" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_pdf_s1" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="pdfs" target="step1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s1_out" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step1" target="step1_out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== STEP 2: SYNTHETIC QUERY GENERATION ===== -->
+        <mxCell id="step2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#C0392B;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="520" width="660" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="step2_badge" value="STEP 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C0392B;strokeColor=#C0392B;fontColor=#FFFFFF;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="533" width="70" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="step2_title" value="Synthetic Query Generation &#160;&lt;span style=&quot;font-size:12px;font-weight:normal;color:#555&quot;&gt;(HyQE-style anchors)&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fontStyle=1;fontColor=#1A2733" vertex="1" parent="1">
+          <mxGeometry x="215" y="531" width="450" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step2_chunk" value="chunk" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#888;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="610" width="70" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step2_gen" value="&lt;b&gt;Generator&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Gemma 2 9B&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;color:#555&quot;&gt;1 formal + 1 informal&lt;br/&gt;query, separate calls&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C0392B;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="270" y="585" width="170" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step2_judge" value="&lt;b&gt;Judge (Verifier)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;Gemma 2 9B&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;color:#555&quot;&gt;answerability &#183; specificity&lt;br/&gt;no-attribution &#183; persona &#183; style&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C0392B;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="585" width="190" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arr_chunk_gen" style="edgeStyle=none;rounded=0;html=1;strokeColor=#C0392B;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step2_chunk" target="step2_gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_gen_judge" value="candidate query" style="edgeStyle=none;rounded=0;html=1;strokeColor=#C0392B;strokeWidth=2;endArrow=classic;fontSize=10;fontColor=#C0392B;labelBackgroundColor=#FDEEF0;" edge="1" parent="1" source="step2_gen" target="step2_judge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_judge_gen" value="reject + feedback (up to 2 retries)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#C0392B;strokeWidth=2;endArrow=classic;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;fontColor=#C0392B;labelBackgroundColor=#FDEEF0;" edge="1" parent="1" source="step2_judge" target="step2_gen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="595" y="710" />
+              <mxPoint x="355" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- STEP 2 OUTPUT -->
+        <mxCell id="step2_out" value="&lt;b&gt;Query–Chunk Pairs&lt;/b&gt; &#160; (formal + informal)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFFFFF;strokeColor=#666;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="745" width="260" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s1out_s2" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step1_out" target="step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s2_out" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step2" target="step2_out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== STEP 3: HYBRID CANDIDATE RETRIEVAL ===== -->
+        <mxCell id="step3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF0FB;strokeColor=#2E5AA8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="835" width="660" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="step3_badge" value="STEP 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E5AA8;strokeColor=#2E5AA8;fontColor=#FFFFFF;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="848" width="70" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="step3_title" value="Hybrid Candidate Retrieval" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fontStyle=1;fontColor=#1A2733" vertex="1" parent="1">
+          <mxGeometry x="215" y="846" width="400" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step3_bm25" value="&lt;b&gt;BM25 (Sparse)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;lowercase + alphanumeric&lt;br/&gt;tokenisation&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E5AA8;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="895" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="step3_dense" value="&lt;b&gt;BGE-M3 (Dense)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;L2-normalised cosine&lt;br/&gt;over 8k-ctx embeddings&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E5AA8;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="360" y="895" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="step3_rrf" value="&lt;b&gt;RRF Fusion&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;k=60, top-5&lt;br/&gt;source chunk excluded&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E5AA8;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="580" y="885" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_bm25_rrf" style="edgeStyle=none;rounded=0;html=1;strokeColor=#2E5AA8;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step3_bm25" target="step3_rrf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_dense_rrf" style="edgeStyle=none;rounded=0;html=1;strokeColor=#2E5AA8;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step3_dense" target="step3_rrf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 3 OUTPUT -->
+        <mxCell id="step3_out" value="&lt;b&gt;Top-K Candidate Chunks&lt;/b&gt; per query" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFFFFF;strokeColor=#666;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1040" width="260" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s2out_s3" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step2_out" target="step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s3_out" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step3" target="step3_out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== STEP 4: EXPERT JUDGE ===== -->
+        <mxCell id="step4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3EAFB;strokeColor=#6A3D9A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1130" width="660" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="step4_badge" value="STEP 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6A3D9A;strokeColor=#6A3D9A;fontColor=#FFFFFF;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="1143" width="70" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="step4_title" value="Expert Judge Classification" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fontStyle=1;fontColor=#1A2733" vertex="1" parent="1">
+          <mxGeometry x="215" y="1141" width="400" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="step4_model" value="DeepSeek-R1-0528-Qwen3-8B&#160; &lt;span style=&quot;color:#888;font-style:italic&quot;&gt;(reasoning model, reason-before-label)&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontColor=#6A3D9A;" vertex="1" parent="1">
+          <mxGeometry x="215" y="1167" width="500" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step4_pos" value="&lt;b&gt;positive&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;fully answers query&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF5DF;strokeColor=#3C8C3C;fontSize=12;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="155" y="1205" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="step4_hn" value="&lt;b&gt;hard_negative&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;topical overlap,&lt;br/&gt;wrong answer&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D17A2A;fontSize=12;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1205" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="step4_irr" value="&lt;b&gt;irrelevant&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;off-topic — discarded&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#888;fontSize=12;align=center;verticalAlign=middle;fontStyle=1;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="565" y="1205" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arr_s3out_s4" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step3_out" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== DIVIDER ===== -->
+        <mxCell id="divider" value="" style="endArrow=none;html=1;strokeColor=#888;strokeWidth=2;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1335" as="sourcePoint" />
+            <mxPoint x="840" y="1335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="stage2label" value="RETRIEVER FINE-TUNING" style="text;html=1;strokeColor=#1F77B4;fillColor=#E8F1FA;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#1F77B4;letter-spacing=2" vertex="1" parent="1">
+          <mxGeometry x="320" y="1322" width="260" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- BENCHMARK DATASET -->
+        <mxCell id="benchmark" value="&lt;b style=&quot;font-size:14px&quot;&gt;Triplet Benchmark&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px&quot;&gt;(anchor=query, positive, hard_negative)&lt;/span&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF6E0;strokeColor=#D6A92E;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1370" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s4_bench" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step4_pos" target="benchmark">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_s4_bench2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step4_hn" target="benchmark">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== STEP 5: FINE-TUNING ===== -->
+        <mxCell id="step5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F4F4;strokeColor=#0E7C7B;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1475" width="660" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="step5_badge" value="STEP 5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0E7C7B;strokeColor=#0E7C7B;fontColor=#FFFFFF;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="1488" width="70" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="step5_title" value="Retriever Fine-Tuning" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fontStyle=1;fontColor=#1A2733" vertex="1" parent="1">
+          <mxGeometry x="215" y="1486" width="400" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step5_model" value="&lt;b&gt;BGE-M3&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;base retriever&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7C7B;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1535" width="140" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="step5_loss" value="&lt;b&gt;MNRL Loss&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;MultipleNegativesRanking&lt;br/&gt;+ NO_DUPLICATES sampler&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7C7B;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1535" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="step5_out" value="&lt;b&gt;Fine-Tuned Retriever&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px;color:#555&quot;&gt;domain-adapted&lt;br/&gt;chunk embeddings&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF5DF;strokeColor=#0E7C7B;fontSize=12;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="1535" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_model_loss" style="edgeStyle=none;rounded=0;html=1;strokeColor=#0E7C7B;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step5_model" target="step5_loss">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_loss_out" style="edgeStyle=none;rounded=0;html=1;strokeColor=#0E7C7B;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="step5_loss" target="step5_out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_bench_s5" style="edgeStyle=none;rounded=0;html=1;strokeColor=#444;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="benchmark" target="step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
