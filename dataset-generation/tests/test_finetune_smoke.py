@@ -193,12 +193,38 @@ def test_load_judge_records_roundtrip():
     print("test_load_judge_records_roundtrip: OK")
 
 
+def test_filter_negatives_lexical():
+    """A hard negative that lexically duplicates a positive is removed; a
+    genuinely different one is kept. Lexical path only — no model download.
+    """
+    from finetune.filter_negatives import filter_record_hard_negatives
+
+    positives = [("p0", "barbell bench press targets pectoralis major triceps")]
+    hard_negs = [
+        # near-copy of the positive (Jaccard ~0.875) → false negative, must drop
+        ("hn_copy", "barbell bench press targets pectoralis major triceps strongly"),
+        # genuinely different chunk (Jaccard ~0.08) → real negative, must keep
+        ("hn_diff", "squat targets quadriceps glutes hamstrings posterior chain"),
+    ]
+    kept, removed = filter_record_hard_negatives(
+        positives, hard_negs, jaccard_thresh=0.7, cosine_thresh=0.9, embeddings=None
+    )
+    assert kept == ["hn_diff"], f"expected ['hn_diff'], got {kept}"
+    assert len(removed) == 1 and removed[0]["hardneg_id"] == "hn_copy"
+    assert removed[0]["lexical_hit"] is True
+    assert removed[0]["semantic_hit"] is False
+    assert removed[0]["trigger_positive_id"] == "p0"
+    assert removed[0]["jaccard"] >= 0.7
+    print("test_filter_negatives_lexical: OK")
+
+
 def main():
     test_explode_carries_query_id_and_skips_empty_hn()
     test_split_disjoint_queries()
     test_metrics_basic()
     test_load_judge_records_roundtrip()
     test_dedup_feasibility_warning()
+    test_filter_negatives_lexical()
     test_no_duplicates_invariant()
 
     if os.environ.get("FINETUNE_SMOKE_FULL") == "1":

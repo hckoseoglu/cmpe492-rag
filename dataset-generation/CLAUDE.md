@@ -278,11 +278,35 @@ off-the-shelf baseline on a held-out test split.
 
 ```
 finetune/
-├── dataset.py     # load_judge_records, explode_to_triplets, dedup feasibility
-├── split.py       # train_test_split_by_chunk_id (queries are 1:1 with source chunks)
-├── metrics.py     # multi-relevant Recall@k, NDCG@k, percentile bootstrap CI
-├── train.py       # SentenceTransformerTrainer + MNRL + NO_DUPLICATES sampler
-└── evaluate.py    # baseline vs fine-tuned over the combined cross-book corpus
+├── dataset.py          # load_judge_records, explode_to_triplets, dedup feasibility
+├── split.py            # train_test_split_by_chunk_id (queries are 1:1 with source chunks)
+├── filter_negatives.py # drop hard negatives that duplicate a positive (+ stats)
+├── metrics.py          # multi-relevant Recall@k, NDCG@k, percentile bootstrap CI
+├── train.py            # SentenceTransformerTrainer + cached MNRL + NO_DUPLICATES sampler
+└── evaluate.py         # baseline vs fine-tuned over the (optionally book-scoped) corpus
+```
+
+### Hard-negative filtering (`filter_negatives.py`)
+
+The Step-1 grouper's window overlap emits near-duplicate chunks, and the Step-4
+judge is liberal with `hard_negative`. The result is *false negatives*: a mined
+`hard_negative` that is actually a paraphrase of the query's answer. MNRL then
+pushes the query away from a chunk that answers it — which is what dragged the
+first run below baseline. This step removes a `hard_negative` when, against ANY
+of the query's positives (source + judge positives), it clears EITHER:
+
+* **lexical** — Jaccard ≥ `--jaccard-thresh` (default `0.7`) over lowercased,
+  alphanumeric, >2-char token sets, OR
+* **semantic** — `BAAI/bge-m3` cosine ≥ `--cosine-thresh` (default `0.9`),
+  L2-normalised. `--no-semantic` skips the embedding pass (lexical only).
+
+`positives` are never touched, so the eval ground truth is unchanged. Cleaned
+per-query records go to `triplets_filtered/<book>.jsonl` (originals untouched);
+`<book>.filter_stats.json` records removed/total, the lexical/semantic/both
+split, records emptied, and the top removed pairs for review.
+
+```bash
+python -m finetune.filter_negatives          # → triplets_filtered/ + *.filter_stats.json
 ```
 
 ### Train/test split (`split.py`)
@@ -314,22 +338,34 @@ and `(Q, P_b, ...)` — then P_b lands in Q's denominator as a "negative"
 even though it's a true positive for Q. The gradient pushes Q away from a
 chunk that actually answers it. We close this by routing all batches
 through `BatchSamplers.NO_DUPLICATES` (sentence-transformers ≥3.0), which
-defers same-anchor rows to later batches. Since all k×m rows of a query
-share the same `anchor` text (the query itself), the sampler guarantees
-each batch contains at most one row per query. `assert_dedup_feasibility`
-warns at load time if any query has more rows than there are batches per
-epoch (its tail rows would starve under NO_DUPLICATES).
+defers a row to a later batch if ANY of its column values (anchor, positive,
+OR negative) already appears in the current batch — not just the anchor. Since
+all k×m rows of a query share the same `anchor` text, this guarantees at most
+one row per query per batch, and additionally keeps a byte-identical chunk from
+being one row's positive and another's negative in the same batch. (Near-dupes
+that differ by a byte slip through — that's what `filter_negatives.py` handles.)
+`assert_dedup_feasibility` warns at load time if any query has more rows than
+there are batches per epoch (its tail rows would starve under NO_DUPLICATES).
 
 ### Training (`train.py`)
 
-* **Loss:** `MultipleNegativesRankingLoss` (asymmetric).
-* **Sampler:** `BatchSamplers.NO_DUPLICATES` (keyed on the anchor column).
-* **Hyperparams (defaults):** epochs=3, batch=32, lr=2e-5, warmup_ratio=0.1,
-  max_seq_length=512.
-* **Effective negatives per anchor:** `2N − 2` other-row positives plus
-  `N` other-row hard_negatives at batch size N (so 94 at N=32) — that's why
-  hard-negative quality and batch size are both load-bearing.
-* **Hardware:** GCP L4 with `--device cuda --batch-size 32`. fp16 is enabled
+* **Loss:** `--loss cached` (default) = `CachedMultipleNegativesRankingLoss`,
+  which decouples the in-batch negative pool from VRAM via GradCache, so a large
+  `--batch-size` fits on the L4. `--mini-batch-size` (default 32) is the memory
+  knob — the forward/backward chunk size. `--loss mnrl` falls back to plain
+  `MultipleNegativesRankingLoss`. Gradient checkpointing is auto-disabled under
+  cached loss (it manages activation memory itself). Cached loss is **CUDA-only**
+  (its GradCache hooks need `torch.cuda`); on MPS/CPU it auto-falls back to plain
+  MNRL, which is why the M1 smoke trains with MNRL.
+* **Sampler:** `BatchSamplers.NO_DUPLICATES` (dedupes on all columns' exact
+  values — see the invariant note above).
+* **Hyperparams (defaults):** epochs=3, batch=64, mini_batch=32, lr=2e-5,
+  warmup_ratio=0.1, max_seq_length=512.
+* **Negatives per anchor scale with the *real* batch size N**, not the effective
+  batch — gradient accumulation does NOT enlarge the MNRL negative pool (each
+  micro-batch's loss only sees its own rows). Cached loss is the lever for a
+  bigger N; hard-negative quality is the other (hence `filter_negatives.py`).
+* **Hardware:** GCP L4 with `--device cuda --batch-size 64`. fp16 is enabled
   on CUDA; disabled on MPS (unstable) and CPU (unnecessary).
 * **Outputs:** `checkpoints/bge-m3-finetuned-<timestamp>/final/` plus a
   stable `bge-m3-finetuned-latest` symlink for `evaluate.py`. The run dir
@@ -337,7 +373,8 @@ epoch (its tail rows would starve under NO_DUPLICATES).
 
 ```bash
 # GCP L4 — judge already done; no vLLM needed for training
-python -m finetune.train --device cuda --epochs 3 --batch-size 32
+python -m finetune.train --device cuda --batch-size 64 --mini-batch-size 32 \
+  --triplets-dir triplets_filtered
 ```
 
 **Smoke modes (M1).** Two flags, both force `--device mps`, batch 8, 1 epoch:
@@ -363,18 +400,25 @@ filter applies). For each variant, embeds the corpus once via the existing
 to separate `.npy` files automatically). Per test query: encode → cosine
 top-10 → record where any chunk in `relevant_chunk_ids` lands.
 
+By default the corpus pools all books (cross-book retrieval). For a fair
+in-domain comparison when training data covers only some books, scope the corpus
+to those books: `--corpus-from-test` restricts it to the distinct `source_file`
+values in `test_queries.jsonl` (the book(s) trained on), or pass
+`--corpus-books "<stem1>,<stem2>"` explicitly.
+
 Metrics: **Recall@1, Recall@5, Recall@10, NDCG@10**, multi-relevant binary,
 macro-averaged across queries with percentile bootstrap 95% CIs (1k
 resamples). Per-style breakdown (`formal` vs `informal`) also reported.
 
 ```bash
-python -m finetune.evaluate --run-dir checkpoints/bge-m3-finetuned-<timestamp>
+python -m finetune.evaluate --run-dir checkpoints/bge-m3-finetuned-<timestamp> \
+  --corpus-from-test
 # writes <run-dir>/results/comparison.json + prints the table
 ```
 
 ### Testing — `tests/test_finetune_smoke.py`
 
-Six unit cases that don't touch the network:
+Seven unit cases that don't touch the network:
 1. Explosion carries `query_id` and skips records with empty `hard_negatives`.
 2. `train_test_split_by_chunk_id` produces query-disjoint splits and every
    test query has its source in `relevant_chunk_ids`.
@@ -384,7 +428,9 @@ Six unit cases that don't touch the network:
    `chunks/`/`triplets/` pair.
 5. `assert_dedup_feasibility` doesn't crash when starvation is unavoidable
    (just warns).
-6. **The NO_DUPLICATES invariant** — synthesises a dataset where one query
+6. `filter_negatives` (lexical path) drops a hard negative that duplicates a
+   positive and keeps a genuinely different one.
+7. **The NO_DUPLICATES invariant** — synthesises a dataset where one query
    has 4 rows, runs the actual `NoDuplicatesBatchSampler`, and asserts no
    batch ever contains two same-anchor rows.
 

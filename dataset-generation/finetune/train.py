@@ -72,16 +72,29 @@ def main():
                         help="Default: checkpoints/bge-m3-finetuned-<timestamp>")
     parser.add_argument("--base-model", type=str, default="BAAI/bge-m3")
     parser.add_argument("--epochs", type=int, default=3)
-    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--batch-size", type=int, default=64,
+                        help="Real contrastive batch (= in-batch negative pool). With "
+                             "--loss cached this is decoupled from VRAM via --mini-batch-size.")
+    parser.add_argument("--loss", choices=["cached", "mnrl"], default="cached",
+                        help="cached = CachedMultipleNegativesRankingLoss (big batch on small "
+                             "VRAM via GradCache); mnrl = plain MultipleNegativesRankingLoss.")
+    parser.add_argument("--mini-batch-size", type=int, default=32,
+                        help="CachedMNRL forward/backward chunk size — the VRAM knob. Larger "
+                             "--batch-size with a fixed --mini-batch-size adds negatives without "
+                             "more peak memory.")
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--warmup-ratio", type=float, default=0.1)
     parser.add_argument("--max-seq-length", type=int, default=512)
     parser.add_argument("--grad-accum", type=int, default=1,
-                        help="Gradient accumulation steps (e.g. --batch-size 16 --grad-accum 2 "
-                             "gives effective batch 32 at half the peak VRAM).")
+                        help="Gradient accumulation steps. NOTE: accumulation does NOT enlarge "
+                             "the in-batch negative pool for MNRL — use --batch-size / cached loss "
+                             "for that. It only smooths the optimizer update.")
     parser.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--test-frac", type=float, default=0.2)
+    parser.add_argument("--save-each-epoch", action="store_true",
+                        help="Save a loadable model snapshot to <output_dir>/epoch-<n>/ at each "
+                             "epoch end (for epoch-sweep experiments).")
     parser.add_argument("--smoke", action="store_true",
                         help="1 epoch, batch 8, capped to 50 rows of real data")
     parser.add_argument("--synthetic-smoke", action="store_true",
@@ -98,6 +111,9 @@ def main():
         args.batch_size = 8
         mode = "SYNTHETIC SMOKE" if args.synthetic_smoke else "SMOKE"
         logger.info(f"{mode}: epochs=1 batch=8 row-cap=50")
+
+    # CachedMNRL's mini-batch can't exceed the real batch.
+    args.mini_batch_size = min(args.mini_batch_size, args.batch_size)
 
     device = _resolve_device(args.device)
     logger.info(f"device resolved to {device}")
@@ -175,11 +191,47 @@ def main():
     # Heavy imports deferred until we know we have data
     from datasets import Dataset
     from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer
-    from sentence_transformers.sentence_transformer.losses import MultipleNegativesRankingLoss
+    from sentence_transformers.sentence_transformer.losses import (
+        CachedMultipleNegativesRankingLoss,
+        MultipleNegativesRankingLoss,
+    )
     from sentence_transformers.sentence_transformer.training_args import (
         BatchSamplers,
         SentenceTransformerTrainingArguments,
     )
+    from transformers import TrainerCallback
+
+    class MPSCacheCleaner(TrainerCallback):
+        """The MPS caching allocator accumulates/fragments freed buffers across
+        steps and can hit the watermark cap mid-run even when live tensors are
+        small. Periodically releasing the cache keeps a long fp32 MPS run alive.
+        """
+
+        def __init__(self, every: int = 50):
+            self.every = every
+
+        def on_step_end(self, args, state, control, **kwargs):
+            if state.global_step % self.every == 0:
+                try:
+                    import torch
+
+                    torch.mps.empty_cache()
+                except Exception:
+                    pass
+
+    class SaveEachEpoch(TrainerCallback):
+        """Save a loadable SentenceTransformer snapshot at each epoch end so an
+        epoch sweep can evaluate epoch 1/2/3 from a single 3-epoch run."""
+
+        def __init__(self, st_model, out_root: Path):
+            self.st_model = st_model
+            self.out_root = Path(out_root)
+
+        def on_epoch_end(self, args, state, control, **kwargs):
+            ep = int(round(state.epoch))
+            path = self.out_root / f"epoch-{ep}"
+            self.st_model.save(str(path))
+            logger.info(f"saved epoch-{ep} snapshot to {path}")
 
     ds = Dataset.from_list([
         {"anchor": r.anchor, "positive": r.positive, "negative": r.negative}
@@ -189,7 +241,25 @@ def main():
     model = SentenceTransformer(args.base_model, device=device)
     if args.max_seq_length:
         model.max_seq_length = args.max_seq_length
-    loss = MultipleNegativesRankingLoss(model)
+
+    use_cached = args.loss == "cached"
+    if use_cached and device != "cuda":
+        # CachedMNRL's GradCache hooks call torch.<device>.device(), which MPS
+        # lacks; and on CPU/MPS the VRAM-decoupling it provides is moot. Fall
+        # back to plain MNRL so smoke runs and CPU/MPS work.
+        logger.warning(
+            f"cached loss is CUDA-only (device='{device}'); falling back to plain MNRL"
+        )
+        use_cached = False
+
+    if use_cached:
+        loss = CachedMultipleNegativesRankingLoss(model, mini_batch_size=args.mini_batch_size)
+        # CachedMNRL manages activation memory via its own mini-batch passes;
+        # stacking gradient_checkpointing on top risks a double-backward error.
+        gradient_checkpointing = False
+    else:
+        loss = MultipleNegativesRankingLoss(model)
+        gradient_checkpointing = True
 
     fp16 = (device == "cuda")  # mps + fp16 is unstable; cpu doesn't need it
     train_args = SentenceTransformerTrainingArguments(
@@ -202,7 +272,7 @@ def main():
         batch_sampler=BatchSamplers.NO_DUPLICATES,
         fp16=fp16,
         bf16=False,
-        gradient_checkpointing=True,
+        gradient_checkpointing=gradient_checkpointing,
         logging_steps=max(1, len(train_rows) // (args.batch_size * 10)),
         save_strategy="epoch",
         save_total_limit=2,
@@ -211,16 +281,22 @@ def main():
         report_to=[],  # no W&B etc.
     )
 
+    callbacks = [MPSCacheCleaner()] if device == "mps" else []
+    if args.save_each_epoch:
+        callbacks.append(SaveEachEpoch(model, output_dir))
     trainer = SentenceTransformerTrainer(
         model=model,
         args=train_args,
         train_dataset=ds,
         loss=loss,
+        callbacks=callbacks,
+    )
+    loss_desc = (
+        f"cached(mini_batch={args.mini_batch_size})" if args.loss == "cached" else "mnrl"
     )
     logger.info(
         f"starting training: rows={len(train_rows)} epochs={args.epochs} "
-        f"batch={args.batch_size} grad_accum={args.grad_accum} "
-        f"effective_batch={args.batch_size * args.grad_accum} "
+        f"batch={args.batch_size} grad_accum={args.grad_accum} loss={loss_desc} "
         f"lr={args.lr} sampler=NO_DUPLICATES"
     )
     trainer.train()

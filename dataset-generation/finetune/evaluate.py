@@ -47,18 +47,26 @@ def load_test_queries(path: Path) -> list[dict]:
     return rows
 
 
-def build_combined_corpus(chunks_dir: Path, skipped_path: Path) -> Corpus:
-    """Concatenate all chunks/*.jsonl into a single Corpus.
+def build_combined_corpus(
+    chunks_dir: Path, skipped_path: Path, books: list[str] | None = None
+) -> Corpus:
+    """Concatenate chunks/*.jsonl into a single Corpus.
 
-    Step-3 hybrid search runs per book, but evaluation should pool the full
-    corpus so we measure cross-book retrieval too. We re-use load_corpus's skip
-    filter per file then concat.
+    Step-3 hybrid search runs per book; by default evaluation pools the full
+    corpus so we also measure cross-book retrieval. Pass `books` (a list of
+    filename stems/substrings) to restrict the corpus — e.g. to the single book
+    the model was trained on, for a fair in-domain comparison. We re-use
+    load_corpus's skip filter per file then concat.
     """
     all_ids: list[str] = []
     all_contents: list[str] = []
     all_summaries: list[str] = []
     seen: set[str] = set()
-    for chunks_path in sorted(chunks_dir.glob("*.jsonl")):
+    files = [
+        p for p in sorted(chunks_dir.glob("*.jsonl"))
+        if books is None or any(b in p.name or b in p.stem for b in books)
+    ]
+    for chunks_path in files:
         c = load_corpus(chunks_path, skipped_path)
         for cid, content, summary in zip(c.ids, c.contents, c.summaries):
             if cid in seen:
@@ -67,7 +75,8 @@ def build_combined_corpus(chunks_dir: Path, skipped_path: Path) -> Corpus:
             all_ids.append(cid)
             all_contents.append(content)
             all_summaries.append(summary)
-    logger.info(f"combined corpus: {len(all_ids)} chunks across {len(list(chunks_dir.glob('*.jsonl')))} files")
+    scope = "all books" if books is None else f"books matching {books}"
+    logger.info(f"corpus: {len(all_ids)} chunks across {len(files)} files ({scope})")
     return Corpus(ids=all_ids, contents=all_contents, summaries=all_summaries)
 
 
@@ -79,8 +88,9 @@ def evaluate_variant(
     config: Config,
     device: str,
     top_k: int,
+    max_seq_length: int | None = None,
 ) -> dict:
-    logger.info(f"\n=== evaluating variant '{label}' (model={model_name}) ===")
+    logger.info(f"\n=== evaluating variant '{label}' (model={model_name}, max_seq_length={max_seq_length}) ===")
     index = DenseIndex(
         contents=corpus.contents,
         ids=corpus.ids,
@@ -89,6 +99,7 @@ def evaluate_variant(
         batch_size=config.embedder_batch_size,
         cache_dir=config.cache_dir,
         cache_tag=f"eval_combined__{label}",
+        max_seq_length=max_seq_length,
     )
 
     per_q_recall = {1: [], 5: [], 10: []}
@@ -175,6 +186,17 @@ def main():
     parser.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--chunks-dir", type=str, default=None)
+    parser.add_argument("--corpus-books", type=str, default=None,
+                        help="Comma-separated book stems/substrings; restricts the eval corpus "
+                             "to matching chunks/*.jsonl files. Default: all books.")
+    parser.add_argument("--corpus-from-test", action="store_true",
+                        help="Restrict the eval corpus to the distinct source_file values in "
+                             "test_queries.jsonl (i.e. the book(s) the model trained on).")
+    parser.add_argument("--max-seq-length", type=int, default=None,
+                        help="Override the embedding sequence length for BOTH variants (fair "
+                             "comparison). Set this to whatever --max-seq-length training used.")
+    parser.add_argument("--out-name", type=str, default="comparison",
+                        help="Basename for the results JSON under <run-dir>/results/.")
     args = parser.parse_args()
 
     config = Config()
@@ -189,21 +211,30 @@ def main():
     test_queries = load_test_queries(test_path)
     logger.info(f"loaded {len(test_queries)} test queries from {test_path}")
 
-    corpus = build_combined_corpus(chunks_dir, skipped_path)
+    books: list[str] | None = None
+    if args.corpus_books:
+        books = [b.strip() for b in args.corpus_books.split(",") if b.strip()]
+    elif args.corpus_from_test:
+        books = sorted({tq["source_file"] for tq in test_queries if tq.get("source_file")})
+        logger.info(f"--corpus-from-test: restricting corpus to {books}")
+
+    corpus = build_combined_corpus(chunks_dir, skipped_path, books)
 
     finetuned_path = Path(args.finetuned_path) if args.finetuned_path else run_dir / "final"
 
     results: dict = {}
     if args.only in ("baseline", "both"):
         results["baseline"] = evaluate_variant(
-            "baseline", args.baseline_model, corpus, test_queries, config, args.device, args.top_k
+            "baseline", args.baseline_model, corpus, test_queries, config, args.device, args.top_k,
+            max_seq_length=args.max_seq_length,
         )
     if args.only in ("finetuned", "both"):
         if not finetuned_path.exists():
             logger.error(f"fine-tuned model not found at {finetuned_path}")
             sys.exit(1)
         results["finetuned"] = evaluate_variant(
-            "finetuned", str(finetuned_path), corpus, test_queries, config, args.device, args.top_k
+            "finetuned", str(finetuned_path), corpus, test_queries, config, args.device, args.top_k,
+            max_seq_length=args.max_seq_length,
         )
 
     if "baseline" in results and "finetuned" in results:
@@ -214,7 +245,7 @@ def main():
 
     out_dir = run_dir / "results"
     out_dir.mkdir(exist_ok=True)
-    out_path = out_dir / "comparison.json"
+    out_path = out_dir / f"{args.out_name}.json"
 
     def _to_jsonable(obj):
         if isinstance(obj, tuple):

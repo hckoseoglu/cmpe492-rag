@@ -1,0 +1,199 @@
+{
+  "book": "NCSA_Essentials_of_ Strength_Training_and_Conditioning.jsonl",
+  "thresholds": {
+    "jaccard": 0.7,
+    "cosine": 0.9
+  },
+  "semantic_enabled": true,
+  "records_processed": 6436,
+  "hard_negatives_before": 22485,
+  "hard_negatives_removed": 1015,
+  "hard_negatives_remaining": 21470,
+  "removed_by_lexical_only": 99,
+  "removed_by_semantic_only": 482,
+  "removed_by_both": 434,
+  "records_emptied": 101,
+  "top_removed": [
+    {
+      "query": "how does our body turn food into energy it can use?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1614",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1616",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "How does the concentration of ADP influence the rate of ATP replenishment via the creatine kinase and adenylate kinase reactions?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0175",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0174",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "how does training near or above lactate threshold affect lactate accumulation and performance?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_2824",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_2826",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "what's the tradeoff between how quickly an energy system can produce ATP and how much ATP it can produce over a long time?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0174",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0175",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "can running and lifting weights both help increase how much glycogen my muscles store when i'm resting?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0266",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0255",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "can sprinting, weightlifting, and endurance training all help me store more glycogen in my muscles?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0255",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0266",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "how does the intensity and duration of exercise affect which energy system is used, and how can understanding this help with training?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0281",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0282",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What are the primary muscle adaptations that occur as a result of resistance training?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_4195",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_4199",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "what kind of exercises involve left rotation of the neck?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0578",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0576",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What type of movement is involved in the neck's transverse plane, as well as in manual resistance exercises and wrestling?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0576",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0578",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What hip movement is primarily targeted by the hip-transverse plane (upper leg to 90 degrees to trunk)?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0589",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0591",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What are the typical set, repetition, and intensity parameters for a squat prescription aimed at strength development?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0554",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_2062",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "what are some of the genes and proteins that get activated by resistance training and contribute to muscle growth?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0655",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0652",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What are some specific examples of proteins whose activity is increased in response to mechanical stress, and how do these proteins contribute to muscle hypertrophy?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0652",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0655",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What is the function of fascia within skeletal muscle?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0706",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0704",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What percentage of 1RM is generally recommended for maximizing peak power output during a jump squat?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0603",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_0608",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "What specific muscular adaptations occur in response to anaerobic muscular endurance training?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_4199",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_4195",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "Does peak force per cross-sectional area differ significantly between sexes?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1034",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1032",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "what are some strategies that might help prevent injuries in female athletes?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1017",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1014",
+      "jaccard": 1.0,
+      "cosine": 1.0,
+      "lexical_hit": true,
+      "semantic_hit": true
+    },
+    {
+      "query": "how can hypnosis help athletes improve their performance?",
+      "hardneg_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1212",
+      "trigger_positive_id": "NCSA_Essentials_of_ Strength_Training_and_Conditioning_1210",
+      "jaccard": 1.0,
+      "cosine": 0.9914,
+      "lexical_hit": true,
+      "semantic_hit": true
+    }
+  ],
+  "pct_removed": 4.51
+}

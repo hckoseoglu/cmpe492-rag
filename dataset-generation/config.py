@@ -11,6 +11,7 @@ class Config:
     pairs_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent / "pairs")
     candidates_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent / "candidates")
     triplets_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent / "triplets")
+    filtered_triplets_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent / "triplets_filtered")
     cache_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent / ".cache")
     checkpoint_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent / "checkpoints")
 
@@ -44,5 +45,6 @@ class Config:
         self.pairs_dir.mkdir(parents=True, exist_ok=True)
         self.candidates_dir.mkdir(parents=True, exist_ok=True)
         self.triplets_dir.mkdir(parents=True, exist_ok=True)
+        self.filtered_triplets_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.checkpoint_dir.mkdir(parents=True, exist_ok=True)

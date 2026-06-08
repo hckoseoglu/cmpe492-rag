@@ -23,9 +23,10 @@ def _resolve_device(requested: str) -> str:
     return "cpu"
 
 
-def _fingerprint(model_name: str, ids: list[str], contents: list[str]) -> str:
+def _fingerprint(model_name: str, ids: list[str], contents: list[str], max_seq_length: int | None = None) -> str:
     h = hashlib.sha256()
     h.update(model_name.encode("utf-8"))
+    h.update(f"|seq={max_seq_length}".encode("utf-8"))
     h.update(b"\x00")
     for cid, content in zip(ids, contents):
         h.update(cid.encode("utf-8"))
@@ -52,15 +53,17 @@ class DenseIndex:
         batch_size: int = 32,
         cache_dir: Path | None = None,
         cache_tag: str | None = None,
+        max_seq_length: int | None = None,
     ):
         self.model_name = model_name
         self.device = _resolve_device(device)
         self.batch_size = batch_size
+        self.max_seq_length = max_seq_length
 
         if cache_dir is not None and cache_tag is not None:
             cache_dir = Path(cache_dir) / "embeddings"
             cache_dir.mkdir(parents=True, exist_ok=True)
-            fp = _fingerprint(model_name, ids, contents)
+            fp = _fingerprint(model_name, ids, contents, max_seq_length)
             self.cache_npy = cache_dir / f"{cache_tag}.{fp}.npy"
             self.cache_meta = cache_dir / f"{cache_tag}.{fp}.json"
         else:
@@ -90,7 +93,10 @@ class DenseIndex:
     def _load_model(self):
         from sentence_transformers import SentenceTransformer
 
-        return SentenceTransformer(self.model_name, device=self.device)
+        model = SentenceTransformer(self.model_name, device=self.device)
+        if self.max_seq_length is not None:
+            model.max_seq_length = self.max_seq_length
+        return model
 
     def _encode(self, texts: list[str]) -> np.ndarray:
         emb = self._model.encode(
