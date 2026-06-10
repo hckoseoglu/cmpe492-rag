@@ -1,0 +1,16 @@
+MODELS & SETUP
+
+Hardware
+- Data generation: NVIDIA L4 (24 GB) on GCP, served with vLLM.
+- Fine-tuning: Apple M1 (16 GB), local.
+
+Synthetic-data pipeline
+- Generator: Gemma 2 9B Instruct (4-bit) - chunking + question generation.
+- Judge: DeepSeek-R1-0528-Qwen3-8B - reasoning-based hard-negative validation.
+
+Fine-tuned retrievers
+- bge-small (33.4M), all-MiniLM-L6-v2 (22.7M), bge-micro (17.4M).
+
+Training & evaluation
+- MNRL loss, batch 16, lr 2e-5, 1-3 epochs.
+- Metrics: Recall@1/5/10 and NDCG@10 with 95% confidence intervals.

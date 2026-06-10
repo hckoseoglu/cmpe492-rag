@@ -3,6 +3,10 @@ bgesmall,0,baseline,0.5481,0.8431,0.9152,0.822
 bgesmall,1,finetuned,0.5644,0.8634,0.9215,0.838
 bgesmall,2,finetuned,0.5633,0.8493,0.9177,0.8325
 bgesmall,3,finetuned,0.5554,0.8433,0.9097,0.8246
+micro,0,baseline,0.5138,0.7939,0.8666,0.7755
+micro,1,finetuned,0.5361,0.8319,0.9072,0.8134
+micro,2,finetuned,0.5383,0.8383,0.9125,0.817
+micro,3,finetuned,0.5323,0.8377,0.913,0.8149
 minilm,0,baseline,0.5145,0.7999,0.8835,0.7799
 minilm,1,finetuned,0.5443,0.8429,0.917,0.821
 minilm,2,finetuned,0.528,0.8371,0.9104,0.8105

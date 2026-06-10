@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.20)  27 MAY 2026 23:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.20)  10 JUN 2026 12:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -750,11 +750,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 rt.toc
 [1
 
-])
+] [2])
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [2]
+ [3]
 Chapter 1.
 [1
 
@@ -789,20 +789,20 @@ Overfull \hbox (46.82567pt too wide) in paragraph at lines 126--126
 []\OT1/cmr/bx/n/17.28 Embedding Bench-marks: MTEB and MMTEB 
  []
 
-
-Overfull \hbox (17.53975pt too wide) in paragraph at lines 130--130
+[8]
+Overfull \hbox (17.53975pt too wide) in paragraph at lines 136--136
 []\OT1/cmr/bx/n/17.28 Concept Nor-mal-iza-tion for Query En-hance-
  []
 
 
-Overfull \hbox (10.91971pt too wide) in paragraph at lines 134--134
+Overfull \hbox (10.91971pt too wide) in paragraph at lines 140--140
 []\OT1/cmr/bx/n/17.28 Vector Quan-ti-za-tion: Po-lar-Quant and QJL 
  []
 
-[8] [9]
+[9]
 Chapter 4.
 
-Overfull \hbox (8.23892pt too wide) in paragraph at lines 148--149
+Overfull \hbox (8.23892pt too wide) in paragraph at lines 154--155
 \OT1/cmr/m/n/12 ca-tions from the NSCA, ACSM, and peer-reviewed lit-er-a-ture o
 n anatomy,
  []
@@ -810,245 +810,323 @@ n anatomy,
 [10
 
 ]
-Overfull \hbox (7.20639pt too wide) in paragraph at lines 152--153
+Overfull \hbox (7.20639pt too wide) in paragraph at lines 158--159
 []\OT1/cmr/bx/n/12 Query En-hance-ment. \OT1/cmr/m/n/12 Be-fore re-trieval, the
  user's query passes through
  []
 
 [11] [12] [13] [14]
-Overfull \hbox (2.8245pt too wide) in paragraph at lines 230--230
+Overfull \hbox (2.8245pt too wide) in paragraph at lines 236--236
 []\OT1/cmr/bx/n/14.4 Stage 1: Ran-dom Ro-ta-tion and Lloyd-Max Quan-
  []
 
 
-Overfull \hbox (10.90727pt too wide) in paragraph at lines 240--241
+Overfull \hbox (10.90727pt too wide) in paragraph at lines 246--247
 \OT1/cmr/m/n/12 and de-ci-sion bound-aries $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 
 b[]; [] ; b[]\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 that min-imise the ex-pected p
 er-coordinate
  []
 
-[15]
-Overfull \hbox (2.31592pt too wide) in paragraph at lines 277--278
+[15] [16]
+Overfull \hbox (2.31592pt too wide) in paragraph at lines 283--284
 []\OT1/cmr/bx/n/12 SOFT \OT1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^Y$\OT1/cmr/m/n/12 
 64 terms): Core mus-cle names, fun-da-men-tal move-ment terms,
  []
 
-[16]
-Overfull \hbox (3.88202pt too wide) in paragraph at lines 281--282
+
+Overfull \hbox (3.88202pt too wide) in paragraph at lines 287--288
 \OT1/cmr/m/n/12 Substitutions are ap-plied us-ing case-insensitive reg-u-lar ex
 -pres-sions with longer
  []
 
 [17]
-Overfull \hbox (17.51329pt too wide) in paragraph at lines 299--300
+Overfull \hbox (15.49608pt too wide) in paragraph at lines 305--306
+\OT1/cmtt/m/n/12 DeepSeek-R1-0528-Qwen3-8B\OT1/cmr/m/n/12 ---a rea-son-ing mode
+l---as the ex-pert hard-negative
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
+309.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 309.
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 309.
+
+[18] [19]
+Overfull \hbox (20.82564pt too wide) in paragraph at lines 326--327
+\OT1/cmr/m/n/12 The triplet cor-pus of Sec-tion 4.8[] is used to fine-tune the 
+open-weight \OT1/cmtt/m/n/12 BAAI/bge-m3
+ []
+
+[20]
+Overfull \hbox (17.51329pt too wide) in paragraph at lines 347--348
 \OT1/cmr/m/n/12 drawn from nine au-thor-i-ta-tive exercise-science re-sources: 
 \OT1/cmr/m/it/12 Body-build-ing Anatomy\OT1/cmr/m/n/12 ,
  []
 
-[18]
-Overfull \hbox (3.19453pt too wide) in paragraph at lines 315--316
+[21] [22]
+Overfull \hbox (3.19453pt too wide) in paragraph at lines 363--364
 \OT1/cmr/m/n/12 path that en-ables lightweight it-er-a-tion with-out re-quir-in
 g a Lang-Smith project. 
  []
 
-[19] [20] [21]
+[23] [24] [25]
 Chapter 5.
 
-Overfull \hbox (2.32pt too wide) in paragraph at lines 369--370
+Overfull \hbox (2.32pt too wide) in paragraph at lines 417--418
 []\OT1/cmr/bx/n/12 UC1 --- Ask a fit-ness ques-tion: \OT1/cmr/m/n/12 The user s
 ub-mits a natural-language
  []
 
-[22
+[26
 
 ]
-Overfull \hbox (8.64725pt too wide) in paragraph at lines 380--381
+Overfull \hbox (8.64725pt too wide) in paragraph at lines 428--429
 \OT1/cmr/m/n/12 ments, com-pris-ing gold doc-u-ments, hard-negative dis-trac-to
 rs, and partly-
  []
 
-<figures//use_case_diagram.png, id=98, 744.7825pt x 672.5125pt>
+<figures//use_case_diagram.png, id=113, 744.7825pt x 672.5125pt>
 File: figures//use_case_diagram.png Graphic file (type png)
 <use figures//use_case_diagram.png>
-Package pdftex.def Info: figures//use_case_diagram.png  used on input line 387.
+Package pdftex.def Info: figures//use_case_diagram.png  used on input line 435.
 
 (pdftex.def)             Requested size: 370.49881pt x 334.55197pt.
 
-Overfull \hbox (11.00449pt too wide) in paragraph at lines 397--398
+Overfull \hbox (11.00449pt too wide) in paragraph at lines 445--446
 []\OT1/cmr/bx/n/12 FR3: \OT1/cmr/m/n/12 The sys-tem shall fil-ter ex-er-cises f
 rom a struc-tured ex-er-cise database
  []
 
-[23] [24 <./figures//use_case_diagram.png>] [25]
+[27] [28 <./figures//use_case_diagram.png>] [29] [30]
 Chapter 6.
-[26
+[31
 
 ]
-<figures//chat_sequence.png, id=112, 1131.22626pt x 641.39626pt>
+<figures//chat_sequence.png, id=131, 1131.22626pt x 641.39626pt>
 File: figures//chat_sequence.png Graphic file (type png)
 <use figures//chat_sequence.png>
-Package pdftex.def Info: figures//chat_sequence.png  used on input line 444.
+Package pdftex.def Info: figures//chat_sequence.png  used on input line 493.
 (pdftex.def)             Requested size: 370.49881pt x 210.06615pt.
- [27]
-<figures//eval_pipeline.png, id=116, 269.005pt x 905.3825pt>
+ [32]
+<figures//eval_pipeline.png, id=135, 269.005pt x 905.3825pt>
 File: figures//eval_pipeline.png Graphic file (type png)
 <use figures//eval_pipeline.png>
-Package pdftex.def Info: figures//eval_pipeline.png  used on input line 463.
+Package pdftex.def Info: figures//eval_pipeline.png  used on input line 512.
 (pdftex.def)             Requested size: 140.71254pt x 473.59224pt.
 
-Overfull \hbox (3.94725pt too wide) in paragraph at lines 475--476
+Overfull \hbox (3.94725pt too wide) in paragraph at lines 524--525
 \OT1/cmr/m/n/12 tions shar-ing a com-mon in-ter-face, al-low-ing strate-gies to
  be swapped
  []
 
 
-Overfull \hbox (2.66371pt too wide) in paragraph at lines 476--477
+Overfull \hbox (2.66371pt too wide) in paragraph at lines 525--526
 []\OT1/cmr/m/it/12 Cross-encoder rerank-ing: \OT1/cmr/m/n/12 An op-tional stage
  that re-scores re-trieved
  []
 
-[28 <./figures//chat_sequence.png>] [29 <./figures//eval_pipeline.png>]
-Overfull \hbox (1.13206pt too wide) in paragraph at lines 482--483
+[33 <./figures//chat_sequence.png>] [34 <./figures//eval_pipeline.png>]
+Overfull \hbox (1.13206pt too wide) in paragraph at lines 531--532
 \OT1/cmr/m/n/12 Max scalar quan-ti-sa-tion, with a quantisation-aware joint lea
 rn-ing (QJL)
  []
 
 
-Overfull \hbox (2.25009pt too wide) in paragraph at lines 483--484
+Overfull \hbox (2.25009pt too wide) in paragraph at lines 532--533
 \OT1/cmr/m/n/12 ments, en-abling stan-dard-ised com-par-i-son of the normalisat
 ion-enhanced
  []
 
 
-Overfull \hbox (3.39749pt too wide) in paragraph at lines 484--485
+Overfull \hbox (3.39749pt too wide) in paragraph at lines 533--534
 []\OT1/cmr/bx/n/12 Data gen-er-a-tion mod-ule: \OT1/cmr/m/n/12 A syn-thetic ben
 ch-mark gen-er-a-tion pipeline
  []
 
-[30] [31]
+
+Overfull \hbox (7.11377pt too wide) in paragraph at lines 534--535
+[]\OT1/cmr/bx/n/12 Triplet gen-er-a-tion and fine-tuning mod-ule: \OT1/cmr/m/n/
+12 A four-stage pipeline---
+ []
+
+
+Overfull \hbox (7.60281pt too wide) in paragraph at lines 534--535
+\OT1/cmr/m/n/12 agentic chunk-ing, dual-style positive-pair gen-er-a-tion, hybr
+id-search hard-
+ []
+
+
+Overfull \hbox (8.56819pt too wide) in paragraph at lines 534--535
+\OT1/cmr/m/n/12 disjoint split-ting, cached MNRL train-ing, and held-out eval-u
+-a-tion against
+ []
+
+[35] [36]
 Chapter 7.
 
-Overfull \hbox (50.49829pt too wide) in paragraph at lines 500--501
+Overfull \hbox (50.49829pt too wide) in paragraph at lines 550--551
 \OT1/cmr/m/n/12 used for bench-mark-ing, pro-duc-ing dense em-bed-dings via the
  \OT1/cmtt/m/n/12 text-embedding-3-large
  []
 
 
-Overfull \hbox (16.0334pt too wide) in paragraph at lines 502--503
+Overfull \hbox (16.0334pt too wide) in paragraph at lines 552--553
 []\OT1/cmr/m/n/12 Open-source em-bed-ding mod-els and a cross-encoder reranker 
 (BGE reranker)
  []
 
-[32
+
+Overfull \hbox (8.45457pt too wide) in paragraph at lines 554--555
+\OT1/cmr/m/n/12 tuning it-self uses the \OT1/cmtt/m/n/12 sentence-transformers 
+SentenceTransformerTrainer
+ []
+
+[37
 
 ]
-Overfull \hbox (37.04279pt too wide) in paragraph at lines 514--515
+Overfull \hbox (37.04279pt too wide) in paragraph at lines 566--567
 \OT1/cmr/m/n/12 eval-u-ated at two configurations---500-character and 1,500-cha
 racter windows---
  []
 
-
-Overfull \hbox (20.94643pt too wide) in paragraph at lines 518--519
+[38]
+Overfull \hbox (20.94643pt too wide) in paragraph at lines 570--571
 []\OT1/cmr/bx/n/12 MTEB con-cept nor-mal-i-sa-tion bench-mark. \OT1/cmr/m/n/12 
 A normalisation-enhanced
  []
 
-[33] [34]
+[39]
 Chapter 8.
-<results/chunking//chunking_results.png, id=142, 722.7pt x 469.755pt>
+<results/chunking//chunking_results.png, id=161, 722.7pt x 469.755pt>
 File: results/chunking//chunking_results.png Graphic file (type png)
 <use results/chunking//chunking_results.png>
 Package pdftex.def Info: results/chunking//chunking_results.png  used on input 
-line 541.
+line 594.
 (pdftex.def)             Requested size: 350.99762pt x 228.14629pt.
-<results/reranker//without_reranker.png, id=144, 578.16pt x 433.62pt>
+<results/reranker//without_reranker.png, id=163, 578.16pt x 433.62pt>
 File: results/reranker//without_reranker.png Graphic file (type png)
 <use results/reranker//without_reranker.png>
 Package pdftex.def Info: results/reranker//without_reranker.png  used on input 
-line 552.
+line 605.
 (pdftex.def)             Requested size: 331.50238pt x 248.6216pt.
-[35
+[40
 
 ]
-<results/reranker//with_rerankers.png, id=148, 722.7pt x 433.62pt>
+<results/reranker//with_rerankers.png, id=167, 722.7pt x 433.62pt>
 File: results/reranker//with_rerankers.png Graphic file (type png)
 <use results/reranker//with_rerankers.png>
 Package pdftex.def Info: results/reranker//with_rerankers.png  used on input li
-ne 561.
+ne 614.
 (pdftex.def)             Requested size: 350.99762pt x 210.59657pt.
- [36 <./results/chunking//chunking_results.png>] [37 <./results/reranker//witho
+ [41 <./results/chunking//chunking_results.png>] [42 <./results/reranker//witho
 ut_reranker.png> <./results/reranker//with_rerankers.png>]
-<results/concept_normalization//embedder_comparison.png, id=158, 859.7721pt x 4
+<results/concept_normalization//embedder_comparison.png, id=177, 859.7721pt x 4
 45.4241pt>
 File: results/concept_normalization//embedder_comparison.png Graphic file (type
  png)
 <use results/concept_normalization//embedder_comparison.png>
 Package pdftex.def Info: results/concept_normalization//embedder_comparison.png
-  used on input line 574.
+  used on input line 627.
 (pdftex.def)             Requested size: 350.99762pt x 181.84344pt.
- [38 <./results/concept_normalization//embedder_comparison.png>]
-<results/obfuscation//obfuscation_blocked.png, id=163, 578.16pt x 433.62pt>
+
+Overfull \hbox (49.56479pt too wide) in paragraph at lines 641--650
+ [][] 
+ []
+
+[43 <./results/concept_normalization//embedder_comparison.png>]
+<results/finetune//overall_metrics.png, id=182, 867.24pt x 650.43pt>
+File: results/finetune//overall_metrics.png Graphic file (type png)
+<use results/finetune//overall_metrics.png>
+Package pdftex.def Info: results/finetune//overall_metrics.png  used on input l
+ine 656.
+(pdftex.def)             Requested size: 370.49881pt x 277.87314pt.
+<results/finetune//delta.png, id=183, 650.43pt x 433.62pt>
+File: results/finetune//delta.png Graphic file (type png)
+<use results/finetune//delta.png>
+Package pdftex.def Info: results/finetune//delta.png  used on input line 663.
+(pdftex.def)             Requested size: 350.99762pt x 234.00575pt.
+<results/finetune//loss_curves.png, id=184, 1409.265pt x 361.35pt>
+File: results/finetune//loss_curves.png Graphic file (type png)
+<use results/finetune//loss_curves.png>
+Package pdftex.def Info: results/finetune//loss_curves.png  used on input line 
+672.
+(pdftex.def)             Requested size: 370.49881pt x 94.9964pt.
+<results/finetune//by_style_recall5.png, id=185, 650.43pt x 433.62pt>
+File: results/finetune//by_style_recall5.png Graphic file (type png)
+<use results/finetune//by_style_recall5.png>
+Package pdftex.def Info: results/finetune//by_style_recall5.png  used on input 
+line 679.
+(pdftex.def)             Requested size: 331.50238pt x 221.00432pt.
+ [44] [45 <./results/finetune//overall_metrics.png>] [46 <./results/finetune//d
+elta.png> <./results/finetune//loss_curves.png>]
+<results/obfuscation//obfuscation_blocked.png, id=200, 578.16pt x 433.62pt>
 File: results/obfuscation//obfuscation_blocked.png Graphic file (type png)
 <use results/obfuscation//obfuscation_blocked.png>
 Package pdftex.def Info: results/obfuscation//obfuscation_blocked.png  used on 
-input line 587.
+input line 692.
 (pdftex.def)             Requested size: 331.50238pt x 248.6216pt.
- [39 <./results/obfuscation//obfuscation_blocked.png>]
-<results/turboquant//memory_results.png, id=168, 570.4512pt x 426.393pt>
+ [47 <./results/finetune//by_style_recall5.png>]
+<results/turboquant//memory_results.png, id=205, 570.4512pt x 426.393pt>
 File: results/turboquant//memory_results.png Graphic file (type png)
 <use results/turboquant//memory_results.png>
 Package pdftex.def Info: results/turboquant//memory_results.png  used on input 
-line 600.
+line 705.
 (pdftex.def)             Requested size: 331.50238pt x 247.78957pt.
-<results/turboquant//ndcg_results.png, id=169, 570.4512pt x 426.393pt>
+<results/turboquant//ndcg_results.png, id=206, 570.4512pt x 426.393pt>
 File: results/turboquant//ndcg_results.png Graphic file (type png)
 <use results/turboquant//ndcg_results.png>
 Package pdftex.def Info: results/turboquant//ndcg_results.png  used on input li
-ne 607.
+ne 712.
 (pdftex.def)             Requested size: 331.50238pt x 247.78957pt.
-<results/turboquant//speed_results.png, id=170, 570.4512pt x 426.393pt>
+<results/turboquant//speed_results.png, id=207, 570.4512pt x 426.393pt>
 File: results/turboquant//speed_results.png Graphic file (type png)
 <use results/turboquant//speed_results.png>
 Package pdftex.def Info: results/turboquant//speed_results.png  used on input l
-ine 614.
+ine 719.
 (pdftex.def)             Requested size: 331.50238pt x 247.78957pt.
- [40 <./results/turboquant//memory_results.png>] [41 <./results/turboquant//ndc
-g_results.png> <./results/turboquant//speed_results.png>]
+ [48 <./results/obfuscation//obfuscation_blocked.png>] [49 <./results/turboquan
+t//memory_results.png> <./results/turboquant//ndcg_results.png>] [50 <./results
+/turboquant//speed_results.png>]
 Chapter 9.
-[42
+[51
 
-] (./report.bbl [43] [44
+] (./report.bbl [52] [53
 
-]) [45] (./report.aux) ) 
+]) [54] (./report.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3890 strings out of 476025
- 61942 string characters out of 5790016
- 1862388 words of memory out of 5000000
- 24259 multiletter control sequences out of 15000+600000
- 522509 words of font info for 71 fonts, out of 8000000 for 9000
+ 3950 strings out of 476025
+ 63515 string characters out of 5790016
+ 1863388 words of memory out of 5000000
+ 24313 multiletter control sequences out of 15000+600000
+ 522678 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,7n,62p,1045b,253s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.
-pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
-b></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
-></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
-pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
-b>
-Output written on report.pdf (48 pages, 1335577 bytes).
+ 57i,9n,62p,1516b,290s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2
+023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/20
+23/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texliv
+e/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on report.pdf (58 pages, 1870570 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
+ 304 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

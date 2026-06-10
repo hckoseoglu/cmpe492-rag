@@ -1,14 +1,13 @@
 # Fdb version 4
-["bibtex report"] 1779910804 "report.aux" "report.bbl" "report" 1779910807 0
-  "./references.bib" 1777642010 4488 549a34487ec1e5758b8a5a0a737f5548 ""
+["bibtex report"] 1780991930 "report.aux" "report.bbl" "report" 1781083684 0
+  "./references.bib" 1780991724 5855 15efb4767d6876cd2f42600e5b2400b0 ""
   "./styles/fbe_tez_v11.bst" 1777642010 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "report.aux" 1779910807 11711 9303d7c9f9baa77d36b31ef670abc27b "pdflatex"
+  "report.aux" 1781083684 14986 d414d27d3eacf0f7718564fec1c61483 "pdflatex"
   (generated)
   "report.bbl"
   "report.blg"
   (rewritten before read)
-["pdflatex"] 1779910804 "/Users/hikmetcankoseoglu/dev/cmpe492-rag/report/report.tex" "report.pdf" "report" 1779910807 0
-  "/Users/hikmetcankoseoglu/dev/cmpe492-rag/report/report.tex" 1779910798 80962 cd5e6d4551e223f0eb713a31983b27aa ""
+["pdflatex"] 1781083681 "report.tex" "report.pdf" "report" 1781083684 0
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -95,12 +94,16 @@
   "figures//chat_sequence.png" 1777642010 26907 a32fc1275b11d9198060ecbdde2117d6 ""
   "figures//eval_pipeline.png" 1777642010 17012 49cf70ab4f7b3bc6ec665dde4c7baacb ""
   "figures//use_case_diagram.png" 1777642010 24896 792d2e9d32bc76227f0a4b1716fb1272 ""
-  "report.aux" 1779910807 11711 9303d7c9f9baa77d36b31ef670abc27b "pdflatex"
-  "report.bbl" 1779910804 3592 075e643b91a5a7d701577ec69e32fcdc "bibtex report"
-  "report.tex" 1779910798 80962 cd5e6d4551e223f0eb713a31983b27aa ""
-  "report.toc" 1779910807 4679 0d34f344bb1d49518b31796475157ad8 "pdflatex"
+  "report.aux" 1781083684 14986 d414d27d3eacf0f7718564fec1c61483 "pdflatex"
+  "report.bbl" 1780991930 4750 1c95dba9d795a6f063708a2320349c3c "bibtex report"
+  "report.tex" 1781083672 91383 1d5ee922474afd99e102101c0b4fe4c4 ""
+  "report.toc" 1781083684 5600 bf97315aeb7b1b8e640a84a7130a39be "pdflatex"
   "results/chunking//chunking_results.png" 1777642010 239074 e0e4b5536a1bc2eeaaabd32195d526c8 ""
   "results/concept_normalization//embedder_comparison.png" 1777642010 164925 ddf9073d56c1083add007a7c02723082 ""
+  "results/finetune//by_style_recall5.png" 1780991704 81805 47094fa14ef0b5f8b91e3f0592c8f2a7 ""
+  "results/finetune//delta.png" 1780991704 148443 f71e0d1c0bc89f230f6808783d2fa421 ""
+  "results/finetune//loss_curves.png" 1780991704 163117 b96d2cc35490d53e937f9f5987b6abc8 ""
+  "results/finetune//overall_metrics.png" 1780991704 188703 af1d2a9d2cd01372ee808a0cb6bed97a ""
   "results/obfuscation//obfuscation_blocked.png" 1777642010 106882 03a20454626a62b0efa98921508c760a ""
   "results/reranker//with_rerankers.png" 1777642010 158913 245467021eeba2630c43621d1220460b ""
   "results/reranker//without_reranker.png" 1777642010 96043 8ea3e274ca505fda68595a9fd3e5d1be ""

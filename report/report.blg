@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: report.aux
 The style file: styles/fbe_tez_v11.bst
 Database file #1: references.bib
-You've used 10 entries,
+You've used 13 entries,
             2118 wiz_defined-function locations,
-            551 strings with 7014 characters,
-and the built_in function-call counts, 4688 in all, are:
-= -- 399
-> -- 415
-< -- 1
-+ -- 164
-- -- 154
-* -- 387
-:= -- 847
-add.period$ -- 38
-call.type$ -- 10
-change.case$ -- 106
+            569 strings with 7942 characters,
+and the built_in function-call counts, 6073 in all, are:
+= -- 535
+> -- 479
+< -- 3
++ -- 189
+- -- 176
+* -- 472
+:= -- 1051
+add.period$ -- 49
+call.type$ -- 13
+change.case$ -- 126
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 130
-empty$ -- 246
-format.name$ -- 154
-if$ -- 904
+cite$ -- 13
+duplicate$ -- 192
+empty$ -- 359
+format.name$ -- 176
+if$ -- 1214
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 10
-newline$ -- 61
-num.names$ -- 20
-pop$ -- 115
+int.to.str$ -- 13
+missing$ -- 13
+newline$ -- 78
+num.names$ -- 26
+pop$ -- 143
 preamble$ -- 1
-purify$ -- 96
+purify$ -- 113
 quote$ -- 0
-skip$ -- 81
+skip$ -- 132
 stack$ -- 0
-substring$ -- 107
-swap$ -- 23
-text.length$ -- 1
+substring$ -- 194
+swap$ -- 49
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
+type$ -- 52
 warning$ -- 0
-while$ -- 25
-width$ -- 12
-write$ -- 121
+while$ -- 37
+width$ -- 15
+write$ -- 157

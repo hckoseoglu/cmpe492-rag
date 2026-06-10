@@ -12,52 +12,64 @@
 \contentsline {section}{\numberline {3.2}RAG Evaluation: RAGAS and RAGChecker}{7}{}%
 \contentsline {section}{\numberline {3.3}LLM-as-Judge}{8}{}%
 \contentsline {section}{\numberline {3.4}Embedding Benchmarks: MTEB and MMTEB}{8}{}%
-\contentsline {section}{\numberline {3.5}Concept Normalization for Query Enhancement}{8}{}%
-\contentsline {section}{\numberline {3.6}Vector Quantization: PolarQuant and QJL}{8}{}%
+\contentsline {section}{\numberline {3.5}Dense Retriever Fine-Tuning and Hard-Negative Mining}{8}{}%
+\contentsline {section}{\numberline {3.6}Concept Normalization for Query Enhancement}{9}{}%
+\contentsline {section}{\numberline {3.7}Vector Quantization: PolarQuant and QJL}{9}{}%
 \contentsline {chapter}{\numberline {4}METHODOLOGY}{10}{}%
 \contentsline {section}{\numberline {4.1}RAG Pipeline Overview}{10}{}%
 \contentsline {section}{\numberline {4.2}Chunking Strategies}{11}{}%
 \contentsline {subsection}{\numberline {4.2.1}Base Chunking (Recursive Character Splitting)}{11}{}%
 \contentsline {subsection}{\numberline {4.2.2}Semantic Chunking}{12}{}%
 \contentsline {subsection}{\numberline {4.2.3}Parent-Child (Hierarchical) Chunking}{12}{}%
-\contentsline {section}{\numberline {4.3}Concept Normalisation}{12}{}%
+\contentsline {section}{\numberline {4.3}Concept Normalisation}{13}{}%
 \contentsline {subsection}{\numberline {4.3.1}Vocabulary Extraction}{13}{}%
 \contentsline {subsection}{\numberline {4.3.2}Three-Stage Normalisation Pipeline}{13}{}%
 \contentsline {section}{\numberline {4.4}Cross-Encoder Reranking}{14}{}%
-\contentsline {section}{\numberline {4.5}Vector Quantisation: TurboQuant}{14}{}%
+\contentsline {section}{\numberline {4.5}Vector Quantisation: TurboQuant}{15}{}%
 \contentsline {subsection}{\numberline {4.5.1}Stage 1: Random Rotation and Lloyd-Max Quantisation}{15}{}%
-\contentsline {subsection}{\numberline {4.5.2}Stage 2: QJL Residual Correction}{15}{}%
+\contentsline {subsection}{\numberline {4.5.2}Stage 2: QJL Residual Correction}{16}{}%
 \contentsline {section}{\numberline {4.6}Knowledge Probing}{16}{}%
 \contentsline {subsection}{\numberline {4.6.1}Lexical Obfuscation}{16}{}%
 \contentsline {subsection}{\numberline {4.6.2}Probing Experiment}{17}{}%
-\contentsline {section}{\numberline {4.7}Synthetic Data Generation}{17}{}%
-\contentsline {section}{\numberline {4.8}Test Dataset}{18}{}%
-\contentsline {section}{\numberline {4.9}Evaluation Framework}{18}{}%
-\contentsline {subsection}{\numberline {4.9.1}LLM-as-Judge Evaluators}{18}{}%
-\contentsline {subsection}{\numberline {4.9.2}Custom Retrieval Benchmark}{19}{}%
-\contentsline {subsection}{\numberline {4.9.3}MTEB Fitness Benchmark}{20}{}%
-\contentsline {chapter}{\numberline {5}REQUIREMENTS SPECIFICATION}{22}{}%
-\contentsline {section}{\numberline {5.1}Use Cases}{22}{}%
-\contentsline {section}{\numberline {5.2}Functional Requirements}{23}{}%
-\contentsline {section}{\numberline {5.3}Non-Functional Requirements}{25}{}%
-\contentsline {chapter}{\numberline {6}DESIGN}{26}{}%
-\contentsline {section}{\numberline {6.1}Information Structure}{26}{}%
-\contentsline {section}{\numberline {6.2}Information Flow}{27}{}%
-\contentsline {subsection}{\numberline {6.2.1}Chat Request Flow}{27}{}%
-\contentsline {subsection}{\numberline {6.2.2}RAG Evaluation Pipeline Flow}{27}{}%
-\contentsline {section}{\numberline {6.3}System Design}{28}{}%
-\contentsline {section}{\numberline {6.4}User Interface Design}{30}{}%
-\contentsline {chapter}{\numberline {7}IMPLEMENTATION AND TESTING}{32}{}%
-\contentsline {section}{\numberline {7.1}Implementation}{32}{}%
-\contentsline {section}{\numberline {7.2}Testing}{33}{}%
-\contentsline {subsection}{\numberline {7.2.1}Test Dataset}{33}{}%
-\contentsline {subsection}{\numberline {7.2.2}Evaluation Experiments}{33}{}%
-\contentsline {subsection}{\numberline {7.2.3}Observability}{33}{}%
-\contentsline {section}{\numberline {7.3}Deployment}{34}{}%
-\contentsline {chapter}{\numberline {8}RESULTS}{35}{}%
-\contentsline {section}{\numberline {8.1}Chunking Strategy Comparison}{35}{}%
-\contentsline {section}{\numberline {8.2}Reranker Evaluation}{35}{}%
-\contentsline {section}{\numberline {8.3}Concept Normalization}{36}{}%
-\contentsline {section}{\numberline {8.4}Knowledge Probing via Lexical Obfuscation}{38}{}%
-\contentsline {section}{\numberline {8.5}Vector Quantization (TurboQuant)}{39}{}%
-\contentsline {chapter}{\numberline {9}CONCLUSION}{42}{}%
+\contentsline {section}{\numberline {4.7}Synthetic Data Generation}{18}{}%
+\contentsline {section}{\numberline {4.8}Domain-Specific Triplet Generation}{18}{}%
+\contentsline {subsection}{\numberline {4.8.1}Stage 1: Agentic Chunking}{18}{}%
+\contentsline {subsection}{\numberline {4.8.2}Stage 2: Positive Pair Generation}{19}{}%
+\contentsline {subsection}{\numberline {4.8.3}Stage 3: Hybrid Search and Hard-Negative Mining}{19}{}%
+\contentsline {subsection}{\numberline {4.8.4}Stage 4: Expert Judge Validation}{19}{}%
+\contentsline {section}{\numberline {4.9}Retriever Fine-Tuning}{20}{}%
+\contentsline {subsection}{\numberline {4.9.1}Hard-Negative Filtering}{20}{}%
+\contentsline {subsection}{\numberline {4.9.2}Train/Test Split}{21}{}%
+\contentsline {subsection}{\numberline {4.9.3}Contrastive Training}{21}{}%
+\contentsline {subsection}{\numberline {4.9.4}Evaluation Protocol}{21}{}%
+\contentsline {section}{\numberline {4.10}Test Dataset}{22}{}%
+\contentsline {section}{\numberline {4.11}Evaluation Framework}{22}{}%
+\contentsline {subsection}{\numberline {4.11.1}LLM-as-Judge Evaluators}{22}{}%
+\contentsline {subsection}{\numberline {4.11.2}Custom Retrieval Benchmark}{23}{}%
+\contentsline {subsection}{\numberline {4.11.3}MTEB Fitness Benchmark}{24}{}%
+\contentsline {chapter}{\numberline {5}REQUIREMENTS SPECIFICATION}{26}{}%
+\contentsline {section}{\numberline {5.1}Use Cases}{26}{}%
+\contentsline {section}{\numberline {5.2}Functional Requirements}{27}{}%
+\contentsline {section}{\numberline {5.3}Non-Functional Requirements}{29}{}%
+\contentsline {chapter}{\numberline {6}DESIGN}{31}{}%
+\contentsline {section}{\numberline {6.1}Information Structure}{31}{}%
+\contentsline {section}{\numberline {6.2}Information Flow}{32}{}%
+\contentsline {subsection}{\numberline {6.2.1}Chat Request Flow}{32}{}%
+\contentsline {subsection}{\numberline {6.2.2}RAG Evaluation Pipeline Flow}{32}{}%
+\contentsline {section}{\numberline {6.3}System Design}{33}{}%
+\contentsline {section}{\numberline {6.4}User Interface Design}{36}{}%
+\contentsline {chapter}{\numberline {7}IMPLEMENTATION AND TESTING}{37}{}%
+\contentsline {section}{\numberline {7.1}Implementation}{37}{}%
+\contentsline {section}{\numberline {7.2}Testing}{38}{}%
+\contentsline {subsection}{\numberline {7.2.1}Test Dataset}{38}{}%
+\contentsline {subsection}{\numberline {7.2.2}Evaluation Experiments}{38}{}%
+\contentsline {subsection}{\numberline {7.2.3}Observability}{39}{}%
+\contentsline {section}{\numberline {7.3}Deployment}{39}{}%
+\contentsline {chapter}{\numberline {8}RESULTS}{40}{}%
+\contentsline {section}{\numberline {8.1}Chunking Strategy Comparison}{40}{}%
+\contentsline {section}{\numberline {8.2}Reranker Evaluation}{40}{}%
+\contentsline {section}{\numberline {8.3}Concept Normalization}{41}{}%
+\contentsline {section}{\numberline {8.4}Retriever Fine-Tuning}{43}{}%
+\contentsline {section}{\numberline {8.5}Knowledge Probing via Lexical Obfuscation}{47}{}%
+\contentsline {section}{\numberline {8.6}Vector Quantization (TurboQuant)}{48}{}%
+\contentsline {chapter}{\numberline {9}CONCLUSION}{51}{}%

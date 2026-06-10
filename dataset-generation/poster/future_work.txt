@@ -1,0 +1,8 @@
+FUTURE WORK
+
+- Standardized benchmark: evaluate on a public suite (e.g. BEIR) to measure
+  out-of-domain forgetting.
+- Multi-hop questions: extend the data and metrics to queries that need several
+  passages.
+- Early stopping & regularization: train longer without overfitting past the peak
+  epoch.

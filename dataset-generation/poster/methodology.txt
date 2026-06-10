@@ -1,0 +1,13 @@
+METHODOLOGY
+
+A) Benchmark Creation
+1. Parse each document into self-contained statements (propositions).
+2. Group consecutive statements into semantically coherent, variable-length chunks.
+3. Generate two queries per chunk (formal + informal); a judge verifies each and
+   regenerates failures with feedback.
+4. Hybrid search (dense + keyword/BM25) retrieves candidate chunks for each query.
+5. A judge labels each candidate as positive, hard-negative, or irrelevant.
+
+B) Fine-Tuning
+6. Train the embedder on (query, positive, hard-negative) triplets - positives pull
+   closer, hard-negatives push away. Split by query to prevent leakage.

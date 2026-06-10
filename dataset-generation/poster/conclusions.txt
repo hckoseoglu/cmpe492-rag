@@ -1,0 +1,8 @@
+CONCLUSIONS
+
+- Fine-tuning on synthetic in-domain triplets beats the off-the-shelf baseline for
+  every retriever.
+- Smaller, weaker bases gain the most (more headroom): bge-micro cuts top-5 retrieval
+  misses ~21% and top-10 misses ~35%.
+- Optimal training is short: bge-small and all-MiniLM peak at epoch 1, bge-micro at
+  epoch 2; beyond the peak they overfit.

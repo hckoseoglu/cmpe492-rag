@@ -95,6 +95,10 @@ def main():
     parser.add_argument("--save-each-epoch", action="store_true",
                         help="Save a loadable model snapshot to <output_dir>/epoch-<n>/ at each "
                              "epoch end (for epoch-sweep experiments).")
+    parser.add_argument("--eval-loss", action="store_true",
+                        help="Compute a held-out validation MNRL loss each epoch (one triplet "
+                             "per test-side query) and log eval_loss — for the train/val loss "
+                             "overfitting curve.")
     parser.add_argument("--smoke", action="store_true",
                         help="1 epoch, batch 8, capped to 50 rows of real data")
     parser.add_argument("--synthetic-smoke", action="store_true",
@@ -118,6 +122,7 @@ def main():
     device = _resolve_device(args.device)
     logger.info(f"device resolved to {device}")
 
+    val_rows = []  # held-out triplets for the validation-loss curve (--eval-loss)
     if args.synthetic_smoke:
         from finetune.dataset import TripletRow
         train_rows = [
@@ -154,6 +159,19 @@ def main():
         if args.smoke:
             train_rows = train_rows[:50]
             logger.info(f"smoke: capped train rows to {len(train_rows)}")
+
+        if args.eval_loss and test_queries:
+            # One triplet per held-out query → a clean MNRL validation loss with
+            # no same-query rows colliding in an eval batch.
+            test_ids = {tq.source_chunk_id for tq in test_queries}
+            seen = set()
+            for r in triplet_rows:
+                if r.source_chunk_id in test_ids and r.query_id not in seen:
+                    seen.add(r.query_id)
+                    val_rows.append(r)
+            if args.smoke:
+                val_rows = val_rows[:50]
+            logger.info(f"eval-loss: {len(val_rows)} held-out validation triplets (1 per query)")
 
     if not train_rows:
         logger.error("zero train rows after split — aborting")
@@ -237,6 +255,12 @@ def main():
         {"anchor": r.anchor, "positive": r.positive, "negative": r.negative}
         for r in train_rows
     ])
+    eval_ds = None
+    if val_rows:
+        eval_ds = Dataset.from_list([
+            {"anchor": r.anchor, "positive": r.positive, "negative": r.negative}
+            for r in val_rows
+        ])
 
     model = SentenceTransformer(args.base_model, device=device)
     if args.max_seq_length:
@@ -276,6 +300,8 @@ def main():
         logging_steps=max(1, len(train_rows) // (args.batch_size * 10)),
         save_strategy="epoch",
         save_total_limit=2,
+        eval_strategy="epoch" if eval_ds is not None else "no",
+        per_device_eval_batch_size=args.batch_size,
         seed=args.seed,
         dataloader_drop_last=False,
         report_to=[],  # no W&B etc.
@@ -288,6 +314,7 @@ def main():
         model=model,
         args=train_args,
         train_dataset=ds,
+        eval_dataset=eval_ds,
         loss=loss,
         callbacks=callbacks,
     )

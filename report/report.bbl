@@ -1,5 +1,21 @@
 \begin{thebibliography}{10}
 
+\bibitem{bge_m3}
+Jianlv Chen, Shitao Xiao, Peitian Zhang, Kun Luo, Defu Lian, and Zheng Liu.
+\newblock {BGE} {M3-Embedding}: Multi-lingual, multi-functionality,
+  multi-granularity text embeddings through self-knowledge distillation.
+\newblock In {\em Findings of the Association for Computational Linguistics
+  (ACL)}, 2024.
+\newblock Beijing Academy of Artificial Intelligence; University of Science and
+  Technology of China.
+
+\bibitem{rrf2009}
+Gordon~V. Cormack, Charles L.~A. Clarke, and Stefan B{\"u}ttcher.
+\newblock Reciprocal rank fusion outperforms {Condorcet} and individual rank
+  learning methods.
+\newblock In {\em Proceedings of the 32nd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, pages 758--759, 2009.
+
 \bibitem{mmteb2024}
 Kenneth Enevoldsen, Isaac Chung, Imene Kerboua, M{\'a}rton Kardos, Ashwin
   Mathur, David Stap, Jay Gala, Wissam Siblini, Dominik Krzemi{\'n}ski,
@@ -52,6 +68,13 @@ Niklas Muennighoff, Nouamane Tazi, Lo{\"i}c Magne, and Nils Reimers.
 \newblock In {\em Proceedings of the 17th Conference of the European Chapter of
   the Association for Computational Linguistics}, 2023.
 \newblock Hugging Face; cohere.ai.
+
+\bibitem{reimers2019sbert}
+Nils Reimers and Iryna Gurevych.
+\newblock {Sentence-BERT}: Sentence embeddings using {Siamese} {BERT}-networks.
+\newblock In {\em Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP-IJCNLP)}, pages 3982--3992, 2019.
+\newblock Ubiquitous Knowledge Processing Lab, TU Darmstadt.
 
 \bibitem{ragchecker2024}
 Dongyu Ru, Lin Qiu, Xiangkun Hu, Tianhang Zhang, Peng Shi, Shuaichen Chang,

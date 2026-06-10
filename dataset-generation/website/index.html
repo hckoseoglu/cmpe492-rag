@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fine-Tuned Retrieval Demo · RAG Personal Trainer</title>
+<script src="data.js"></script>
+<style>
+  :root{
+    --navy:#0b1f3a; --navy2:#13315c; --ink:#0e1726; --paper:#f6f8fc;
+    --card:#ffffff; --line:#dce3ee; --muted:#5b6b85;
+    --good:#137a4b; --good-bg:#e6f6ee; --bad:#b3322a; --bad-bg:#fdecea;
+    --accent:#1f6feb; --gold:#9a6b00; --gold-bg:#fbf3df;
+    --shadow:0 1px 2px rgba(11,31,58,.06),0 8px 24px rgba(11,31,58,.07);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+
+  /* header */
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:30px 0 26px}
+  header h1{margin:0 0 6px;font-size:26px;letter-spacing:-.2px}
+  header p{margin:0;color:#c3d2ec;max-width:780px;font-size:15px}
+  .pipe{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .pipe .step{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;padding:5px 12px;font-size:12.5px;color:#e7eefb;white-space:nowrap}
+  .pipe .arrow{color:#7e93ba;align-self:center;font-size:13px}
+
+  /* retriever selector */
+  .retbar{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 6px}
+  .retbar .lab{font-size:12px;text-transform:uppercase;letter-spacing:.10em;color:var(--muted);
+    align-self:center;margin-right:4px;font-weight:600}
+  .ret{cursor:pointer;border:1px solid var(--line);background:var(--card);border-radius:12px;
+    padding:10px 14px;text-align:left;box-shadow:var(--shadow);transition:.15s;min-width:150px}
+  .ret:hover{border-color:#b9c6dc}
+  .ret.active{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy) inset, var(--shadow)}
+  .ret .nm{font-weight:700;font-size:14px}
+  .ret .sub{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* metric strip */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 4px}
+  @media(max-width:620px){.metrics{grid-template-columns:repeat(2,1fr)}}
+  .metric{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+  .metric .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .metric .row{display:flex;align-items:baseline;gap:8px;margin-top:6px}
+  .metric .base{color:var(--muted);font-size:13px}
+  .metric .ft{font-size:22px;font-weight:800;color:var(--ink)}
+  .metric .delta{margin-left:auto;font-size:13px;font-weight:700;color:var(--good);
+    background:var(--good-bg);border-radius:6px;padding:1px 7px}
+  .note{color:var(--muted);font-size:12.5px;margin:8px 0 0}
+
+  /* main layout */
+  main{display:grid;grid-template-columns:330px 1fr;gap:22px;margin:22px 0 60px}
+  @media(max-width:880px){main{grid-template-columns:1fr}}
+
+  .qlist h2,.detail h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 0 10px}
+  .q{cursor:pointer;background:var(--card);border:1px solid var(--line);border-left:3px solid transparent;
+    border-radius:10px;padding:11px 13px;margin-bottom:9px;box-shadow:var(--shadow);transition:.12s}
+  .q:hover{border-color:#b9c6dc}
+  .q.active{border-left-color:var(--navy);background:#fbfcff}
+  .q .qt{font-size:13.5px;line-height:1.4}
+  .q .meta{display:flex;align-items:center;gap:8px;margin-top:7px}
+  .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:5px;padding:1px 6px}
+  .badge.formal{background:#eef1f7;color:#3a4a66}
+  .badge.informal{background:#eaf3ff;color:#1f5fb8}
+  .flip{font-size:11.5px;color:var(--good);font-weight:700;margin-left:auto}
+  .flip .x{color:var(--bad)}
+
+  /* detail */
+  .detail .query{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;box-shadow:var(--shadow);margin-bottom:16px}
+  .detail .query .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .detail .query .qtext{font-size:18px;font-weight:700;margin-top:4px;line-height:1.4}
+  .detail .query .lead{margin-top:10px;font-size:13px;color:var(--good);background:var(--good-bg);
+    border-radius:8px;padding:7px 11px;display:inline-block}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:620px){.cols{grid-template-columns:1fr}}
+  .col{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .col .head{padding:12px 15px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .col .head .nm{font-weight:700;font-size:14px}
+  .col .head .tag{font-size:11px;color:var(--muted)}
+  .col.base .head{background:#fcfdff}
+  .col.ft .head{background:#fcfdff}
+  .verdict{margin-left:auto;font-size:12px;font-weight:800;border-radius:999px;padding:3px 11px}
+  .verdict.ok{color:var(--good);background:var(--good-bg)}
+  .verdict.no{color:var(--bad);background:var(--bad-bg)}
+  .col .body{padding:14px 15px}
+  .rk{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:9px}
+  .rk .pill{background:var(--ink);color:#fff;border-radius:6px;padding:1px 7px;font-weight:700;font-size:11px}
+  .passage{font-size:13.5px;line-height:1.5;color:#1d2838}
+  .passage.correct{border-left:3px solid var(--good);background:var(--good-bg);padding:10px 12px;border-radius:0 8px 8px 0}
+  .passage.wrong{border-left:3px solid var(--bad);background:var(--bad-bg);padding:10px 12px;border-radius:0 8px 8px 0}
+  .summ{font-size:12px;color:var(--muted);font-style:italic;margin-top:8px}
+  .goldrank{margin-top:11px;font-size:12.5px;font-weight:600}
+  .goldrank .hit{color:var(--good)} .goldrank .miss{color:var(--bad)}
+
+  .gold{margin-top:16px;background:var(--gold-bg);border:1px solid #ecd9a6;border-radius:12px;padding:14px 16px}
+  .gold .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:800}
+  .gold .passage{margin-top:7px;color:#3a2f12}
+  .truncate{max-height:148px;overflow:hidden}
+  .truncate.open{max-height:none}
+  .more{font-size:12px;color:var(--accent);cursor:pointer;margin-top:6px;display:inline-block;font-weight:600}
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;padding:20px 0 50px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="retbar" id="retbar">
+    <span class="lab">Retriever</span>
+  </div>
+  <div class="metrics" id="metrics"></div>
+
+  <main>
+    <section class="qlist">
+      <h2>Queries</h2>
+      <div id="qlist"></div>
+    </section>
+    <section class="detail" id="detail"></section>
+  </main>
+</div>
+
+<script>
+const D = window.DEMO_DATA;
+let curTag = null;
+
+function fmt(x){return (x*100).toFixed(1);}
+function chunk(id){return D.chunks[id] || {content:"(missing)",summary:""};}
+
+function buildRetbar(){
+  const bar = document.getElementById("retbar");
+  D.order.forEach(tag=>{
+    const m = D.models[tag];
+    const b = document.createElement("button");
+    b.className="ret"; b.dataset.tag=tag;
+    b.innerHTML = `<div class="nm">${m.label}</div>
+      <div class="sub">${m.params} params · best epoch ${m.best_epoch}</div>`;
+    b.onclick=()=>selectModel(tag);
+    bar.appendChild(b);
+  });
+}
+
+function selectModel(tag){
+  curTag=tag;
+  document.querySelectorAll(".ret").forEach(e=>e.classList.toggle("active",e.dataset.tag===tag));
+  const m = D.models[tag];
+  const METR=[["recall@1","Recall@1"],["recall@5","Recall@5"],["recall@10","Recall@10"],["ndcg@10","NDCG@10"]];
+  document.getElementById("metrics").innerHTML = METR.map(([k,lab])=>{
+    const bv=m.metrics.baseline[k], fv=m.metrics.finetuned[k], d=(fv-bv)*100;
+    const dcls = d>=0?"":"neg";
+    return `<div class="metric"><div class="k">${lab}</div>
+      <div class="row"><span class="ft">${fmt(fv)}</span>
+      <span class="base">vs ${fmt(bv)} base</span>
+      <span class="delta" style="${d<0?'color:var(--bad);background:var(--bad-bg)':''}">${d>=0?'+':''}${d.toFixed(1)}</span></div></div>`;
+  }).join("");
+  renderQueries(tag);
+}
+
+function renderQueries(tag){
+  const list = document.getElementById("qlist");
+  const ex = D.examples[tag] || [];
+  list.innerHTML="";
+  ex.forEach((r,i)=>{
+    const el=document.createElement("div");
+    el.className="q"; el.dataset.i=i;
+    el.innerHTML=`<div class="qt">${r.query}</div>
+      <div class="meta">
+      <span class="flip"><span class="x">#${r.baseline.gold_rank??'—'}</span> → #1</span></div>`;
+    el.onclick=()=>{document.querySelectorAll(".q").forEach(q=>q.classList.remove("active"));
+      el.classList.add("active"); renderDetail(tag,i);};
+    list.appendChild(el);
+  });
+  if(ex.length) {document.querySelector(".q").classList.add("active"); renderDetail(tag,0);}
+  else document.getElementById("detail").innerHTML="<p class='note'>No examples for this retriever.</p>";
+}
+
+function passageCard(side, info, isFt){
+  const ok = info.rank1_ok;
+  const c = chunk(info.chunk_id);
+  const gr = info.gold_rank;
+  const grTxt = ok
+    ? `<span class="hit">✓ this passage is a labeled-correct answer to the query</span>`
+    : (gr ? `<span class="miss">✗ the correct passage was ranked #${gr} by this model</span>`
+          : `<span class="miss">✗ the correct passage was not retrieved</span>`);
+  return `<div class="col ${isFt?'ft':'base'}">
+    <div class="head"><span class="nm">${isFt?'Fine-tuned':'Off-the-shelf baseline'}</span>
+      <span class="tag">rank&nbsp;1 result</span>
+      <span class="verdict ${ok?'ok':'no'}">${ok?'✓ correct':'✗ wrong'}</span></div>
+    <div class="body">
+      <div class="rk"><span class="pill">#1</span> cosine ${info.score.toFixed(3)} · passage <code>${info.chunk_id.replace(/^.*_(\d+)$/,'#$1')}</code></div>
+      <div class="passage ${ok?'correct':'wrong'} truncate" id="${side}p">${c.content}</div>
+      <span class="more" onclick="this.previousElementSibling.classList.toggle('open');this.textContent=this.previousElementSibling.classList.contains('open')?'Show less':'Show full passage'">Show full passage</span>
+      <div class="goldrank">${grTxt}</div>
+    </div></div>`;
+}
+
+function renderDetail(tag,i){
+  const r = D.examples[tag][i];
+  const gr = r.baseline.gold_rank;
+  document.getElementById("detail").innerHTML = `
+    <h2>Rank-1 comparison</h2>
+    <div class="query"><div class="lbl">Query</div>
+      <div class="qtext">${r.query}</div>
+      ${gr?`<div class="lead">Fine-tuning lifted the correct passage from rank <b>#${gr}</b> (off-the-shelf) to <b>#1</b>.</div>`:''}</div>
+    <div class="cols">
+      ${passageCard('b', r.baseline, false)}
+      ${passageCard('f', r.finetuned, true)}
+    </div>`;
+}
+
+buildRetbar();
+selectModel(D.order[0]);
+</script>
+</body>
+</html>

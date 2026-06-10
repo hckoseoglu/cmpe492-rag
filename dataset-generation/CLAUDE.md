@@ -440,3 +440,41 @@ The full M1 model-fit smoke runs only when `FINETUNE_SMOKE_FULL=1` is set
 ```bash
 python -m tests.test_finetune_smoke
 ```
+
+---
+
+## 4. Experiments & Poster
+
+See **`experiments.md`** for the full results + reproduction log (read it first when
+resuming). Summary:
+
+### Epoch sweep (`experiments/epoch_sweep/`)
+Three base models fine-tuned for 3 epochs with per-epoch snapshots, each evaluated
+on the book-scoped NCSA corpus (`--corpus-from-test`), baseline vs fine-tuned with 95%
+bootstrap CIs. Models, **largest→smallest** (the order both poster figures use):
+`bgesmall` (BAAI/bge-small-en-v1.5, ~33M) · `minilm` (all-MiniLM-L6-v2, ~23M) ·
+`micro` (TaylorAI/bge-micro-v2, 17.4M).
+
+Headline: **all three beat baseline**; `bgesmall` is strongest absolute but gains least
+(+2.0 R@5, already near ceiling), the smaller models gain ~+4.3/+4.4 R@5. `bgesmall`/
+`minilm` peak at **epoch 1**, `micro` at **epoch 2**, then overfit. The MNRL eval loss
+(`--eval-loss`, logged for `micro` only) is near-flat by nature and is **not** the
+overfitting signal — eval NDCG@10 is (see `experiments.md` §3).
+
+Reproduce: `bash experiments/run_epoch_sweep.sh` then `bash experiments/run_micro.sh`
+(the latter regenerates every plot).
+
+### Plots (`finetune/plot_epoch_sweep.py`, `finetune/plot_loss_curves.py`)
+- `overall_metrics.png` — "Fine-tuned vs Baseline Metrics by Epoch (95% CI)".
+- `loss_curves.png` — "Training Loss / Eval Metric by Epoch (descending order of model
+  size)"; training loss (left) + eval NDCG@10 with baseline reference (right), one
+  subplot per model in descending size order.
+
+Both order models via the shared `_MODEL_SIZE` map. Regenerate then `cp` into `poster/`.
+
+### Poster (`poster/poster.tex`)
+A0 **landscape** `beamerposter`, Boğaziçi navy theme; `latexmk -pdf poster.tex`. Five
+bands: header → 3-column zone (Intro+Methodology | `flow.jpg` centerpiece | Models+
+Conclusions+Future+Refs) → full-width Results band (`overall_metrics.png`,
+`loss_curves.png`) → footer. The portrait `flow.jpg` is sized by **height**
+(`0.42\paperheight`) or it overflows. Remaining placeholders marked `\todo` (red in PDF).

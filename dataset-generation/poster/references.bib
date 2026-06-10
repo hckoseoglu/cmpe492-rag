@@ -1,0 +1,72 @@
+% ============================================================
+%  Fine-tuning retrievers / MultipleNegativesRankingLoss (MNRL)
+% ============================================================
+
+% Origin of the in-batch sampled-softmax loss that sentence-transformers'
+% MultipleNegativesRankingLoss implements.
+@article{henderson2017smartreply,
+  title   = {Efficient Natural Language Response Suggestion for Smart Reply},
+  author  = {Henderson, Matthew and Al-Rfou, Rami and Strope, Brian and others},
+  journal = {arXiv preprint arXiv:1705.00652},
+  year    = {2017}
+}
+
+
+% Dense dual-encoder retriever fine-tuned with in-batch + hard negatives.
+@inproceedings{karpukhin2020dpr,
+  title     = {Dense Passage Retrieval for Open-Domain Question Answering},
+  author    = {Karpukhin, Vladimir and O\u{g}uz, Barlas and Min, Sewon and others},
+  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  pages     = {6769--6781},
+  year      = {2020}
+}
+
+% ============================================================
+%  Synthetic query generation for retriever training
+% ============================================================
+
+% Few-shot LLM query generation + round-trip consistency filtering
+% (closest to our generate-then-judge pipeline).
+@inproceedings{dai2023promptagator,
+  title     = {Promptagator: Few-shot Dense Retrieval From 8 Examples},
+  author    = {Dai, Zhuyun and Zhao, Vincent Y. and Ma, Ji and others},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+% LLM-generated synthetic queries as IR training data.
+@inproceedings{bonifacio2022inpars,
+  title     = {InPars: Unsupervised Dataset Generation for Information Retrieval},
+  author    = {Bonifacio, Luiz and Abonizio, Hugo and Fadaee, Marzieh and
+               Nogueira, Rodrigo},
+  booktitle = {Proceedings of the 45th International ACM SIGIR Conference on
+               Research and Development in Information Retrieval (SIGIR)},
+  pages     = {2387--2392},
+  year      = {2022}
+}
+
+% Query generation + pseudo-labeling for domain adaptation of dense retrieval.
+@inproceedings{wang2022gpl,
+  title     = {{GPL}: Generative Pseudo Labeling for Unsupervised Domain
+               Adaptation of Dense Retrieval},
+  author    = {Wang, Kexin and Thakur, Nandan and Reimers, Nils and
+               Gurevych, Iryna},
+  booktitle = {Proceedings of the 2022 Conference of the North American
+               Chapter of the Association for Computational Linguistics
+               (NAACL)},
+  year      = {2022}
+}
+
+% ============================================================
+%  Feeding feedback back to the generator
+% ============================================================
+
+% Generator produces output, a critic gives feedback, the generator refines
+% (our judge -> reason -> generator-retry loop).
+@inproceedings{madaan2023selfrefine,
+  title     = {Self-Refine: Iterative Refinement with Self-Feedback},
+  author    = {Madaan, Aman and Tandon, Niket and Gupta, Prakhar and others},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023}
+}

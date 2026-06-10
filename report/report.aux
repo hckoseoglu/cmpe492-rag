@@ -24,13 +24,17 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}RAG Evaluation: RAGAS and RAGChecker}{7}{}\protected@file@percent }
 \citation{mteb2023}
 \citation{mmteb2024}
+\citation{reimers2019sbert}
+\citation{bge_m3}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}LLM-as-Judge}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Embedding Benchmarks: MTEB and MMTEB}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Dense Retriever Fine-Tuning and Hard-Negative Mining}{8}{}\protected@file@percent }
+\citation{rrf2009}
 \citation{biomedical_normalization}
 \citation{polarquant}
 \citation{qjl}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}LLM-as-Judge}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Embedding Benchmarks: MTEB and MMTEB}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Concept Normalization for Query Enhancement}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Vector Quantization: PolarQuant and QJL}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Concept Normalization for Query Enhancement}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Vector Quantization: PolarQuant and QJL}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}METHODOLOGY}{10}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -42,102 +46,130 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Semantic Chunking}{12}{}\protected@file@percent }
 \newlabel{eq:cosine-distance}{{4.1}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Parent-Child (Hierarchical) Chunking}{12}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Concept Normalisation}{12}{}\protected@file@percent }
-\newlabel{sec:concept-normalisation}{{4.3}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Concept Normalisation}{13}{}\protected@file@percent }
+\newlabel{sec:concept-normalisation}{{4.3}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Vocabulary Extraction}{13}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Three-Stage Normalisation Pipeline}{13}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Cross-Encoder Reranking}{14}{}\protected@file@percent }
 \newlabel{sec:reranking}{{4.4}{14}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Vector Quantisation: TurboQuant}{14}{}\protected@file@percent }
-\newlabel{sec:turboquant}{{4.5}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Vector Quantisation: TurboQuant}{15}{}\protected@file@percent }
+\newlabel{sec:turboquant}{{4.5}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Stage 1: Random Rotation and Lloyd-Max Quantisation}{15}{}\protected@file@percent }
 \newlabel{eq:rotation}{{4.2}{15}}
 \newlabel{eq:lloyd-max}{{4.3}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Stage 2: QJL Residual Correction}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Stage 2: QJL Residual Correction}{16}{}\protected@file@percent }
 \newlabel{eq:qjl-signs}{{4.4}{16}}
 \newlabel{eq:qjl-estimator}{{4.5}{16}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}Knowledge Probing}{16}{}\protected@file@percent }
 \newlabel{sec:knowledge-probing}{{4.6}{16}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Lexical Obfuscation}{16}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Probing Experiment}{17}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Synthetic Data Generation}{17}{}\protected@file@percent }
-\newlabel{sec:synthetic-data}{{4.7}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.8}Test Dataset}{18}{}\protected@file@percent }
-\newlabel{sec:test-dataset}{{4.8}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.9}Evaluation Framework}{18}{}\protected@file@percent }
-\newlabel{sec:eval-framework}{{4.9}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.1}LLM-as-Judge Evaluators}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.2}Custom Retrieval Benchmark}{19}{}\protected@file@percent }
-\newlabel{eq:dcg}{{4.6}{20}}
-\newlabel{eq:ndcg}{{4.7}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.3}MTEB Fitness Benchmark}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}REQUIREMENTS SPECIFICATION}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Synthetic Data Generation}{18}{}\protected@file@percent }
+\newlabel{sec:synthetic-data}{{4.7}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Domain-Specific Triplet Generation}{18}{}\protected@file@percent }
+\newlabel{sec:triplet-generation}{{4.8}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8.1}Stage 1: Agentic Chunking}{18}{}\protected@file@percent }
+\citation{rrf2009}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8.2}Stage 2: Positive Pair Generation}{19}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8.3}Stage 3: Hybrid Search and Hard-Negative Mining}{19}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8.4}Stage 4: Expert Judge Validation}{19}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.9}Retriever Fine-Tuning}{20}{}\protected@file@percent }
+\newlabel{sec:retriever-finetuning}{{4.9}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.1}Hard-Negative Filtering}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.2}Train/Test Split}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.3}Contrastive Training}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.4}Evaluation Protocol}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.10}Test Dataset}{22}{}\protected@file@percent }
+\newlabel{sec:test-dataset}{{4.10}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.11}Evaluation Framework}{22}{}\protected@file@percent }
+\newlabel{sec:eval-framework}{{4.11}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.1}LLM-as-Judge Evaluators}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.2}Custom Retrieval Benchmark}{23}{}\protected@file@percent }
+\newlabel{eq:dcg}{{4.6}{24}}
+\newlabel{eq:ndcg}{{4.7}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.3}MTEB Fitness Benchmark}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}REQUIREMENTS SPECIFICATION}{26}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Use Cases}{22}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Functional Requirements}{23}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Use case diagram for the RAG personal trainer system.}}{24}{}\protected@file@percent }
-\newlabel{fig:use-case}{{5.1}{24}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Non-Functional Requirements}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}DESIGN}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Use Cases}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Functional Requirements}{27}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Use case diagram for the RAG personal trainer system.}}{28}{}\protected@file@percent }
+\newlabel{fig:use-case}{{5.1}{28}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Non-Functional Requirements}{29}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}DESIGN}{31}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Information Structure}{26}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Information Flow}{27}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Chat Request Flow}{27}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}RAG Evaluation Pipeline Flow}{27}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Sequence diagram for a chat request in the personal trainer system.}}{28}{}\protected@file@percent }
-\newlabel{fig:chat-sequence}{{6.1}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}System Design}{28}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Activity diagram for the RAG evaluation pipeline.}}{29}{}\protected@file@percent }
-\newlabel{fig:eval-pipeline}{{6.2}{29}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}User Interface Design}{30}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}IMPLEMENTATION AND TESTING}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Information Structure}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Information Flow}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Chat Request Flow}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}RAG Evaluation Pipeline Flow}{32}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Sequence diagram for a chat request in the personal trainer system.}}{33}{}\protected@file@percent }
+\newlabel{fig:chat-sequence}{{6.1}{33}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}System Design}{33}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Activity diagram for the RAG evaluation pipeline.}}{34}{}\protected@file@percent }
+\newlabel{fig:eval-pipeline}{{6.2}{34}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}User Interface Design}{36}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}IMPLEMENTATION AND TESTING}{37}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Implementation}{32}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Testing}{33}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Test Dataset}{33}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Evaluation Experiments}{33}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Observability}{33}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Deployment}{34}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}RESULTS}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Implementation}{37}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Testing}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Test Dataset}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Evaluation Experiments}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Observability}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Deployment}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}RESULTS}{40}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Chunking Strategy Comparison}{35}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Reranker Evaluation}{35}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Retrieval relevance by chunking strategy and configuration.}}{36}{}\protected@file@percent }
-\newlabel{fig:chunking-results}{{8.1}{36}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Concept Normalization}{36}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Retrieval performance without reranking (nDCG at $k = 1, 3, 5$).}}{37}{}\protected@file@percent }
-\newlabel{fig:without-reranker}{{8.2}{37}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Retrieval performance with three cross-encoder reranker variants ($k = 10$, rerank top 5).}}{37}{}\protected@file@percent }
-\newlabel{fig:with-rerankers}{{8.3}{37}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Baseline vs.\ normalization-enhanced embedder on the fitness retrieval benchmark.}}{38}{}\protected@file@percent }
-\newlabel{fig:embedder-comparison}{{8.4}{38}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.4}Knowledge Probing via Lexical Obfuscation}{38}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Obfuscation blocked rate by substitution level.}}{39}{}\protected@file@percent }
-\newlabel{fig:obfuscation-blocked}{{8.5}{39}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Vector Quantization (TurboQuant)}{39}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces Corpus memory footprint at different quantization bit-widths.}}{40}{}\protected@file@percent }
-\newlabel{fig:tq-memory}{{8.6}{40}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Retrieval accuracy (nDCG@10) at different quantization bit-widths.}}{41}{}\protected@file@percent }
-\newlabel{fig:tq-ndcg}{{8.7}{41}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.8}{\ignorespaces Query retrieval speed at different quantization bit-widths.}}{41}{}\protected@file@percent }
-\newlabel{fig:tq-speed}{{8.8}{41}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}CONCLUSION}{42}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Chunking Strategy Comparison}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Reranker Evaluation}{40}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Retrieval relevance by chunking strategy and configuration.}}{41}{}\protected@file@percent }
+\newlabel{fig:chunking-results}{{8.1}{41}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Concept Normalization}{41}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Retrieval performance without reranking (nDCG at $k = 1, 3, 5$).}}{42}{}\protected@file@percent }
+\newlabel{fig:without-reranker}{{8.2}{42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Retrieval performance with three cross-encoder reranker variants ($k = 10$, rerank top 5).}}{42}{}\protected@file@percent }
+\newlabel{fig:with-rerankers}{{8.3}{42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Baseline vs.\ normalization-enhanced embedder on the fitness retrieval benchmark.}}{43}{}\protected@file@percent }
+\newlabel{fig:embedder-comparison}{{8.4}{43}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Retriever Fine-Tuning}{43}{}\protected@file@percent }
+\newlabel{sec:results-finetune}{{8.4}{43}}
+\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Off-the-shelf baseline vs.\ best fine-tuned epoch on the book-scoped held-out split (points $\times 100$; best epoch in parentheses).}}{44}{}\protected@file@percent }
+\newlabel{tab:finetune-results}{{8.1}{44}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Fine-tuned vs.\ baseline retrieval metrics by epoch, with 95\% bootstrap confidence intervals. Solid lines are the fine-tuned models (ordered largest to smallest); dashed horizontal lines are the corresponding off-the-shelf baselines.}}{45}{}\protected@file@percent }
+\newlabel{fig:finetune-overall}{{8.5}{45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces Improvement of each fine-tuned model over its baseline ($\Delta = \text  {fine-tuned} - \text  {baseline}$) by epoch, across all four metrics. The smaller models (orange, green) gain more than the near-ceiling \texttt  {bge-small} (blue); gains are largest at the early peak epoch and erode with further training.}}{46}{}\protected@file@percent }
+\newlabel{fig:finetune-delta}{{8.6}{46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Training loss (left axis, blue) and held-out NDCG@10 (right axis, orange) by epoch, one subplot per model in descending size order. The baseline NDCG@10 is drawn as a dashed reference. Training loss falls monotonically while held-out NDCG@10 peaks early, evidencing overfitting.}}{46}{}\protected@file@percent }
+\newlabel{fig:finetune-loss}{{8.7}{46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.8}{\ignorespaces Recall@5 of the fine-tuned models by query style (formal vs.\ informal) and epoch. Both registers benefit from fine-tuning.}}{47}{}\protected@file@percent }
+\newlabel{fig:finetune-style}{{8.8}{47}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Knowledge Probing via Lexical Obfuscation}{47}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.9}{\ignorespaces Obfuscation blocked rate by substitution level.}}{48}{}\protected@file@percent }
+\newlabel{fig:obfuscation-blocked}{{8.9}{48}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Vector Quantization (TurboQuant)}{48}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.10}{\ignorespaces Corpus memory footprint at different quantization bit-widths.}}{49}{}\protected@file@percent }
+\newlabel{fig:tq-memory}{{8.10}{49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.11}{\ignorespaces Retrieval accuracy (nDCG@10) at different quantization bit-widths.}}{49}{}\protected@file@percent }
+\newlabel{fig:tq-ndcg}{{8.11}{49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.12}{\ignorespaces Query retrieval speed at different quantization bit-widths.}}{50}{}\protected@file@percent }
+\newlabel{fig:tq-speed}{{8.12}{50}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}CONCLUSION}{51}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibstyle{styles/fbe_tez_v11}
 \bibdata{references}
-\bibcite{mmteb2024}{1}
-\bibcite{ragas2024}{2}
-\bibcite{polarquant}{3}
-\bibcite{nvidia_llm_judge}{4}
-\bibcite{biomedical_normalization}{5}
-\bibcite{lewis2020rag}{6}
-\bibcite{mteb2023}{7}
-\bibcite{ragchecker2024}{8}
-\bibcite{vaswani2017attention}{9}
-\bibcite{qjl}{10}
-\gdef \@abspage@last{48}
+\bibcite{bge_m3}{1}
+\bibcite{rrf2009}{2}
+\bibcite{mmteb2024}{3}
+\bibcite{ragas2024}{4}
+\bibcite{polarquant}{5}
+\bibcite{nvidia_llm_judge}{6}
+\bibcite{biomedical_normalization}{7}
+\bibcite{lewis2020rag}{8}
+\bibcite{mteb2023}{9}
+\bibcite{reimers2019sbert}{10}
+\bibcite{ragchecker2024}{11}
+\bibcite{vaswani2017attention}{12}
+\bibcite{qjl}{13}
+\gdef \@abspage@last{58}

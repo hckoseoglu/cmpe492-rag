@@ -1,0 +1,12 @@
+INTRODUCTION
+
+PROBLEM: The quality of any RAG system is bounded by its retriever. If the passage that
+contains the answer is not retrieved into the top-k, no amount of generation
+skill can recover the correct response - retrieval failure is an upper bound on
+end-to-end accuracy.
+
+AIM: We generate a synthetic, in-domain training set from fitness literature,
+then fine-tune embedding retrievers of different sizes on it and measure the
+improvement over their off-the-shelf baselines.
+
+
